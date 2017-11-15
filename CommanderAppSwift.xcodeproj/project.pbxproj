@@ -16,8 +16,6 @@
 		FF333FE41FB5A5C700E980AA /* CommanderAppSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF333FE31FB5A5C700E980AA /* CommanderAppSwiftTests.swift */; };
 		FF333FEF1FB5A5C700E980AA /* CommanderAppSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF333FEE1FB5A5C700E980AA /* CommanderAppSwiftUITests.swift */; };
 		FF333FFD1FB5B92500E980AA /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF333FFC1FB5B92500E980AA /* TabBarViewController.swift */; };
-		FF333FFF1FB5BD4100E980AA /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF333FFE1FB5BD4100E980AA /* TabBarViewModel.swift */; };
-		FF3340011FB5BD5500E980AA /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3340001FB5BD5500E980AA /* TabBarModel.swift */; };
 		FF3340041FB5BE0D00E980AA /* MainCounterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3340021FB5BE0D00E980AA /* MainCounterVC.swift */; };
 		FF3340051FB5BE0D00E980AA /* MainCounterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3340031FB5BE0D00E980AA /* MainCounterVC.xib */; };
 		FF3340071FB5BE6B00E980AA /* MainCounterContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3340061FB5BE6B00E980AA /* MainCounterContainerVC.swift */; };
@@ -34,6 +32,7 @@
 		FF3340221FB9033C00E980AA /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3340201FB9033C00E980AA /* NotesTableViewCell.swift */; };
 		FF3340231FB9033C00E980AA /* NotesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3340211FB9033C00E980AA /* NotesTableViewCell.xib */; };
 		FF3340251FB9046A00E980AA /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3340241FB9046900E980AA /* UIColorExtension.swift */; };
+		FF60EA2E1FBC977F005C2BBA /* TabBarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF60EA2D1FBC977F005C2BBA /* TabBarVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,8 +70,6 @@
 		FF333FEE1FB5A5C700E980AA /* CommanderAppSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommanderAppSwiftUITests.swift; sourceTree = "<group>"; };
 		FF333FF01FB5A5C700E980AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF333FFC1FB5B92500E980AA /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
-		FF333FFE1FB5BD4100E980AA /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
-		FF3340001FB5BD5500E980AA /* TabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModel.swift; sourceTree = "<group>"; };
 		FF3340021FB5BE0D00E980AA /* MainCounterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCounterVC.swift; sourceTree = "<group>"; };
 		FF3340031FB5BE0D00E980AA /* MainCounterVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCounterVC.xib; sourceTree = "<group>"; };
 		FF3340061FB5BE6B00E980AA /* MainCounterContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCounterContainerVC.swift; sourceTree = "<group>"; };
@@ -89,6 +86,7 @@
 		FF3340201FB9033C00E980AA /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
 		FF3340211FB9033C00E980AA /* NotesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesTableViewCell.xib; sourceTree = "<group>"; };
 		FF3340241FB9046900E980AA /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		FF60EA2D1FBC977F005C2BBA /* TabBarVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,8 +159,7 @@
 			children = (
 				FF333FCB1FB5A5C500E980AA /* AppDelegate.swift */,
 				FF333FFC1FB5B92500E980AA /* TabBarViewController.swift */,
-				FF333FFE1FB5BD4100E980AA /* TabBarViewModel.swift */,
-				FF3340001FB5BD5500E980AA /* TabBarModel.swift */,
+				FF60EA2D1FBC977F005C2BBA /* TabBarVC.xib */,
 				FF33400E1FB615A200E980AA /* MainNavController.swift */,
 				FF3340021FB5BE0D00E980AA /* MainCounterVC.swift */,
 				FF3340031FB5BE0D00E980AA /* MainCounterVC.xib */,
@@ -322,6 +319,7 @@
 				FF333FD61FB5A5C500E980AA /* Assets.xcassets in Resources */,
 				FF333FD11FB5A5C500E980AA /* Main.storyboard in Resources */,
 				FF3340231FB9033C00E980AA /* NotesTableViewCell.xib in Resources */,
+				FF60EA2E1FBC977F005C2BBA /* TabBarVC.xib in Resources */,
 				FF33401F1FB9031200E980AA /* NotesVC.xib in Resources */,
 				FF33400B1FB5BE9E00E980AA /* MenuVC.xib in Resources */,
 				FF3340151FB8FBEC00E980AA /* MainCounterContainerVC.xib in Resources */,
@@ -409,9 +407,7 @@
 				FF33400F1FB615A200E980AA /* MainNavController.swift in Sources */,
 				FF3340121FB8E9D100E980AA /* ManaCounterVC.swift in Sources */,
 				FF3340041FB5BE0D00E980AA /* MainCounterVC.swift in Sources */,
-				FF333FFF1FB5BD4100E980AA /* TabBarViewModel.swift in Sources */,
 				FF333FFD1FB5B92500E980AA /* TabBarViewController.swift in Sources */,
-				FF3340011FB5BD5500E980AA /* TabBarModel.swift in Sources */,
 				FF3340221FB9033C00E980AA /* NotesTableViewCell.swift in Sources */,
 				FF33401A1FB8FFB600E980AA /* MainCounterTableViewCell.swift in Sources */,
 				FF33400A1FB5BE9E00E980AA /* MenuVC.swift in Sources */,

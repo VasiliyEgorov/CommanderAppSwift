@@ -9,11 +9,14 @@
 import UIKit
 
 class MainCounterVC: UIViewController {
+   
+    @IBOutlet weak var containerView: UIView!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let childController = MainCounterContainerVC.init(nibName: "MainCounterContainerVC", bundle: nil)
+        self.addChildViewController(childController)
+        
         // Do any additional setup after loading the view.
     }
 

@@ -8,7 +8,15 @@
 
 import UIKit
 
-class MainCounterContainerVC: UIViewController {
+class MainCounterContainerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

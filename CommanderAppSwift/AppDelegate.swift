@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let reveal = SWRevealViewController.init(rearViewController: MenuVC.init(nibName: "MenuVC", bundle: nil), frontViewController: TabBarViewController())
+        let reveal = SWRevealViewController.init(rearViewController: MenuVC.init(nibName: "MenuVC", bundle: nil),
+                                                 frontViewController: TabBarViewController.init(nibName: "TabBarVC", bundle: nil))
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = reveal
         reveal?.pushFrontViewController(reveal?.frontViewController, animated: false)
