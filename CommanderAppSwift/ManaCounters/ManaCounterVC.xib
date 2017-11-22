@@ -12,6 +12,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ManaCounterVC" customModule="CommanderAppSwift" customModuleProvider="target">
             <connections>
+                <outlet property="eighthLabel" destination="44h-5O-yK5" id="JFM-gV-Hog"/>
+                <outlet property="fifthLabel" destination="TOI-B9-QOm" id="EeR-yl-Ecb"/>
+                <outlet property="firstLabel" destination="cp7-z1-V0K" id="ZHX-ke-8Bj"/>
+                <outlet property="fourthLabel" destination="OPk-jD-yq6" id="oCE-C8-Rgb"/>
+                <outlet property="secondLabel" destination="PRu-Ym-296" id="zLm-gs-A5l"/>
+                <outlet property="seventhLabel" destination="iha-DQ-CAk" id="Av7-Lc-f0L"/>
+                <outlet property="sixthLabel" destination="P59-bS-lmU" id="Q7F-8J-dMF"/>
+                <outlet property="thirdLabel" destination="ef3-hk-LnR" id="ogD-OM-RoN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -70,194 +78,242 @@
                                                 <constraint firstAttribute="width" secondItem="Rzm-XB-N8I" secondAttribute="height" multiplier="1:1" id="ivI-z3-ALE"/>
                                             </constraints>
                                             <state key="normal" backgroundImage="btnplus_35"/>
+                                            <connections>
+                                                <action selector="countersButtonAction:" destination="-1" eventType="touchUpInside" id="kEI-dz-X1m"/>
+                                            </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cp7-z1-V0K">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cp7-z1-V0K" customClass="ManaLabel" customModule="CommanderAppSwift" customModuleProvider="target">
                                             <rect key="frame" x="111" y="0.0" width="42" height="38"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hu-hy-0aW">
+                                        <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hu-hy-0aW">
                                             <rect key="frame" x="226" y="0.0" width="38" height="38"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="5hu-hy-0aW" secondAttribute="height" multiplier="1:1" id="VoA-3t-GWK"/>
                                             </constraints>
                                             <state key="normal" backgroundImage="btnminus_35"/>
+                                            <connections>
+                                                <action selector="countersButtonAction:" destination="-1" eventType="touchUpInside" id="vTk-a5-eWd"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="ukz-MU-GF9">
                                     <rect key="frame" x="0.0" y="62" width="264" height="38"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDH-op-mcv">
+                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDH-op-mcv">
                                             <rect key="frame" x="0.0" y="0.0" width="38" height="38"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="WDH-op-mcv" secondAttribute="height" multiplier="1:1" id="akb-GP-d5A"/>
                                             </constraints>
                                             <state key="normal" backgroundImage="btnplus_35"/>
+                                            <connections>
+                                                <action selector="countersButtonAction:" destination="-1" eventType="touchUpInside" id="yXI-FM-82p"/>
+                                            </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRu-Ym-296">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRu-Ym-296" customClass="ManaLabel" customModule="CommanderAppSwift" customModuleProvider="target">
                                             <rect key="frame" x="111" y="0.0" width="42" height="38"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eBn-SW-dis">
+                                        <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eBn-SW-dis">
                                             <rect key="frame" x="226" y="0.0" width="38" height="38"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="eBn-SW-dis" secondAttribute="height" multiplier="1:1" id="yDM-g6-d0A"/>
                                             </constraints>
                                             <state key="normal" backgroundImage="btnminus_35"/>
+                                            <connections>
+                                                <action selector="countersButtonAction:" destination="-1" eventType="touchUpInside" id="eUI-Zm-Bsb"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="zoX-Yr-KjR">
                                     <rect key="frame" x="0.0" y="124" width="264" height="37.5"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a98-xY-eDN">
+                                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a98-xY-eDN">
                                             <rect key="frame" x="0.0" y="0.0" width="37.5" height="37.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="a98-xY-eDN" secondAttribute="height" multiplier="1:1" id="Yuf-WP-Inj"/>
                                             </constraints>
                                             <state key="normal" backgroundImage="btnplus_35"/>
+                                            <connections>
+                                                <action selector="countersButtonAction:" destination="-1" eventType="touchUpInside" id="Dcp-08-oKr"/>
+                                            </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ef3-hk-LnR">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ef3-hk-LnR" customClass="ManaLabel" customModule="CommanderAppSwift" customModuleProvider="target">
                                             <rect key="frame" x="111" y="0.0" width="42" height="37.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wmE-tT-8it">
+                                        <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wmE-tT-8it">
                                             <rect key="frame" x="226.5" y="0.0" width="37.5" height="37.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="wmE-tT-8it" secondAttribute="height" multiplier="1:1" id="8jL-Fe-Jbh"/>
                                             </constraints>
                                             <state key="normal" backgroundImage="btnminus_35"/>
+                                            <connections>
+                                                <action selector="countersButtonAction:" destination="-1" eventType="touchUpInside" id="HGf-Mf-Zde"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="dU0-nt-RDP">
                                     <rect key="frame" x="0.0" y="185.5" width="264" height="38"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ce-UJ-KF3">
+                                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ce-UJ-KF3">
                                             <rect key="frame" x="0.0" y="0.0" width="37.5" height="38"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="6Ce-UJ-KF3" secondAttribute="height" multiplier="1:1" id="Cs3-lc-NFQ"/>
                                             </constraints>
                                             <state key="normal" backgroundImage="btnplus_35"/>
+                                            <connections>
+                                                <action selector="countersButtonAction:" destination="-1" eventType="touchUpInside" id="CuG-bs-bHo"/>
+                                            </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPk-jD-yq6">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPk-jD-yq6" customClass="ManaLabel" customModule="CommanderAppSwift" customModuleProvider="target">
                                             <rect key="frame" x="111" y="0.0" width="42" height="38"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XzO-QB-AqX">
+                                        <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XzO-QB-AqX">
                                             <rect key="frame" x="226.5" y="0.0" width="37.5" height="38"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="XzO-QB-AqX" secondAttribute="height" multiplier="1:1" id="RmD-cd-psx"/>
                                             </constraints>
                                             <state key="normal" backgroundImage="btnminus_35"/>
+                                            <connections>
+                                                <action selector="countersButtonAction:" destination="-1" eventType="touchUpInside" id="hbV-Kv-VEy"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Xx5-Tg-Tkq">
                                     <rect key="frame" x="0.0" y="247.5" width="264" height="38"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9S4-sE-29J">
+                                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9S4-sE-29J">
                                             <rect key="frame" x="0.0" y="0.0" width="37.5" height="38"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="9S4-sE-29J" secondAttribute="height" multiplier="1:1" id="g8n-Y6-Ibn"/>
                                             </constraints>
                                             <state key="normal" backgroundImage="btnplus_35"/>
+                                            <connections>
+                                                <action selector="countersButtonAction:" destination="-1" eventType="touchUpInside" id="wvP-eA-GAK"/>
+                                            </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOI-B9-QOm">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOI-B9-QOm" customClass="ManaLabel" customModule="CommanderAppSwift" customModuleProvider="target">
                                             <rect key="frame" x="111" y="0.0" width="42" height="38"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="66k-6S-X6V">
+                                        <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="66k-6S-X6V">
                                             <rect key="frame" x="226.5" y="0.0" width="37.5" height="38"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="66k-6S-X6V" secondAttribute="height" multiplier="1:1" id="Y5G-py-3kT"/>
                                             </constraints>
                                             <state key="normal" backgroundImage="btnminus_35"/>
+                                            <connections>
+                                                <action selector="countersButtonAction:" destination="-1" eventType="touchUpInside" id="Rgl-z4-ODs"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="uiW-MM-VOb">
                                     <rect key="frame" x="0.0" y="309.5" width="264" height="38"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQf-se-dNt">
+                                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQf-se-dNt">
                                             <rect key="frame" x="0.0" y="0.0" width="37.5" height="38"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="WQf-se-dNt" secondAttribute="height" multiplier="1:1" id="oUj-m5-pBO"/>
                                             </constraints>
                                             <state key="normal" backgroundImage="btnplus_35"/>
+                                            <connections>
+                                                <action selector="countersButtonAction:" destination="-1" eventType="touchUpInside" id="l34-y4-ImK"/>
+                                            </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P59-bS-lmU">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P59-bS-lmU" customClass="ManaLabel" customModule="CommanderAppSwift" customModuleProvider="target">
                                             <rect key="frame" x="111" y="0.0" width="42" height="38"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEF-0P-tFe">
+                                        <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEF-0P-tFe">
                                             <rect key="frame" x="226.5" y="0.0" width="37.5" height="38"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="bEF-0P-tFe" secondAttribute="height" multiplier="1:1" id="KO5-8F-POV"/>
                                             </constraints>
                                             <state key="normal" backgroundImage="btnminus_35"/>
+                                            <connections>
+                                                <action selector="countersButtonAction:" destination="-1" eventType="touchUpInside" id="MLT-Kd-gbc"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="t4X-uk-od2">
                                     <rect key="frame" x="0.0" y="371.5" width="264" height="37.5"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vz4-QF-BI7">
+                                        <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vz4-QF-BI7">
                                             <rect key="frame" x="0.0" y="0.0" width="37.5" height="37.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="vz4-QF-BI7" secondAttribute="height" multiplier="1:1" id="mY1-l8-i3h"/>
                                             </constraints>
                                             <state key="normal" backgroundImage="btnplus_35"/>
+                                            <connections>
+                                                <action selector="countersButtonAction:" destination="-1" eventType="touchUpInside" id="c2o-4h-pGN"/>
+                                            </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iha-DQ-CAk">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iha-DQ-CAk" customClass="ManaLabel" customModule="CommanderAppSwift" customModuleProvider="target">
                                             <rect key="frame" x="111" y="0.0" width="42" height="37.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fnq-Hf-Z2I">
+                                        <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fnq-Hf-Z2I">
                                             <rect key="frame" x="226.5" y="0.0" width="37.5" height="37.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="Fnq-Hf-Z2I" secondAttribute="height" multiplier="1:1" id="Cxo-NJ-p67"/>
                                             </constraints>
                                             <state key="normal" backgroundImage="btnminus_35"/>
+                                            <connections>
+                                                <action selector="countersButtonAction:" destination="-1" eventType="touchUpInside" id="TkF-Ab-qtB"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="jtt-OH-HuB">
                                     <rect key="frame" x="0.0" y="433" width="264" height="38"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xNP-Su-FNJ">
+                                        <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xNP-Su-FNJ">
                                             <rect key="frame" x="0.0" y="0.0" width="37.5" height="38"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="xNP-Su-FNJ" secondAttribute="height" multiplier="1:1" id="kgj-Jn-bFN"/>
                                             </constraints>
                                             <state key="normal" backgroundImage="btnplus_35"/>
+                                            <connections>
+                                                <action selector="countersButtonAction:" destination="-1" eventType="touchUpInside" id="lJe-tz-FnS"/>
+                                            </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44h-5O-yK5">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44h-5O-yK5" customClass="ManaLabel" customModule="CommanderAppSwift" customModuleProvider="target">
                                             <rect key="frame" x="111" y="0.0" width="42" height="38"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hPc-Jr-9ik">
+                                        <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hPc-Jr-9ik">
                                             <rect key="frame" x="226.5" y="0.0" width="37.5" height="38"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="hPc-Jr-9ik" secondAttribute="height" multiplier="1:1" id="MFL-uM-LZx"/>
                                             </constraints>
                                             <state key="normal" backgroundImage="btnminus_35"/>
+                                            <connections>
+                                                <action selector="countersButtonAction:" destination="-1" eventType="touchUpInside" id="v8Y-LF-LKI"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </stackView>

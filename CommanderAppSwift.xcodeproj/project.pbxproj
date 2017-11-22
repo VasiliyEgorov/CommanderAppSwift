@@ -8,8 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		8B660194EDF8BDB28E868D7A /* Pods_CommanderAppSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B114FF8F34C504DB0A541400 /* Pods_CommanderAppSwift.framework */; };
+		FF1BBAEA1FC273AA009271C4 /* ManaCounterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBAE91FC273AA009271C4 /* ManaCounterVM.swift */; };
+		FF1BBAEC1FC30C6D009271C4 /* ManaCounterM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBAEB1FC30C6D009271C4 /* ManaCounterM.swift */; };
+		FF1BBAF01FC3A72E009271C4 /* ManaLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBAEF1FC3A72E009271C4 /* ManaLabel.swift */; };
+		FF1BBAF31FC3B15E009271C4 /* FirstCounterCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBAF21FC3B15E009271C4 /* FirstCounterCellVM.swift */; };
+		FF1BBAF51FC3B16B009271C4 /* FirstCounterCellM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBAF41FC3B16B009271C4 /* FirstCounterCellM.swift */; };
+		FF1BBAF71FC4A781009271C4 /* MainCountersLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBAF61FC4A781009271C4 /* MainCountersLabel.swift */; };
+		FF1BBAFD1FC4CB88009271C4 /* SecondCounterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBAFC1FC4CB88009271C4 /* SecondCounterCell.swift */; };
+		FF1BBB001FC4CBBB009271C4 /* SecondCounterCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBAFF1FC4CBBB009271C4 /* SecondCounterCellVM.swift */; };
+		FF1BBB021FC4CBD8009271C4 /* SecondCounterCellM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB011FC4CBD8009271C4 /* SecondCounterCellM.swift */; };
+		FF1BBB041FC4CBE8009271C4 /* SecondCounterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1BBB031FC4CBE8009271C4 /* SecondCounterCell.xib */; };
+		FF1BBB061FC4FE15009271C4 /* ThirdCounterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB051FC4FE15009271C4 /* ThirdCounterCell.swift */; };
+		FF1BBB091FC4FE3A009271C4 /* ThirdCounterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1BBB081FC4FE3A009271C4 /* ThirdCounterCell.xib */; };
+		FF1BBB0B1FC4FE60009271C4 /* ThirdCounterCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB0A1FC4FE60009271C4 /* ThirdCounterCellVM.swift */; };
+		FF1BBB0D1FC4FE6B009271C4 /* ThirdCounterCellM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB0C1FC4FE6B009271C4 /* ThirdCounterCellM.swift */; };
+		FF1BBB0F1FC4FE83009271C4 /* FourthCounterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB0E1FC4FE83009271C4 /* FourthCounterCell.swift */; };
+		FF1BBB121FC4FEBB009271C4 /* FourthCounterCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB111FC4FEBB009271C4 /* FourthCounterCellVM.swift */; };
+		FF1BBB141FC4FEC4009271C4 /* FourthCounterCellM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB131FC4FEC4009271C4 /* FourthCounterCellM.swift */; };
+		FF1BBB161FC4FEDF009271C4 /* FourthCounterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1BBB151FC4FEDF009271C4 /* FourthCounterCell.xib */; };
 		FF333FCC1FB5A5C500E980AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF333FCB1FB5A5C500E980AA /* AppDelegate.swift */; };
-		FF333FD11FB5A5C500E980AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF333FCF1FB5A5C500E980AA /* Main.storyboard */; };
 		FF333FD41FB5A5C500E980AA /* CommanderAppSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF333FD21FB5A5C500E980AA /* CommanderAppSwift.xcdatamodeld */; };
 		FF333FD61FB5A5C500E980AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF333FD51FB5A5C500E980AA /* Assets.xcassets */; };
 		FF333FD91FB5A5C600E980AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF333FD71FB5A5C600E980AA /* LaunchScreen.storyboard */; };
@@ -25,14 +42,31 @@
 		FF3340121FB8E9D100E980AA /* ManaCounterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3340101FB8E9D100E980AA /* ManaCounterVC.swift */; };
 		FF3340131FB8E9D100E980AA /* ManaCounterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3340111FB8E9D100E980AA /* ManaCounterVC.xib */; };
 		FF3340151FB8FBEC00E980AA /* MainCounterContainerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3340141FB8FBEB00E980AA /* MainCounterContainerVC.xib */; };
-		FF33401A1FB8FFB600E980AA /* MainCounterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3340181FB8FFB600E980AA /* MainCounterTableViewCell.swift */; };
-		FF33401B1FB8FFB600E980AA /* MainCounterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3340191FB8FFB600E980AA /* MainCounterTableViewCell.xib */; };
+		FF33401A1FB8FFB600E980AA /* FirstCounterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3340181FB8FFB600E980AA /* FirstCounterCell.swift */; };
+		FF33401B1FB8FFB600E980AA /* FirstCounterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3340191FB8FFB600E980AA /* FirstCounterCell.xib */; };
 		FF33401E1FB9031200E980AA /* NotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33401C1FB9031200E980AA /* NotesVC.swift */; };
 		FF33401F1FB9031200E980AA /* NotesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF33401D1FB9031200E980AA /* NotesVC.xib */; };
 		FF3340221FB9033C00E980AA /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3340201FB9033C00E980AA /* NotesTableViewCell.swift */; };
 		FF3340231FB9033C00E980AA /* NotesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3340211FB9033C00E980AA /* NotesTableViewCell.xib */; };
 		FF3340251FB9046A00E980AA /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3340241FB9046900E980AA /* UIColorExtension.swift */; };
 		FF60EA2E1FBC977F005C2BBA /* TabBarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF60EA2D1FBC977F005C2BBA /* TabBarVC.xib */; };
+		FF60EA321FBD927C005C2BBA /* MainCounterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA311FBD927C005C2BBA /* MainCounterVM.swift */; };
+		FF60EA341FBD9298005C2BBA /* MainCounterM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA331FBD9298005C2BBA /* MainCounterM.swift */; };
+		FF60EA371FBD9D1D005C2BBA /* PlayerNameV.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA361FBD9D1D005C2BBA /* PlayerNameV.swift */; };
+		FF60EA391FBD9D2B005C2BBA /* PlayerNameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA381FBD9D2B005C2BBA /* PlayerNameVM.swift */; };
+		FF60EA3B1FBD9D37005C2BBA /* PlayerNameM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA3A1FBD9D37005C2BBA /* PlayerNameM.swift */; };
+		FF60EA3D1FBDA395005C2BBA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA3C1FBDA395005C2BBA /* Constants.swift */; };
+		FF60EA401FBDE80D005C2BBA /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA3F1FBDE80D005C2BBA /* DataManager.swift */; };
+		FF60EA431FBE13FC005C2BBA /* NSManagedObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA421FBE13FC005C2BBA /* NSManagedObjectExtension.swift */; };
+		FF60EA481FC0B780005C2BBA /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA471FC0B780005C2BBA /* AvatarImageView.swift */; };
+		FF60EA4A1FC0DE80005C2BBA /* AvatarLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA491FC0DE80005C2BBA /* AvatarLayerView.swift */; };
+		FF60EA4C1FC0DF6A005C2BBA /* AvatarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA4B1FC0DF6A005C2BBA /* AvatarVM.swift */; };
+		FF60EA4E1FC0DF74005C2BBA /* AvatarM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA4D1FC0DF74005C2BBA /* AvatarM.swift */; };
+		FF60EA511FC0F7AE005C2BBA /* RandomAvatarLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA501FC0F7AE005C2BBA /* RandomAvatarLabel.swift */; };
+		FF60EA531FC0F7BF005C2BBA /* RandomAvatarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA521FC0F7BF005C2BBA /* RandomAvatarVM.swift */; };
+		FF60EA551FC0F7C8005C2BBA /* RandomAvatarM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA541FC0F7C8005C2BBA /* RandomAvatarM.swift */; };
+		FF60EA571FC0F9E4005C2BBA /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA561FC0F9E4005C2BBA /* DataExtension.swift */; };
+		FF60EA591FC0F9F1005C2BBA /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA581FC0F9F1005C2BBA /* UIImageExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,9 +90,26 @@
 		B114FF8F34C504DB0A541400 /* Pods_CommanderAppSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommanderAppSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8F38C182BD5D0DCDDC2D4CC /* Pods-CommanderAppSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommanderAppSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CommanderAppSwift/Pods-CommanderAppSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		C4B6933BBBB776716C3A1330 /* Pods-CommanderAppSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommanderAppSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommanderAppSwift/Pods-CommanderAppSwift.release.xcconfig"; sourceTree = "<group>"; };
+		FF1BBAE91FC273AA009271C4 /* ManaCounterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManaCounterVM.swift; sourceTree = "<group>"; };
+		FF1BBAEB1FC30C6D009271C4 /* ManaCounterM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManaCounterM.swift; sourceTree = "<group>"; };
+		FF1BBAEF1FC3A72E009271C4 /* ManaLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManaLabel.swift; sourceTree = "<group>"; };
+		FF1BBAF21FC3B15E009271C4 /* FirstCounterCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCounterCellVM.swift; sourceTree = "<group>"; };
+		FF1BBAF41FC3B16B009271C4 /* FirstCounterCellM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCounterCellM.swift; sourceTree = "<group>"; };
+		FF1BBAF61FC4A781009271C4 /* MainCountersLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCountersLabel.swift; sourceTree = "<group>"; };
+		FF1BBAFC1FC4CB88009271C4 /* SecondCounterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCounterCell.swift; sourceTree = "<group>"; };
+		FF1BBAFF1FC4CBBB009271C4 /* SecondCounterCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCounterCellVM.swift; sourceTree = "<group>"; };
+		FF1BBB011FC4CBD8009271C4 /* SecondCounterCellM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCounterCellM.swift; sourceTree = "<group>"; };
+		FF1BBB031FC4CBE8009271C4 /* SecondCounterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondCounterCell.xib; sourceTree = "<group>"; };
+		FF1BBB051FC4FE15009271C4 /* ThirdCounterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdCounterCell.swift; sourceTree = "<group>"; };
+		FF1BBB081FC4FE3A009271C4 /* ThirdCounterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThirdCounterCell.xib; sourceTree = "<group>"; };
+		FF1BBB0A1FC4FE60009271C4 /* ThirdCounterCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdCounterCellVM.swift; sourceTree = "<group>"; };
+		FF1BBB0C1FC4FE6B009271C4 /* ThirdCounterCellM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdCounterCellM.swift; sourceTree = "<group>"; };
+		FF1BBB0E1FC4FE83009271C4 /* FourthCounterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthCounterCell.swift; sourceTree = "<group>"; };
+		FF1BBB111FC4FEBB009271C4 /* FourthCounterCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthCounterCellVM.swift; sourceTree = "<group>"; };
+		FF1BBB131FC4FEC4009271C4 /* FourthCounterCellM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthCounterCellM.swift; sourceTree = "<group>"; };
+		FF1BBB151FC4FEDF009271C4 /* FourthCounterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FourthCounterCell.xib; sourceTree = "<group>"; };
 		FF333FC81FB5A5C500E980AA /* CommanderAppSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommanderAppSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF333FCB1FB5A5C500E980AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FF333FD01FB5A5C500E980AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF333FD31FB5A5C500E980AA /* CommanderAppSwift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CommanderAppSwift.xcdatamodel; sourceTree = "<group>"; };
 		FF333FD51FB5A5C500E980AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF333FD81FB5A5C600E980AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -79,14 +130,31 @@
 		FF3340101FB8E9D100E980AA /* ManaCounterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManaCounterVC.swift; sourceTree = "<group>"; };
 		FF3340111FB8E9D100E980AA /* ManaCounterVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManaCounterVC.xib; sourceTree = "<group>"; };
 		FF3340141FB8FBEB00E980AA /* MainCounterContainerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCounterContainerVC.xib; sourceTree = "<group>"; };
-		FF3340181FB8FFB600E980AA /* MainCounterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCounterTableViewCell.swift; sourceTree = "<group>"; };
-		FF3340191FB8FFB600E980AA /* MainCounterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCounterTableViewCell.xib; sourceTree = "<group>"; };
+		FF3340181FB8FFB600E980AA /* FirstCounterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCounterCell.swift; sourceTree = "<group>"; };
+		FF3340191FB8FFB600E980AA /* FirstCounterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstCounterCell.xib; sourceTree = "<group>"; };
 		FF33401C1FB9031200E980AA /* NotesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesVC.swift; sourceTree = "<group>"; };
 		FF33401D1FB9031200E980AA /* NotesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesVC.xib; sourceTree = "<group>"; };
 		FF3340201FB9033C00E980AA /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
 		FF3340211FB9033C00E980AA /* NotesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesTableViewCell.xib; sourceTree = "<group>"; };
 		FF3340241FB9046900E980AA /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		FF60EA2D1FBC977F005C2BBA /* TabBarVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarVC.xib; sourceTree = "<group>"; };
+		FF60EA311FBD927C005C2BBA /* MainCounterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCounterVM.swift; sourceTree = "<group>"; };
+		FF60EA331FBD9298005C2BBA /* MainCounterM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCounterM.swift; sourceTree = "<group>"; };
+		FF60EA361FBD9D1D005C2BBA /* PlayerNameV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNameV.swift; sourceTree = "<group>"; };
+		FF60EA381FBD9D2B005C2BBA /* PlayerNameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNameVM.swift; sourceTree = "<group>"; };
+		FF60EA3A1FBD9D37005C2BBA /* PlayerNameM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNameM.swift; sourceTree = "<group>"; };
+		FF60EA3C1FBDA395005C2BBA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FF60EA3F1FBDE80D005C2BBA /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		FF60EA421FBE13FC005C2BBA /* NSManagedObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExtension.swift; sourceTree = "<group>"; };
+		FF60EA471FC0B780005C2BBA /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
+		FF60EA491FC0DE80005C2BBA /* AvatarLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarLayerView.swift; sourceTree = "<group>"; };
+		FF60EA4B1FC0DF6A005C2BBA /* AvatarVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarVM.swift; sourceTree = "<group>"; };
+		FF60EA4D1FC0DF74005C2BBA /* AvatarM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarM.swift; sourceTree = "<group>"; };
+		FF60EA501FC0F7AE005C2BBA /* RandomAvatarLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomAvatarLabel.swift; sourceTree = "<group>"; };
+		FF60EA521FC0F7BF005C2BBA /* RandomAvatarVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomAvatarVM.swift; sourceTree = "<group>"; };
+		FF60EA541FC0F7C8005C2BBA /* RandomAvatarM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomAvatarM.swift; sourceTree = "<group>"; };
+		FF60EA561FC0F9E4005C2BBA /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
+		FF60EA581FC0F9F1005C2BBA /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +200,81 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FF1BBAED1FC3A6BF009271C4 /* ManaCounters */ = {
+			isa = PBXGroup;
+			children = (
+				FF3340101FB8E9D100E980AA /* ManaCounterVC.swift */,
+				FF1BBAE91FC273AA009271C4 /* ManaCounterVM.swift */,
+				FF1BBAEB1FC30C6D009271C4 /* ManaCounterM.swift */,
+				FF3340111FB8E9D100E980AA /* ManaCounterVC.xib */,
+			);
+			path = ManaCounters;
+			sourceTree = "<group>";
+		};
+		FF1BBAEE1FC3A70B009271C4 /* separateViews */ = {
+			isa = PBXGroup;
+			children = (
+				FF1BBAEF1FC3A72E009271C4 /* ManaLabel.swift */,
+				FF1BBAF61FC4A781009271C4 /* MainCountersLabel.swift */,
+			);
+			path = separateViews;
+			sourceTree = "<group>";
+		};
+		FF1BBAF11FC3B11B009271C4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FF1BBAFA1FC4CB4D009271C4 /* First Counter Cell */,
+				FF1BBAFE1FC4CB8E009271C4 /* Second Counter Cell */,
+				FF1BBB071FC4FE1A009271C4 /* Third Counter Cell */,
+				FF1BBB101FC4FE8A009271C4 /* Fourth Counter Cell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		FF1BBAFA1FC4CB4D009271C4 /* First Counter Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FF3340181FB8FFB600E980AA /* FirstCounterCell.swift */,
+				FF1BBAF21FC3B15E009271C4 /* FirstCounterCellVM.swift */,
+				FF1BBAF41FC3B16B009271C4 /* FirstCounterCellM.swift */,
+				FF3340191FB8FFB600E980AA /* FirstCounterCell.xib */,
+			);
+			path = "First Counter Cell";
+			sourceTree = "<group>";
+		};
+		FF1BBAFE1FC4CB8E009271C4 /* Second Counter Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FF1BBAFC1FC4CB88009271C4 /* SecondCounterCell.swift */,
+				FF1BBAFF1FC4CBBB009271C4 /* SecondCounterCellVM.swift */,
+				FF1BBB011FC4CBD8009271C4 /* SecondCounterCellM.swift */,
+				FF1BBB031FC4CBE8009271C4 /* SecondCounterCell.xib */,
+			);
+			path = "Second Counter Cell";
+			sourceTree = "<group>";
+		};
+		FF1BBB071FC4FE1A009271C4 /* Third Counter Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FF1BBB051FC4FE15009271C4 /* ThirdCounterCell.swift */,
+				FF1BBB0A1FC4FE60009271C4 /* ThirdCounterCellVM.swift */,
+				FF1BBB0C1FC4FE6B009271C4 /* ThirdCounterCellM.swift */,
+				FF1BBB081FC4FE3A009271C4 /* ThirdCounterCell.xib */,
+			);
+			path = "Third Counter Cell";
+			sourceTree = "<group>";
+		};
+		FF1BBB101FC4FE8A009271C4 /* Fourth Counter Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FF1BBB0E1FC4FE83009271C4 /* FourthCounterCell.swift */,
+				FF1BBB111FC4FEBB009271C4 /* FourthCounterCellVM.swift */,
+				FF1BBB131FC4FEC4009271C4 /* FourthCounterCellM.swift */,
+				FF1BBB151FC4FEDF009271C4 /* FourthCounterCell.xib */,
+			);
+			path = "Fourth Counter Cell";
+			sourceTree = "<group>";
+		};
 		FF333FBF1FB5A5C500E980AA = {
 			isa = PBXGroup;
 			children = (
@@ -162,22 +305,25 @@
 				FF60EA2D1FBC977F005C2BBA /* TabBarVC.xib */,
 				FF33400E1FB615A200E980AA /* MainNavController.swift */,
 				FF3340021FB5BE0D00E980AA /* MainCounterVC.swift */,
+				FF60EA311FBD927C005C2BBA /* MainCounterVM.swift */,
+				FF60EA331FBD9298005C2BBA /* MainCounterM.swift */,
 				FF3340031FB5BE0D00E980AA /* MainCounterVC.xib */,
 				FF3340061FB5BE6B00E980AA /* MainCounterContainerVC.swift */,
 				FF3340141FB8FBEB00E980AA /* MainCounterContainerVC.xib */,
-				FF3340181FB8FFB600E980AA /* MainCounterTableViewCell.swift */,
-				FF3340191FB8FFB600E980AA /* MainCounterTableViewCell.xib */,
-				FF3340101FB8E9D100E980AA /* ManaCounterVC.swift */,
-				FF3340111FB8E9D100E980AA /* ManaCounterVC.xib */,
+				FF1BBAF11FC3B11B009271C4 /* Cells */,
+				FF1BBAED1FC3A6BF009271C4 /* ManaCounters */,
 				FF33401C1FB9031200E980AA /* NotesVC.swift */,
 				FF33401D1FB9031200E980AA /* NotesVC.xib */,
 				FF3340201FB9033C00E980AA /* NotesTableViewCell.swift */,
 				FF3340211FB9033C00E980AA /* NotesTableViewCell.xib */,
 				FF3340081FB5BE9E00E980AA /* MenuVC.swift */,
 				FF3340091FB5BE9E00E980AA /* MenuVC.xib */,
-				FF3340241FB9046900E980AA /* UIColorExtension.swift */,
-				FF333FCF1FB5A5C500E980AA /* Main.storyboard */,
+				FF1BBAEE1FC3A70B009271C4 /* separateViews */,
+				FF60EA411FBE13C8005C2BBA /* Category */,
+				FF60EA3E1FBDE7F6005C2BBA /* Managers */,
+				FF60EA351FBD9CF0005C2BBA /* PlayerNameTextField */,
 				FF333FD51FB5A5C500E980AA /* Assets.xcassets */,
+				FF60EA461FC0B72F005C2BBA /* PlayersAvatarView */,
 				FF333FD71FB5A5C600E980AA /* LaunchScreen.storyboard */,
 				FF333FDA1FB5A5C600E980AA /* Info.plist */,
 				FF333FD21FB5A5C500E980AA /* CommanderAppSwift.xcdatamodeld */,
@@ -201,6 +347,58 @@
 				FF333FF01FB5A5C700E980AA /* Info.plist */,
 			);
 			path = CommanderAppSwiftUITests;
+			sourceTree = "<group>";
+		};
+		FF60EA351FBD9CF0005C2BBA /* PlayerNameTextField */ = {
+			isa = PBXGroup;
+			children = (
+				FF60EA361FBD9D1D005C2BBA /* PlayerNameV.swift */,
+				FF60EA381FBD9D2B005C2BBA /* PlayerNameVM.swift */,
+				FF60EA3A1FBD9D37005C2BBA /* PlayerNameM.swift */,
+			);
+			path = PlayerNameTextField;
+			sourceTree = "<group>";
+		};
+		FF60EA3E1FBDE7F6005C2BBA /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				FF60EA3F1FBDE80D005C2BBA /* DataManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		FF60EA411FBE13C8005C2BBA /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				FF3340241FB9046900E980AA /* UIColorExtension.swift */,
+				FF60EA421FBE13FC005C2BBA /* NSManagedObjectExtension.swift */,
+				FF60EA561FC0F9E4005C2BBA /* DataExtension.swift */,
+				FF60EA581FC0F9F1005C2BBA /* UIImageExtension.swift */,
+				FF60EA3C1FBDA395005C2BBA /* Constants.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		FF60EA461FC0B72F005C2BBA /* PlayersAvatarView */ = {
+			isa = PBXGroup;
+			children = (
+				FF60EA491FC0DE80005C2BBA /* AvatarLayerView.swift */,
+				FF60EA471FC0B780005C2BBA /* AvatarImageView.swift */,
+				FF60EA4B1FC0DF6A005C2BBA /* AvatarVM.swift */,
+				FF60EA4D1FC0DF74005C2BBA /* AvatarM.swift */,
+				FF60EA4F1FC0F788005C2BBA /* RandomAvatar */,
+			);
+			path = PlayersAvatarView;
+			sourceTree = "<group>";
+		};
+		FF60EA4F1FC0F788005C2BBA /* RandomAvatar */ = {
+			isa = PBXGroup;
+			children = (
+				FF60EA501FC0F7AE005C2BBA /* RandomAvatarLabel.swift */,
+				FF60EA521FC0F7BF005C2BBA /* RandomAvatarVM.swift */,
+				FF60EA541FC0F7C8005C2BBA /* RandomAvatarM.swift */,
+			);
+			path = RandomAvatar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,17 +511,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF1BBB091FC4FE3A009271C4 /* ThirdCounterCell.xib in Resources */,
 				FF3340131FB8E9D100E980AA /* ManaCounterVC.xib in Resources */,
 				FF3340051FB5BE0D00E980AA /* MainCounterVC.xib in Resources */,
 				FF333FD91FB5A5C600E980AA /* LaunchScreen.storyboard in Resources */,
 				FF333FD61FB5A5C500E980AA /* Assets.xcassets in Resources */,
-				FF333FD11FB5A5C500E980AA /* Main.storyboard in Resources */,
 				FF3340231FB9033C00E980AA /* NotesTableViewCell.xib in Resources */,
 				FF60EA2E1FBC977F005C2BBA /* TabBarVC.xib in Resources */,
 				FF33401F1FB9031200E980AA /* NotesVC.xib in Resources */,
 				FF33400B1FB5BE9E00E980AA /* MenuVC.xib in Resources */,
 				FF3340151FB8FBEC00E980AA /* MainCounterContainerVC.xib in Resources */,
-				FF33401B1FB8FFB600E980AA /* MainCounterTableViewCell.xib in Resources */,
+				FF33401B1FB8FFB600E980AA /* FirstCounterCell.xib in Resources */,
+				FF1BBB161FC4FEDF009271C4 /* FourthCounterCell.xib in Resources */,
+				FF1BBB041FC4CBE8009271C4 /* SecondCounterCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,18 +602,50 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF1BBB0D1FC4FE6B009271C4 /* ThirdCounterCellM.swift in Sources */,
+				FF1BBB061FC4FE15009271C4 /* ThirdCounterCell.swift in Sources */,
+				FF60EA3B1FBD9D37005C2BBA /* PlayerNameM.swift in Sources */,
+				FF60EA4C1FC0DF6A005C2BBA /* AvatarVM.swift in Sources */,
 				FF3340071FB5BE6B00E980AA /* MainCounterContainerVC.swift in Sources */,
+				FF60EA341FBD9298005C2BBA /* MainCounterM.swift in Sources */,
 				FF3340251FB9046A00E980AA /* UIColorExtension.swift in Sources */,
+				FF60EA321FBD927C005C2BBA /* MainCounterVM.swift in Sources */,
+				FF1BBB141FC4FEC4009271C4 /* FourthCounterCellM.swift in Sources */,
 				FF33400F1FB615A200E980AA /* MainNavController.swift in Sources */,
+				FF1BBAF51FC3B16B009271C4 /* FirstCounterCellM.swift in Sources */,
+				FF1BBAF01FC3A72E009271C4 /* ManaLabel.swift in Sources */,
+				FF60EA481FC0B780005C2BBA /* AvatarImageView.swift in Sources */,
 				FF3340121FB8E9D100E980AA /* ManaCounterVC.swift in Sources */,
 				FF3340041FB5BE0D00E980AA /* MainCounterVC.swift in Sources */,
+				FF1BBAEA1FC273AA009271C4 /* ManaCounterVM.swift in Sources */,
 				FF333FFD1FB5B92500E980AA /* TabBarViewController.swift in Sources */,
+				FF1BBB021FC4CBD8009271C4 /* SecondCounterCellM.swift in Sources */,
 				FF3340221FB9033C00E980AA /* NotesTableViewCell.swift in Sources */,
-				FF33401A1FB8FFB600E980AA /* MainCounterTableViewCell.swift in Sources */,
+				FF33401A1FB8FFB600E980AA /* FirstCounterCell.swift in Sources */,
 				FF33400A1FB5BE9E00E980AA /* MenuVC.swift in Sources */,
 				FF333FCC1FB5A5C500E980AA /* AppDelegate.swift in Sources */,
+				FF60EA511FC0F7AE005C2BBA /* RandomAvatarLabel.swift in Sources */,
 				FF33401E1FB9031200E980AA /* NotesVC.swift in Sources */,
+				FF60EA401FBDE80D005C2BBA /* DataManager.swift in Sources */,
+				FF60EA371FBD9D1D005C2BBA /* PlayerNameV.swift in Sources */,
+				FF1BBAF71FC4A781009271C4 /* MainCountersLabel.swift in Sources */,
+				FF60EA591FC0F9F1005C2BBA /* UIImageExtension.swift in Sources */,
+				FF60EA4A1FC0DE80005C2BBA /* AvatarLayerView.swift in Sources */,
+				FF60EA551FC0F7C8005C2BBA /* RandomAvatarM.swift in Sources */,
+				FF1BBAFD1FC4CB88009271C4 /* SecondCounterCell.swift in Sources */,
+				FF60EA531FC0F7BF005C2BBA /* RandomAvatarVM.swift in Sources */,
+				FF1BBAEC1FC30C6D009271C4 /* ManaCounterM.swift in Sources */,
+				FF60EA391FBD9D2B005C2BBA /* PlayerNameVM.swift in Sources */,
+				FF60EA4E1FC0DF74005C2BBA /* AvatarM.swift in Sources */,
+				FF1BBB0B1FC4FE60009271C4 /* ThirdCounterCellVM.swift in Sources */,
+				FF1BBB001FC4CBBB009271C4 /* SecondCounterCellVM.swift in Sources */,
 				FF333FD41FB5A5C500E980AA /* CommanderAppSwift.xcdatamodeld in Sources */,
+				FF60EA571FC0F9E4005C2BBA /* DataExtension.swift in Sources */,
+				FF1BBB0F1FC4FE83009271C4 /* FourthCounterCell.swift in Sources */,
+				FF60EA3D1FBDA395005C2BBA /* Constants.swift in Sources */,
+				FF1BBB121FC4FEBB009271C4 /* FourthCounterCellVM.swift in Sources */,
+				FF60EA431FBE13FC005C2BBA /* NSManagedObjectExtension.swift in Sources */,
+				FF1BBAF31FC3B15E009271C4 /* FirstCounterCellVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,14 +681,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		FF333FCF1FB5A5C500E980AA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FF333FD01FB5A5C500E980AA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		FF333FD71FB5A5C600E980AA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
