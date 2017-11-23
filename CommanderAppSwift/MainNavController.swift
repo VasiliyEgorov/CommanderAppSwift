@@ -16,7 +16,8 @@ class MainNavController: UINavigationController {
         super.viewDidLoad()
         for vc in self.childViewControllers {
             switch vc {
-                  case _ as MainCounterVC: self.navigationBar.isHidden = true
+                  case var a as MainCounterVC: self.navigationBar.isHidden = true
+                a.toolbarItems = Array()
                   case _ as ManaCounterVC: self.navigationBar.isHidden = true
             default:
                 self.navigationBar.isHidden = false

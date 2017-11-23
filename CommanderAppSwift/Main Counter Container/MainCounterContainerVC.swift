@@ -10,8 +10,9 @@ import UIKit
 
 class MainCounterContainerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var viewModel : MainCounterContainerViewModel!
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,6 +32,10 @@ class MainCounterContainerVC: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         return FirstCounterCell(coder: NSCoder())!
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return CGFloat(viewModel.setRowHeight(tableViewHeight: Float(self.view.frame.size.height), row: indexPath.row))
     }
     /*
     // MARK: - Navigation

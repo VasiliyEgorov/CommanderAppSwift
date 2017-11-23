@@ -26,6 +26,20 @@
 		FF1BBB121FC4FEBB009271C4 /* FourthCounterCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB111FC4FEBB009271C4 /* FourthCounterCellVM.swift */; };
 		FF1BBB141FC4FEC4009271C4 /* FourthCounterCellM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB131FC4FEC4009271C4 /* FourthCounterCellM.swift */; };
 		FF1BBB161FC4FEDF009271C4 /* FourthCounterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1BBB151FC4FEDF009271C4 /* FourthCounterCell.xib */; };
+		FF1BBB1A1FC52E64009271C4 /* MainCounterContainerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB191FC52E64009271C4 /* MainCounterContainerVM.swift */; };
+		FF1BBB1C1FC52E6F009271C4 /* MainCounterContainerM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB1B1FC52E6F009271C4 /* MainCounterContainerM.swift */; };
+		FF1BBB211FC63580009271C4 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB1F1FC63580009271C4 /* MenuCell.swift */; };
+		FF1BBB221FC63580009271C4 /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1BBB201FC63580009271C4 /* MenuCell.xib */; };
+		FF1BBB241FC63596009271C4 /* MenuVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB231FC63596009271C4 /* MenuVM.swift */; };
+		FF1BBB261FC635A1009271C4 /* MenuM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB251FC635A1009271C4 /* MenuM.swift */; };
+		FF1BBB2F1FC66C86009271C4 /* RollADieVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB2D1FC66C86009271C4 /* RollADieVC.swift */; };
+		FF1BBB301FC66C86009271C4 /* RollADieVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1BBB2E1FC66C86009271C4 /* RollADieVC.xib */; };
+		FF1BBB321FC66C9B009271C4 /* RollADieVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB311FC66C9B009271C4 /* RollADieVM.swift */; };
+		FF1BBB341FC66CA5009271C4 /* RollADieM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB331FC66CA5009271C4 /* RollADieM.swift */; };
+		FF1BBB381FC66CC2009271C4 /* HeadsOrTailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB361FC66CC2009271C4 /* HeadsOrTailsVC.swift */; };
+		FF1BBB391FC66CC2009271C4 /* HeadsOrTailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1BBB371FC66CC2009271C4 /* HeadsOrTailsVC.xib */; };
+		FF1BBB3B1FC66CD3009271C4 /* HeadsOrTailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB3A1FC66CD3009271C4 /* HeadsOrTailsVM.swift */; };
+		FF1BBB3D1FC66CDD009271C4 /* HeadsOrTailsM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB3C1FC66CDD009271C4 /* HeadsOrTailsM.swift */; };
 		FF333FCC1FB5A5C500E980AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF333FCB1FB5A5C500E980AA /* AppDelegate.swift */; };
 		FF333FD41FB5A5C500E980AA /* CommanderAppSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF333FD21FB5A5C500E980AA /* CommanderAppSwift.xcdatamodeld */; };
 		FF333FD61FB5A5C500E980AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF333FD51FB5A5C500E980AA /* Assets.xcassets */; };
@@ -108,6 +122,20 @@
 		FF1BBB111FC4FEBB009271C4 /* FourthCounterCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthCounterCellVM.swift; sourceTree = "<group>"; };
 		FF1BBB131FC4FEC4009271C4 /* FourthCounterCellM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthCounterCellM.swift; sourceTree = "<group>"; };
 		FF1BBB151FC4FEDF009271C4 /* FourthCounterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FourthCounterCell.xib; sourceTree = "<group>"; };
+		FF1BBB191FC52E64009271C4 /* MainCounterContainerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCounterContainerVM.swift; sourceTree = "<group>"; };
+		FF1BBB1B1FC52E6F009271C4 /* MainCounterContainerM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCounterContainerM.swift; sourceTree = "<group>"; };
+		FF1BBB1F1FC63580009271C4 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		FF1BBB201FC63580009271C4 /* MenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
+		FF1BBB231FC63596009271C4 /* MenuVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVM.swift; sourceTree = "<group>"; };
+		FF1BBB251FC635A1009271C4 /* MenuM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuM.swift; sourceTree = "<group>"; };
+		FF1BBB2D1FC66C86009271C4 /* RollADieVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollADieVC.swift; sourceTree = "<group>"; };
+		FF1BBB2E1FC66C86009271C4 /* RollADieVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RollADieVC.xib; sourceTree = "<group>"; };
+		FF1BBB311FC66C9B009271C4 /* RollADieVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollADieVM.swift; sourceTree = "<group>"; };
+		FF1BBB331FC66CA5009271C4 /* RollADieM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollADieM.swift; sourceTree = "<group>"; };
+		FF1BBB361FC66CC2009271C4 /* HeadsOrTailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadsOrTailsVC.swift; sourceTree = "<group>"; };
+		FF1BBB371FC66CC2009271C4 /* HeadsOrTailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeadsOrTailsVC.xib; sourceTree = "<group>"; };
+		FF1BBB3A1FC66CD3009271C4 /* HeadsOrTailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadsOrTailsVM.swift; sourceTree = "<group>"; };
+		FF1BBB3C1FC66CDD009271C4 /* HeadsOrTailsM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadsOrTailsM.swift; sourceTree = "<group>"; };
 		FF333FC81FB5A5C500E980AA /* CommanderAppSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommanderAppSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF333FCB1FB5A5C500E980AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF333FD31FB5A5C500E980AA /* CommanderAppSwift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CommanderAppSwift.xcdatamodel; sourceTree = "<group>"; };
@@ -275,6 +303,82 @@
 			path = "Fourth Counter Cell";
 			sourceTree = "<group>";
 		};
+		FF1BBB171FC524F7009271C4 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				FF33401C1FB9031200E980AA /* NotesVC.swift */,
+				FF33401D1FB9031200E980AA /* NotesVC.xib */,
+				FF3340201FB9033C00E980AA /* NotesTableViewCell.swift */,
+				FF3340211FB9033C00E980AA /* NotesTableViewCell.xib */,
+			);
+			path = Notes;
+			sourceTree = "<group>";
+		};
+		FF1BBB181FC52517009271C4 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				FF3340081FB5BE9E00E980AA /* MenuVC.swift */,
+				FF1BBB231FC63596009271C4 /* MenuVM.swift */,
+				FF1BBB251FC635A1009271C4 /* MenuM.swift */,
+				FF3340091FB5BE9E00E980AA /* MenuVC.xib */,
+				FF1BBB271FC635A7009271C4 /* Menu Cell */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		FF1BBB1D1FC52E76009271C4 /* Main Counter Container */ = {
+			isa = PBXGroup;
+			children = (
+				FF3340061FB5BE6B00E980AA /* MainCounterContainerVC.swift */,
+				FF1BBB191FC52E64009271C4 /* MainCounterContainerVM.swift */,
+				FF1BBB1B1FC52E6F009271C4 /* MainCounterContainerM.swift */,
+				FF3340141FB8FBEB00E980AA /* MainCounterContainerVC.xib */,
+			);
+			path = "Main Counter Container";
+			sourceTree = "<group>";
+		};
+		FF1BBB1E1FC52E9C009271C4 /* Main Counter */ = {
+			isa = PBXGroup;
+			children = (
+				FF3340021FB5BE0D00E980AA /* MainCounterVC.swift */,
+				FF60EA311FBD927C005C2BBA /* MainCounterVM.swift */,
+				FF60EA331FBD9298005C2BBA /* MainCounterM.swift */,
+				FF3340031FB5BE0D00E980AA /* MainCounterVC.xib */,
+			);
+			path = "Main Counter";
+			sourceTree = "<group>";
+		};
+		FF1BBB271FC635A7009271C4 /* Menu Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FF1BBB1F1FC63580009271C4 /* MenuCell.swift */,
+				FF1BBB201FC63580009271C4 /* MenuCell.xib */,
+			);
+			path = "Menu Cell";
+			sourceTree = "<group>";
+		};
+		FF1BBB2C1FC66C61009271C4 /* Roll A Die */ = {
+			isa = PBXGroup;
+			children = (
+				FF1BBB2D1FC66C86009271C4 /* RollADieVC.swift */,
+				FF1BBB311FC66C9B009271C4 /* RollADieVM.swift */,
+				FF1BBB331FC66CA5009271C4 /* RollADieM.swift */,
+				FF1BBB2E1FC66C86009271C4 /* RollADieVC.xib */,
+			);
+			path = "Roll A Die";
+			sourceTree = "<group>";
+		};
+		FF1BBB351FC66CAB009271C4 /* Heads Or Tails */ = {
+			isa = PBXGroup;
+			children = (
+				FF1BBB361FC66CC2009271C4 /* HeadsOrTailsVC.swift */,
+				FF1BBB3A1FC66CD3009271C4 /* HeadsOrTailsVM.swift */,
+				FF1BBB3C1FC66CDD009271C4 /* HeadsOrTailsM.swift */,
+				FF1BBB371FC66CC2009271C4 /* HeadsOrTailsVC.xib */,
+			);
+			path = "Heads Or Tails";
+			sourceTree = "<group>";
+		};
 		FF333FBF1FB5A5C500E980AA = {
 			isa = PBXGroup;
 			children = (
@@ -304,28 +408,22 @@
 				FF333FFC1FB5B92500E980AA /* TabBarViewController.swift */,
 				FF60EA2D1FBC977F005C2BBA /* TabBarVC.xib */,
 				FF33400E1FB615A200E980AA /* MainNavController.swift */,
-				FF3340021FB5BE0D00E980AA /* MainCounterVC.swift */,
-				FF60EA311FBD927C005C2BBA /* MainCounterVM.swift */,
-				FF60EA331FBD9298005C2BBA /* MainCounterM.swift */,
-				FF3340031FB5BE0D00E980AA /* MainCounterVC.xib */,
-				FF3340061FB5BE6B00E980AA /* MainCounterContainerVC.swift */,
-				FF3340141FB8FBEB00E980AA /* MainCounterContainerVC.xib */,
+				FF1BBB351FC66CAB009271C4 /* Heads Or Tails */,
+				FF1BBB2C1FC66C61009271C4 /* Roll A Die */,
+				FF1BBB1E1FC52E9C009271C4 /* Main Counter */,
+				FF1BBB1D1FC52E76009271C4 /* Main Counter Container */,
 				FF1BBAF11FC3B11B009271C4 /* Cells */,
 				FF1BBAED1FC3A6BF009271C4 /* ManaCounters */,
-				FF33401C1FB9031200E980AA /* NotesVC.swift */,
-				FF33401D1FB9031200E980AA /* NotesVC.xib */,
-				FF3340201FB9033C00E980AA /* NotesTableViewCell.swift */,
-				FF3340211FB9033C00E980AA /* NotesTableViewCell.xib */,
-				FF3340081FB5BE9E00E980AA /* MenuVC.swift */,
-				FF3340091FB5BE9E00E980AA /* MenuVC.xib */,
+				FF1BBB171FC524F7009271C4 /* Notes */,
+				FF1BBB181FC52517009271C4 /* Menu */,
 				FF1BBAEE1FC3A70B009271C4 /* separateViews */,
 				FF60EA411FBE13C8005C2BBA /* Category */,
 				FF60EA3E1FBDE7F6005C2BBA /* Managers */,
 				FF60EA351FBD9CF0005C2BBA /* PlayerNameTextField */,
-				FF333FD51FB5A5C500E980AA /* Assets.xcassets */,
 				FF60EA461FC0B72F005C2BBA /* PlayersAvatarView */,
 				FF333FD71FB5A5C600E980AA /* LaunchScreen.storyboard */,
 				FF333FDA1FB5A5C600E980AA /* Info.plist */,
+				FF333FD51FB5A5C500E980AA /* Assets.xcassets */,
 				FF333FD21FB5A5C500E980AA /* CommanderAppSwift.xcdatamodeld */,
 			);
 			path = CommanderAppSwift;
@@ -513,17 +611,20 @@
 			files = (
 				FF1BBB091FC4FE3A009271C4 /* ThirdCounterCell.xib in Resources */,
 				FF3340131FB8E9D100E980AA /* ManaCounterVC.xib in Resources */,
+				FF1BBB221FC63580009271C4 /* MenuCell.xib in Resources */,
 				FF3340051FB5BE0D00E980AA /* MainCounterVC.xib in Resources */,
 				FF333FD91FB5A5C600E980AA /* LaunchScreen.storyboard in Resources */,
 				FF333FD61FB5A5C500E980AA /* Assets.xcassets in Resources */,
 				FF3340231FB9033C00E980AA /* NotesTableViewCell.xib in Resources */,
 				FF60EA2E1FBC977F005C2BBA /* TabBarVC.xib in Resources */,
+				FF1BBB301FC66C86009271C4 /* RollADieVC.xib in Resources */,
 				FF33401F1FB9031200E980AA /* NotesVC.xib in Resources */,
 				FF33400B1FB5BE9E00E980AA /* MenuVC.xib in Resources */,
 				FF3340151FB8FBEC00E980AA /* MainCounterContainerVC.xib in Resources */,
 				FF33401B1FB8FFB600E980AA /* FirstCounterCell.xib in Resources */,
 				FF1BBB161FC4FEDF009271C4 /* FourthCounterCell.xib in Resources */,
 				FF1BBB041FC4CBE8009271C4 /* SecondCounterCell.xib in Resources */,
+				FF1BBB391FC66CC2009271C4 /* HeadsOrTailsVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,7 +707,9 @@
 				FF1BBB061FC4FE15009271C4 /* ThirdCounterCell.swift in Sources */,
 				FF60EA3B1FBD9D37005C2BBA /* PlayerNameM.swift in Sources */,
 				FF60EA4C1FC0DF6A005C2BBA /* AvatarVM.swift in Sources */,
+				FF1BBB321FC66C9B009271C4 /* RollADieVM.swift in Sources */,
 				FF3340071FB5BE6B00E980AA /* MainCounterContainerVC.swift in Sources */,
+				FF1BBB211FC63580009271C4 /* MenuCell.swift in Sources */,
 				FF60EA341FBD9298005C2BBA /* MainCounterM.swift in Sources */,
 				FF3340251FB9046A00E980AA /* UIColorExtension.swift in Sources */,
 				FF60EA321FBD927C005C2BBA /* MainCounterVM.swift in Sources */,
@@ -616,17 +719,23 @@
 				FF1BBAF01FC3A72E009271C4 /* ManaLabel.swift in Sources */,
 				FF60EA481FC0B780005C2BBA /* AvatarImageView.swift in Sources */,
 				FF3340121FB8E9D100E980AA /* ManaCounterVC.swift in Sources */,
+				FF1BBB3D1FC66CDD009271C4 /* HeadsOrTailsM.swift in Sources */,
 				FF3340041FB5BE0D00E980AA /* MainCounterVC.swift in Sources */,
+				FF1BBB381FC66CC2009271C4 /* HeadsOrTailsVC.swift in Sources */,
 				FF1BBAEA1FC273AA009271C4 /* ManaCounterVM.swift in Sources */,
 				FF333FFD1FB5B92500E980AA /* TabBarViewController.swift in Sources */,
+				FF1BBB341FC66CA5009271C4 /* RollADieM.swift in Sources */,
 				FF1BBB021FC4CBD8009271C4 /* SecondCounterCellM.swift in Sources */,
 				FF3340221FB9033C00E980AA /* NotesTableViewCell.swift in Sources */,
+				FF1BBB261FC635A1009271C4 /* MenuM.swift in Sources */,
 				FF33401A1FB8FFB600E980AA /* FirstCounterCell.swift in Sources */,
 				FF33400A1FB5BE9E00E980AA /* MenuVC.swift in Sources */,
 				FF333FCC1FB5A5C500E980AA /* AppDelegate.swift in Sources */,
 				FF60EA511FC0F7AE005C2BBA /* RandomAvatarLabel.swift in Sources */,
+				FF1BBB1C1FC52E6F009271C4 /* MainCounterContainerM.swift in Sources */,
 				FF33401E1FB9031200E980AA /* NotesVC.swift in Sources */,
 				FF60EA401FBDE80D005C2BBA /* DataManager.swift in Sources */,
+				FF1BBB1A1FC52E64009271C4 /* MainCounterContainerVM.swift in Sources */,
 				FF60EA371FBD9D1D005C2BBA /* PlayerNameV.swift in Sources */,
 				FF1BBAF71FC4A781009271C4 /* MainCountersLabel.swift in Sources */,
 				FF60EA591FC0F9F1005C2BBA /* UIImageExtension.swift in Sources */,
@@ -634,7 +743,9 @@
 				FF60EA551FC0F7C8005C2BBA /* RandomAvatarM.swift in Sources */,
 				FF1BBAFD1FC4CB88009271C4 /* SecondCounterCell.swift in Sources */,
 				FF60EA531FC0F7BF005C2BBA /* RandomAvatarVM.swift in Sources */,
+				FF1BBB2F1FC66C86009271C4 /* RollADieVC.swift in Sources */,
 				FF1BBAEC1FC30C6D009271C4 /* ManaCounterM.swift in Sources */,
+				FF1BBB3B1FC66CD3009271C4 /* HeadsOrTailsVM.swift in Sources */,
 				FF60EA391FBD9D2B005C2BBA /* PlayerNameVM.swift in Sources */,
 				FF60EA4E1FC0DF74005C2BBA /* AvatarM.swift in Sources */,
 				FF1BBB0B1FC4FE60009271C4 /* ThirdCounterCellVM.swift in Sources */,
@@ -646,6 +757,7 @@
 				FF1BBB121FC4FEBB009271C4 /* FourthCounterCellVM.swift in Sources */,
 				FF60EA431FBE13FC005C2BBA /* NSManagedObjectExtension.swift in Sources */,
 				FF1BBAF31FC3B15E009271C4 /* FirstCounterCellVM.swift in Sources */,
+				FF1BBB241FC63596009271C4 /* MenuVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,9 +17,10 @@ class ManaCounterVC: UIViewController {
     @IBOutlet weak var sixthLabel: UILabel!
     @IBOutlet weak var seventhLabel: UILabel!
     @IBOutlet weak var eighthLabel: UILabel!
-    var viewModel = ManaCounterVM()
+    var viewModel : ManaCounterVM!
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = ManaCounterVM()
     }
 
     override func didReceiveMemoryWarning() {
