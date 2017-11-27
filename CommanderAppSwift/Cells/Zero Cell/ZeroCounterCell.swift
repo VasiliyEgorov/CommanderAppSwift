@@ -1,18 +1,19 @@
 //
-//  NotesTableViewCell.swift
+//  ZeroCounterCell.swift
 //  CommanderAppSwift
 //
-//  Created by Vasiliy Egorov on 13.11.17.
+//  Created by Vasiliy Egorov on 24.11.17.
 //  Copyright © 2017 VasiliyEgorov. All rights reserved.
 //
 
 import UIKit
 
-class NotesTableViewCell: UITableViewCell {
+class ZeroCounterCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.contentView.backgroundColor = .clear
+        self.backgroundColor = .clear
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -20,5 +21,5 @@ class NotesTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

@@ -31,7 +31,19 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        guard let fromIndex = tabBarController.viewControllers?.index(of: tabBarController.selectedViewController!) else { return nil }
+        guard let toIndex = tabBarController.viewControllers?.index(of: toVC) else { return nil }
+        let indexes = (fromIndex, toIndex)
+        switch indexes {
+        case (0, 3): return nil
+        case (3, 0): return nil
+        case (0, 1): return TabBarSwitchAnimation(fromIndex: fromIndex + 1, toIndex: toIndex - 1)
+        case (1, 0): return TabBarSwitchAnimation(fromIndex: fromIndex - 1, toIndex: toIndex + 1)
+        case (3, 2): return TabBarSwitchAnimation(fromIndex: fromIndex - 1, toIndex: toIndex + 1)
+        default: return TabBarSwitchAnimation(fromIndex: fromIndex, toIndex: toIndex)
+        }
+    }
 }
 
 

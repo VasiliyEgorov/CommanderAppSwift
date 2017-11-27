@@ -8,7 +8,11 @@
 
 import UIKit
 
-
+fileprivate extension Selector {
+    static let cloudButtonAction = #selector(NoteDetailsVC.cloudButtonAction)
+    static let doneButtonAction = #selector(NoteDetailsVC.doneButtonAction)
+    static let editButtonAction = #selector(NotesVC.editButtonAction)
+}
 
 class MainNavController: UINavigationController {
 
@@ -16,9 +20,17 @@ class MainNavController: UINavigationController {
         super.viewDidLoad()
         for vc in self.childViewControllers {
             switch vc {
-                  case var a as MainCounterVC: self.navigationBar.isHidden = true
-                a.toolbarItems = Array()
-                  case _ as ManaCounterVC: self.navigationBar.isHidden = true
+            case _ as MainCounterVC: self.navigationBar.isHidden = true
+            case _ as ManaCounterVC: self.navigationBar.isHidden = true
+            case let note as NotesVC:
+                self.navigationBar.isHidden = false
+                let editButton = UIBarButtonItem.init(barButtonSystemItem: .edit, target: note, action: #selector(note.editButtonAction(_:)))
+                note.navigationItem.rightBarButtonItems? = [editButton]
+            case let noteDetails as NoteDetailsVC:
+                self.navigationBar.isHidden = false
+                let cloudButton = UIBarButtonItem.init(barButtonSystemItem: .action, target: noteDetails, action: #selector(noteDetails.cloudButtonAction(_:)))
+                let doneButton = UIBarButtonItem.init(barButtonSystemItem: .done, target: noteDetails, action: #selector(noteDetails.doneButtonAction(_:)))
+                noteDetails.navigationItem.rightBarButtonItems? = [cloudButton, doneButton]
             default:
                 self.navigationBar.isHidden = false
             }
@@ -38,10 +50,6 @@ class MainNavController: UINavigationController {
         self.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationBar.tintColor = UIColor.color_150withAlpha(alpha: 1)
         self.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.color_150withAlpha(alpha: 1)]
-        self.toolbar.isTranslucent = true
-        self.toolbar.setBackgroundImage(UIImage(), forToolbarPosition: UIBarPosition.bottom, barMetrics: UIBarMetrics.default)
-        self.toolbar.backgroundColor = .clear
-        self.toolbar.tintColor = UIColor.color_150withAlpha(alpha: 1)
         self.navigationBar.backIndicatorImage = UIImage.init(named: "backButton.png")
         self.navigationBar.backIndicatorTransitionMaskImage = UIImage.init(named: "backButton.png")
     }

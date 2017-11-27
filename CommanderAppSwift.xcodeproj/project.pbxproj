@@ -40,6 +40,19 @@
 		FF1BBB391FC66CC2009271C4 /* HeadsOrTailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1BBB371FC66CC2009271C4 /* HeadsOrTailsVC.xib */; };
 		FF1BBB3B1FC66CD3009271C4 /* HeadsOrTailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB3A1FC66CD3009271C4 /* HeadsOrTailsVM.swift */; };
 		FF1BBB3D1FC66CDD009271C4 /* HeadsOrTailsM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB3C1FC66CDD009271C4 /* HeadsOrTailsM.swift */; };
+		FF1BBB401FC78F1A009271C4 /* MainCountersAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB3E1FC78F1A009271C4 /* MainCountersAlertVC.swift */; };
+		FF1BBB411FC78F1A009271C4 /* MainCountersAlertVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1BBB3F1FC78F1A009271C4 /* MainCountersAlertVC.xib */; };
+		FF1BBB431FC792E8009271C4 /* MainCountersAlertVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB421FC792E8009271C4 /* MainCountersAlertVM.swift */; };
+		FF1BBB451FC792F7009271C4 /* MainCountersAlertM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB441FC792F7009271C4 /* MainCountersAlertM.swift */; };
+		FF1BBB491FC7C4CE009271C4 /* ZeroCounterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB481FC7C4CE009271C4 /* ZeroCounterCell.swift */; };
+		FF1BBB4B1FC7C817009271C4 /* NotesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB4A1FC7C817009271C4 /* NotesVM.swift */; };
+		FF1BBB4D1FC7C822009271C4 /* NotesM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB4C1FC7C822009271C4 /* NotesM.swift */; };
+		FF1BBB8E1FC89192009271C4 /* NotesCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB8D1FC89192009271C4 /* NotesCellVM.swift */; };
+		FF1BBB901FC8D511009271C4 /* NoteDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB8F1FC8D510009271C4 /* NoteDetailsVM.swift */; };
+		FF1BBB951FCB37F5009271C4 /* NoteDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB931FCB37F5009271C4 /* NoteDetailsVC.swift */; };
+		FF1BBB961FCB37F5009271C4 /* NoteDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1BBB941FCB37F5009271C4 /* NoteDetailsVC.xib */; };
+		FF1BBB981FCC19A2009271C4 /* MainNavToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB971FCC19A2009271C4 /* MainNavToolBar.swift */; };
+		FF1BBB9D1FCC1A2A009271C4 /* TabBarSwitchAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB9C1FCC1A2A009271C4 /* TabBarSwitchAnimations.swift */; };
 		FF333FCC1FB5A5C500E980AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF333FCB1FB5A5C500E980AA /* AppDelegate.swift */; };
 		FF333FD41FB5A5C500E980AA /* CommanderAppSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF333FD21FB5A5C500E980AA /* CommanderAppSwift.xcdatamodeld */; };
 		FF333FD61FB5A5C500E980AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF333FD51FB5A5C500E980AA /* Assets.xcassets */; };
@@ -60,7 +73,7 @@
 		FF33401B1FB8FFB600E980AA /* FirstCounterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3340191FB8FFB600E980AA /* FirstCounterCell.xib */; };
 		FF33401E1FB9031200E980AA /* NotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33401C1FB9031200E980AA /* NotesVC.swift */; };
 		FF33401F1FB9031200E980AA /* NotesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF33401D1FB9031200E980AA /* NotesVC.xib */; };
-		FF3340221FB9033C00E980AA /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3340201FB9033C00E980AA /* NotesTableViewCell.swift */; };
+		FF3340221FB9033C00E980AA /* NotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3340201FB9033C00E980AA /* NotesCell.swift */; };
 		FF3340231FB9033C00E980AA /* NotesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3340211FB9033C00E980AA /* NotesTableViewCell.xib */; };
 		FF3340251FB9046A00E980AA /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3340241FB9046900E980AA /* UIColorExtension.swift */; };
 		FF60EA2E1FBC977F005C2BBA /* TabBarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF60EA2D1FBC977F005C2BBA /* TabBarVC.xib */; };
@@ -136,6 +149,19 @@
 		FF1BBB371FC66CC2009271C4 /* HeadsOrTailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeadsOrTailsVC.xib; sourceTree = "<group>"; };
 		FF1BBB3A1FC66CD3009271C4 /* HeadsOrTailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadsOrTailsVM.swift; sourceTree = "<group>"; };
 		FF1BBB3C1FC66CDD009271C4 /* HeadsOrTailsM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadsOrTailsM.swift; sourceTree = "<group>"; };
+		FF1BBB3E1FC78F1A009271C4 /* MainCountersAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCountersAlertVC.swift; sourceTree = "<group>"; };
+		FF1BBB3F1FC78F1A009271C4 /* MainCountersAlertVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCountersAlertVC.xib; sourceTree = "<group>"; };
+		FF1BBB421FC792E8009271C4 /* MainCountersAlertVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCountersAlertVM.swift; sourceTree = "<group>"; };
+		FF1BBB441FC792F7009271C4 /* MainCountersAlertM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCountersAlertM.swift; sourceTree = "<group>"; };
+		FF1BBB481FC7C4CE009271C4 /* ZeroCounterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroCounterCell.swift; sourceTree = "<group>"; };
+		FF1BBB4A1FC7C817009271C4 /* NotesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesVM.swift; sourceTree = "<group>"; };
+		FF1BBB4C1FC7C822009271C4 /* NotesM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesM.swift; sourceTree = "<group>"; };
+		FF1BBB8D1FC89192009271C4 /* NotesCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCellVM.swift; sourceTree = "<group>"; };
+		FF1BBB8F1FC8D510009271C4 /* NoteDetailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailsVM.swift; sourceTree = "<group>"; };
+		FF1BBB931FCB37F5009271C4 /* NoteDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailsVC.swift; sourceTree = "<group>"; };
+		FF1BBB941FCB37F5009271C4 /* NoteDetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteDetailsVC.xib; sourceTree = "<group>"; };
+		FF1BBB971FCC19A2009271C4 /* MainNavToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavToolBar.swift; sourceTree = "<group>"; };
+		FF1BBB9C1FCC1A2A009271C4 /* TabBarSwitchAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarSwitchAnimations.swift; sourceTree = "<group>"; };
 		FF333FC81FB5A5C500E980AA /* CommanderAppSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommanderAppSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF333FCB1FB5A5C500E980AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF333FD31FB5A5C500E980AA /* CommanderAppSwift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CommanderAppSwift.xcdatamodel; sourceTree = "<group>"; };
@@ -162,7 +188,7 @@
 		FF3340191FB8FFB600E980AA /* FirstCounterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstCounterCell.xib; sourceTree = "<group>"; };
 		FF33401C1FB9031200E980AA /* NotesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesVC.swift; sourceTree = "<group>"; };
 		FF33401D1FB9031200E980AA /* NotesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesVC.xib; sourceTree = "<group>"; };
-		FF3340201FB9033C00E980AA /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
+		FF3340201FB9033C00E980AA /* NotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCell.swift; sourceTree = "<group>"; };
 		FF3340211FB9033C00E980AA /* NotesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesTableViewCell.xib; sourceTree = "<group>"; };
 		FF3340241FB9046900E980AA /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		FF60EA2D1FBC977F005C2BBA /* TabBarVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarVC.xib; sourceTree = "<group>"; };
@@ -251,6 +277,7 @@
 		FF1BBAF11FC3B11B009271C4 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				FF1BBB471FC7C4A7009271C4 /* Zero Cell */,
 				FF1BBAFA1FC4CB4D009271C4 /* First Counter Cell */,
 				FF1BBAFE1FC4CB8E009271C4 /* Second Counter Cell */,
 				FF1BBB071FC4FE1A009271C4 /* Third Counter Cell */,
@@ -307,9 +334,11 @@
 			isa = PBXGroup;
 			children = (
 				FF33401C1FB9031200E980AA /* NotesVC.swift */,
+				FF1BBB4A1FC7C817009271C4 /* NotesVM.swift */,
+				FF1BBB4C1FC7C822009271C4 /* NotesM.swift */,
 				FF33401D1FB9031200E980AA /* NotesVC.xib */,
-				FF3340201FB9033C00E980AA /* NotesTableViewCell.swift */,
-				FF3340211FB9033C00E980AA /* NotesTableViewCell.xib */,
+				FF1BBB911FCB37BC009271C4 /* Cell */,
+				FF1BBB921FCB37CE009271C4 /* Note Details */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -344,6 +373,7 @@
 				FF60EA311FBD927C005C2BBA /* MainCounterVM.swift */,
 				FF60EA331FBD9298005C2BBA /* MainCounterM.swift */,
 				FF3340031FB5BE0D00E980AA /* MainCounterVC.xib */,
+				FF1BBB461FC79942009271C4 /* Alert Window */,
 			);
 			path = "Main Counter";
 			sourceTree = "<group>";
@@ -379,6 +409,64 @@
 			path = "Heads Or Tails";
 			sourceTree = "<group>";
 		};
+		FF1BBB461FC79942009271C4 /* Alert Window */ = {
+			isa = PBXGroup;
+			children = (
+				FF1BBB3E1FC78F1A009271C4 /* MainCountersAlertVC.swift */,
+				FF1BBB421FC792E8009271C4 /* MainCountersAlertVM.swift */,
+				FF1BBB441FC792F7009271C4 /* MainCountersAlertM.swift */,
+				FF1BBB3F1FC78F1A009271C4 /* MainCountersAlertVC.xib */,
+			);
+			path = "Alert Window";
+			sourceTree = "<group>";
+		};
+		FF1BBB471FC7C4A7009271C4 /* Zero Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FF1BBB481FC7C4CE009271C4 /* ZeroCounterCell.swift */,
+			);
+			path = "Zero Cell";
+			sourceTree = "<group>";
+		};
+		FF1BBB911FCB37BC009271C4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FF3340201FB9033C00E980AA /* NotesCell.swift */,
+				FF1BBB8D1FC89192009271C4 /* NotesCellVM.swift */,
+				FF3340211FB9033C00E980AA /* NotesTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		FF1BBB921FCB37CE009271C4 /* Note Details */ = {
+			isa = PBXGroup;
+			children = (
+				FF1BBB931FCB37F5009271C4 /* NoteDetailsVC.swift */,
+				FF1BBB8F1FC8D510009271C4 /* NoteDetailsVM.swift */,
+				FF1BBB941FCB37F5009271C4 /* NoteDetailsVC.xib */,
+			);
+			path = "Note Details";
+			sourceTree = "<group>";
+		};
+		FF1BBB9A1FCC19E8009271C4 /* Main Nav Controler */ = {
+			isa = PBXGroup;
+			children = (
+				FF33400E1FB615A200E980AA /* MainNavController.swift */,
+				FF1BBB971FCC19A2009271C4 /* MainNavToolBar.swift */,
+			);
+			path = "Main Nav Controler";
+			sourceTree = "<group>";
+		};
+		FF1BBB9B1FCC1A03009271C4 /* Tab Bar View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FF333FFC1FB5B92500E980AA /* TabBarViewController.swift */,
+				FF1BBB9C1FCC1A2A009271C4 /* TabBarSwitchAnimations.swift */,
+				FF60EA2D1FBC977F005C2BBA /* TabBarVC.xib */,
+			);
+			path = "Tab Bar View Controller";
+			sourceTree = "<group>";
+		};
 		FF333FBF1FB5A5C500E980AA = {
 			isa = PBXGroup;
 			children = (
@@ -405,9 +493,8 @@
 			isa = PBXGroup;
 			children = (
 				FF333FCB1FB5A5C500E980AA /* AppDelegate.swift */,
-				FF333FFC1FB5B92500E980AA /* TabBarViewController.swift */,
-				FF60EA2D1FBC977F005C2BBA /* TabBarVC.xib */,
-				FF33400E1FB615A200E980AA /* MainNavController.swift */,
+				FF1BBB9B1FCC1A03009271C4 /* Tab Bar View Controller */,
+				FF1BBB9A1FCC19E8009271C4 /* Main Nav Controler */,
 				FF1BBB351FC66CAB009271C4 /* Heads Or Tails */,
 				FF1BBB2C1FC66C61009271C4 /* Roll A Die */,
 				FF1BBB1E1FC52E9C009271C4 /* Main Counter */,
@@ -622,6 +709,8 @@
 				FF33400B1FB5BE9E00E980AA /* MenuVC.xib in Resources */,
 				FF3340151FB8FBEC00E980AA /* MainCounterContainerVC.xib in Resources */,
 				FF33401B1FB8FFB600E980AA /* FirstCounterCell.xib in Resources */,
+				FF1BBB961FCB37F5009271C4 /* NoteDetailsVC.xib in Resources */,
+				FF1BBB411FC78F1A009271C4 /* MainCountersAlertVC.xib in Resources */,
 				FF1BBB161FC4FEDF009271C4 /* FourthCounterCell.xib in Resources */,
 				FF1BBB041FC4CBE8009271C4 /* SecondCounterCell.xib in Resources */,
 				FF1BBB391FC66CC2009271C4 /* HeadsOrTailsVC.xib in Resources */,
@@ -703,6 +792,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF1BBB451FC792F7009271C4 /* MainCountersAlertM.swift in Sources */,
 				FF1BBB0D1FC4FE6B009271C4 /* ThirdCounterCellM.swift in Sources */,
 				FF1BBB061FC4FE15009271C4 /* ThirdCounterCell.swift in Sources */,
 				FF60EA3B1FBD9D37005C2BBA /* PlayerNameM.swift in Sources */,
@@ -710,36 +800,46 @@
 				FF1BBB321FC66C9B009271C4 /* RollADieVM.swift in Sources */,
 				FF3340071FB5BE6B00E980AA /* MainCounterContainerVC.swift in Sources */,
 				FF1BBB211FC63580009271C4 /* MenuCell.swift in Sources */,
+				FF1BBB491FC7C4CE009271C4 /* ZeroCounterCell.swift in Sources */,
 				FF60EA341FBD9298005C2BBA /* MainCounterM.swift in Sources */,
 				FF3340251FB9046A00E980AA /* UIColorExtension.swift in Sources */,
 				FF60EA321FBD927C005C2BBA /* MainCounterVM.swift in Sources */,
+				FF1BBB8E1FC89192009271C4 /* NotesCellVM.swift in Sources */,
 				FF1BBB141FC4FEC4009271C4 /* FourthCounterCellM.swift in Sources */,
 				FF33400F1FB615A200E980AA /* MainNavController.swift in Sources */,
 				FF1BBAF51FC3B16B009271C4 /* FirstCounterCellM.swift in Sources */,
 				FF1BBAF01FC3A72E009271C4 /* ManaLabel.swift in Sources */,
+				FF1BBB4B1FC7C817009271C4 /* NotesVM.swift in Sources */,
 				FF60EA481FC0B780005C2BBA /* AvatarImageView.swift in Sources */,
 				FF3340121FB8E9D100E980AA /* ManaCounterVC.swift in Sources */,
 				FF1BBB3D1FC66CDD009271C4 /* HeadsOrTailsM.swift in Sources */,
+				FF1BBB431FC792E8009271C4 /* MainCountersAlertVM.swift in Sources */,
 				FF3340041FB5BE0D00E980AA /* MainCounterVC.swift in Sources */,
 				FF1BBB381FC66CC2009271C4 /* HeadsOrTailsVC.swift in Sources */,
 				FF1BBAEA1FC273AA009271C4 /* ManaCounterVM.swift in Sources */,
+				FF1BBB4D1FC7C822009271C4 /* NotesM.swift in Sources */,
 				FF333FFD1FB5B92500E980AA /* TabBarViewController.swift in Sources */,
+				FF1BBB981FCC19A2009271C4 /* MainNavToolBar.swift in Sources */,
+				FF1BBB901FC8D511009271C4 /* NoteDetailsVM.swift in Sources */,
 				FF1BBB341FC66CA5009271C4 /* RollADieM.swift in Sources */,
 				FF1BBB021FC4CBD8009271C4 /* SecondCounterCellM.swift in Sources */,
-				FF3340221FB9033C00E980AA /* NotesTableViewCell.swift in Sources */,
+				FF3340221FB9033C00E980AA /* NotesCell.swift in Sources */,
 				FF1BBB261FC635A1009271C4 /* MenuM.swift in Sources */,
 				FF33401A1FB8FFB600E980AA /* FirstCounterCell.swift in Sources */,
 				FF33400A1FB5BE9E00E980AA /* MenuVC.swift in Sources */,
 				FF333FCC1FB5A5C500E980AA /* AppDelegate.swift in Sources */,
+				FF1BBB951FCB37F5009271C4 /* NoteDetailsVC.swift in Sources */,
 				FF60EA511FC0F7AE005C2BBA /* RandomAvatarLabel.swift in Sources */,
 				FF1BBB1C1FC52E6F009271C4 /* MainCounterContainerM.swift in Sources */,
 				FF33401E1FB9031200E980AA /* NotesVC.swift in Sources */,
 				FF60EA401FBDE80D005C2BBA /* DataManager.swift in Sources */,
 				FF1BBB1A1FC52E64009271C4 /* MainCounterContainerVM.swift in Sources */,
+				FF1BBB9D1FCC1A2A009271C4 /* TabBarSwitchAnimations.swift in Sources */,
 				FF60EA371FBD9D1D005C2BBA /* PlayerNameV.swift in Sources */,
 				FF1BBAF71FC4A781009271C4 /* MainCountersLabel.swift in Sources */,
 				FF60EA591FC0F9F1005C2BBA /* UIImageExtension.swift in Sources */,
 				FF60EA4A1FC0DE80005C2BBA /* AvatarLayerView.swift in Sources */,
+				FF1BBB401FC78F1A009271C4 /* MainCountersAlertVC.swift in Sources */,
 				FF60EA551FC0F7C8005C2BBA /* RandomAvatarM.swift in Sources */,
 				FF1BBAFD1FC4CB88009271C4 /* SecondCounterCell.swift in Sources */,
 				FF60EA531FC0F7BF005C2BBA /* RandomAvatarVM.swift in Sources */,

@@ -29,7 +29,7 @@ extension NSManagedObjectContext {
     
    
     
-    func obtainArrayOfMNWithEntityName(entityName: String, predicate: NSPredicate?) -> [Any] {
+    func obtainArrayOfMNWithEntityName(entityName: String, predicate: NSPredicate?) -> [Any?] {
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         

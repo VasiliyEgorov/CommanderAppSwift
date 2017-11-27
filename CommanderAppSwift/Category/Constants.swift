@@ -23,7 +23,11 @@ struct Constants {
     let mainSecondCellID = "mainSecondCell"
     let mainThirdCellID = "mainThirdCell"
     let mainFourthCellID = "mainFourthCell"
-    
+    let empty = ""
+    let doubleSpace = "  "
+    let space = " "
+    let noAdditionalText = "No Additional Text"
+    let noText = "No Text"
     private let screenSize = UIScreen.main.bounds.size.height
 
     func setFontSizeForManaLabel() -> UIFont {

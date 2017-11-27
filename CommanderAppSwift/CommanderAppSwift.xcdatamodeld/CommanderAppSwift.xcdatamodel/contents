@@ -3,6 +3,8 @@
     <entity name="InterfaceMN" representedClassName="InterfaceMN" syncable="YES" codeGenerationType="class">
         <attribute name="isHiddenSecondRow" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isHiddenThirdRow" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="opponent" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="OpponentMN" inverseName="interface" inverseEntity="OpponentMN" syncable="YES"/>
+        <relationship name="player" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PlayerMN" inverseName="interface" inverseEntity="PlayerMN" syncable="YES"/>
     </entity>
     <entity name="LifeCountersIndex" representedClassName="LifeCountersIndex" syncable="YES" codeGenerationType="class">
         <attribute name="screenIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -26,6 +28,11 @@
         <attribute name="thirdCounter" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="player" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PlayerMN" inverseName="manaCounter" inverseEntity="PlayerMN" syncable="YES"/>
     </entity>
+    <entity name="NotesMN" representedClassName="NotesMN" syncable="YES" codeGenerationType="class">
+        <attribute name="attributedText" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="placeholderForCell" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
     <entity name="OpponentMN" representedClassName="OpponentMN" syncable="YES" codeGenerationType="class">
         <attribute name="avatar" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="avatarPlaceholder" optional="YES" attributeType="Binary" syncable="YES"/>
@@ -33,7 +40,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="thirdCounterName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="interface" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="InterfaceMN" syncable="YES"/>
+        <relationship name="interface" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="InterfaceMN" inverseName="opponent" inverseEntity="InterfaceMN" syncable="YES"/>
         <relationship name="lifeCounters" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="LifeCountersMN" inverseName="opponent" inverseEntity="LifeCountersMN" syncable="YES"/>
     </entity>
     <entity name="PlayerMN" representedClassName="PlayerMN" syncable="YES" codeGenerationType="class">
@@ -42,16 +49,17 @@
         <attribute name="fourthCounterName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="thirdCounterName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="interface" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="InterfaceMN" syncable="YES"/>
+        <relationship name="interface" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="InterfaceMN" inverseName="player" inverseEntity="InterfaceMN" syncable="YES"/>
         <relationship name="lifeCounters" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LifeCountersMN" inverseName="player" inverseEntity="LifeCountersMN" syncable="YES"/>
         <relationship name="manaCounter" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ManaCountersMN" inverseName="player" inverseEntity="ManaCountersMN" syncable="YES"/>
     </entity>
     <elements>
-        <element name="InterfaceMN" positionX="180" positionY="-379" width="128" height="73"/>
+        <element name="InterfaceMN" positionX="180" positionY="-379" width="128" height="103"/>
         <element name="LifeCountersIndex" positionX="88" positionY="-640" width="128" height="58"/>
         <element name="LifeCountersMN" positionX="-29" positionY="-376" width="128" height="133"/>
         <element name="ManaCountersMN" positionX="-252" positionY="-18" width="128" height="178"/>
         <element name="OpponentMN" positionX="153" positionY="-55" width="128" height="163"/>
         <element name="PlayerMN" positionX="-63" positionY="-54" width="128" height="163"/>
+        <element name="NotesMN" positionX="-353" positionY="-385" width="128" height="88"/>
     </elements>
 </model>
