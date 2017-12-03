@@ -7,11 +7,24 @@
 //
 
 import Foundation
+import CoreData
 
-struct MainCounterContainerViewModel {
-    private var model = MainCounterContainerModel()
+class MainCounterContainerViewModel {
+    private unowned let manager = DataManager.sharedInstance
+    private var playerCounter : PlayerMN {
+        let player = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN")
+        return player as! PlayerMN
+    }
+    private var opponentCounter : OpponentMN {
+        let opponent = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN")
+        return opponent as! OpponentMN
+    }
+    private var lifeCounterIndex : LifeCountersIndex {
+        let index = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex")
+        return index as! LifeCountersIndex
+    }
     private var index : Int {
-        return model.countersIndex
+        return Int(lifeCounterIndex.screenIndex)
     }
     private var screenType : IndexEnum {
         return IndexEnum(rawValue: index)!
@@ -24,18 +37,27 @@ struct MainCounterContainerViewModel {
     }
     private func getCurrentSecondRow(type: IndexEnum) -> Bool? {
         switch type {
-        case .Player: return model.playerCounter.interface?.isHiddenSecondRow
-        case .Opponent: return model.opponentCounter.interface?.isHiddenSecondRow
+        case .Player: return playerCounter.interface?.isHiddenSecondRow
+        case .Opponent: return opponentCounter.interface?.isHiddenSecondRow
         }
     }
     private func getCurrentThirdRow(type: IndexEnum) -> Bool? {
         switch type {
-        case .Player: return model.playerCounter.interface?.isHiddenThirdRow
-        case .Opponent: return model.opponentCounter.interface?.isHiddenThirdRow
+        case .Player: return playerCounter.interface?.isHiddenThirdRow
+        case .Opponent: return opponentCounter.interface?.isHiddenThirdRow
         }
     }
-    func setRowHeight(tableViewHeight: Float, row: Int) -> Float {
-        let rowHeight = (row, isHiddenSecondRow, isHiddenThirdRow)
+    private var cellViewModelArray : [AnyObject] = [ZeroCounterViewModel(), FirstCellViewModel(), SecondCellViewModel(), ThirdCellViewModel(), FourthCellViewModel()]
+    
+    func numberOfCounters() -> Int {
+        return cellViewModelArray.count
+    }
+    func cellViewModel(index: Int) -> AnyObject? {
+        guard index < cellViewModelArray.count else { return nil }
+        return cellViewModelArray[index]
+    }
+    func setRowHeight(tableViewHeight: Float, section: Int) -> Float {
+        let rowHeight = (section, isHiddenSecondRow, isHiddenThirdRow)
         switch rowHeight {
         case (0, true, true): return tableViewHeight * 0.2
         case (0, false, true): return tableViewHeight * 0.1
@@ -55,4 +77,18 @@ struct MainCounterContainerViewModel {
         default: return 0
         }
     }
+    /*
+    @objc func managedObjectContextObjectsDidChange(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        if let changes = userInfo[NSUpdatedObjectsKey] as? Set<LifeCountersIndex> {
+            for lifeCountersIndexMN in changes {
+                
+            }
+        }
+    }
+    var observ : Int!
+      init() {
+        NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: manager.mainQueueContext)
+    }
+ */
 }

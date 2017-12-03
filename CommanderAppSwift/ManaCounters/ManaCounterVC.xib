@@ -14,9 +14,9 @@
             <connections>
                 <outlet property="eighthLabel" destination="44h-5O-yK5" id="JFM-gV-Hog"/>
                 <outlet property="fifthLabel" destination="TOI-B9-QOm" id="EeR-yl-Ecb"/>
-                <outlet property="firstLabel" destination="cp7-z1-V0K" id="ZHX-ke-8Bj"/>
+                <outlet property="firstLabel" destination="cp7-z1-V0K" id="uK6-cN-NHO"/>
                 <outlet property="fourthLabel" destination="OPk-jD-yq6" id="oCE-C8-Rgb"/>
-                <outlet property="secondLabel" destination="PRu-Ym-296" id="zLm-gs-A5l"/>
+                <outlet property="secondLabel" destination="PRu-Ym-296" id="w0J-jc-PmA"/>
                 <outlet property="seventhLabel" destination="iha-DQ-CAk" id="Av7-Lc-f0L"/>
                 <outlet property="sixthLabel" destination="P59-bS-lmU" id="Q7F-8J-dMF"/>
                 <outlet property="thirdLabel" destination="ef3-hk-LnR" id="ogD-OM-RoN"/>
@@ -79,7 +79,7 @@
                                             </constraints>
                                             <state key="normal" backgroundImage="btnplus_35"/>
                                             <connections>
-                                                <action selector="countersButtonAction:" destination="-1" eventType="touchUpInside" id="kEI-dz-X1m"/>
+                                                <action selector="countersButtonAction:" destination="-1" eventType="touchUpInside" id="Qbc-dU-tcZ"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cp7-z1-V0K" customClass="ManaLabel" customModule="CommanderAppSwift" customModuleProvider="target">
@@ -352,13 +352,23 @@
                     </constraints>
                     <state key="normal" backgroundImage="heartstroke"/>
                 </button>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1LP-JD-oaY">
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1LP-JD-oaY" customClass="MainNavToolBar" customModule="CommanderAppSwift" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="FMT-jB-9pv"/>
                     </constraints>
                     <items>
-                        <barButtonItem title="Item" id="CCo-ap-8HX"/>
+                        <barButtonItem image="refreshButton" id="CCo-ap-8HX">
+                            <connections>
+                                <action selector="resetButtonAction:" destination="-1" id="4G9-7Y-SZ5"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="g6Z-sn-hgN"/>
+                        <barButtonItem image="notes" id="ASY-FO-bV0">
+                            <connections>
+                                <action selector="notesButtonAction:" destination="-1" id="dTv-xr-ZhI"/>
+                            </connections>
+                        </barButtonItem>
                     </items>
                 </toolbar>
             </subviews>
@@ -392,6 +402,8 @@
         <image name="fire_35" width="40" height="40"/>
         <image name="heartstroke" width="50" height="50"/>
         <image name="mountains" width="37" height="30"/>
+        <image name="notes" width="14" height="25"/>
+        <image name="refreshButton" width="28" height="25"/>
         <image name="skull_35" width="40" height="40"/>
         <image name="sun_35" width="40" height="40"/>
         <image name="tree_35" width="40" height="40"/>

@@ -9,11 +9,19 @@
 import UIKit
 
 class ZeroCounterCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    var viewModel: ZeroCounterViewModel! {
+        didSet {
+            
+        }
+    }
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.selectionStyle = .none
         self.contentView.backgroundColor = .clear
         self.backgroundColor = .clear
+    }
+    override func awakeFromNib() {
+        super.awakeFromNib()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

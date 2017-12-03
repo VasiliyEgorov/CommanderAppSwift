@@ -1,9 +1,13 @@
 //
-//  MainCounterM.swift
+//  ZeroCounterCellVM.swift
 //  CommanderAppSwift
 //
-//  Created by Vasiliy Egorov on 16.11.17.
+//  Created by Vasiliy Egorov on 02.12.17.
 //  Copyright © 2017 VasiliyEgorov. All rights reserved.
 //
 
 import Foundation
+
+class ZeroCounterViewModel {
+    
+}

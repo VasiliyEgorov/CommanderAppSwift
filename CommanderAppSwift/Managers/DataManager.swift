@@ -12,6 +12,7 @@ import CoreData
 fileprivate extension Selector {
     static let contextDidSaveMainQueueContext = #selector(DataManager.contextDidSaveMainQueueContext)
     static let contextDidSavePrivateQueueContext = #selector(DataManager.contextDidSavePrivateQueueContext)
+    static let managedObjectContextObjectsDidChange = #selector(DataManager.managedObjectContextObjectsDidChange)
 }
 
 extension Notification.Name {
@@ -20,12 +21,21 @@ extension Notification.Name {
 }
 
 final class DataManager {
-    let privateQueueContext = NSManagedObjectContext.init(concurrencyType: .privateQueueConcurrencyType)
-    let mainQueueContext = NSManagedObjectContext.init(concurrencyType: .mainQueueConcurrencyType)
-    static let sharedInstance = DataManager()
-    private init() {
+    var privateQueueContext : NSManagedObjectContext!
+    var mainQueueContext : NSManagedObjectContext!
+    
+    static let sharedInstance : DataManager = {
+        let instance = DataManager(privateContext: NSManagedObjectContext.init(concurrencyType: .privateQueueConcurrencyType), mainContext: NSManagedObjectContext.init(concurrencyType: .mainQueueConcurrencyType))
+        return instance
+    }()
+    private init(privateContext: NSManagedObjectContext, mainContext: NSManagedObjectContext) {
+        self.mainQueueContext = mainContext
+        self.mainQueueContext = persistentContainer.viewContext
+        self.privateQueueContext = privateContext
+        self.privateQueueContext = persistentContainer.viewContext
         NotificationCenter.default.addObserver(self, selector: #selector(contextDidSaveMainQueueContext(notification:)), name: .contextDidSaveMainQueueContext, object: mainQueueContext)
         NotificationCenter.default.addObserver(self, selector: #selector(contextDidSavePrivateQueueContext(notification:)), name: .contextDidSavePrivateQueueContext, object: privateQueueContext)
+        NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: mainQueueContext)
     }
     
     lazy var persistentContainer: NSPersistentContainer = {
@@ -54,6 +64,32 @@ final class DataManager {
             }
         }
     }
+    // MARK: Insert counters objects
+    
+    func insertCountersMN() {
+        
+        if let _ = self.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex") {
+            return
+        } else {
+                let lifeCountersIndex = LifeCountersIndex(context: self.mainQueueContext)
+                let playerMainCounters = LifeCountersMN(context: self.mainQueueContext)
+                let opponentMainCounters = LifeCountersMN(context: self.mainQueueContext)
+                let player = PlayerMN(context: self.mainQueueContext)
+                let opponent = OpponentMN(context: self.mainQueueContext)
+                let manaCounter = ManaCountersMN(context: self.mainQueueContext)
+                let playerInterface = InterfaceMN(context: self.mainQueueContext)
+                let opponentInterface = InterfaceMN(context: self.mainQueueContext)
+               
+                player.lifeCounters = playerMainCounters
+                player.lifeCounters?.countersIndex = lifeCountersIndex
+                player.manaCounter = manaCounter
+                player.interface = playerInterface
+                opponent.lifeCounters = opponentMainCounters
+                opponent.lifeCounters?.countersIndex = lifeCountersIndex
+                opponent.interface = opponentInterface
+                saveContext()
+        }
+    }
     // MARK: - Notifications
     
     @objc func contextDidSaveMainQueueContext(notification: NSNotification) {
@@ -64,6 +100,12 @@ final class DataManager {
     @objc func contextDidSavePrivateQueueContext(notification: NSNotification) {
         self.privateQueueContext.perform {
             self.privateQueueContext.mergeChanges(fromContextDidSave: notification as Notification)
+        }
+    }
+    @objc func managedObjectContextObjectsDidChange(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        if let _ = userInfo[NSDeletedObjectsKey] as? Set<LifeCountersMN> {
+           insertCountersMN()
         }
     }
     func dealloc () {

@@ -10,66 +10,80 @@ import Foundation
 
 
 
-struct ManaCounterVM {
+class ManaCounterVM {
     
-    private let model = ManaCounterM()
+    private let manager = DataManager.sharedInstance
+    private var manaCounters : ManaCountersMN {
+        get {
+            let mana = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "ManaCountersMN")
+            return mana as! ManaCountersMN
+        }
+    }
     var firstCounter : Int64 {
         get {
-        return model.manaCounters.firstCounter
+        return manaCounters.firstCounter
         } set {
-            model.manaCounters.firstCounter = firstCounter
+            manaCounters.firstCounter = newValue
+            manager.saveContext()
         }
     }
     var secondCounter : Int64 {
         get {
-        return model.manaCounters.secondCounter
+        return manaCounters.secondCounter
         } set {
-            model.manaCounters.secondCounter = secondCounter
+            manaCounters.secondCounter = newValue
+            manager.saveContext()
         }
     }
     var thirdCounter : Int64 {
         get {
-        return model.manaCounters.thirdCounter
+        return manaCounters.thirdCounter
         } set {
-            model.manaCounters.thirdCounter = thirdCounter
+            manaCounters.thirdCounter = newValue
+            manager.saveContext()
         }
     }
     var fourthCounter : Int64 {
         get {
-        return model.manaCounters.fourthCounter
+        return manaCounters.fourthCounter
         } set {
-            model.manaCounters.fourthCounter = fourthCounter
+            manaCounters.fourthCounter = newValue
+            manager.saveContext()
         }
     }
     var fifthCounter : Int64 {
         get {
-        return model.manaCounters.fifthCounter
+        return manaCounters.fifthCounter
         } set {
-              model.manaCounters.fifthCounter = fifthCounter
+              manaCounters.fifthCounter = newValue
+            manager.saveContext()
             }
     }
     var sixthCounter : Int64 {
         get {
-        return model.manaCounters.sixthCounter
+        return manaCounters.sixthCounter
         } set {
-            model.manaCounters.sixthCounter = sixthCounter
+            manaCounters.sixthCounter = newValue
+            manager.saveContext()
         }
     }
     var seventhCounter : Int64 {
         get {
-        return model.manaCounters.seventhCounter
+        return manaCounters.seventhCounter
         } set {
-            model.manaCounters.seventhCounter = seventhCounter
+            manaCounters.seventhCounter = newValue
+            manager.saveContext()
         }
     }
     var eighthCounter : Int64 {
         get {
-        return model.manaCounters.eighthCounter
+        return manaCounters.eighthCounter
         } set {
-            model.manaCounters.eighthCounter = eighthCounter
+            manaCounters.eighthCounter = newValue
+            manager.saveContext()
         }
     }
-    mutating func countManawithButtonAction(tag: Int) {
+    func countManawithButtonAction(tag: Int) {
         switch tag {
         case 0: countUp(counter: &firstCounter)
         case 1: countUp(counter: &secondCounter)
@@ -93,14 +107,22 @@ struct ManaCounterVM {
     }
     private func countUp(counter: inout Int64) {
         counter += 1
-        DataManager.sharedInstance.saveContext()
     }
     private func countDown(counter: inout Int64) {
         if counter == 0 {
             return
         } else {
-            counter -= 0
-            DataManager.sharedInstance.saveContext()
+            counter -= 1
         }
+    }
+    func resetCounters() {
+        self.firstCounter = 0
+        self.secondCounter = 0
+        self.thirdCounter = 0
+        self.fourthCounter = 0
+        self.fifthCounter = 0
+        self.sixthCounter = 0
+        self.seventhCounter = 0
+        self.eighthCounter = 0
     }
 }

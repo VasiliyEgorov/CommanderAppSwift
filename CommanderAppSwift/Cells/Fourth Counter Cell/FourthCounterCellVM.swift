@@ -8,19 +8,34 @@
 
 import Foundation
 
-struct FourthCounterCellViewModel {
-    private let model = FourthCounterCellModel()
+class FourthCellViewModel {
+    private let manager = DataManager.sharedInstance
+    private var lifeCountersIndex : LifeCountersIndex {
+        let index = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex")
+        return index as! LifeCountersIndex
+    }
+    private var playerCounter : PlayerMN {
+        get {
+            let player = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN")
+            return player as! PlayerMN
+        }
+    }
+    private var opponentCounter : OpponentMN {
+        let opponent = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN")
+        return opponent as! OpponentMN
+    }
     private var index : Int {
-        return model.countersIndex
+        return Int(lifeCountersIndex.screenIndex)
     }
     var counter : Int64 {
         get {
             return getCurrentCounter(type: screenType)
         } set {
+            setCurrentCounter(type: screenType, newValue: newValue)
             DataManager.sharedInstance.saveContext()
         }
     }
-    mutating func countLifeOnButtonAction(tag: Int) -> Int64 {
+    func countLifeOnButtonAction(tag: Int) -> Int64 {
         switch tag {
         case 0: countUp(counter: &counter)
         case 1: countDown(counter: &counter)
@@ -39,8 +54,14 @@ struct FourthCounterCellViewModel {
     }
     private func getCurrentCounter(type: IndexEnum) -> Int64 {
         switch type {
-        case .Player: return model.playerCounter.lifeCounters!.fourthCounter
-        case .Opponent: return model.opponentCounter.lifeCounters!.fourthCounter
+        case .Player: return playerCounter.lifeCounters!.fourthCounter
+        case .Opponent: return opponentCounter.lifeCounters!.fourthCounter
+        }
+    }
+    private func setCurrentCounter(type: IndexEnum, newValue: Int64) {
+        switch type {
+        case .Player: playerCounter.lifeCounters!.secondCounter = newValue
+        case .Opponent: opponentCounter.lifeCounters!.secondCounter = newValue
         }
     }
 }

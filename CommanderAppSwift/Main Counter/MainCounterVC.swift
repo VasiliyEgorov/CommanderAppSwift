@@ -7,17 +7,19 @@
 //
 
 import UIKit
+import SWRevealViewController
 
-class MainCounterVC: UIViewController {
+class MainCounterVC: UIViewController, UIGestureRecognizerDelegate {
     
-    weak var mainCounterVM: MainCounterVM!
-    
+    var viewModel: MainCounterVM!
+    private var childController : MainCounterContainerVC!
     @IBOutlet weak var containerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = MainCounterVM()
         
-        let childController = MainCounterContainerVC.init(nibName: "MainCounterContainerVC", bundle: nil)
+        self.childController = MainCounterContainerVC.init(nibName: "MainCounterContainerVC", bundle: nil)
         self.addChildViewController(childController)
         self.containerView.addSubview(childController.view)
         childController.didMove(toParentViewController: self)
@@ -32,23 +34,67 @@ class MainCounterVC: UIViewController {
         self.view.addConstraint(bottom)
         
         childController.view.translatesAutoresizingMaskIntoConstraints = false
-        // Do any additional setup after loading the view.
+ 
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+    }
+    // MARK: SWReveal Button
+    @IBAction func menuButtonAction(_ sender: UIButton) {
+        let swreveal : SWRevealViewController = revealViewController()
+        swreveal.revealToggle(sender)
+    }
+    // MARK: - Gestures
+    private func addSwipeGestures() {
+        let leftSwipe = UISwipeGestureRecognizer.init(target: self, action: #selector(leftSwipeAction))
+        let rightSwipe = UISwipeGestureRecognizer.init(target: self, action: #selector(rightSwipeAction))
+        leftSwipe.direction = .left
+        rightSwipe.direction = .right
+        leftSwipe.delegate = self
+        rightSwipe.delegate = self
+        self.view.addGestureRecognizer(leftSwipe)
+        self.view.addGestureRecognizer(rightSwipe)
+    }
+    @objc private func leftSwipeAction() {
+        
+    }
+    @objc private func rightSwipeAction() {
+        
+    }
+    // MARK: - Gestures Delegate
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    // MARK: - Buttons
+    @IBAction func resetButtonAction(_ sender: UIBarButtonItem) {
+        
+    }
+    @IBAction func screenLockButtonAction(_ sender: UIBarButtonItem) {
+        switch UIApplication.shared.isIdleTimerDisabled {
+        case true:
+            sender.image = UIImage.init(named: "bonfire-on.png")
+            UIApplication.shared.isIdleTimerDisabled = false
+        case false:
+            sender.image = UIImage.init(named: "bonfire-off.png")
+            UIApplication.shared.isIdleTimerDisabled = true
+        }
+        let alertVC = MainCountersAlertVC.init(nibName: "MainCountersAlertVC", bundle: nil)
+        alertVC.modalTransitionStyle = .crossDissolve
+        alertVC.modalPresentationStyle = .fullScreen
+        self.present(alertVC, animated: true, completion: nil)
+    }
+    @IBAction func notesButtonAction(_ sender: UIBarButtonItem) {
+        self.tabBarController?.selectedIndex = 2
+    }
+    @IBAction func countersButtonsAction(_ sender: UIButton) {
+     //   self.childController.tableView.beginUpdates()
+        viewModel.index = sender.tag
+      //  self.childController.tableView.endUpdates()
+     //   self.childController.tableView.reloadData()
+    }
+    @IBAction func manaCountersButtonAction(_ sender: UIButton) {
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

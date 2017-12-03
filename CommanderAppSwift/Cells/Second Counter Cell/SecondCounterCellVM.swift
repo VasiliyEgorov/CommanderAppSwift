@@ -7,30 +7,50 @@
 //
 
 import Foundation
+import CoreData
 
-struct SecondCellViewModel {
+class SecondCellViewModel {
+    private let caretUp : Data? = Data.init(imageName: "caret-up.png")
+    private let caretDown : Data? = Data.init(imageName: "caret-down.png")
+    private var manager = DataManager.sharedInstance
+    private var lifeCountersIndex : LifeCountersIndex {
+        let index = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex")
+        return index as! LifeCountersIndex
+    }
+    private var playerCounter : PlayerMN {
+        get {
+            let player = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN")
+            return player as! PlayerMN
+        }
+    }
+    private var opponentCounter : OpponentMN {
+        let opponent = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN")
+        return opponent as! OpponentMN
+    }
     var counter : Int64 {
         get {
             return getCurrentCounter(type: screenType)
         } set {
+            setCurrentCounter(type: screenType, newValue: newValue)
             DataManager.sharedInstance.saveContext()
         }
+    }
+    var index : Int {
+        return Int(lifeCountersIndex.screenIndex)
     }
     var isHiddenSecondRow : Bool {
         get {
             return getCurrentInterface(type: screenType)!
         } set {
-            setCurrentInterface(type: screenType, isHidden: isHiddenSecondRow)
+            setCurrentInterface(type: screenType, newValue: newValue)
             DataManager.sharedInstance.saveContext()
+            
         }
     }
     var secondRowImg : Data? {
            return getCurrentRowImg(type: screenType, isHidden: isHiddenSecondRow)
     }
-    private let model = SecondCellModel()
-    private var index : Int {
-        return model.countersIndex
-    }
+   
     private var screenType : IndexEnum {
         return IndexEnum(rawValue: self.index)!
     }
@@ -46,32 +66,38 @@ struct SecondCellViewModel {
     }
     private func getCurrentCounter(type: IndexEnum) -> Int64 {
         switch type {
-        case .Player: return model.playerCounter.lifeCounters!.secondCounter
-        case .Opponent: return model.opponentCounter.lifeCounters!.secondCounter
+        case .Player: return playerCounter.lifeCounters!.secondCounter
+        case .Opponent: return opponentCounter.lifeCounters!.secondCounter
+        }
+    }
+    private func setCurrentCounter(type: IndexEnum, newValue: Int64) {
+        switch type {
+        case .Player: playerCounter.lifeCounters!.secondCounter = newValue
+        case .Opponent: opponentCounter.lifeCounters!.secondCounter = newValue
         }
     }
     private func getCurrentInterface(type: IndexEnum) -> Bool? {
         switch type {
-        case .Player: return model.playerCounter.interface?.isHiddenSecondRow
-        case .Opponent: return model.opponentCounter.interface?.isHiddenSecondRow
+        case .Player: return playerCounter.interface?.isHiddenSecondRow
+        case .Opponent: return opponentCounter.interface?.isHiddenSecondRow
         }
     }
-    private func setCurrentInterface(type: IndexEnum, isHidden: Bool) {
+    private func setCurrentInterface(type: IndexEnum, newValue: Bool) {
         switch type {
-        case .Player: model.playerCounter.interface?.isHiddenSecondRow = isHidden
-        case .Opponent:  model.opponentCounter.interface?.isHiddenSecondRow = isHidden
+        case .Player: playerCounter.interface?.isHiddenSecondRow = newValue
+        case .Opponent: opponentCounter.interface?.isHiddenSecondRow = newValue
         }
     }
     private func getCurrentRowImg(type: IndexEnum, isHidden: Bool) -> Data? {
         switch type {
-        case .Player where isHidden: return model.caretDown
-        case .Player where !isHidden: return model.caretUp
-        case .Opponent where isHidden: return model.caretDown
-        case .Opponent where !isHidden: return model.caretUp
+        case .Player where isHidden: return caretDown
+        case .Player where !isHidden: return caretUp
+        case .Opponent where isHidden: return caretDown
+        case .Opponent where !isHidden: return caretUp
         default:return nil
         }
     }
-    mutating func countLifeOnButtonAction(tag: Int) -> Int64 {
+     func countLifeOnButtonAction(tag: Int) -> Int64 {
         switch tag {
         case 0: countUp(counter: &counter)
         case 1: countDown(counter: &counter)
@@ -79,5 +105,4 @@ struct SecondCellViewModel {
         }
         return counter
     }
-    
 }

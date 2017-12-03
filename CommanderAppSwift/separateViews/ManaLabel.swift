@@ -9,7 +9,8 @@
 import UIKit
 
 class ManaLabel: UILabel {
-     var maskLayer : CAShapeLayer
+    var maskLayer : CAShapeLayer
+    private let screenSize = UIScreen.main.bounds.size.height
     required init?(coder aDecoder: NSCoder) {
         self.maskLayer = CAShapeLayer()
         super.init(coder: aDecoder)
@@ -27,7 +28,7 @@ class ManaLabel: UILabel {
         let width : CGFloat = self.layer.superlayer!.frame.size.width / 4
         let height : CGFloat = self.layer.superlayer!.frame.size.height + 1
         let fromY : CGFloat = 0
-        let fromX : CGFloat = width - (width - 4)
+        let fromX : CGFloat = width - (width / 4)
         let newFrame = CGRect(x: fromX, y: fromY, width: width, height: height)
         
         self.maskLayer = CAShapeLayer()
@@ -40,6 +41,15 @@ class ManaLabel: UILabel {
     }
     override func layoutSubviews() {
         configureSublayer()
-        self.font = Constants().setFontSizeForManaLabel()
+        self.font = UIFont.init(name: Constants().helvetica, size: self.frame.size.height * 2/3)
+    }
+
+    private func setFontSizeForManaLabel() -> UIFont {
+        let device : Device = Device(rawValue: screenSize)!
+        switch device {
+        case .Iphone6_7_plus: return UIFont.init(name: Constants().helvetica, size: 45)!
+        case .Iphone6_7: return UIFont.init(name: Constants().helvetica, size: 37)!
+        case .Iphone5: return UIFont.init(name: Constants().helvetica, size: 28)!
+        }
     }
 }

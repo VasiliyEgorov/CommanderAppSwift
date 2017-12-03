@@ -11,20 +11,16 @@ import CoreData
 
 extension NSManagedObjectContext {
     
-    func obtainSingleMNWithEntityName(entityName: String) -> Any? {
+    func obtainSingleMNWithEntityName(entityName: String) -> NSManagedObject? {
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-   
-        var result : Any?
-        do {
-            result = try self.fetch(request).last
-            
-        }  catch {
-            let error = error as NSError
-            fatalError("Unresolved error \(error), \(error.userInfo)")
-            
+        guard let count = try? self.count(for: request) else { return nil }
+        if count == 1 {
+            guard let entity = try? self.fetch(request) as! [NSManagedObject] else { return nil }
+            return entity[0]
+        } else {
+            return nil
         }
-        return result
     }
     
    

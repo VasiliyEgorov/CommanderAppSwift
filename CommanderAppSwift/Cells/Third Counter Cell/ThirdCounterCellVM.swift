@@ -8,13 +8,34 @@
 
 import Foundation
 
-struct ThirdCellViewModel {
+class ThirdCellViewModel {
+    private let caretUp : Data? = Data.init(imageName: "caret-up.png")
+    private let caretDown : Data? = Data.init(imageName: "caret-down.png")
+    private var manager = DataManager.sharedInstance
+    private var lifeCountersIndex : LifeCountersIndex {
+        let index = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex")
+        return index as! LifeCountersIndex
+    }
+    private var playerCounter : PlayerMN {
+        get {
+            let player = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN")
+            return player as! PlayerMN
+        }
+    }
+    private var opponentCounter : OpponentMN {
+        let opponent = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN")
+        return opponent as! OpponentMN
+    }
     var counter : Int64 {
         get {
             return getCurrentCounter(type: screenType)
         } set {
+            setCurrentCounter(type: screenType, newValue: newValue)
             DataManager.sharedInstance.saveContext()
         }
+    }
+    private var index : Int {
+        return Int(lifeCountersIndex.screenIndex)
     }
     var isHiddenThirdRow : Bool {
         get {
@@ -27,10 +48,8 @@ struct ThirdCellViewModel {
     var secondRowImg : Data? {
         return getCurrentRowImg(type: screenType, isHidden: isHiddenThirdRow)
     }
-    private let model = ThirdCellModel()
-    private var index : Int {
-        return model.countersIndex
-    }
+    
+    
     private var screenType : IndexEnum {
         return IndexEnum(rawValue: self.index)!
     }
@@ -46,32 +65,38 @@ struct ThirdCellViewModel {
     }
     private func getCurrentCounter(type: IndexEnum) -> Int64 {
         switch type {
-        case .Player: return model.playerCounter.lifeCounters!.thirdCounter
-        case .Opponent: return model.opponentCounter.lifeCounters!.thirdCounter
+        case .Player: return playerCounter.lifeCounters!.thirdCounter
+        case .Opponent: return opponentCounter.lifeCounters!.thirdCounter
+        }
+    }
+    private func setCurrentCounter(type: IndexEnum, newValue: Int64) {
+        switch type {
+        case .Player: playerCounter.lifeCounters!.secondCounter = newValue
+        case .Opponent: opponentCounter.lifeCounters!.secondCounter = newValue
         }
     }
     private func getCurrentInterface(type: IndexEnum) -> Bool? {
         switch type {
-        case .Player: return model.playerCounter.interface?.isHiddenThirdRow
-        case .Opponent: return model.opponentCounter.interface?.isHiddenThirdRow
+        case .Player: return playerCounter.interface?.isHiddenThirdRow
+        case .Opponent: return opponentCounter.interface?.isHiddenThirdRow
         }
     }
     private func setCurrentInterface(type: IndexEnum, isHidden: Bool) {
         switch type {
-        case .Player: model.playerCounter.interface?.isHiddenThirdRow = isHidden
-        case .Opponent:  model.opponentCounter.interface?.isHiddenThirdRow = isHidden
+        case .Player: playerCounter.interface?.isHiddenThirdRow = isHidden
+        case .Opponent: opponentCounter.interface?.isHiddenThirdRow = isHidden
         }
     }
     private func getCurrentRowImg(type: IndexEnum, isHidden: Bool) -> Data? {
         switch type {
-        case .Player where isHidden: return model.caretDown
-        case .Player where !isHidden: return model.caretUp
-        case .Opponent where isHidden: return model.caretDown
-        case .Opponent where !isHidden: return model.caretUp
+        case .Player where isHidden: return caretDown
+        case .Player where !isHidden: return caretUp
+        case .Opponent where isHidden: return caretDown
+        case .Opponent where !isHidden: return caretUp
         default:return nil
         }
     }
-    mutating func countLifeOnButtonAction(tag: Int) -> Int64 {
+    func countLifeOnButtonAction(tag: Int) -> Int64 {
         switch tag {
         case 0: countUp(counter: &counter)
         case 1: countDown(counter: &counter)

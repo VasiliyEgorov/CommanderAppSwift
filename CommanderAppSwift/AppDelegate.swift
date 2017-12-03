@@ -13,10 +13,9 @@ import SWRevealViewController
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+        DataManager.sharedInstance.insertCountersMN()
         let reveal = SWRevealViewController.init(rearViewController: MenuVC.init(nibName: "MenuVC", bundle: nil),
                                                  frontViewController: TabBarViewController.init(nibName: "TabBarVC", bundle: nil))
         self.window = UIWindow(frame: UIScreen.main.bounds)

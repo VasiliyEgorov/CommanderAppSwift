@@ -8,12 +8,14 @@
     </entity>
     <entity name="LifeCountersIndex" representedClassName="LifeCountersIndex" syncable="YES" codeGenerationType="class">
         <attribute name="screenIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="lifeCounters" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="LifeCountersMN" inverseName="countersIndex" inverseEntity="LifeCountersMN" syncable="YES"/>
     </entity>
-    <entity name="LifeCountersMN" representedClassName="LifeCountersMN" parentEntity="LifeCountersIndex" syncable="YES" codeGenerationType="class">
+    <entity name="LifeCountersMN" representedClassName="LifeCountersMN" syncable="YES" codeGenerationType="class">
         <attribute name="firstCounter" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="fourthCounter" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="secondCounter" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="thirdCounter" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="countersIndex" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="LifeCountersIndex" inverseName="lifeCounters" inverseEntity="LifeCountersIndex" syncable="YES"/>
         <relationship name="opponent" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="OpponentMN" inverseName="lifeCounters" inverseEntity="OpponentMN" syncable="YES"/>
         <relationship name="player" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PlayerMN" inverseName="lifeCounters" inverseEntity="PlayerMN" syncable="YES"/>
     </entity>
@@ -55,11 +57,11 @@
     </entity>
     <elements>
         <element name="InterfaceMN" positionX="180" positionY="-379" width="128" height="103"/>
-        <element name="LifeCountersIndex" positionX="88" positionY="-640" width="128" height="58"/>
-        <element name="LifeCountersMN" positionX="-29" positionY="-376" width="128" height="133"/>
+        <element name="LifeCountersIndex" positionX="-18" positionY="-607" width="128" height="73"/>
+        <element name="LifeCountersMN" positionX="-29" positionY="-376" width="128" height="148"/>
         <element name="ManaCountersMN" positionX="-252" positionY="-18" width="128" height="178"/>
+        <element name="NotesMN" positionX="-353" positionY="-385" width="128" height="88"/>
         <element name="OpponentMN" positionX="153" positionY="-55" width="128" height="163"/>
         <element name="PlayerMN" positionX="-63" positionY="-54" width="128" height="163"/>
-        <element name="NotesMN" positionX="-353" positionY="-385" width="128" height="88"/>
     </elements>
 </model>

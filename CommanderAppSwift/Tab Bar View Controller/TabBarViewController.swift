@@ -22,15 +22,23 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+      //  let mainCountersVC = MainNavController.init(rootViewController: MainCounterVC.init(nibName: "MainCounterVC", bundle: nil))
+        
+      //  let manaCountersVC = MainNavController.init(rootViewController: MainCounterVC.init(nibName: "ManaCounterVC", bundle: nil))
+     //   let notesVC = MainNavController.init(rootViewController: NotesVC.init(nibName: "NotesVC", bundle: nil))
+        
+        
         let viewControllers = [MainNavController.init(rootViewController: MainCounterVC.init(nibName: "MainCounterVC", bundle: nil)),
-                               MainNavController.init(rootViewController: ManaCounterVC.init(nibName: "ManaCountersVC", bundle: nil))]
+                               MainNavController.init(rootViewController: ManaCounterVC.init(nibName: "ManaCounterVC", bundle: nil))]
         self.setViewControllers(viewControllers, animated: true)
+        self.selectedIndex = 0
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         guard let fromIndex = tabBarController.viewControllers?.index(of: tabBarController.selectedViewController!) else { return nil }
         guard let toIndex = tabBarController.viewControllers?.index(of: toVC) else { return nil }

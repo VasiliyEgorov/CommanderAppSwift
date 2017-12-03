@@ -12,22 +12,17 @@
 		FF1BBAEC1FC30C6D009271C4 /* ManaCounterM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBAEB1FC30C6D009271C4 /* ManaCounterM.swift */; };
 		FF1BBAF01FC3A72E009271C4 /* ManaLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBAEF1FC3A72E009271C4 /* ManaLabel.swift */; };
 		FF1BBAF31FC3B15E009271C4 /* FirstCounterCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBAF21FC3B15E009271C4 /* FirstCounterCellVM.swift */; };
-		FF1BBAF51FC3B16B009271C4 /* FirstCounterCellM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBAF41FC3B16B009271C4 /* FirstCounterCellM.swift */; };
 		FF1BBAF71FC4A781009271C4 /* MainCountersLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBAF61FC4A781009271C4 /* MainCountersLabel.swift */; };
 		FF1BBAFD1FC4CB88009271C4 /* SecondCounterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBAFC1FC4CB88009271C4 /* SecondCounterCell.swift */; };
 		FF1BBB001FC4CBBB009271C4 /* SecondCounterCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBAFF1FC4CBBB009271C4 /* SecondCounterCellVM.swift */; };
-		FF1BBB021FC4CBD8009271C4 /* SecondCounterCellM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB011FC4CBD8009271C4 /* SecondCounterCellM.swift */; };
 		FF1BBB041FC4CBE8009271C4 /* SecondCounterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1BBB031FC4CBE8009271C4 /* SecondCounterCell.xib */; };
 		FF1BBB061FC4FE15009271C4 /* ThirdCounterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB051FC4FE15009271C4 /* ThirdCounterCell.swift */; };
 		FF1BBB091FC4FE3A009271C4 /* ThirdCounterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1BBB081FC4FE3A009271C4 /* ThirdCounterCell.xib */; };
 		FF1BBB0B1FC4FE60009271C4 /* ThirdCounterCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB0A1FC4FE60009271C4 /* ThirdCounterCellVM.swift */; };
-		FF1BBB0D1FC4FE6B009271C4 /* ThirdCounterCellM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB0C1FC4FE6B009271C4 /* ThirdCounterCellM.swift */; };
 		FF1BBB0F1FC4FE83009271C4 /* FourthCounterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB0E1FC4FE83009271C4 /* FourthCounterCell.swift */; };
 		FF1BBB121FC4FEBB009271C4 /* FourthCounterCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB111FC4FEBB009271C4 /* FourthCounterCellVM.swift */; };
-		FF1BBB141FC4FEC4009271C4 /* FourthCounterCellM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB131FC4FEC4009271C4 /* FourthCounterCellM.swift */; };
 		FF1BBB161FC4FEDF009271C4 /* FourthCounterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1BBB151FC4FEDF009271C4 /* FourthCounterCell.xib */; };
 		FF1BBB1A1FC52E64009271C4 /* MainCounterContainerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB191FC52E64009271C4 /* MainCounterContainerVM.swift */; };
-		FF1BBB1C1FC52E6F009271C4 /* MainCounterContainerM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB1B1FC52E6F009271C4 /* MainCounterContainerM.swift */; };
 		FF1BBB211FC63580009271C4 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB1F1FC63580009271C4 /* MenuCell.swift */; };
 		FF1BBB221FC63580009271C4 /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1BBB201FC63580009271C4 /* MenuCell.xib */; };
 		FF1BBB241FC63596009271C4 /* MenuVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB231FC63596009271C4 /* MenuVM.swift */; };
@@ -53,6 +48,8 @@
 		FF1BBB961FCB37F5009271C4 /* NoteDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1BBB941FCB37F5009271C4 /* NoteDetailsVC.xib */; };
 		FF1BBB981FCC19A2009271C4 /* MainNavToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB971FCC19A2009271C4 /* MainNavToolBar.swift */; };
 		FF1BBB9D1FCC1A2A009271C4 /* TabBarSwitchAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB9C1FCC1A2A009271C4 /* TabBarSwitchAnimations.swift */; };
+		FF1BBBA71FD2D3C2009271C4 /* ZeroCounterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1BBBA61FD2D3C2009271C4 /* ZeroCounterCell.xib */; };
+		FF1BBBA91FD2D5C8009271C4 /* ZeroCounterCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBBA81FD2D5C8009271C4 /* ZeroCounterCellVM.swift */; };
 		FF333FCC1FB5A5C500E980AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF333FCB1FB5A5C500E980AA /* AppDelegate.swift */; };
 		FF333FD41FB5A5C500E980AA /* CommanderAppSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF333FD21FB5A5C500E980AA /* CommanderAppSwift.xcdatamodeld */; };
 		FF333FD61FB5A5C500E980AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF333FD51FB5A5C500E980AA /* Assets.xcassets */; };
@@ -78,7 +75,6 @@
 		FF3340251FB9046A00E980AA /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3340241FB9046900E980AA /* UIColorExtension.swift */; };
 		FF60EA2E1FBC977F005C2BBA /* TabBarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF60EA2D1FBC977F005C2BBA /* TabBarVC.xib */; };
 		FF60EA321FBD927C005C2BBA /* MainCounterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA311FBD927C005C2BBA /* MainCounterVM.swift */; };
-		FF60EA341FBD9298005C2BBA /* MainCounterM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA331FBD9298005C2BBA /* MainCounterM.swift */; };
 		FF60EA371FBD9D1D005C2BBA /* PlayerNameV.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA361FBD9D1D005C2BBA /* PlayerNameV.swift */; };
 		FF60EA391FBD9D2B005C2BBA /* PlayerNameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA381FBD9D2B005C2BBA /* PlayerNameVM.swift */; };
 		FF60EA3B1FBD9D37005C2BBA /* PlayerNameM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA3A1FBD9D37005C2BBA /* PlayerNameM.swift */; };
@@ -121,22 +117,17 @@
 		FF1BBAEB1FC30C6D009271C4 /* ManaCounterM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManaCounterM.swift; sourceTree = "<group>"; };
 		FF1BBAEF1FC3A72E009271C4 /* ManaLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManaLabel.swift; sourceTree = "<group>"; };
 		FF1BBAF21FC3B15E009271C4 /* FirstCounterCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCounterCellVM.swift; sourceTree = "<group>"; };
-		FF1BBAF41FC3B16B009271C4 /* FirstCounterCellM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCounterCellM.swift; sourceTree = "<group>"; };
 		FF1BBAF61FC4A781009271C4 /* MainCountersLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCountersLabel.swift; sourceTree = "<group>"; };
 		FF1BBAFC1FC4CB88009271C4 /* SecondCounterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCounterCell.swift; sourceTree = "<group>"; };
 		FF1BBAFF1FC4CBBB009271C4 /* SecondCounterCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCounterCellVM.swift; sourceTree = "<group>"; };
-		FF1BBB011FC4CBD8009271C4 /* SecondCounterCellM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCounterCellM.swift; sourceTree = "<group>"; };
 		FF1BBB031FC4CBE8009271C4 /* SecondCounterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondCounterCell.xib; sourceTree = "<group>"; };
 		FF1BBB051FC4FE15009271C4 /* ThirdCounterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdCounterCell.swift; sourceTree = "<group>"; };
 		FF1BBB081FC4FE3A009271C4 /* ThirdCounterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThirdCounterCell.xib; sourceTree = "<group>"; };
 		FF1BBB0A1FC4FE60009271C4 /* ThirdCounterCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdCounterCellVM.swift; sourceTree = "<group>"; };
-		FF1BBB0C1FC4FE6B009271C4 /* ThirdCounterCellM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdCounterCellM.swift; sourceTree = "<group>"; };
 		FF1BBB0E1FC4FE83009271C4 /* FourthCounterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthCounterCell.swift; sourceTree = "<group>"; };
 		FF1BBB111FC4FEBB009271C4 /* FourthCounterCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthCounterCellVM.swift; sourceTree = "<group>"; };
-		FF1BBB131FC4FEC4009271C4 /* FourthCounterCellM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthCounterCellM.swift; sourceTree = "<group>"; };
 		FF1BBB151FC4FEDF009271C4 /* FourthCounterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FourthCounterCell.xib; sourceTree = "<group>"; };
 		FF1BBB191FC52E64009271C4 /* MainCounterContainerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCounterContainerVM.swift; sourceTree = "<group>"; };
-		FF1BBB1B1FC52E6F009271C4 /* MainCounterContainerM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCounterContainerM.swift; sourceTree = "<group>"; };
 		FF1BBB1F1FC63580009271C4 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		FF1BBB201FC63580009271C4 /* MenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
 		FF1BBB231FC63596009271C4 /* MenuVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVM.swift; sourceTree = "<group>"; };
@@ -162,6 +153,8 @@
 		FF1BBB941FCB37F5009271C4 /* NoteDetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteDetailsVC.xib; sourceTree = "<group>"; };
 		FF1BBB971FCC19A2009271C4 /* MainNavToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavToolBar.swift; sourceTree = "<group>"; };
 		FF1BBB9C1FCC1A2A009271C4 /* TabBarSwitchAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarSwitchAnimations.swift; sourceTree = "<group>"; };
+		FF1BBBA61FD2D3C2009271C4 /* ZeroCounterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZeroCounterCell.xib; sourceTree = "<group>"; };
+		FF1BBBA81FD2D5C8009271C4 /* ZeroCounterCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroCounterCellVM.swift; sourceTree = "<group>"; };
 		FF333FC81FB5A5C500E980AA /* CommanderAppSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommanderAppSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF333FCB1FB5A5C500E980AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF333FD31FB5A5C500E980AA /* CommanderAppSwift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CommanderAppSwift.xcdatamodel; sourceTree = "<group>"; };
@@ -193,7 +186,6 @@
 		FF3340241FB9046900E980AA /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		FF60EA2D1FBC977F005C2BBA /* TabBarVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarVC.xib; sourceTree = "<group>"; };
 		FF60EA311FBD927C005C2BBA /* MainCounterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCounterVM.swift; sourceTree = "<group>"; };
-		FF60EA331FBD9298005C2BBA /* MainCounterM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCounterM.swift; sourceTree = "<group>"; };
 		FF60EA361FBD9D1D005C2BBA /* PlayerNameV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNameV.swift; sourceTree = "<group>"; };
 		FF60EA381FBD9D2B005C2BBA /* PlayerNameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNameVM.swift; sourceTree = "<group>"; };
 		FF60EA3A1FBD9D37005C2BBA /* PlayerNameM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNameM.swift; sourceTree = "<group>"; };
@@ -291,7 +283,6 @@
 			children = (
 				FF3340181FB8FFB600E980AA /* FirstCounterCell.swift */,
 				FF1BBAF21FC3B15E009271C4 /* FirstCounterCellVM.swift */,
-				FF1BBAF41FC3B16B009271C4 /* FirstCounterCellM.swift */,
 				FF3340191FB8FFB600E980AA /* FirstCounterCell.xib */,
 			);
 			path = "First Counter Cell";
@@ -302,7 +293,6 @@
 			children = (
 				FF1BBAFC1FC4CB88009271C4 /* SecondCounterCell.swift */,
 				FF1BBAFF1FC4CBBB009271C4 /* SecondCounterCellVM.swift */,
-				FF1BBB011FC4CBD8009271C4 /* SecondCounterCellM.swift */,
 				FF1BBB031FC4CBE8009271C4 /* SecondCounterCell.xib */,
 			);
 			path = "Second Counter Cell";
@@ -313,7 +303,6 @@
 			children = (
 				FF1BBB051FC4FE15009271C4 /* ThirdCounterCell.swift */,
 				FF1BBB0A1FC4FE60009271C4 /* ThirdCounterCellVM.swift */,
-				FF1BBB0C1FC4FE6B009271C4 /* ThirdCounterCellM.swift */,
 				FF1BBB081FC4FE3A009271C4 /* ThirdCounterCell.xib */,
 			);
 			path = "Third Counter Cell";
@@ -324,7 +313,6 @@
 			children = (
 				FF1BBB0E1FC4FE83009271C4 /* FourthCounterCell.swift */,
 				FF1BBB111FC4FEBB009271C4 /* FourthCounterCellVM.swift */,
-				FF1BBB131FC4FEC4009271C4 /* FourthCounterCellM.swift */,
 				FF1BBB151FC4FEDF009271C4 /* FourthCounterCell.xib */,
 			);
 			path = "Fourth Counter Cell";
@@ -360,7 +348,6 @@
 			children = (
 				FF3340061FB5BE6B00E980AA /* MainCounterContainerVC.swift */,
 				FF1BBB191FC52E64009271C4 /* MainCounterContainerVM.swift */,
-				FF1BBB1B1FC52E6F009271C4 /* MainCounterContainerM.swift */,
 				FF3340141FB8FBEB00E980AA /* MainCounterContainerVC.xib */,
 			);
 			path = "Main Counter Container";
@@ -371,7 +358,6 @@
 			children = (
 				FF3340021FB5BE0D00E980AA /* MainCounterVC.swift */,
 				FF60EA311FBD927C005C2BBA /* MainCounterVM.swift */,
-				FF60EA331FBD9298005C2BBA /* MainCounterM.swift */,
 				FF3340031FB5BE0D00E980AA /* MainCounterVC.xib */,
 				FF1BBB461FC79942009271C4 /* Alert Window */,
 			);
@@ -424,6 +410,8 @@
 			isa = PBXGroup;
 			children = (
 				FF1BBB481FC7C4CE009271C4 /* ZeroCounterCell.swift */,
+				FF1BBBA81FD2D5C8009271C4 /* ZeroCounterCellVM.swift */,
+				FF1BBBA61FD2D3C2009271C4 /* ZeroCounterCell.xib */,
 			);
 			path = "Zero Cell";
 			sourceTree = "<group>";
@@ -708,6 +696,7 @@
 				FF33401F1FB9031200E980AA /* NotesVC.xib in Resources */,
 				FF33400B1FB5BE9E00E980AA /* MenuVC.xib in Resources */,
 				FF3340151FB8FBEC00E980AA /* MainCounterContainerVC.xib in Resources */,
+				FF1BBBA71FD2D3C2009271C4 /* ZeroCounterCell.xib in Resources */,
 				FF33401B1FB8FFB600E980AA /* FirstCounterCell.xib in Resources */,
 				FF1BBB961FCB37F5009271C4 /* NoteDetailsVC.xib in Resources */,
 				FF1BBB411FC78F1A009271C4 /* MainCountersAlertVC.xib in Resources */,
@@ -793,7 +782,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF1BBB451FC792F7009271C4 /* MainCountersAlertM.swift in Sources */,
-				FF1BBB0D1FC4FE6B009271C4 /* ThirdCounterCellM.swift in Sources */,
 				FF1BBB061FC4FE15009271C4 /* ThirdCounterCell.swift in Sources */,
 				FF60EA3B1FBD9D37005C2BBA /* PlayerNameM.swift in Sources */,
 				FF60EA4C1FC0DF6A005C2BBA /* AvatarVM.swift in Sources */,
@@ -801,13 +789,10 @@
 				FF3340071FB5BE6B00E980AA /* MainCounterContainerVC.swift in Sources */,
 				FF1BBB211FC63580009271C4 /* MenuCell.swift in Sources */,
 				FF1BBB491FC7C4CE009271C4 /* ZeroCounterCell.swift in Sources */,
-				FF60EA341FBD9298005C2BBA /* MainCounterM.swift in Sources */,
 				FF3340251FB9046A00E980AA /* UIColorExtension.swift in Sources */,
 				FF60EA321FBD927C005C2BBA /* MainCounterVM.swift in Sources */,
 				FF1BBB8E1FC89192009271C4 /* NotesCellVM.swift in Sources */,
-				FF1BBB141FC4FEC4009271C4 /* FourthCounterCellM.swift in Sources */,
 				FF33400F1FB615A200E980AA /* MainNavController.swift in Sources */,
-				FF1BBAF51FC3B16B009271C4 /* FirstCounterCellM.swift in Sources */,
 				FF1BBAF01FC3A72E009271C4 /* ManaLabel.swift in Sources */,
 				FF1BBB4B1FC7C817009271C4 /* NotesVM.swift in Sources */,
 				FF60EA481FC0B780005C2BBA /* AvatarImageView.swift in Sources */,
@@ -822,7 +807,6 @@
 				FF1BBB981FCC19A2009271C4 /* MainNavToolBar.swift in Sources */,
 				FF1BBB901FC8D511009271C4 /* NoteDetailsVM.swift in Sources */,
 				FF1BBB341FC66CA5009271C4 /* RollADieM.swift in Sources */,
-				FF1BBB021FC4CBD8009271C4 /* SecondCounterCellM.swift in Sources */,
 				FF3340221FB9033C00E980AA /* NotesCell.swift in Sources */,
 				FF1BBB261FC635A1009271C4 /* MenuM.swift in Sources */,
 				FF33401A1FB8FFB600E980AA /* FirstCounterCell.swift in Sources */,
@@ -830,7 +814,6 @@
 				FF333FCC1FB5A5C500E980AA /* AppDelegate.swift in Sources */,
 				FF1BBB951FCB37F5009271C4 /* NoteDetailsVC.swift in Sources */,
 				FF60EA511FC0F7AE005C2BBA /* RandomAvatarLabel.swift in Sources */,
-				FF1BBB1C1FC52E6F009271C4 /* MainCounterContainerM.swift in Sources */,
 				FF33401E1FB9031200E980AA /* NotesVC.swift in Sources */,
 				FF60EA401FBDE80D005C2BBA /* DataManager.swift in Sources */,
 				FF1BBB1A1FC52E64009271C4 /* MainCounterContainerVM.swift in Sources */,
@@ -848,6 +831,7 @@
 				FF1BBB3B1FC66CD3009271C4 /* HeadsOrTailsVM.swift in Sources */,
 				FF60EA391FBD9D2B005C2BBA /* PlayerNameVM.swift in Sources */,
 				FF60EA4E1FC0DF74005C2BBA /* AvatarM.swift in Sources */,
+				FF1BBBA91FD2D5C8009271C4 /* ZeroCounterCellVM.swift in Sources */,
 				FF1BBB0B1FC4FE60009271C4 /* ThirdCounterCellVM.swift in Sources */,
 				FF1BBB001FC4CBBB009271C4 /* SecondCounterCellVM.swift in Sources */,
 				FF333FD41FB5A5C500E980AA /* CommanderAppSwift.xcdatamodeld in Sources */,

@@ -8,24 +8,27 @@
 
 import UIKit
 
-class ThirdCounterCell: UITableViewCell {
+class ThirdCounterCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var caretButton: UIButton!
     @IBOutlet weak var thirdCounterLabel: MainCountersLabel!
     @IBOutlet weak var thirdCounterName: UITextField!
-    var viewModel : ThirdCellViewModel
+    var viewModel : ThirdCellViewModel! {
+        didSet {
+            updateAllUI()
+        }
+    }
     required init?(coder aDecoder: NSCoder) {
-        viewModel = ThirdCellViewModel()
-        thirdCounterLabel.text = String(viewModel.counter)
         super.init(coder: aDecoder)
+        self.selectionStyle = .none
+        self.contentView.backgroundColor = .clear
+        self.backgroundColor = .clear
+    }
+    override func awakeFromNib() {
+        super.awakeFromNib()
         thirdCounterName.backgroundColor = .clear
         thirdCounterName.textColor = UIColor.color_150withAlpha(alpha: 1)
         thirdCounterName.tintColor = UIColor.color_150withAlpha(alpha: 1)
         thirdCounterName.isUserInteractionEnabled = true
-        self.selectionStyle = .none
-    }
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
     }
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -35,7 +38,20 @@ class ThirdCounterCell: UITableViewCell {
         thirdCounterName.attributedPlaceholder = atrString
         thirdCounterName.font = UIFont.init(name: Constants().helvetica, size: self.frame.size.height * 2/3)
     }
+    // MARK: - Update UI
     
+    private func updateAllUI() {
+        thirdCounterLabel.text = String(viewModel.counter)
+        
+        switch viewModel.isHiddenThirdRow {
+        case true:
+            caretButton.setBackgroundImage(viewModel.secondRowImg?.uiImage, for: .normal)
+            viewModel.isHiddenThirdRow = false
+        case false:
+            caretButton.setBackgroundImage(viewModel.secondRowImg?.uiImage, for: .normal)
+            viewModel.isHiddenThirdRow = true
+        }
+    }
     @IBAction func countersButtonAction(_ sender: UIButton) {
         thirdCounterLabel.text = String(viewModel.countLifeOnButtonAction(tag: sender.tag))
     }

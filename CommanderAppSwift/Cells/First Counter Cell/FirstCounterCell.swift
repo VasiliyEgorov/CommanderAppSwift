@@ -8,26 +8,29 @@
 
 import UIKit
 
-class FirstCounterCell: UITableViewCell, UITextFieldDelegate {
+class FirstCounterCell: UITableViewCell {
     @IBOutlet weak var counterLabel: MainCountersLabel!
     @IBOutlet weak var counterNameTextField: UITextField!
-    var viewModel : FirstCellViewModel
+    var viewModel : FirstCellViewModel! {
+        didSet {
+            counterLabel.text = String(viewModel.counter)
+        }
+    }
+   
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.selectionStyle = .none
+        self.contentView.backgroundColor = .clear
+        self.backgroundColor = .clear
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-    required init?(coder aDecoder: NSCoder) {
-        viewModel = FirstCellViewModel()
-        counterLabel.text = String(viewModel.counter)
-        super.init(coder: aDecoder)
         counterNameTextField.backgroundColor = .clear
         counterNameTextField.textColor = UIColor.color_150withAlpha(alpha: 1)
         counterNameTextField.tintColor = UIColor.color_150withAlpha(alpha: 1)
         counterNameTextField.isUserInteractionEnabled = false
         counterNameTextField.text = "Life Counter"
-        self.selectionStyle = .none
     }
-   
     override func layoutSubviews() {
         super.layoutSubviews()
 
