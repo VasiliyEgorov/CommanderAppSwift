@@ -8,6 +8,10 @@
 
 import UIKit
 
+enum IndexEnum : Int {
+    case Player = 0
+    case Opponent = 1
+}
 enum Device : CGFloat {
     case Iphone6_7_plus = 736
     case Iphone6_7 = 667

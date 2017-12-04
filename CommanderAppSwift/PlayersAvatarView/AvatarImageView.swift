@@ -9,10 +9,13 @@
 import UIKit
 
 class AvatarImageView: UIImageView {
-
-    var viewModel = AvatarViewModel()
-    
+    var viewModel : AvatarViewModel! {
+        didSet {
+            
+        }
+    }
     required init?(coder aDecoder: NSCoder) {
+        viewModel = AvatarViewModel()
         super.init(coder: aDecoder)
         setupXib()
     }

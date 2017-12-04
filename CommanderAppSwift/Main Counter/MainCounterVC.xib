@@ -103,11 +103,11 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nsJ-Zw-9z8">
                                     <rect key="frame" x="0.0" y="70.666666666666671" width="248.33333333333334" height="47"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="217894237849723894" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YRL-RU-wu7">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YRL-RU-wu7" customClass="PlayerNameV" customModule="CommanderAppSwift" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="248.33333333333334" height="47"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                         </textField>
                                     </subviews>
                                 </stackView>
@@ -148,7 +148,7 @@
                     </constraints>
                 </stackView>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wm2-b1-gJV" customClass="MainNavToolBar" customModule="CommanderAppSwift" customModuleProvider="target">
-                    <rect key="frame" x="4" y="692" width="406" height="44"/>
+                    <rect key="frame" x="0.0" y="692" width="414" height="44"/>
                     <items>
                         <barButtonItem image="refreshButton" id="a4W-Od-vbZ">
                             <connections>
@@ -185,8 +185,8 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="0hh-c0-1CR" secondAttribute="bottom" constant="59" id="dYN-Ib-xcd"/>
                 <constraint firstItem="OZh-A1-6w2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="f5k-cq-Eje"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="HgW-b1-lhV" secondAttribute="bottom" constant="134" id="i8p-hx-WYy"/>
-                <constraint firstItem="Wm2-b1-gJV" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="-4" id="kDP-eD-Ijt"/>
-                <constraint firstItem="Wm2-b1-gJV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="4" id="nlv-8n-eNj"/>
+                <constraint firstItem="Wm2-b1-gJV" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="kDP-eD-Ijt"/>
+                <constraint firstItem="Wm2-b1-gJV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nlv-8n-eNj"/>
                 <constraint firstItem="OZh-A1-6w2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="oKG-80-8bu"/>
                 <constraint firstItem="OZh-A1-6w2" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="uG4-yk-FMo"/>
                 <constraint firstItem="5qp-sd-5GT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="urj-ai-bZv"/>

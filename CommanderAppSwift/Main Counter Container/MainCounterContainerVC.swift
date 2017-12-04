@@ -44,24 +44,14 @@ class MainCounterContainerVC: UIViewController, UITableViewDelegate, UITableView
         self.tableView.register(UINib.init(nibName: "FourthCounterCell", bundle: nil), forCellReuseIdentifier: fourthCellID)
         self.tableView.separatorStyle = .none
         self.tableView.tableFooterView = UIView.init(frame: CGRect.zero)
-        
-      
-       // bindValues()
+
     }
   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    private func bindValues() {
-       
-        /*
-        _ = viewModel.observableIndex.observeNext(with: { (indexChanged) in
-            self.tableView.beginUpdates()
-            self.tableView.endUpdates()
-        })
- */
-    }
+   
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellsEnum : Cells = Cells(rawValue: indexPath.section)!
         
@@ -102,8 +92,9 @@ class MainCounterContainerVC: UIViewController, UITableViewDelegate, UITableView
         spacingView.backgroundColor = .clear
         return spacingView
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       print(self.view.frame.size.height)
+      
         return CGFloat(viewModel.setRowHeight(tableViewHeight: Float(self.view.frame.size.height), section: indexPath.section))
     }
  

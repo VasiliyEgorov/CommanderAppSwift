@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8B660194EDF8BDB28E868D7A /* Pods_CommanderAppSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B114FF8F34C504DB0A541400 /* Pods_CommanderAppSwift.framework */; };
 		FF1BBAEA1FC273AA009271C4 /* ManaCounterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBAE91FC273AA009271C4 /* ManaCounterVM.swift */; };
-		FF1BBAEC1FC30C6D009271C4 /* ManaCounterM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBAEB1FC30C6D009271C4 /* ManaCounterM.swift */; };
 		FF1BBAF01FC3A72E009271C4 /* ManaLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBAEF1FC3A72E009271C4 /* ManaLabel.swift */; };
 		FF1BBAF31FC3B15E009271C4 /* FirstCounterCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBAF21FC3B15E009271C4 /* FirstCounterCellVM.swift */; };
 		FF1BBAF71FC4A781009271C4 /* MainCountersLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBAF61FC4A781009271C4 /* MainCountersLabel.swift */; };
@@ -26,7 +25,6 @@
 		FF1BBB211FC63580009271C4 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB1F1FC63580009271C4 /* MenuCell.swift */; };
 		FF1BBB221FC63580009271C4 /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1BBB201FC63580009271C4 /* MenuCell.xib */; };
 		FF1BBB241FC63596009271C4 /* MenuVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB231FC63596009271C4 /* MenuVM.swift */; };
-		FF1BBB261FC635A1009271C4 /* MenuM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB251FC635A1009271C4 /* MenuM.swift */; };
 		FF1BBB2F1FC66C86009271C4 /* RollADieVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB2D1FC66C86009271C4 /* RollADieVC.swift */; };
 		FF1BBB301FC66C86009271C4 /* RollADieVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1BBB2E1FC66C86009271C4 /* RollADieVC.xib */; };
 		FF1BBB321FC66C9B009271C4 /* RollADieVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB311FC66C9B009271C4 /* RollADieVM.swift */; };
@@ -80,7 +78,6 @@
 		FF60EA321FBD927C005C2BBA /* MainCounterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA311FBD927C005C2BBA /* MainCounterVM.swift */; };
 		FF60EA371FBD9D1D005C2BBA /* PlayerNameV.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA361FBD9D1D005C2BBA /* PlayerNameV.swift */; };
 		FF60EA391FBD9D2B005C2BBA /* PlayerNameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA381FBD9D2B005C2BBA /* PlayerNameVM.swift */; };
-		FF60EA3B1FBD9D37005C2BBA /* PlayerNameM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA3A1FBD9D37005C2BBA /* PlayerNameM.swift */; };
 		FF60EA3D1FBDA395005C2BBA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA3C1FBDA395005C2BBA /* Constants.swift */; };
 		FF60EA401FBDE80D005C2BBA /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA3F1FBDE80D005C2BBA /* DataManager.swift */; };
 		FF60EA431FBE13FC005C2BBA /* NSManagedObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA421FBE13FC005C2BBA /* NSManagedObjectExtension.swift */; };
@@ -117,7 +114,6 @@
 		B8F38C182BD5D0DCDDC2D4CC /* Pods-CommanderAppSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommanderAppSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CommanderAppSwift/Pods-CommanderAppSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		C4B6933BBBB776716C3A1330 /* Pods-CommanderAppSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommanderAppSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommanderAppSwift/Pods-CommanderAppSwift.release.xcconfig"; sourceTree = "<group>"; };
 		FF1BBAE91FC273AA009271C4 /* ManaCounterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManaCounterVM.swift; sourceTree = "<group>"; };
-		FF1BBAEB1FC30C6D009271C4 /* ManaCounterM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManaCounterM.swift; sourceTree = "<group>"; };
 		FF1BBAEF1FC3A72E009271C4 /* ManaLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManaLabel.swift; sourceTree = "<group>"; };
 		FF1BBAF21FC3B15E009271C4 /* FirstCounterCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCounterCellVM.swift; sourceTree = "<group>"; };
 		FF1BBAF61FC4A781009271C4 /* MainCountersLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCountersLabel.swift; sourceTree = "<group>"; };
@@ -134,7 +130,6 @@
 		FF1BBB1F1FC63580009271C4 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		FF1BBB201FC63580009271C4 /* MenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
 		FF1BBB231FC63596009271C4 /* MenuVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVM.swift; sourceTree = "<group>"; };
-		FF1BBB251FC635A1009271C4 /* MenuM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuM.swift; sourceTree = "<group>"; };
 		FF1BBB2D1FC66C86009271C4 /* RollADieVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollADieVC.swift; sourceTree = "<group>"; };
 		FF1BBB2E1FC66C86009271C4 /* RollADieVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RollADieVC.xib; sourceTree = "<group>"; };
 		FF1BBB311FC66C9B009271C4 /* RollADieVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollADieVM.swift; sourceTree = "<group>"; };
@@ -194,7 +189,6 @@
 		FF60EA311FBD927C005C2BBA /* MainCounterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCounterVM.swift; sourceTree = "<group>"; };
 		FF60EA361FBD9D1D005C2BBA /* PlayerNameV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNameV.swift; sourceTree = "<group>"; };
 		FF60EA381FBD9D2B005C2BBA /* PlayerNameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNameVM.swift; sourceTree = "<group>"; };
-		FF60EA3A1FBD9D37005C2BBA /* PlayerNameM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNameM.swift; sourceTree = "<group>"; };
 		FF60EA3C1FBDA395005C2BBA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FF60EA3F1FBDE80D005C2BBA /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		FF60EA421FBE13FC005C2BBA /* NSManagedObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExtension.swift; sourceTree = "<group>"; };
@@ -257,7 +251,6 @@
 			children = (
 				FF3340101FB8E9D100E980AA /* ManaCounterVC.swift */,
 				FF1BBAE91FC273AA009271C4 /* ManaCounterVM.swift */,
-				FF1BBAEB1FC30C6D009271C4 /* ManaCounterM.swift */,
 				FF3340111FB8E9D100E980AA /* ManaCounterVC.xib */,
 			);
 			path = ManaCounters;
@@ -345,7 +338,6 @@
 			children = (
 				FF3340081FB5BE9E00E980AA /* MenuVC.swift */,
 				FF1BBB231FC63596009271C4 /* MenuVM.swift */,
-				FF1BBB251FC635A1009271C4 /* MenuM.swift */,
 				FF3340091FB5BE9E00E980AA /* MenuVC.xib */,
 				FF1BBB271FC635A7009271C4 /* Menu Cell */,
 			);
@@ -536,7 +528,6 @@
 			children = (
 				FF60EA361FBD9D1D005C2BBA /* PlayerNameV.swift */,
 				FF60EA381FBD9D2B005C2BBA /* PlayerNameVM.swift */,
-				FF60EA3A1FBD9D37005C2BBA /* PlayerNameM.swift */,
 			);
 			path = PlayerNameTextField;
 			sourceTree = "<group>";
@@ -798,7 +789,6 @@
 			files = (
 				FF1BBB451FC792F7009271C4 /* MainCountersAlertM.swift in Sources */,
 				FF1BBB061FC4FE15009271C4 /* ThirdCounterCell.swift in Sources */,
-				FF60EA3B1FBD9D37005C2BBA /* PlayerNameM.swift in Sources */,
 				FF60EA4C1FC0DF6A005C2BBA /* AvatarVM.swift in Sources */,
 				FF1BBB321FC66C9B009271C4 /* RollADieVM.swift in Sources */,
 				FF3340071FB5BE6B00E980AA /* MainCounterContainerVC.swift in Sources */,
@@ -824,7 +814,6 @@
 				FF1BBB901FC8D511009271C4 /* NoteDetailsVM.swift in Sources */,
 				FF1BBB341FC66CA5009271C4 /* RollADieM.swift in Sources */,
 				FF3340221FB9033C00E980AA /* NotesCell.swift in Sources */,
-				FF1BBB261FC635A1009271C4 /* MenuM.swift in Sources */,
 				FF33401A1FB8FFB600E980AA /* FirstCounterCell.swift in Sources */,
 				FF33400A1FB5BE9E00E980AA /* MenuVC.swift in Sources */,
 				FF333FCC1FB5A5C500E980AA /* AppDelegate.swift in Sources */,
@@ -844,7 +833,6 @@
 				FF1BBAFD1FC4CB88009271C4 /* SecondCounterCell.swift in Sources */,
 				FF60EA531FC0F7BF005C2BBA /* RandomAvatarVM.swift in Sources */,
 				FF1BBB2F1FC66C86009271C4 /* RollADieVC.swift in Sources */,
-				FF1BBAEC1FC30C6D009271C4 /* ManaCounterM.swift in Sources */,
 				FF1BBB3B1FC66CD3009271C4 /* HeadsOrTailsVM.swift in Sources */,
 				FF60EA391FBD9D2B005C2BBA /* PlayerNameVM.swift in Sources */,
 				FF60EA4E1FC0DF74005C2BBA /* AvatarM.swift in Sources */,

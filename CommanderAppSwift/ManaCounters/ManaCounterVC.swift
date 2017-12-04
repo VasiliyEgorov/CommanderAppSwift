@@ -21,28 +21,56 @@ class ManaCounterVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = ManaCounterVM()
+        addSwipeGesture()
+        bindValue()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-       addSwipeGesture()
+       
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        updateUI()
+    private func bindValue() {
+        _ = viewModel.observableFirstCounter
+            .map({String($0)})
+            .observeNext(with: { (value) in
+                self.firstLabel.text = value
+            })
+        _ = viewModel.observableSecondCounter
+            .map({String($0)})
+            .observeNext(with: { (value) in
+                self.secondLabel.text = value
+            })
+        _ = viewModel.observableThirdCounter
+            .map({String($0)})
+            .observeNext(with: { (value) in
+                self.thirdLabel.text = value
+            })
+        _ = viewModel.observableFourthCounter
+            .map({String($0)})
+            .observeNext(with: { (value) in
+                self.fourthLabel.text = value
+            })
+        _ = viewModel.observableFifthCounter
+            .map({String($0)})
+            .observeNext(with: { (value) in
+                self.fifthLabel.text = value
+            })
+        _ = viewModel.observableSixthCounter
+            .map({String($0)})
+            .observeNext(with: { (value) in
+                self.sixthLabel.text = value
+            })
+        _ = viewModel.observableSeventhCounter
+            .map({String($0)})
+            .observeNext(with: { (value) in
+                self.seventhLabel.text = value
+            })
+        _ = viewModel.observableEighthCounter
+            .map({String($0)})
+            .observeNext(with: { (value) in
+                self.eighthLabel.text = value
+            })
     }
-    
-    func updateUI() {
-        firstLabel.text = String(viewModel.firstCounter)
-        secondLabel.text = String(viewModel.secondCounter)
-        thirdLabel.text = String(viewModel.thirdCounter)
-        fourthLabel.text = String(viewModel.fourthCounter)
-        fifthLabel.text = String(viewModel.fifthCounter)
-        sixthLabel.text = String(viewModel.sixthCounter)
-        seventhLabel.text = String(viewModel.seventhCounter)
-        eighthLabel.text = String(viewModel.eighthCounter)
-    }
- 
     // MARK: - Gestures
     private func addSwipeGesture() {
         let swipeGesture = UISwipeGestureRecognizer.init(target: self, action: #selector(leftSwipeAction))
@@ -55,11 +83,9 @@ class ManaCounterVC: UIViewController {
     // MARK: - Buttons
     @IBAction func countersButtonAction(_ sender: UIButton) {
         viewModel.countManawithButtonAction(tag: sender.tag)
-        updateUI()
     }
     @IBAction func resetButtonAction(_ sender: UIBarButtonItem) {
         viewModel.resetCounters()
-        updateUI()
     }
     @IBAction func notesButtonAction(_ sender: UIBarButtonItem) {
         self.tabBarController?.selectedIndex = 2

@@ -12,13 +12,10 @@ import ReactiveKit
 import CoreData
 
 class FirstCellViewModel {
-    private let manager = DataManager.sharedInstance
+    private unowned let manager = DataManager.sharedInstance
     private let lifeCountersIndex : LifeCountersIndex!
     private let playerCounter : PlayerMN!
     private let opponentCounter : OpponentMN!
-    private var index : Int {
-        return Int(lifeCountersIndex.screenIndex)
-    }
     var counter : Int64 {
         get {
         return getCurrentCounter(type: screenType)
@@ -36,7 +33,7 @@ class FirstCellViewModel {
         }
     }
     private var screenType : IndexEnum {
-        return IndexEnum(rawValue: self.index)!
+        return IndexEnum(rawValue: Int(lifeCountersIndex.screenIndex))!
     }
     private func countUp(counter: inout Int64) {
         counter += 1
@@ -56,22 +53,22 @@ class FirstCellViewModel {
         case .Opponent: opponentCounter.lifeCounters!.firstCounter = newValue
         }
     }
-    // MARK: - BOND Observing
-   // deinit {
-  //      NotificationCenter.default.removeObserver(self)
-  //  }
-  //  @objc func managedObjectContextObjectsDidChange(notification: NSNotification) {
- //       guard let userInfo = notification.userInfo else { return }
-  //      if let _ = userInfo[NSUpdatedObjectsKey] as? Set<LifeCountersIndex> {
- //          observableCounter.value = counter
- //       }
-//    }
+     //MARK: - BOND Observing
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    @objc func managedObjectContextObjectsDidChange(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        if let _ = userInfo[NSUpdatedObjectsKey] as? Set<LifeCountersIndex> {
+           observableCounter.value = counter
+        }
+    }
     var observableCounter : Observable<Int64>!
     init() {
         playerCounter = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN") as! PlayerMN
         opponentCounter = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN") as! OpponentMN
         lifeCountersIndex = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex") as! LifeCountersIndex
-     //   NotificationCenter.default.addObserver(self, selector:#selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: manager.mainQueueContext)
+        NotificationCenter.default.addObserver(self, selector:#selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: manager.mainQueueContext)
         observableCounter = Observable(counter)
     }
 }

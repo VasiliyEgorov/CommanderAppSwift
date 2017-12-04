@@ -9,36 +9,23 @@
 import Foundation
 import Bond
 import ReactiveKit
+import CoreData
 
 class ThirdCellViewModel {
     private let caretUp : Data? = Data.init(imageName: "caret-up.png")
     private let caretDown : Data? = Data.init(imageName: "caret-down.png")
-    private var manager = DataManager.sharedInstance
-    private var lifeCountersIndex : LifeCountersIndex {
-        let index = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex")
-        return index as! LifeCountersIndex
-    }
-    private var playerCounter : PlayerMN {
-        get {
-            let player = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN")
-            return player as! PlayerMN
-        }
-    }
-    private var opponentCounter : OpponentMN {
-        let opponent = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN")
-        return opponent as! OpponentMN
-    }
+    private unowned let manager = DataManager.sharedInstance
+    private let lifeCountersIndex : LifeCountersIndex!
+    private let playerCounter : PlayerMN!
+    private let opponentCounter : OpponentMN!
     var counter : Int64 {
         get {
             return getCurrentCounter(type: screenType)
         } set {
             observableThirdCounter.value = newValue
             setCurrentCounter(type: screenType, newValue: newValue)
-            DataManager.sharedInstance.saveContext()
+            manager.saveContext()
         }
-    }
-    private var index : Int {
-        return Int(lifeCountersIndex.screenIndex)
     }
     var isHiddenThirdRow : Bool {
         get {
@@ -46,7 +33,7 @@ class ThirdCellViewModel {
         } set {
             setCurrentInterface(type: screenType, isHidden: newValue)
             thirdRowImg = getCurrentRowImg(type: screenType, isHidden: isHiddenThirdRow)
-            DataManager.sharedInstance.saveContext()
+            manager.saveContext()
         }
     }
     private var thirdRowImg : Data? {
@@ -57,7 +44,7 @@ class ThirdCellViewModel {
         }
     }
     private var screenType : IndexEnum {
-        return IndexEnum(rawValue: self.index)!
+        return IndexEnum(rawValue: Int(lifeCountersIndex.screenIndex))!
     }
     private func countUp(counter: inout Int64) {
         counter += 1
@@ -110,10 +97,24 @@ class ThirdCellViewModel {
         }
     }
     // MARK: - BOND Observing
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    @objc func managedObjectContextObjectsDidChange(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        if let _ = userInfo[NSUpdatedObjectsKey] as? Set<LifeCountersIndex> {
+            observableThirdCounter.value = counter
+            observableThirdDataImage.value = thirdRowImg
+        }
+    }
     var observableThirdCounter : Observable<Int64>!
     var observableThirdDataImage : Observable<Data?>!
     init() {
+        playerCounter = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN") as! PlayerMN
+        opponentCounter = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN") as! OpponentMN
+        lifeCountersIndex = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex") as! LifeCountersIndex
         observableThirdCounter = Observable(counter)
         observableThirdDataImage = Observable(thirdRowImg)
+        NotificationCenter.default.addObserver(self, selector:#selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: manager.mainQueueContext)
     }
 }

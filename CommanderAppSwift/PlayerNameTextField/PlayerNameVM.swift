@@ -8,65 +8,57 @@
 
 import Foundation
 import CoreData
+import Bond
+import ReactiveKit
 
-enum IndexEnum : Int {
-    case Player = 0
-    case Opponent = 1
-}
-
-struct PlayerNameViewModel {
-    
-    private let model = PlayerNameModel()
-    
-    var placeholder : String {
-        return model.placeholderString
-    }
-    
-    var text : String {
+class PlayerNameViewModel {
+    private let player : PlayerMN!
+    private let opponent : OpponentMN!
+    private let lifeCountersIndex : LifeCountersIndex!
+    private unowned let manager = DataManager.sharedInstance
+  
+    var text : String? {
         get {
             return getTextForCurrentScreenType(type: screenType)
         }
         set {
             setTextForCurrentScreenType(text: text, type: screenType)
+            manager.saveContext()
         }
     }
-    
     private var screenType : IndexEnum {
-        return IndexEnum(rawValue: self.index)!
+        return IndexEnum(rawValue: Int(lifeCountersIndex.screenIndex))!
     }
-    private var index: Int {
-        return model.countersIndex
-    }
-    private var playerName : String {
-        get {
-           return model.player.name!
-        }
-        set {
-            model.player.name = playerName
-            DataManager.sharedInstance.saveContext()
-        }
-    }
-    private var opponentName : String {
-        get {
-           return model.opponent.name!
-        }
-        set {
-            model.opponent.name = opponentName
-            DataManager.sharedInstance.saveContext()
-        }
-    }
-    private func getTextForCurrentScreenType(type: IndexEnum) -> String {
+    private func getTextForCurrentScreenType(type: IndexEnum) -> String? {
        
         switch type {
-        case .Player: return playerName
-        case .Opponent: return opponentName
+        case .Player: return player.name
+        case .Opponent: return opponent.name
         
         }
     }
-    private mutating func setTextForCurrentScreenType(text: String, type: IndexEnum) {
+    private func setTextForCurrentScreenType(text: String?, type: IndexEnum) {
         switch type {
-        case .Player: playerName = text
-        case .Opponent: opponentName = text
+        case .Player: player.name = text
+        case .Opponent: opponent.name = text
     }
 }
+    //MARK: - BOND Observing
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    @objc func managedObjectContextObjectsDidChange(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        if let _ = userInfo[NSUpdatedObjectsKey] as? Set<LifeCountersIndex> {
+            observableText.value = text
+        }
+    }
+    var observableText : Observable<String?>!
+    init() {
+        player = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN") as! PlayerMN
+        opponent = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN") as! OpponentMN
+        lifeCountersIndex = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex") as! LifeCountersIndex
+        observableText = Observable(text)
+         NotificationCenter.default.addObserver(self, selector:#selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: manager.mainQueueContext)
+    }
 }

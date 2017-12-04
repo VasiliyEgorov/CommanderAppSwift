@@ -17,7 +17,7 @@ class FirstCounterCell: UITableViewCell {
                 .observeNext(with: { (value) in
                     self.firstCounterLabel.text = value
                 })
-            self.firstCounterLabel.text = String(viewModel.counter)
+           // self.firstCounterLabel.text = String(viewModel.counter)
         }
     }
     required init?(coder aDecoder: NSCoder) {

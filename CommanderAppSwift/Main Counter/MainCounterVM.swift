@@ -10,13 +10,8 @@ import Foundation
 
 
 class MainCounterVM {
-    private var manager = DataManager.sharedInstance
-    private var lifeCountersIndex : LifeCountersIndex {
-        get {
-            let lifeCountersIndex = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex")
-            return lifeCountersIndex as! LifeCountersIndex
-        }
-    }
+    private unowned let manager = DataManager.sharedInstance
+    private let lifeCountersIndex : LifeCountersIndex!
     var index : Int {
         get {
             return Int(lifeCountersIndex.screenIndex)
@@ -24,5 +19,8 @@ class MainCounterVM {
             lifeCountersIndex.screenIndex = Int64(newValue)
             manager.saveContext()
         }
+    }
+    init () {
+       lifeCountersIndex = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex") as! LifeCountersIndex
     }
 }

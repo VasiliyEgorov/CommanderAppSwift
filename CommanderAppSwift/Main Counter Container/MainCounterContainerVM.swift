@@ -12,23 +12,11 @@ import Bond
 
 class MainCounterContainerViewModel {
     private unowned let manager = DataManager.sharedInstance
-    private var playerCounter : PlayerMN {
-        let player = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN")
-        return player as! PlayerMN
-    }
-    private var opponentCounter : OpponentMN {
-        let opponent = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN")
-        return opponent as! OpponentMN
-    }
-    private var lifeCounterIndex : LifeCountersIndex {
-        let index = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex")
-        return index as! LifeCountersIndex
-    }
-    private var index : Int {
-        return Int(lifeCounterIndex.screenIndex)
-    }
+    private let playerCounter : PlayerMN!
+    private let opponentCounter : OpponentMN!
+    private let lifeCounterIndex : LifeCountersIndex!
     private var screenType : IndexEnum {
-        return IndexEnum(rawValue: index)!
+        return IndexEnum(rawValue: Int(lifeCounterIndex.screenIndex))!
     }
     private var isHiddenSecondRow : Bool {
         return getCurrentSecondRow(type: screenType)!
@@ -48,7 +36,7 @@ class MainCounterContainerViewModel {
         case .Opponent: return opponentCounter.interface?.isHiddenThirdRow
         }
     }
-    private var cellViewModelArray : [AnyObject] = [ZeroCounterViewModel(), FirstCellViewModel(), SecondCellViewModel(), ThirdCellViewModel(), FourthCellViewModel()]
+    private let cellViewModelArray : [AnyObject] = [ZeroCounterViewModel(), FirstCellViewModel(), SecondCellViewModel(), ThirdCellViewModel(), FourthCellViewModel()]
     
     func numberOfCounters() -> Int {
         return cellViewModelArray.count
@@ -58,22 +46,19 @@ class MainCounterContainerViewModel {
         return cellViewModelArray[index]
     }
     func setRowHeight(tableViewHeight: Float, section: Int) -> Float {
+       
         let rowHeight = (section, isHiddenSecondRow, isHiddenThirdRow)
         switch rowHeight {
         case (0, true, true): return tableViewHeight * 0.2
         case (0, false, true): return tableViewHeight * 0.1
-        case (0, false, false): return 0
         case (1, true, true): return tableViewHeight * 0.4
         case (1, false, true): return tableViewHeight * 0.3
         case (1, false, false): return tableViewHeight * 0.25
         case (2, true, true): return tableViewHeight * 0.4
         case (2, false, true): return tableViewHeight * 0.3
         case (2, false, false): return tableViewHeight * 0.25
-        case (3, true, true): return 0
         case (3, false, true): return tableViewHeight * 0.3
         case (3, false, false): return tableViewHeight * 0.25
-        case (4, true, true): return 0
-        case (4, false, true): return 0
         case (4, false, false): return tableViewHeight * 0.25
         default: return 0
         }
@@ -81,18 +66,17 @@ class MainCounterContainerViewModel {
     
    @objc func managedObjectContextObjectsDidChange(notification: NSNotification) {
        guard let userInfo = notification.userInfo else { return }
-     //   if let _ = userInfo[NSUpdatedObjectsKey] as? Set<LifeCountersIndex> {
-      //          observableIndex.value = index
-     //   }
         if let _ = userInfo[NSUpdatedObjectsKey] as? Set<InterfaceMN> {
                 observableRows.value = isHiddenSecondRow
         }
     }
-  //  var observableIndex : Observable<Int>!
     var observableRows = Observable<Bool>(false)
       init() {
-    //    NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: manager.mainQueueContext)
-      //  observableIndex = Observable(Int(index))
+        playerCounter = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN") as! PlayerMN
+        opponentCounter = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN") as! OpponentMN
+        lifeCounterIndex = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex") as! LifeCountersIndex
+        NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: manager.mainQueueContext)
+      
     }
  
 }

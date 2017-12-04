@@ -9,11 +9,9 @@
 import Foundation
 
 struct MenuViewModel {
-    private let model = MenuModel()
     private let manager = DataManager.sharedInstance
-    var cellsText : [String] {
-        return model.menuArray
-    }
+    let cellsText = ["Card search", "Roll a die", "Heads or tails", "Reset all counters"]
+    
     func resetCounters() {
         let lifeCountersIndex = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex") as! LifeCountersIndex
         manager.mainQueueContext.delete(lifeCountersIndex)

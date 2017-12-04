@@ -18,9 +18,17 @@ class MainNavController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         for vc in self.childViewControllers {
             switch vc {
-            case _ as MainCounterVC: self.navigationBar.isHidden = true
+            case _ as MainCounterVC: self.isNavigationBarHidden = true //self.navigationBar.isHidden = true
             case _ as ManaCounterVC: self.navigationBar.isHidden = true
             case let note as NotesVC:
                 self.navigationBar.isHidden = false
@@ -35,15 +43,6 @@ class MainNavController: UINavigationController {
                 self.navigationBar.isHidden = false
             }
         }
-      
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         self.navigationBar.isTranslucent = true
         self.navigationBar.shadowImage = UIImage()
         self.view.backgroundColor = .clear

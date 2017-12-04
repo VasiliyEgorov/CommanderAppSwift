@@ -10,16 +10,16 @@ import UIKit
 
 class PlayerNameV: UITextField, UITextFieldDelegate {
     
-    private let borderWidth : CGFloat = 1
-    var viewModel : PlayerNameViewModel
-    var bottomBorderLayer : CALayer
-    
+    private let borderWidth : CGFloat!
+    let bottomBorderLayer : CALayer!
+    var viewModel : PlayerNameViewModel!
     required init?(coder aDecoder: NSCoder) {
         viewModel = PlayerNameViewModel()
         bottomBorderLayer = CALayer()
+        borderWidth = 1
         super.init(coder: aDecoder)
         configXib()
-        makeBottomBorder(borderLayer: &bottomBorderLayer)
+        bindValue()
     }
     
     private func configXib() -> Void {
@@ -32,29 +32,30 @@ class PlayerNameV: UITextField, UITextFieldDelegate {
         self.autocorrectionType = .no
         self.minimumFontSize = 7
         self.adjustsFontSizeToFitWidth = true
-        self.font = UIFont.init(name: Constants().helvetica, size: 25)
-        self.placeholder = viewModel.placeholder
+        self.font = UIFont.init(name: Constants().helvetica, size: self.frame.size.height * 2.5/3)
+        self.bottomBorderLayer.borderColor = UIColor.lightGray.cgColor
+        self.bottomBorderLayer.borderWidth = self.borderWidth
+        self.bottomBorderLayer.frame = CGRect(origin: CGPoint.zero, size: CGSize.zero)
+        self.bottomBorderLayer.backgroundColor = UIColor.color_150withAlpha(alpha: 1).cgColor
+        self.layer.addSublayer(self.bottomBorderLayer)
     }
-    
-    private func makeBottomBorder(borderLayer: inout CALayer) -> Void {
-        borderLayer.borderColor = UIColor.lightGray.cgColor
-        borderLayer.borderWidth = self.borderWidth
-        borderLayer.frame = CGRect(origin: CGPoint.zero, size: CGSize.zero)
-        borderLayer.backgroundColor = UIColor.color_150withAlpha(alpha: 1).cgColor
-        
-        self.layer.addSublayer(borderLayer)
+    private func bindValue() {
+        _ = viewModel.observableText.observeNext(with: { (text) in
+            if let text = text {
+                self.text = text
+            }
+        })
     }
-    
-    private func correctBorderLayer(borderLayer: inout CALayer) {
-        borderLayer.frame = CGRect(x: 0, y: self.layer.frame.size.height, width: self.layer.frame.size.width, height: self.borderWidth)
-    }
-    
     override func layoutSubviews() {
-        correctBorderLayer(borderLayer: &self.bottomBorderLayer)
-        self.text = viewModel.text
+        super.layoutSubviews()
+        self.bottomBorderLayer.frame = CGRect(x: 0, y: self.layer.frame.size.height, width: self.layer.frame.size.width, height: self.borderWidth)
+        self.font = UIFont.init(name: Constants().helvetica, size: self.frame.size.height * 2.5/3)
     }
     // MARK TextFieldDelegate
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
         viewModel.text = textField.text!
     }

@@ -14,22 +14,16 @@ extension UITabBar {
         sizeThatFits.height = 0
         return sizeThatFits
     }
-  
 }
 
 class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-      //  let mainCountersVC = MainNavController.init(rootViewController: MainCounterVC.init(nibName: "MainCounterVC", bundle: nil))
-        
-      //  let manaCountersVC = MainNavController.init(rootViewController: MainCounterVC.init(nibName: "ManaCounterVC", bundle: nil))
-     //   let notesVC = MainNavController.init(rootViewController: NotesVC.init(nibName: "NotesVC", bundle: nil))
-        
-        
+        self.delegate = self
         let viewControllers = [MainNavController.init(rootViewController: MainCounterVC.init(nibName: "MainCounterVC", bundle: nil)),
-                               MainNavController.init(rootViewController: ManaCounterVC.init(nibName: "ManaCounterVC", bundle: nil))]
+                               MainNavController.init(rootViewController: ManaCounterVC.init(nibName: "ManaCounterVC", bundle: nil)),
+                               MainNavController.init(rootViewController: NotesVC.init(nibName: "NotesVC", bundle: nil))]
         self.setViewControllers(viewControllers, animated: true)
         self.selectedIndex = 0
     }

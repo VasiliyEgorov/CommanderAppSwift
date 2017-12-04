@@ -14,32 +14,18 @@ import CoreData
 class SecondCellViewModel {
     private let caretUp : Data? = Data.init(imageName: "caret-up.png")
     private let caretDown : Data? = Data.init(imageName: "caret-down.png")
-    private var manager = DataManager.sharedInstance
-    private var lifeCountersIndex : LifeCountersIndex {
-        let index = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex")
-        return index as! LifeCountersIndex
-    }
-    private var playerCounter : PlayerMN {
-        get {
-            let player = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN")
-            return player as! PlayerMN
-        }
-    }
-    private var opponentCounter : OpponentMN {
-        let opponent = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN")
-        return opponent as! OpponentMN
-    }
+    private unowned let manager = DataManager.sharedInstance
+    private let lifeCountersIndex : LifeCountersIndex!
+    private let playerCounter : PlayerMN!
+    private let opponentCounter : OpponentMN!
     var counter : Int64 {
         get {
             return getCurrentCounter(type: screenType)
         } set {
             observableCounter.value = newValue
             setCurrentCounter(type: screenType, newValue: newValue)
-            DataManager.sharedInstance.saveContext()
+            manager.saveContext()
         }
-    }
-    private var index : Int {
-        return Int(lifeCountersIndex.screenIndex)
     }
     var isHiddenSecondRow : Bool {
         get {
@@ -47,7 +33,7 @@ class SecondCellViewModel {
         } set {
             setCurrentInterface(type: screenType, newValue: newValue)
             secondRowImg = getCurrentRowImg(type: screenType, isHidden: isHiddenSecondRow)
-            DataManager.sharedInstance.saveContext()
+            manager.saveContext()
         }
     }
     private var secondRowImg : Data? {
@@ -59,7 +45,7 @@ class SecondCellViewModel {
     }
    
     private var screenType : IndexEnum {
-        return IndexEnum(rawValue: self.index)!
+        return IndexEnum(rawValue: Int(lifeCountersIndex.screenIndex))!
     }
     private func countUp(counter: inout Int64) {
         counter += 1
@@ -111,22 +97,25 @@ class SecondCellViewModel {
         default: break
         }
     }
-    // MARK: - BOND Observing
-   // deinit {
-  //      NotificationCenter.default.removeObserver(self)
-  //  }
- //   @objc func managedObjectContextObjectsDidChange(notification: NSNotification) {
-  //      guard let userInfo = notification.userInfo else { return }
-  //      if let _ = userInfo[NSUpdatedObjectsKey] as? Set<LifeCountersIndex> {
- //           observableCounter.value = counter
-  //          observableDataImage.value = secondRowImg
-  //      }
-  //  }
+     //MARK: - BOND Observing
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    @objc func managedObjectContextObjectsDidChange(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        if let _ = userInfo[NSUpdatedObjectsKey] as? Set<LifeCountersIndex> {
+            observableCounter.value = counter
+            observableDataImage.value = secondRowImg
+        }
+    }
    
     var observableCounter : Observable<Int64>!
     var observableDataImage : Observable<Data?>!
     init() {
-     //    NotificationCenter.default.addObserver(self, selector:#selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: manager.mainQueueContext)
+        playerCounter = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN") as! PlayerMN
+        opponentCounter = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN") as! OpponentMN
+        lifeCountersIndex = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex") as! LifeCountersIndex
+         NotificationCenter.default.addObserver(self, selector:#selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: manager.mainQueueContext)
         observableCounter = Observable(counter)
         observableDataImage = Observable(secondRowImg)
     }
