@@ -6,5 +6,6 @@ target 'CommanderAppSwift' do
   use_frameworks!
 
  pod 'SWRevealViewController', '~> 2.3'
-
+ pod 'ReactiveKit'
+ pod 'Bond'
 end

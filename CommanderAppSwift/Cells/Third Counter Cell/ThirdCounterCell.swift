@@ -8,13 +8,21 @@
 
 import UIKit
 
-class ThirdCounterCell: UITableViewCell, UITextFieldDelegate {
-    @IBOutlet weak var caretButton: UIButton!
+class ThirdCounterCell: UITableViewCell {
+    @IBOutlet weak var thirdCaretButton: UIButton!
     @IBOutlet weak var thirdCounterLabel: MainCountersLabel!
     @IBOutlet weak var thirdCounterName: UITextField!
     var viewModel : ThirdCellViewModel! {
         didSet {
-            updateAllUI()
+            _ = viewModel.observableThirdCounter.map({String($0)})
+                .observeNext(with: { (value) in
+                    self.thirdCounterLabel.text = value
+                })
+            _ = viewModel.observableThirdDataImage?.observeNext(with: { (thirdData) in
+                if let data = thirdData {
+                    self.thirdCaretButton.setBackgroundImage(data.uiImage, for: .normal)
+                }
+            })
         }
     }
     required init?(coder aDecoder: NSCoder) {
@@ -22,47 +30,22 @@ class ThirdCounterCell: UITableViewCell, UITextFieldDelegate {
         self.selectionStyle = .none
         self.contentView.backgroundColor = .clear
         self.backgroundColor = .clear
+        
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        thirdCounterName.backgroundColor = .clear
-        thirdCounterName.textColor = UIColor.color_150withAlpha(alpha: 1)
-        thirdCounterName.tintColor = UIColor.color_150withAlpha(alpha: 1)
         thirdCounterName.isUserInteractionEnabled = true
     }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        let atrString = NSMutableAttributedString.init(string: "Enter General Name", attributes:
-            [NSAttributedStringKey.foregroundColor : UIColor.color_150withAlpha(alpha: 1),
-             NSAttributedStringKey.font: UIFont.init(name: Constants().helvetica, size: self.frame.size.height * 2/3)!])
-        thirdCounterName.attributedPlaceholder = atrString
-        thirdCounterName.font = UIFont.init(name: Constants().helvetica, size: self.frame.size.height * 2/3)
-    }
-    // MARK: - Update UI
     
-    private func updateAllUI() {
-        thirdCounterLabel.text = String(viewModel.counter)
-        
-        switch viewModel.isHiddenThirdRow {
-        case true:
-            caretButton.setBackgroundImage(viewModel.secondRowImg?.uiImage, for: .normal)
-            viewModel.isHiddenThirdRow = false
-        case false:
-            caretButton.setBackgroundImage(viewModel.secondRowImg?.uiImage, for: .normal)
-            viewModel.isHiddenThirdRow = true
-        }
-    }
     @IBAction func countersButtonAction(_ sender: UIButton) {
-        thirdCounterLabel.text = String(viewModel.countLifeOnButtonAction(tag: sender.tag))
+        viewModel.countLifeOnButtonAction(tag: sender.tag)
     }
-    @IBAction func caretButtonAction(_ sender: UIButton) {
-        switch viewModel.isHiddenThirdRow {
+    @IBAction func thirdCaretButtonAction(_ sender: UIButton) {
+        switch self.viewModel.isHiddenThirdRow {
         case true:
-            caretButton.setBackgroundImage(viewModel.secondRowImg?.uiImage, for: .normal)
-            viewModel.isHiddenThirdRow = false
+            self.viewModel.isHiddenThirdRow = false
         case false:
-            caretButton.setBackgroundImage(viewModel.secondRowImg?.uiImage, for: .normal)
-            viewModel.isHiddenThirdRow = true
+            self.viewModel.isHiddenThirdRow = true
         }
     }
 }

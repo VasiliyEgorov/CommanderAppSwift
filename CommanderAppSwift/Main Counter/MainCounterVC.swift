@@ -15,6 +15,8 @@ class MainCounterVC: UIViewController, UIGestureRecognizerDelegate {
     private var childController : MainCounterContainerVC!
     @IBOutlet weak var containerView: UIView!
     
+    @IBOutlet weak var changeCounterSecondBtn: ChangeCounterButton!
+    @IBOutlet weak var changeCounterFirstBtn: ChangeCounterButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = MainCounterVM()
@@ -58,7 +60,7 @@ class MainCounterVC: UIViewController, UIGestureRecognizerDelegate {
         self.view.addGestureRecognizer(rightSwipe)
     }
     @objc private func leftSwipeAction() {
-        
+       
     }
     @objc private func rightSwipeAction() {
         
@@ -66,6 +68,12 @@ class MainCounterVC: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - Gestures Delegate
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
+    }
+    // MARK: - Reload Child TableView
+    private func reloadChildTableView() {
+        let range = NSRange(location: 0, length: self.childController.tableView.numberOfSections)
+        let indexSet = NSIndexSet(indexesIn: range)
+        self.childController.tableView.reloadSections(indexSet as IndexSet, with: .fade)
     }
     // MARK: - Buttons
     @IBAction func resetButtonAction(_ sender: UIBarButtonItem) {
@@ -88,13 +96,25 @@ class MainCounterVC: UIViewController, UIGestureRecognizerDelegate {
     @IBAction func notesButtonAction(_ sender: UIBarButtonItem) {
         self.tabBarController?.selectedIndex = 2
     }
-    @IBAction func countersButtonsAction(_ sender: UIButton) {
-     //   self.childController.tableView.beginUpdates()
+
+    @IBAction func firstChangeCountersButtonAction(_ sender: UIButton) {
+        self.changeCounterSecondBtn.isSelected = false
+        self.changeCounterFirstBtn.isSelected = true
         viewModel.index = sender.tag
-      //  self.childController.tableView.endUpdates()
-     //   self.childController.tableView.reloadData()
+        //reloadChildTableView()
+        self.childController.tableView.beginUpdates()
+        self.childController.tableView.endUpdates()
+    }
+    @IBAction func secondChangeCountersButtonAction(_ sender: UIButton) {
+        self.changeCounterSecondBtn.isSelected = true
+        self.changeCounterFirstBtn.isSelected = false
+        viewModel.index = sender.tag
+       // reloadChildTableView()
+        self.childController.tableView.beginUpdates()
+        self.childController.tableView.endUpdates()
     }
     @IBAction func manaCountersButtonAction(_ sender: UIButton) {
+        self.tabBarController?.selectedIndex = 1
     }
     
 }

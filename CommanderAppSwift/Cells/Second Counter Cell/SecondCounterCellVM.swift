@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Bond
+import ReactiveKit
 import CoreData
 
 class SecondCellViewModel {
@@ -31,11 +33,12 @@ class SecondCellViewModel {
         get {
             return getCurrentCounter(type: screenType)
         } set {
+            observableCounter.value = newValue
             setCurrentCounter(type: screenType, newValue: newValue)
             DataManager.sharedInstance.saveContext()
         }
     }
-    var index : Int {
+    private var index : Int {
         return Int(lifeCountersIndex.screenIndex)
     }
     var isHiddenSecondRow : Bool {
@@ -43,12 +46,16 @@ class SecondCellViewModel {
             return getCurrentInterface(type: screenType)!
         } set {
             setCurrentInterface(type: screenType, newValue: newValue)
+            secondRowImg = getCurrentRowImg(type: screenType, isHidden: isHiddenSecondRow)
             DataManager.sharedInstance.saveContext()
-            
         }
     }
-    var secondRowImg : Data? {
+    private var secondRowImg : Data? {
+        get {
            return getCurrentRowImg(type: screenType, isHidden: isHiddenSecondRow)
+        } set {
+            observableDataImage.value = newValue
+        }
     }
    
     private var screenType : IndexEnum {
@@ -97,12 +104,30 @@ class SecondCellViewModel {
         default:return nil
         }
     }
-     func countLifeOnButtonAction(tag: Int) -> Int64 {
+     func countLifeOnButtonAction(tag: Int) {
         switch tag {
         case 0: countUp(counter: &counter)
         case 1: countDown(counter: &counter)
         default: break
         }
-        return counter
+    }
+    // MARK: - BOND Observing
+   // deinit {
+  //      NotificationCenter.default.removeObserver(self)
+  //  }
+ //   @objc func managedObjectContextObjectsDidChange(notification: NSNotification) {
+  //      guard let userInfo = notification.userInfo else { return }
+  //      if let _ = userInfo[NSUpdatedObjectsKey] as? Set<LifeCountersIndex> {
+ //           observableCounter.value = counter
+  //          observableDataImage.value = secondRowImg
+  //      }
+  //  }
+   
+    var observableCounter : Observable<Int64>!
+    var observableDataImage : Observable<Data?>!
+    init() {
+     //    NotificationCenter.default.addObserver(self, selector:#selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: manager.mainQueueContext)
+        observableCounter = Observable(counter)
+        observableDataImage = Observable(secondRowImg)
     }
 }

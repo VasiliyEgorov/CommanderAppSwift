@@ -73,6 +73,9 @@
 		FF3340221FB9033C00E980AA /* NotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3340201FB9033C00E980AA /* NotesCell.swift */; };
 		FF3340231FB9033C00E980AA /* NotesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3340211FB9033C00E980AA /* NotesTableViewCell.xib */; };
 		FF3340251FB9046A00E980AA /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3340241FB9046900E980AA /* UIColorExtension.swift */; };
+		FF5440181FD4F60E0065C87A /* CountersTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5440171FD4F60E0065C87A /* CountersTextField.swift */; };
+		FF54401A1FD4FA820065C87A /* ChangeCounterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5440191FD4FA820065C87A /* ChangeCounterButton.swift */; };
+		FF54401C1FD4FC800065C87A /* CountersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF54401B1FD4FC800065C87A /* CountersButton.swift */; };
 		FF60EA2E1FBC977F005C2BBA /* TabBarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF60EA2D1FBC977F005C2BBA /* TabBarVC.xib */; };
 		FF60EA321FBD927C005C2BBA /* MainCounterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA311FBD927C005C2BBA /* MainCounterVM.swift */; };
 		FF60EA371FBD9D1D005C2BBA /* PlayerNameV.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA361FBD9D1D005C2BBA /* PlayerNameV.swift */; };
@@ -184,6 +187,9 @@
 		FF3340201FB9033C00E980AA /* NotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCell.swift; sourceTree = "<group>"; };
 		FF3340211FB9033C00E980AA /* NotesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesTableViewCell.xib; sourceTree = "<group>"; };
 		FF3340241FB9046900E980AA /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		FF5440171FD4F60E0065C87A /* CountersTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountersTextField.swift; sourceTree = "<group>"; };
+		FF5440191FD4FA820065C87A /* ChangeCounterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCounterButton.swift; sourceTree = "<group>"; };
+		FF54401B1FD4FC800065C87A /* CountersButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountersButton.swift; sourceTree = "<group>"; };
 		FF60EA2D1FBC977F005C2BBA /* TabBarVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarVC.xib; sourceTree = "<group>"; };
 		FF60EA311FBD927C005C2BBA /* MainCounterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCounterVM.swift; sourceTree = "<group>"; };
 		FF60EA361FBD9D1D005C2BBA /* PlayerNameV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNameV.swift; sourceTree = "<group>"; };
@@ -262,6 +268,9 @@
 			children = (
 				FF1BBAEF1FC3A72E009271C4 /* ManaLabel.swift */,
 				FF1BBAF61FC4A781009271C4 /* MainCountersLabel.swift */,
+				FF5440171FD4F60E0065C87A /* CountersTextField.swift */,
+				FF5440191FD4FA820065C87A /* ChangeCounterButton.swift */,
+				FF54401B1FD4FC800065C87A /* CountersButton.swift */,
 			);
 			path = separateViews;
 			sourceTree = "<group>";
@@ -730,10 +739,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CommanderAppSwift/Pods-CommanderAppSwift-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bond/Bond.framework",
+				"${BUILT_PRODUCTS_DIR}/Differ/Differ.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveKit/ReactiveKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SWRevealViewController/SWRevealViewController.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bond.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differ.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWRevealViewController.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -802,6 +817,7 @@
 				FF3340041FB5BE0D00E980AA /* MainCounterVC.swift in Sources */,
 				FF1BBB381FC66CC2009271C4 /* HeadsOrTailsVC.swift in Sources */,
 				FF1BBAEA1FC273AA009271C4 /* ManaCounterVM.swift in Sources */,
+				FF54401A1FD4FA820065C87A /* ChangeCounterButton.swift in Sources */,
 				FF1BBB4D1FC7C822009271C4 /* NotesM.swift in Sources */,
 				FF333FFD1FB5B92500E980AA /* TabBarViewController.swift in Sources */,
 				FF1BBB981FCC19A2009271C4 /* MainNavToolBar.swift in Sources */,
@@ -823,6 +839,7 @@
 				FF60EA591FC0F9F1005C2BBA /* UIImageExtension.swift in Sources */,
 				FF60EA4A1FC0DE80005C2BBA /* AvatarLayerView.swift in Sources */,
 				FF1BBB401FC78F1A009271C4 /* MainCountersAlertVC.swift in Sources */,
+				FF5440181FD4F60E0065C87A /* CountersTextField.swift in Sources */,
 				FF60EA551FC0F7C8005C2BBA /* RandomAvatarM.swift in Sources */,
 				FF1BBAFD1FC4CB88009271C4 /* SecondCounterCell.swift in Sources */,
 				FF60EA531FC0F7BF005C2BBA /* RandomAvatarVM.swift in Sources */,
@@ -841,6 +858,7 @@
 				FF1BBB121FC4FEBB009271C4 /* FourthCounterCellVM.swift in Sources */,
 				FF60EA431FBE13FC005C2BBA /* NSManagedObjectExtension.swift in Sources */,
 				FF1BBAF31FC3B15E009271C4 /* FirstCounterCellVM.swift in Sources */,
+				FF54401C1FD4FC800065C87A /* CountersButton.swift in Sources */,
 				FF1BBB241FC63596009271C4 /* MenuVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -936,7 +954,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -987,7 +1005,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1003,6 +1021,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6R5CTCNFL9;
 				INFOPLIST_FILE = CommanderAppSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vasiliyegorov.CommanderAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1019,6 +1038,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6R5CTCNFL9;
 				INFOPLIST_FILE = CommanderAppSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vasiliyegorov.CommanderAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";

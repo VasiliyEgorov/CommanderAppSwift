@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import Bond
 
 class MainCounterContainerViewModel {
     private unowned let manager = DataManager.sharedInstance
@@ -77,18 +78,21 @@ class MainCounterContainerViewModel {
         default: return 0
         }
     }
-    /*
-    @objc func managedObjectContextObjectsDidChange(notification: NSNotification) {
-        guard let userInfo = notification.userInfo else { return }
-        if let changes = userInfo[NSUpdatedObjectsKey] as? Set<LifeCountersIndex> {
-            for lifeCountersIndexMN in changes {
-                
-            }
+    
+   @objc func managedObjectContextObjectsDidChange(notification: NSNotification) {
+       guard let userInfo = notification.userInfo else { return }
+     //   if let _ = userInfo[NSUpdatedObjectsKey] as? Set<LifeCountersIndex> {
+      //          observableIndex.value = index
+     //   }
+        if let _ = userInfo[NSUpdatedObjectsKey] as? Set<InterfaceMN> {
+                observableRows.value = isHiddenSecondRow
         }
     }
-    var observ : Int!
+  //  var observableIndex : Observable<Int>!
+    var observableRows = Observable<Bool>(false)
       init() {
-        NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: manager.mainQueueContext)
+    //    NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: manager.mainQueueContext)
+      //  observableIndex = Observable(Int(index))
     }
- */
+ 
 }

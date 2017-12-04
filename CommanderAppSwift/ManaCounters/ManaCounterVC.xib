@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -351,6 +352,9 @@
                         <constraint firstAttribute="width" secondItem="hwI-aq-N3a" secondAttribute="height" multiplier="1:1" id="pUm-b2-oxe"/>
                     </constraints>
                     <state key="normal" backgroundImage="heartstroke"/>
+                    <connections>
+                        <action selector="changeCounterButtonAction:" destination="-1" eventType="touchUpInside" id="NST-5E-HIN"/>
+                    </connections>
                 </button>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1LP-JD-oaY" customClass="MainNavToolBar" customModule="CommanderAppSwift" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="623" width="375" height="44"/>

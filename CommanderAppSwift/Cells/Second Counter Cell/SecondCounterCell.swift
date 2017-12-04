@@ -15,7 +15,16 @@ class SecondCounterCell: UITableViewCell {
     @IBOutlet weak var secondCounterName: UITextField!
     var viewModel : SecondCellViewModel! {
         didSet {
-            updateAllUI()
+            _ = viewModel.observableCounter.map({String($0)})
+                .observeNext(with: { (value) in
+                    self.secondCounterLabel.text = value
+                })
+            _ = viewModel.observableDataImage?.observeNext(with: { (data) in
+                if let data = data {
+                    self.caretButton.setBackgroundImage(data.uiImage, for: .normal)
+                }
+            })
+            self.secondCounterLabel.text = String(viewModel.counter)
         }
     }
     
@@ -28,51 +37,21 @@ class SecondCounterCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        secondCounterName.backgroundColor = .clear
-        secondCounterName.textColor = UIColor.color_150withAlpha(alpha: 1)
-        secondCounterName.tintColor = UIColor.color_150withAlpha(alpha: 1)
         secondCounterName.isUserInteractionEnabled = false
-        secondCounterName.text = "Poison Counter"
-        
-    }
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        secondCounterName.font = UIFont.init(name: Constants().helvetica, size: self.frame.size.height * 2/3)
     }
 
-    // MARK: - Update UI
-    
-    private func updateAllUI() {
-        secondCounterLabel.text = String(viewModel.counter)
-        
-        switch viewModel.isHiddenSecondRow {
-        case true:
-            caretButton.setBackgroundImage(viewModel.secondRowImg?.uiImage, for: .normal)
-            viewModel.isHiddenSecondRow = false
-        case false:
-            caretButton.setBackgroundImage(viewModel.secondRowImg?.uiImage, for: .normal)
-            viewModel.isHiddenSecondRow = true
-        }
-    }
-    
-    // MARK: - Buttons
-    
     @IBAction func countersButtonAction(_ sender: UIButton) {
-        secondCounterLabel.text = String(viewModel.countLifeOnButtonAction(tag: sender.tag))
+       viewModel.countLifeOnButtonAction(tag: sender.tag)
         
     }
     @IBAction func caretButtonAction(_ sender: UIButton) {
-        switch viewModel.isHiddenSecondRow {
+        switch self.viewModel.isHiddenSecondRow {
         case true:
-            caretButton.setBackgroundImage(viewModel.secondRowImg?.uiImage, for: .normal)
-            viewModel.isHiddenSecondRow = false
+            self.viewModel.isHiddenSecondRow = false
         case false:
-            caretButton.setBackgroundImage(viewModel.secondRowImg?.uiImage, for: .normal)
-            viewModel.isHiddenSecondRow = true
+            self.viewModel.isHiddenSecondRow = true
+        }
     }
-}
+    
  
 }

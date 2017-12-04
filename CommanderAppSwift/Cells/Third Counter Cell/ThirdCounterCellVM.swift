@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Bond
+import ReactiveKit
 
 class ThirdCellViewModel {
     private let caretUp : Data? = Data.init(imageName: "caret-up.png")
@@ -30,6 +32,7 @@ class ThirdCellViewModel {
         get {
             return getCurrentCounter(type: screenType)
         } set {
+            observableThirdCounter.value = newValue
             setCurrentCounter(type: screenType, newValue: newValue)
             DataManager.sharedInstance.saveContext()
         }
@@ -41,15 +44,18 @@ class ThirdCellViewModel {
         get {
             return getCurrentInterface(type: screenType)!
         } set {
-            setCurrentInterface(type: screenType, isHidden: isHiddenThirdRow)
+            setCurrentInterface(type: screenType, isHidden: newValue)
+            thirdRowImg = getCurrentRowImg(type: screenType, isHidden: isHiddenThirdRow)
             DataManager.sharedInstance.saveContext()
         }
     }
-    var secondRowImg : Data? {
+    private var thirdRowImg : Data? {
+        get {
         return getCurrentRowImg(type: screenType, isHidden: isHiddenThirdRow)
+        } set {
+            observableThirdDataImage.value = newValue
+        }
     }
-    
-    
     private var screenType : IndexEnum {
         return IndexEnum(rawValue: self.index)!
     }
@@ -71,8 +77,8 @@ class ThirdCellViewModel {
     }
     private func setCurrentCounter(type: IndexEnum, newValue: Int64) {
         switch type {
-        case .Player: playerCounter.lifeCounters!.secondCounter = newValue
-        case .Opponent: opponentCounter.lifeCounters!.secondCounter = newValue
+        case .Player: playerCounter.lifeCounters!.thirdCounter = newValue
+        case .Opponent: opponentCounter.lifeCounters!.thirdCounter = newValue
         }
     }
     private func getCurrentInterface(type: IndexEnum) -> Bool? {
@@ -96,13 +102,18 @@ class ThirdCellViewModel {
         default:return nil
         }
     }
-    func countLifeOnButtonAction(tag: Int) -> Int64 {
+    func countLifeOnButtonAction(tag: Int) {
         switch tag {
         case 0: countUp(counter: &counter)
         case 1: countDown(counter: &counter)
         default: break
         }
-        return counter
     }
-    
+    // MARK: - BOND Observing
+    var observableThirdCounter : Observable<Int64>!
+    var observableThirdDataImage : Observable<Data?>!
+    init() {
+        observableThirdCounter = Observable(counter)
+        observableThirdDataImage = Observable(thirdRowImg)
+    }
 }

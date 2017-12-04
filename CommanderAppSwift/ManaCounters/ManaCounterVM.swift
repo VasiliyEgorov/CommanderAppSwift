@@ -13,12 +13,8 @@ import Foundation
 class ManaCounterVM {
     
     private let manager = DataManager.sharedInstance
-    private var manaCounters : ManaCountersMN {
-        get {
-            let mana = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "ManaCountersMN")
-            return mana as! ManaCountersMN
-        }
-    }
+    private let manaCounters : ManaCountersMN!
+    
     var firstCounter : Int64 {
         get {
         return manaCounters.firstCounter
@@ -85,8 +81,8 @@ class ManaCounterVM {
     }
     func countManawithButtonAction(tag: Int) {
         switch tag {
-        case 0: countUp(counter: &firstCounter)
-        case 1: countUp(counter: &secondCounter)
+        case 0: countUp(counter: &manaCounters.firstCounter)
+        case 1: countUp(counter: &manaCounters.secondCounter)
         case 2: countUp(counter: &thirdCounter)
         case 3: countUp(counter: &fourthCounter)
         case 4: countUp(counter: &fifthCounter)
@@ -124,5 +120,8 @@ class ManaCounterVM {
         self.sixthCounter = 0
         self.seventhCounter = 0
         self.eighthCounter = 0
+    }
+    init () {
+        manaCounters = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "ManaCountersMN") as! ManaCountersMN
     }
 }

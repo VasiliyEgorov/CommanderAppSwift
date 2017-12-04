@@ -4,12 +4,18 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeueLights.ttc">
+            <string>HelveticaNeue-Thin</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SecondCounterCell" customModule="CommanderAppSwift" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -27,21 +33,22 @@
                         <rect key="frame" x="41" y="14" width="365" height="121"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MHJ-aO-HaE">
-                                <rect key="frame" x="0.0" y="0.0" width="365" height="48"/>
+                                <rect key="frame" x="0.0" y="0.0" width="365" height="42.5"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9sy-aT-NnA">
-                                        <rect key="frame" x="0.0" y="0.0" width="365" height="48"/>
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Poison Counter" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9sy-aT-NnA" customClass="CountersTextField" customModule="CommanderAppSwift" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="365" height="42.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="27"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lQ5-S5-h1g">
-                                <rect key="frame" x="0.0" y="53" width="365" height="68"/>
+                                <rect key="frame" x="0.0" y="47.5" width="365" height="73.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpe-qo-0GD">
-                                        <rect key="frame" x="0.0" y="0.0" width="68" height="68"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpe-qo-0GD" customClass="CountersButton" customModule="CommanderAppSwift" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="73.5" height="73.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="cpe-qo-0GD" secondAttribute="height" multiplier="1:1" id="roV-CK-xBN"/>
                                         </constraints>
@@ -51,13 +58,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Chq-4b-3Rn" customClass="MainCountersLabel" customModule="CommanderAppSwift" customModuleProvider="target">
-                                        <rect key="frame" x="68" y="0.0" width="229" height="68"/>
+                                        <rect key="frame" x="73.5" y="0.0" width="218" height="73.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsx-jq-115">
-                                        <rect key="frame" x="297" y="0.0" width="68" height="68"/>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsx-jq-115" customClass="CountersButton" customModule="CommanderAppSwift" customModuleProvider="target">
+                                        <rect key="frame" x="291.5" y="0.0" width="73.5" height="73.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="bsx-jq-115" secondAttribute="height" multiplier="1:1" id="1PU-pZ-utW"/>
                                         </constraints>
@@ -70,7 +77,7 @@
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="MHJ-aO-HaE" firstAttribute="height" secondItem="lQ5-S5-h1g" secondAttribute="height" multiplier="0.7" priority="999" id="UsN-7c-rhg"/>
+                            <constraint firstItem="MHJ-aO-HaE" firstAttribute="height" secondItem="AkZ-8N-ENm" secondAttribute="height" multiplier="0.35" id="1OG-hh-PXY"/>
                         </constraints>
                     </stackView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwY-SU-bBT">
@@ -80,7 +87,7 @@
                         </constraints>
                         <state key="normal" backgroundImage="caret-down"/>
                         <connections>
-                            <action selector="caretButtonAction:" destination="KCz-Vw-9sw" eventType="touchUpInside" id="CwO-si-YfI"/>
+                            <action selector="caretButtonAction:" destination="KCz-Vw-9sw" eventType="touchUpInside" id="I7K-ui-NQy"/>
                         </connections>
                     </button>
                 </subviews>

@@ -11,9 +11,11 @@ import UIKit
 class MainNavToolBar: UIToolbar {
 
     override func layoutSubviews() {
+        super.layoutSubviews()
         self.isTranslucent = true
         self.setBackgroundImage(UIImage(), forToolbarPosition: UIBarPosition.bottom, barMetrics: UIBarMetrics.default)
         self.backgroundColor = .clear
         self.tintColor = UIColor.color_150withAlpha(alpha: 1)
+        self.sizeToFit()
     }
 }

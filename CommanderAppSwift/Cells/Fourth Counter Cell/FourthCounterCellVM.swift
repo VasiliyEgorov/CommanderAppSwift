@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Bond
+import ReactiveKit
 
 class FourthCellViewModel {
     private let manager = DataManager.sharedInstance
@@ -31,17 +33,17 @@ class FourthCellViewModel {
         get {
             return getCurrentCounter(type: screenType)
         } set {
+            observableCounter.value = newValue
             setCurrentCounter(type: screenType, newValue: newValue)
             DataManager.sharedInstance.saveContext()
         }
     }
-    func countLifeOnButtonAction(tag: Int) -> Int64 {
+    func countLifeOnButtonAction(tag: Int) {
         switch tag {
         case 0: countUp(counter: &counter)
         case 1: countDown(counter: &counter)
         default: break
         }
-        return counter
     }
     private var screenType : IndexEnum {
         return IndexEnum(rawValue: self.index)!
@@ -63,5 +65,10 @@ class FourthCellViewModel {
         case .Player: playerCounter.lifeCounters!.secondCounter = newValue
         case .Opponent: opponentCounter.lifeCounters!.secondCounter = newValue
         }
+    }
+    // MARK: - BOND Observing
+    var observableCounter : Observable<Int64>!
+    init() {
+        observableCounter = Observable(counter)
     }
 }

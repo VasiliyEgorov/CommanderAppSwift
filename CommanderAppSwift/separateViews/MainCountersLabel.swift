@@ -18,4 +18,5 @@ class MainCountersLabel: ManaLabel {
         configureSublayer()
         self.font = UIFont.init(name: Constants().helvetica, size: self.frame.size.height * 2.5/3)
     }
+    
 }
