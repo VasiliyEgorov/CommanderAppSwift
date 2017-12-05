@@ -10,12 +10,21 @@ import Foundation
 import UIKit
 
 class NotesDetailsViewModel {
-    private weak var manager : DataManager!
-    var attributedText : NSAttributedString?
-    
+    private unowned let manager = DataManager.sharedInstance
+    private let note : NotesMN!
+    var attributedText : NSAttributedString {
+        get {
+        return setAttributedStringFor(note: note)
+        } set {
+            note.attributedText = newValue
+        }
+    }
+    func save() {
+        manager.saveContext()
+    }
     private func setAttributedStringFor(note: NotesMN) -> NSAttributedString {
-        if let string = note.attributedText as? NSAttributedString {
-            return string
+        if note.attributedText != nil {
+            return note.attributedText as! NSAttributedString
         } else {
             let newAtrString = NSAttributedString.init(string: Constants().empty, attributes: [NSAttributedStringKey.foregroundColor : UIColor.color_150withAlpha(alpha: 1),
                                                                                                NSAttributedStringKey.font : UIFont.init(name: Constants().helvetica, size: 19)!])
@@ -24,6 +33,6 @@ class NotesDetailsViewModel {
     }
     
     required init(note: NotesMN) {
-        self.attributedText = setAttributedStringFor(note: note)
+        self.note = note
     }
 }

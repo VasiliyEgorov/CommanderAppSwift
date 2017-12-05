@@ -39,7 +39,7 @@
         <attribute name="avatar" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="avatarPlaceholder" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="fourthCounterName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" defaultValueString="Enter Name" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="thirdCounterName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="interface" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="InterfaceMN" inverseName="opponent" inverseEntity="InterfaceMN" syncable="YES"/>
@@ -49,7 +49,7 @@
         <attribute name="avatar" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="avatarPlaceholder" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="fourthCounterName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" defaultValueString="Enter Name" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="thirdCounterName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="interface" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="InterfaceMN" inverseName="player" inverseEntity="InterfaceMN" syncable="YES"/>
         <relationship name="lifeCounters" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LifeCountersMN" inverseName="player" inverseEntity="LifeCountersMN" syncable="YES"/>

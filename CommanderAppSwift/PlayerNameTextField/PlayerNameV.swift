@@ -41,8 +41,15 @@ class PlayerNameV: UITextField, UITextFieldDelegate {
     }
     private func bindValue() {
         _ = viewModel.observableText.observeNext(with: { (text) in
-            if let text = text {
+            if !text.isEmpty {
                 self.text = text
+                
+            } else {
+                self.text = nil
+                let atrString = NSMutableAttributedString.init(string: "Enter Name", attributes:
+                    [NSAttributedStringKey.foregroundColor : UIColor.color_150withAlpha(alpha: 0.8),
+                     NSAttributedStringKey.font: UIFont.init(name: Constants().helvetica, size: self.frame.size.height * 2.5/3)!])
+                self.attributedPlaceholder = atrString
             }
         })
     }

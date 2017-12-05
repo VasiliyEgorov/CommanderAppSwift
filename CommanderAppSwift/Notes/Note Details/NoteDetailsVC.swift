@@ -12,24 +12,37 @@ class NoteDetailsVC: UIViewController, UITextViewDelegate {
     @IBOutlet weak var noteTextView: UITextView!
     var viewModel: NotesDetailsViewModel! {
         didSet {
-            self.noteTextView.attributedText = viewModel.attributedText
+            
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         addSwipeGesture()
         addNotifications()
+        setupTextView()
+        setupController()
+        self.noteTextView.attributedText = viewModel.attributedText
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel.attributedText = self.noteTextView.attributedText
+        viewModel.save()
+    }
     private func setupTextView() {
         self.noteTextView.delegate = self
         self.noteTextView.tintColor = UIColor.color_150withAlpha(alpha: 1)
         self.noteTextView.textContainerInset = UIEdgeInsetsMake(10, -5, 10, -5)
-        
+        self.noteTextView.backgroundColor = .clear
+    }
+    private func setupController() {
+        let cloudButton = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(cloudButtonAction(_:)))
+        let doneButton = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action: #selector(doneButtonAction(_:)))
+        self.navigationItem.rightBarButtonItems = [cloudButton, doneButton]
     }
     // MARK - Gestures
     private func addSwipeGesture() {
@@ -50,6 +63,7 @@ class NoteDetailsVC: UIViewController, UITextViewDelegate {
         
     }
     @objc func doneButtonAction(_ sender: UIBarButtonItem) {
+        self.noteTextView.resignFirstResponder()
     }
     // MARK: - Notifications
     private func addNotifications() {

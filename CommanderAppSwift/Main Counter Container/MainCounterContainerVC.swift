@@ -9,6 +9,8 @@
 import UIKit
 import Bond
 import ReactiveKit
+import SWRevealViewController
+
 fileprivate enum Cells : Int {
     case Zero = 0
     case First = 1
@@ -43,8 +45,6 @@ class MainCounterContainerVC: UIViewController, UITableViewDelegate, UITableView
         self.tableView.register(UINib.init(nibName: "ThirdCounterCell", bundle: nil), forCellReuseIdentifier: thirdCellID)
         self.tableView.register(UINib.init(nibName: "FourthCounterCell", bundle: nil), forCellReuseIdentifier: fourthCellID)
         self.tableView.separatorStyle = .none
-        self.tableView.tableFooterView = UIView.init(frame: CGRect.zero)
-
     }
   
     override func didReceiveMemoryWarning() {
@@ -87,6 +87,7 @@ class MainCounterContainerVC: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
     }
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let spacingView = UIView.init()
         spacingView.backgroundColor = .clear
@@ -96,6 +97,7 @@ class MainCounterContainerVC: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
       
         return CGFloat(viewModel.setRowHeight(tableViewHeight: Float(self.view.frame.size.height), section: indexPath.section))
+        
     }
  
     // MARK: - Gestures
@@ -108,9 +110,13 @@ class MainCounterContainerVC: UIViewController, UITableViewDelegate, UITableView
         self.view.addGestureRecognizer(rightSwipe)
     }
     @objc private func leftSwipeAction() {
-        self.tabBarController?.selectedIndex = 1
+        if self.revealViewController().frontViewPosition != FrontViewPosition.right {
+            self.tabBarController?.selectedIndex = 1
+        }
     }
     @objc private func rightSwipeAction() {
-        self.tabBarController?.selectedIndex = 2
+        if self.revealViewController().frontViewPosition != FrontViewPosition.right {
+            self.tabBarController?.selectedIndex = 2
+        }
     }
 }

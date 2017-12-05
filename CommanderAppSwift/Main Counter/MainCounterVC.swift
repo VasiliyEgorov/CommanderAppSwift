@@ -36,10 +36,7 @@ class MainCounterVC: UIViewController, UIGestureRecognizerDelegate {
         self.view.addConstraint(bottom)
         
         childController.view.translatesAutoresizingMaskIntoConstraints = false
-      //  self.navigationController?.isNavigationBarHidden = true
-        
-       
-        print(self.navigationController?.navigationBar.frame.size.height as Any)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,8 +45,7 @@ class MainCounterVC: UIViewController, UIGestureRecognizerDelegate {
     }
     // MARK: SWReveal Button
     @IBAction func menuButtonAction(_ sender: UIButton) {
-        let swreveal : SWRevealViewController = revealViewController()
-        swreveal.revealToggle(sender)
+        self.revealViewController().revealToggle(sender)
     }
     // MARK: - Gestures
     private func addSwipeGestures() {
@@ -63,10 +59,14 @@ class MainCounterVC: UIViewController, UIGestureRecognizerDelegate {
         self.view.addGestureRecognizer(rightSwipe)
     }
     @objc private func leftSwipeAction() {
-       
+        if self.revealViewController().frontViewPosition != FrontViewPosition.right {
+            self.tabBarController?.selectedIndex = 1
+        }
     }
     @objc private func rightSwipeAction() {
-        
+        if self.revealViewController().frontViewPosition != FrontViewPosition.right {
+            self.tabBarController?.selectedIndex = 2
+        }
     }
     // MARK: - Gestures Delegate
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -93,7 +93,7 @@ class MainCounterVC: UIViewController, UIGestureRecognizerDelegate {
         }
         let alertVC = MainCountersAlertVC.init(nibName: "MainCountersAlertVC", bundle: nil)
         alertVC.modalTransitionStyle = .crossDissolve
-        alertVC.modalPresentationStyle = .fullScreen
+        alertVC.modalPresentationStyle = .overFullScreen
         self.present(alertVC, animated: true, completion: nil)
     }
     @IBAction func notesButtonAction(_ sender: UIBarButtonItem) {
@@ -101,20 +101,20 @@ class MainCounterVC: UIViewController, UIGestureRecognizerDelegate {
     }
 
     @IBAction func firstChangeCountersButtonAction(_ sender: UIButton) {
+        if !sender.isSelected {
         self.changeCounterSecondBtn.isSelected = false
         self.changeCounterFirstBtn.isSelected = true
         viewModel.index = sender.tag
-        
         reloadChildTableView()
-        
+        }
     }
     @IBAction func secondChangeCountersButtonAction(_ sender: UIButton) {
+        if !sender.isSelected {
         self.changeCounterSecondBtn.isSelected = true
         self.changeCounterFirstBtn.isSelected = false
         viewModel.index = sender.tag
-       
         reloadChildTableView()
-       
+        }
     }
     @IBAction func manaCountersButtonAction(_ sender: UIButton) {
         self.tabBarController?.selectedIndex = 1

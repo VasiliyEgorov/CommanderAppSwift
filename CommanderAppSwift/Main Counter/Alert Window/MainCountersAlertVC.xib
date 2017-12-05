@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -28,10 +29,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zI1-fi-o2P">
-                    <rect key="frame" x="56" y="266.5" width="262.5" height="133"/>
+                    <rect key="frame" x="37.5" y="233" width="300" height="200"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3MH-uW-Vvm">
-                            <rect key="frame" x="20" y="46" width="222.5" height="40"/>
+                            <rect key="frame" x="20" y="79.5" width="260" height="40"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="60"/>
                             <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -42,7 +43,7 @@
                         <constraint firstItem="3MH-uW-Vvm" firstAttribute="centerX" secondItem="zI1-fi-o2P" secondAttribute="centerX" id="4S4-AV-Zia"/>
                         <constraint firstItem="3MH-uW-Vvm" firstAttribute="centerY" secondItem="zI1-fi-o2P" secondAttribute="centerY" id="5pg-p9-dkO"/>
                         <constraint firstAttribute="trailing" secondItem="3MH-uW-Vvm" secondAttribute="trailing" constant="20" id="Z9b-iW-vwr"/>
-                        <constraint firstItem="3MH-uW-Vvm" firstAttribute="height" secondItem="zI1-fi-o2P" secondAttribute="height" multiplier="0.3" id="bX7-Nt-dbO"/>
+                        <constraint firstItem="3MH-uW-Vvm" firstAttribute="height" secondItem="zI1-fi-o2P" secondAttribute="height" multiplier="0.2" id="bX7-Nt-dbO"/>
                         <constraint firstItem="3MH-uW-Vvm" firstAttribute="leading" secondItem="zI1-fi-o2P" secondAttribute="leading" constant="20" id="pF5-Ms-uP2"/>
                     </constraints>
                 </view>
@@ -50,9 +51,9 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="zI1-fi-o2P" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="2Uf-G7-eMD"/>
-                <constraint firstItem="zI1-fi-o2P" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.7" id="8k9-PB-DDQ"/>
+                <constraint firstItem="zI1-fi-o2P" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.8" id="8k9-PB-DDQ"/>
                 <constraint firstItem="zI1-fi-o2P" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Weo-KR-xW8"/>
-                <constraint firstItem="zI1-fi-o2P" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.2" id="qks-MS-p7A"/>
+                <constraint firstItem="zI1-fi-o2P" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.3" id="qks-MS-p7A"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>

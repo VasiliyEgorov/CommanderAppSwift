@@ -24,6 +24,7 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         viewModel = MenuViewModel()
         setupTableView()
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
     }
 
     override func didReceiveMemoryWarning() {

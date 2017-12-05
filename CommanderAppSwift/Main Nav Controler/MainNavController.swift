@@ -8,18 +8,12 @@
 
 import UIKit
 
-fileprivate extension Selector {
-    static let cloudButtonAction = #selector(NoteDetailsVC.cloudButtonAction)
-    static let doneButtonAction = #selector(NoteDetailsVC.doneButtonAction)
-    static let editButtonAction = #selector(NotesVC.editButtonAction)
-}
-
 class MainNavController: UINavigationController {
-
+   
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -29,18 +23,8 @@ class MainNavController: UINavigationController {
         for vc in self.childViewControllers {
             switch vc {
             case _ as MainCounterVC: self.isNavigationBarHidden = true //self.navigationBar.isHidden = true
-            case _ as ManaCounterVC: self.navigationBar.isHidden = true
-            case let note as NotesVC:
-                self.navigationBar.isHidden = false
-                let editButton = UIBarButtonItem.init(barButtonSystemItem: .edit, target: note, action: #selector(note.editButtonAction(_:)))
-                note.navigationItem.rightBarButtonItems? = [editButton]
-            case let noteDetails as NoteDetailsVC:
-                self.navigationBar.isHidden = false
-                let cloudButton = UIBarButtonItem.init(barButtonSystemItem: .action, target: noteDetails, action: #selector(noteDetails.cloudButtonAction(_:)))
-                let doneButton = UIBarButtonItem.init(barButtonSystemItem: .done, target: noteDetails, action: #selector(noteDetails.doneButtonAction(_:)))
-                noteDetails.navigationItem.rightBarButtonItems? = [cloudButton, doneButton]
-            default:
-                self.navigationBar.isHidden = false
+            case _ as ManaCounterVC: self.isNavigationBarHidden = true
+            default: self.navigationBar.isHidden = false
             }
         }
         self.navigationBar.isTranslucent = true

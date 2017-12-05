@@ -49,17 +49,17 @@ class MainCounterContainerViewModel {
        
         let rowHeight = (section, isHiddenSecondRow, isHiddenThirdRow)
         switch rowHeight {
-        case (0, true, true): return tableViewHeight * 0.2
+        case (0, true, true): return tableViewHeight * 0.15
         case (0, false, true): return tableViewHeight * 0.1
-        case (1, true, true): return tableViewHeight * 0.4
+        case (1, true, true): return tableViewHeight * 0.3
         case (1, false, true): return tableViewHeight * 0.3
         case (1, false, false): return tableViewHeight * 0.25
-        case (2, true, true): return tableViewHeight * 0.4
+        case (2, true, true): return tableViewHeight * 0.3
         case (2, false, true): return tableViewHeight * 0.3
         case (2, false, false): return tableViewHeight * 0.25
         case (3, false, true): return tableViewHeight * 0.3
         case (3, false, false): return tableViewHeight * 0.25
-        case (4, false, false): return tableViewHeight * 0.25
+        case (4, false, false): return tableViewHeight * 0
         default: return 0
         }
     }

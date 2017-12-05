@@ -25,7 +25,7 @@ extension NSManagedObjectContext {
     
    
     
-    func obtainArrayOfMNWithEntityName(entityName: String, predicate: NSPredicate?) -> [Any?] {
+    func obtainArrayOfMNWithEntityName(entityName: String, predicate: NSPredicate?) -> [Any] {
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         
@@ -33,14 +33,14 @@ extension NSManagedObjectContext {
             request.predicate = predicate
         }
  
-        var array : [Any] = Array()
         do {
-             array = try self.fetch(request)
+            let array = try self.fetch(request)
+            return array
         } catch {
             let error = error as NSError
             fatalError("Unresolved error \(error), \(error.userInfo)")
         }
-        return array
+        
     }
     
 }

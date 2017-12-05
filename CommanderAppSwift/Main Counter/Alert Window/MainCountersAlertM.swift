@@ -9,6 +9,6 @@
 import Foundation
 
 struct MainCountersAlertModel {
-    let screenOnMsg = "Screen auto lock ON"
-    let screenOffMsg = "Screen auto lock OFF"
+    let screenOnMsg = "Screen autolock ON"
+    let screenOffMsg = "Screen autolock OFF"
 }

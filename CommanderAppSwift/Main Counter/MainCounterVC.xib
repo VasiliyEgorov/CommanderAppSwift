@@ -38,7 +38,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BCZ-k8-TSr">
                             <rect key="frame" x="0.0" y="0.0" width="69" height="69"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQs-jK-JzH" customClass="ChangeCounterButton" customModule="CommanderAppSwift" customModuleProvider="target">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQs-jK-JzH" customClass="ChangeCounterButton" customModule="CommanderAppSwift" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="69" height="69"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="OQs-jK-JzH" secondAttribute="height" multiplier="1:1" id="nRr-2v-7FD"/>
@@ -68,7 +68,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ckD-pN-b5k">
                             <rect key="frame" x="303.66666666666669" y="0.0" width="69" height="69"/>
                             <subviews>
-                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jwt-7D-hiO" customClass="ChangeCounterButton" customModule="CommanderAppSwift" customModuleProvider="target">
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jwt-7D-hiO" customClass="ChangeCounterButton" customModule="CommanderAppSwift" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="69" height="69"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="jwt-7D-hiO" secondAttribute="height" multiplier="1:1" id="YsK-6a-AhE"/>

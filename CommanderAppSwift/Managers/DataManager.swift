@@ -79,7 +79,8 @@ final class DataManager {
                 let manaCounter = ManaCountersMN(context: self.mainQueueContext)
                 let playerInterface = InterfaceMN(context: self.mainQueueContext)
                 let opponentInterface = InterfaceMN(context: self.mainQueueContext)
-               
+                player.name = ""
+                opponent.name = ""
                 player.lifeCounters = playerMainCounters
                 player.lifeCounters?.countersIndex = lifeCountersIndex
                 player.manaCounter = manaCounter

@@ -8,15 +8,41 @@
 
 import UIKit
 
-class MainCountersLabel: ManaLabel {
+class MainCountersLabel: UILabel {
+    var maskLayer : CAShapeLayer?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupXib()
     }
-    override func layoutSubviews() {
-        configureSublayer()
-        self.font = UIFont.init(name: Constants().helvetica, size: self.frame.size.height * 2.5/3)
+    func setupXib() {
+        self.adjustsFontSizeToFitWidth = true
+        self.textColor = UIColor.color_150withAlpha(alpha: 1)
+        self.layer.masksToBounds = true
+        
     }
-    
+    func configureSublayer () {
+        if let layer = self.maskLayer {
+            layer.removeFromSuperlayer()
+        }
+        
+        let width : CGFloat = self.layer.superlayer!.frame.size.width / 4
+        let height : CGFloat = self.layer.superlayer!.frame.size.height + 1
+        let fromY : CGFloat = 0
+        let fromX : CGFloat = width - (width / 4)
+        let newFrame = CGRect(x: fromX, y: fromY, width: width, height: height)
+        
+        self.maskLayer = CAShapeLayer()
+        self.maskLayer!.path = UIBezierPath(roundedRect: newFrame, byRoundingCorners: .allCorners, cornerRadii: CGSize(width: 10, height: 10)).cgPath
+        self.maskLayer!.fillColor = UIColor.color_20().cgColor
+        self.maskLayer!.strokeColor = UIColor.color_20().cgColor
+        self.maskLayer!.frame = newFrame
+        
+        self.layer.superlayer?.insertSublayer(self.maskLayer!, at: 0)
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        configureSublayer()
+        self.font = UIFont.init(name: Constants().helvetica, size: self.frame.size.height * 2/3)
+    }
 }

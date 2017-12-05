@@ -9,10 +9,9 @@
 import UIKit
 
 class ManaLabel: UILabel {
-    var maskLayer : CAShapeLayer
+    var maskLayer : CAShapeLayer?
     private let screenSize = UIScreen.main.bounds.size.height
     required init?(coder aDecoder: NSCoder) {
-        self.maskLayer = CAShapeLayer()
         super.init(coder: aDecoder)
         setupXib()
     }
@@ -23,7 +22,9 @@ class ManaLabel: UILabel {
         
     }
      func configureSublayer () {
-        self.maskLayer.removeFromSuperlayer()
+        if let layer = self.maskLayer {
+            layer.removeFromSuperlayer()
+        }
         
         let width : CGFloat = self.layer.superlayer!.frame.size.width / 4
         let height : CGFloat = self.layer.superlayer!.frame.size.height + 1
@@ -32,14 +33,15 @@ class ManaLabel: UILabel {
         let newFrame = CGRect(x: fromX, y: fromY, width: width, height: height)
         
         self.maskLayer = CAShapeLayer()
-        self.maskLayer.path = UIBezierPath(roundedRect: newFrame, byRoundingCorners: .allCorners, cornerRadii: CGSize(width: 10, height: 10)).cgPath
-        self.maskLayer.fillColor = UIColor.color_20().cgColor
-        self.maskLayer.strokeColor = UIColor.color_20().cgColor
-        self.maskLayer.frame = newFrame
+        self.maskLayer!.path = UIBezierPath(roundedRect: newFrame, byRoundingCorners: .allCorners, cornerRadii: CGSize(width: 10, height: 10)).cgPath
+        self.maskLayer!.fillColor = UIColor.color_20().cgColor
+        self.maskLayer!.strokeColor = UIColor.color_20().cgColor
+        self.maskLayer!.frame = newFrame
         
-        self.layer.superlayer?.insertSublayer(self.maskLayer, at: 0)
+        self.layer.superlayer?.insertSublayer(self.maskLayer!, at: 0)
     }
     override func layoutSubviews() {
+        super.layoutSubviews()
         configureSublayer()
         self.font = UIFont.init(name: Constants().helvetica, size: self.frame.size.height * 2/3)
     }

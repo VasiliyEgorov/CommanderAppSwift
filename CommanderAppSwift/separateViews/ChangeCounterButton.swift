@@ -12,7 +12,7 @@ class ChangeCounterButton: UIButton {
 
     override var isHighlighted: Bool {
         didSet {
-            super.isSelected = false
+            super.isHighlighted = false
         }
     }
     override var isSelected: Bool {

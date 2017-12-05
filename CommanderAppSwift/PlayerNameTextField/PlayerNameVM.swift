@@ -17,30 +17,31 @@ class PlayerNameViewModel {
     private let lifeCountersIndex : LifeCountersIndex!
     private unowned let manager = DataManager.sharedInstance
   
-    var text : String? {
+    var text : String {
         get {
             return getTextForCurrentScreenType(type: screenType)
         }
         set {
-            setTextForCurrentScreenType(text: text, type: screenType)
+            setTextForCurrentScreenType(newValue: newValue, type: screenType)
+            observableText.value = newValue
             manager.saveContext()
         }
     }
     private var screenType : IndexEnum {
         return IndexEnum(rawValue: Int(lifeCountersIndex.screenIndex))!
     }
-    private func getTextForCurrentScreenType(type: IndexEnum) -> String? {
+    private func getTextForCurrentScreenType(type: IndexEnum) -> String {
        
         switch type {
-        case .Player: return player.name
-        case .Opponent: return opponent.name
+        case .Player: return player.name!
+        case .Opponent: return opponent.name!
         
         }
     }
-    private func setTextForCurrentScreenType(text: String?, type: IndexEnum) {
+    private func setTextForCurrentScreenType(newValue: String, type: IndexEnum) {
         switch type {
-        case .Player: player.name = text
-        case .Opponent: opponent.name = text
+        case .Player: player.name = newValue
+        case .Opponent: opponent.name = newValue
     }
 }
     //MARK: - BOND Observing
@@ -53,7 +54,7 @@ class PlayerNameViewModel {
             observableText.value = text
         }
     }
-    var observableText : Observable<String?>!
+    var observableText : Observable<String>!
     init() {
         player = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN") as! PlayerMN
         opponent = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN") as! OpponentMN

@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,7 +25,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SXf-7H-7pb">
-                    <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                    <rect key="frame" x="0.0" y="44" width="375" height="579"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="EYb-0J-CIo"/>
@@ -67,7 +68,7 @@
                 <constraint firstItem="TiJ-Hi-7fI" firstAttribute="top" secondItem="6VW-1R-Qdm" secondAttribute="top" id="NvR-lS-Jhz"/>
                 <constraint firstItem="SXf-7H-7pb" firstAttribute="leading" secondItem="Rto-Ax-xLG" secondAttribute="leading" id="YfE-p6-sMd"/>
                 <constraint firstItem="vE0-oN-615" firstAttribute="leading" secondItem="Rto-Ax-xLG" secondAttribute="leading" id="dQp-c8-5sJ"/>
-                <constraint firstItem="SXf-7H-7pb" firstAttribute="top" secondItem="Rto-Ax-xLG" secondAttribute="top" constant="44" id="hfv-eG-gZC"/>
+                <constraint firstItem="SXf-7H-7pb" firstAttribute="top" secondItem="Rto-Ax-xLG" secondAttribute="top" constant="24" id="hfv-eG-gZC"/>
                 <constraint firstItem="TiJ-Hi-7fI" firstAttribute="leading" secondItem="Rto-Ax-xLG" secondAttribute="leading" id="pix-0i-Ac1"/>
                 <constraint firstItem="SXf-7H-7pb" firstAttribute="trailing" secondItem="Rto-Ax-xLG" secondAttribute="trailing" id="sOY-nR-BGC"/>
             </constraints>
