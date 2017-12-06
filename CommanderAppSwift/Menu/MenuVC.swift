@@ -66,7 +66,7 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         cell.backgroundColor = .clear
         cell.contentView.backgroundColor = .clear
     }
-    /*
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let menuItems : MenuEnum = MenuEnum(rawValue: indexPath.row)!
         switch menuItems {
@@ -74,13 +74,18 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             self.revealViewController().revealToggle(animated: false)
             
         case .HeadsOrTails:
+            let headsOrTailsVC = HeadsOrTailsVC.init(nibName: "HeadsOrTailsVC", bundle: nil)
+            self.present(headsOrTailsVC, animated: true, completion: {
+                self.revealViewController().revealToggle(animated: true)
+            })
         case .RollADie:
-        case .ResetAllCounters:
+            let rollADieVC = RollADieVC.init(nibName: "RollADieVC", bundle: nil)
+            self.present(rollADieVC, animated: true, completion: {
+                self.revealViewController().revealToggle(animated: true)
+            })
+      //  case .ResetAllCounters:
         default:break
             
         }
     }
-   
-    */
-    
 }

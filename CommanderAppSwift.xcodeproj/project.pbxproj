@@ -73,6 +73,12 @@
 		FF54401A1FD4FA820065C87A /* ChangeCounterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5440191FD4FA820065C87A /* ChangeCounterButton.swift */; };
 		FF54401C1FD4FC800065C87A /* CountersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF54401B1FD4FC800065C87A /* CountersButton.swift */; };
 		FF54401E1FD5BE790065C87A /* FourthCounterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF54401D1FD5BE790065C87A /* FourthCounterCell.xib */; };
+		FF5440201FD6A8B90065C87A /* CameraActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF54401F1FD6A8B90065C87A /* CameraActionSheetView.swift */; };
+		FF5440221FD7A5C30065C87A /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5440211FD7A5C30065C87A /* CameraVC.swift */; };
+		FF5440261FD7A5F40065C87A /* cameraXIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5440251FD7A5F40065C87A /* cameraXIB.xib */; };
+		FF5440281FD7A70D0065C87A /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5440271FD7A70D0065C87A /* CameraView.swift */; };
+		FF54402A1FD7A7620065C87A /* AudioSessionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5440291FD7A7620065C87A /* AudioSessionData.swift */; };
+		FF54402C1FD7A7700065C87A /* CameraData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF54402B1FD7A7700065C87A /* CameraData.swift */; };
 		FF60EA2E1FBC977F005C2BBA /* TabBarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF60EA2D1FBC977F005C2BBA /* TabBarVC.xib */; };
 		FF60EA321FBD927C005C2BBA /* MainCounterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA311FBD927C005C2BBA /* MainCounterVM.swift */; };
 		FF60EA371FBD9D1D005C2BBA /* PlayerNameV.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA361FBD9D1D005C2BBA /* PlayerNameV.swift */; };
@@ -183,6 +189,12 @@
 		FF5440191FD4FA820065C87A /* ChangeCounterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCounterButton.swift; sourceTree = "<group>"; };
 		FF54401B1FD4FC800065C87A /* CountersButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountersButton.swift; sourceTree = "<group>"; };
 		FF54401D1FD5BE790065C87A /* FourthCounterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FourthCounterCell.xib; sourceTree = "<group>"; };
+		FF54401F1FD6A8B90065C87A /* CameraActionSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraActionSheetView.swift; sourceTree = "<group>"; };
+		FF5440211FD7A5C30065C87A /* CameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
+		FF5440251FD7A5F40065C87A /* cameraXIB.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = cameraXIB.xib; sourceTree = "<group>"; };
+		FF5440271FD7A70D0065C87A /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		FF5440291FD7A7620065C87A /* AudioSessionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSessionData.swift; sourceTree = "<group>"; };
+		FF54402B1FD7A7700065C87A /* CameraData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraData.swift; sourceTree = "<group>"; };
 		FF60EA2D1FBC977F005C2BBA /* TabBarVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarVC.xib; sourceTree = "<group>"; };
 		FF60EA311FBD927C005C2BBA /* MainCounterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCounterVM.swift; sourceTree = "<group>"; };
 		FF60EA361FBD9D1D005C2BBA /* PlayerNameV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNameV.swift; sourceTree = "<group>"; };
@@ -479,6 +491,8 @@
 			isa = PBXGroup;
 			children = (
 				FF333FCB1FB5A5C500E980AA /* AppDelegate.swift */,
+				FF5440231FD7A5CC0065C87A /* Camera */,
+				FF5440241FD7A5D60065C87A /* Alerts */,
 				FF1BBB9B1FCC1A03009271C4 /* Tab Bar View Controller */,
 				FF1BBB9A1FCC19E8009271C4 /* Main Nav Controler */,
 				FF1BBB351FC66CAB009271C4 /* Heads Or Tails */,
@@ -518,6 +532,26 @@
 				FF333FF01FB5A5C700E980AA /* Info.plist */,
 			);
 			path = CommanderAppSwiftUITests;
+			sourceTree = "<group>";
+		};
+		FF5440231FD7A5CC0065C87A /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				FF5440211FD7A5C30065C87A /* CameraVC.swift */,
+				FF54402B1FD7A7700065C87A /* CameraData.swift */,
+				FF5440271FD7A70D0065C87A /* CameraView.swift */,
+				FF5440291FD7A7620065C87A /* AudioSessionData.swift */,
+				FF5440251FD7A5F40065C87A /* cameraXIB.xib */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		FF5440241FD7A5D60065C87A /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				FF54401F1FD6A8B90065C87A /* CameraActionSheetView.swift */,
+			);
+			path = Alerts;
 			sourceTree = "<group>";
 		};
 		FF60EA351FBD9CF0005C2BBA /* PlayerNameTextField */ = {
@@ -691,6 +725,7 @@
 				FF60EA2E1FBC977F005C2BBA /* TabBarVC.xib in Resources */,
 				FF1BBB301FC66C86009271C4 /* RollADieVC.xib in Resources */,
 				FF54401E1FD5BE790065C87A /* FourthCounterCell.xib in Resources */,
+				FF5440261FD7A5F40065C87A /* cameraXIB.xib in Resources */,
 				FF33401F1FB9031200E980AA /* NotesVC.xib in Resources */,
 				FF33400B1FB5BE9E00E980AA /* MenuVC.xib in Resources */,
 				FF3340151FB8FBEC00E980AA /* MainCounterContainerVC.xib in Resources */,
@@ -785,6 +820,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF1BBB451FC792F7009271C4 /* MainCountersAlertM.swift in Sources */,
+				FF54402A1FD7A7620065C87A /* AudioSessionData.swift in Sources */,
 				FF1BBB061FC4FE15009271C4 /* ThirdCounterCell.swift in Sources */,
 				FF60EA4C1FC0DF6A005C2BBA /* AvatarVM.swift in Sources */,
 				FF1BBB321FC66C9B009271C4 /* RollADieVM.swift in Sources */,
@@ -793,6 +829,7 @@
 				FF1BBB491FC7C4CE009271C4 /* ZeroCounterCell.swift in Sources */,
 				FF3340251FB9046A00E980AA /* UIColorExtension.swift in Sources */,
 				FF60EA321FBD927C005C2BBA /* MainCounterVM.swift in Sources */,
+				FF5440221FD7A5C30065C87A /* CameraVC.swift in Sources */,
 				FF1BBB8E1FC89192009271C4 /* NotesCellVM.swift in Sources */,
 				FF33400F1FB615A200E980AA /* MainNavController.swift in Sources */,
 				FF1BBAF01FC3A72E009271C4 /* ManaLabel.swift in Sources */,
@@ -825,6 +862,7 @@
 				FF60EA4A1FC0DE80005C2BBA /* AvatarLayerView.swift in Sources */,
 				FF1BBB401FC78F1A009271C4 /* MainCountersAlertVC.swift in Sources */,
 				FF5440181FD4F60E0065C87A /* CountersTextField.swift in Sources */,
+				FF5440201FD6A8B90065C87A /* CameraActionSheetView.swift in Sources */,
 				FF60EA551FC0F7C8005C2BBA /* RandomAvatarM.swift in Sources */,
 				FF1BBAFD1FC4CB88009271C4 /* SecondCounterCell.swift in Sources */,
 				FF60EA531FC0F7BF005C2BBA /* RandomAvatarVM.swift in Sources */,
@@ -832,6 +870,7 @@
 				FF1BBB3B1FC66CD3009271C4 /* HeadsOrTailsVM.swift in Sources */,
 				FF60EA391FBD9D2B005C2BBA /* PlayerNameVM.swift in Sources */,
 				FF60EA4E1FC0DF74005C2BBA /* AvatarM.swift in Sources */,
+				FF54402C1FD7A7700065C87A /* CameraData.swift in Sources */,
 				FF1BBBA91FD2D5C8009271C4 /* ZeroCounterCellVM.swift in Sources */,
 				FF1BBB0B1FC4FE60009271C4 /* ThirdCounterCellVM.swift in Sources */,
 				FF1BBB001FC4CBBB009271C4 /* SecondCounterCellVM.swift in Sources */,
@@ -839,6 +878,7 @@
 				FF60EA571FC0F9E4005C2BBA /* DataExtension.swift in Sources */,
 				FF1BBB0F1FC4FE83009271C4 /* FourthCounterCell.swift in Sources */,
 				FF60EA3D1FBDA395005C2BBA /* Constants.swift in Sources */,
+				FF5440281FD7A70D0065C87A /* CameraView.swift in Sources */,
 				FF1BBB121FC4FEBB009271C4 /* FourthCounterCellVM.swift in Sources */,
 				FF60EA431FBE13FC005C2BBA /* NSManagedObjectExtension.swift in Sources */,
 				FF1BBAF31FC3B15E009271C4 /* FirstCounterCellVM.swift in Sources */,
