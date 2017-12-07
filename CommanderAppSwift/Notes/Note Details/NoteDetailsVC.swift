@@ -8,8 +8,11 @@
 
 import UIKit
 
-class NoteDetailsVC: UIViewController, UITextViewDelegate, CameraActionSheetDelegate {
+class NoteDetailsVC: UIViewController, UITextViewDelegate, CameraActionSheetDelegate, CameraPhotoDelegate {
     @IBOutlet weak var noteTextView: UITextView!
+    @IBOutlet weak var keyboardButtonsView: keyboardButtonsView!
+    private var cloudButton : UIBarButtonItem!
+    private var cameraAlertSheet : CameraActionSheet!
     var viewModel: NotesDetailsViewModel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,9 +20,12 @@ class NoteDetailsVC: UIViewController, UITextViewDelegate, CameraActionSheetDele
         addNotifications()
         setupTextView()
         setupNavigationButtons()
+        setupAlertWindow()
         self.noteTextView.attributedText = viewModel.attributedText
     }
-
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -30,10 +36,11 @@ class NoteDetailsVC: UIViewController, UITextViewDelegate, CameraActionSheetDele
             noteTextView.becomeFirstResponder()
         }
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        viewModel.attributedText = self.noteTextView.attributedText
-        viewModel.save()
+    // MARK: - Setups
+    
+    private func setupAlertWindow() {
+        self.cameraAlertSheet = CameraActionSheet.init()
+        cameraAlertSheet.delegate = self
     }
     private func setupTextView() {
         self.noteTextView.delegate = self
@@ -42,7 +49,7 @@ class NoteDetailsVC: UIViewController, UITextViewDelegate, CameraActionSheetDele
         self.noteTextView.backgroundColor = .clear
     }
     private func setupNavigationButtons() {
-        let cloudButton = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(cloudButtonAction(_:)))
+        self.cloudButton = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(cloudButtonAction(_:)))
         let doneButton = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action: #selector(doneButtonAction(_:)))
         self.navigationItem.rightBarButtonItems = [cloudButton, doneButton]
     }
@@ -55,20 +62,46 @@ class NoteDetailsVC: UIViewController, UITextViewDelegate, CameraActionSheetDele
     @objc private func rightSwipeAction() {
         self.navigationController?.popViewController(animated: true)
     }
+    // MARK: - UITextView Delegate
+    func textViewDidEndEditing(_ textView: UITextView) {
+        viewModel.saveNotesAttributedText(attributed: textView.attributedText)
+    }
+    
+    // MARK: - CameraPhoto Delegate
+    func sendResultPhoto(photo: UIImage) {
+        let scaled = UIImage.scaleImage(image: photo, toFrame: noteTextView.frame)
+        if let _ = scaled {
+        noteTextView.attributedText = viewModel.placePhoto(photo: scaled!, in: noteTextView)
+        }
+    }
     // MARK: - CameraActionSheet Delegate
     func presentImagePicker(picker: UIImagePickerController) -> Void {
         self.present(picker, animated: true, completion: nil)
     }
     func presetCameraController() -> Void {
-      //  let cameraController = CameraViewController
-      //  self.present(cameraController, animated: true, completion: nil)
+        let cameraController = CameraVC.init(nibName: "cameraXIB", bundle: nil)
+        cameraController.delegate = self
+        self.present(cameraController, animated: true, completion: nil)
     }
     func presentActionSheet(actionSheet:UIAlertController) -> Void {
         self.present(actionSheet, animated: true, completion: nil)
     }
     func sendImageFromPicker(image: UIImage) -> Void {
-// UIImage scaled
-       noteTextView.attributedText = viewModel.placePhoto(photo: image, in: noteTextView)
+        let scaled = UIImage.scaleImage(image: image, toFrame: noteTextView.frame)
+        if let _ = scaled {
+            noteTextView.attributedText = viewModel.placePhoto(photo: scaled!, in: noteTextView)
+        }
+    }
+    // MARK: - Keyboard Buttons
+    
+    @IBAction func keyboardCircleButtonAction(_ sender: UIButton) {
+        noteTextView.attributedText = viewModel.placeCircleInTextView(textView: noteTextView)
+    }
+    @IBAction func keyboardCameraButtonAction(_ sender: UIButton) {
+        cameraAlertSheet.showAlert()
+    }
+    @IBAction func keyboardDoodleButtonAction(_ sender: UIButton) {
+        
     }
     // MARK: - Buttons
     
@@ -77,9 +110,7 @@ class NoteDetailsVC: UIViewController, UITextViewDelegate, CameraActionSheetDele
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func cameraButtonAction(_ sender: UIBarButtonItem) {
-        let cameraAlert = CameraActionSheet.init()
-        cameraAlert.delegate = self
-        cameraAlert.showAlert()
+        cameraAlertSheet.showAlert()
     }
     @objc func cloudButtonAction(_ sender: UIBarButtonItem) {
         let activityItems = [noteTextView.attributedText]
@@ -96,15 +127,27 @@ class NoteDetailsVC: UIViewController, UITextViewDelegate, CameraActionSheetDele
         NotificationCenter.default.addObserver(self, selector: #selector(UITextFieldTextDidChangeNotification(notification:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
     }
     @objc private func UIKeyboardWillShowNotification(notification: Notification) {
-        
+        noteTextView.contentInset = UIEdgeInsetsMake(0, 0, currentKeyboard_height, 0)
+        noteTextView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, currentKeyboard_height, 0)
+        checkForEmptyString()
     }
     @objc private func UIKeyboardWillHideNotification(notification: Notification) {
-        
+        guard let userInfo = notification.userInfo else { return }
+        if let keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect {
+            let delta = keyboardSize.size.height - currentKeyboard_height
+            noteTextView.contentInset = UIEdgeInsetsMake(0, 0, delta, 0)
+            noteTextView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, delta, 0)
+        }
+        checkForEmptyString()
     }
     @objc private func UITextFieldTextDidChangeNotification(notification: Notification) {
-        
+        checkForEmptyString()
     }
-    func dealloc() {
-        NotificationCenter.default.removeObserver(self)
+    private func checkForEmptyString() {
+        if noteTextView.attributedText.string.isEmpty {
+            cloudButton.isEnabled = false
+        } else {
+            cloudButton.isEnabled = true
+        }
     }
 }

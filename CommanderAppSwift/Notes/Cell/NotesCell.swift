@@ -19,7 +19,7 @@ class NotesCell: UITableViewCell {
             self.noteTextLabel.text = viewModel.textString
             self.noteDetailedLabel.text = viewModel.detailedTextString
             self.noteDateLabel.text = viewModel.dateString
-            self.notePlaceholderImg?.image = viewModel.placeholderData?.uiImage
+            self.notePlaceholderImg?.image = resizeAndConvertImageFrom(data: viewModel.placeholderData)
         }
     }
     required init?(coder aDecoder: NSCoder) {
@@ -32,5 +32,11 @@ class NotesCell: UITableViewCell {
         noteDetailedLabel.font = UIFont.init(name: Constants().helvetica, size: noteDetailedLabel.frame.size.height * 2/3)
         noteDateLabel.font = UIFont.init(name: Constants().helvetica, size: noteDateLabel.frame.size.height * 2/3)
         noteTextLabel.font = UIFont.init(name: Constants().helvetica, size: noteTextLabel.frame.size.height * 2/3)
+    }
+    private func resizeAndConvertImageFrom(data: Data?) -> UIImage? {
+        let converted = data?.uiImage
+        let resized = UIImage.scaleImage(image: converted, toFrame: CGRect(x: 0, y: 0, width: (self.notePlaceholderImg?.frame.size.width)!, height: (self.notePlaceholderImg?.frame.size.height)!))
+        let cropped = UIImage.cropImage(image: resized, toRect: CGRect(x: 0, y: 0, width: (self.notePlaceholderImg?.frame.size.width)!, height: (self.notePlaceholderImg?.frame.size.height)!))
+        return cropped
     }
 }

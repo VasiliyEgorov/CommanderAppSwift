@@ -24,10 +24,11 @@ protocol CameraPhotoDelegate : class {
     func sendResultPhoto(photo: UIImage)
 }
 
-class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, CameraDataDelegate {
+class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, CameraDataDelegate, AudioSessionDelegate {
     @IBOutlet weak var cameraView: CameraView!
     @IBOutlet weak var reverseCameraButton: UIButton!
     @IBOutlet weak var flashlightButton: UIButton!
+    @IBOutlet weak var takePhotoButton: UIButton!
     weak var delegate : CameraPhotoDelegate?
     private var photoOutput : AVCapturePhotoOutput!
     private var session : AVCaptureSession!
@@ -283,7 +284,7 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, CameraDataDeleg
         }
         if newDevice != nil {
             guard let deviceInput = try? AVCaptureDeviceInput.init(device: newDevice!) else { return }
-           // cameraView.captureDevice = newDevice
+            cameraView.captureDevice = newDevice
             session.beginConfiguration()
             session.removeInput(self.deviceInput)
             session.sessionPreset = changeSessionPresetDependingOn(position: deviceInput.device.position)
@@ -322,7 +323,11 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, CameraDataDeleg
      func trackCurrentDeviceOrientation(orientation: UIImageOrientation) {
         self.imageOrientation = orientation
     }
+    // MARK: - AudioSession Delegate
     
+    func volumeButtonPressed() {
+        self.takePhotoButtonAction(self.takePhotoButton)
+    }
     // MARK: - Correct Photo Orientation
     
    private func correctToPreferredOrinetation(image: UIImage, position:AVCaptureDevice.Position) -> UIImage {

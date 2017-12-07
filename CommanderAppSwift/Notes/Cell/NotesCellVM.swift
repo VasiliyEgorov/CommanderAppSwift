@@ -71,10 +71,24 @@ class NotesCellViewModel {
         let trimmedStr = strWithoutNewline.trimmingCharacters(in: CharacterSet.whitespaces)
         return trimmedStr
     }
+    private func getTextAttachmentFrom(note: NotesMN) -> Data? {
+        var data : Data?
+        let mutAtrString = NSMutableAttributedString.init(attributedString: note.attributedText as! NSAttributedString)
+        mutAtrString.enumerateAttribute(NSAttributedStringKey.attachment,
+                                        in: NSMakeRange(0, mutAtrString.length),
+                                        options: []) { (textImage, range, stop) in
+                                            if let attachment = textImage as? NSTextAttachment {
+                                                if let image = attachment.image {
+                                                    data = image.data
+                                                }
+                                            }
+        }
+        return data
+    }
     required init(note: NotesMN) {
+        self.placeholderData = getTextAttachmentFrom(note: note)
         self.dateString = dateForCell(note: note)
         self.textString = splitTextForTextString(note: note)
         self.detailedTextString = splitTextForDetailedString(note: note)
-        self.placeholderData = note.placeholderForCell
     }
 }

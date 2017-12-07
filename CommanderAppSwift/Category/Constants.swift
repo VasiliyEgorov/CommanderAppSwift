@@ -8,6 +8,8 @@
 
 import UIKit
 
+var currentKeyboard_height : CGFloat = 0
+
 enum IndexEnum : Int {
     case Player = 0
     case Opponent = 1
@@ -32,6 +34,5 @@ struct Constants {
     let space = " "
     let noAdditionalText = "No Additional Text"
     let noText = "No Text"
-    
 }
 

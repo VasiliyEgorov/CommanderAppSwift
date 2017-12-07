@@ -25,8 +25,12 @@ class NotesDetailsViewModel {
             note.attributedText = newValue
         }
     }
-    func save() {
-        manager.saveContext()
+    
+    func saveNotesAttributedText(attributed: NSAttributedString) {
+        DispatchQueue.global(qos: .default).async {
+            self.note.attributedText = attributed
+            guard let _ = try? self.manager.privateQueueContext.save() else { return }
+        }
     }
     func deleteNote() {
         manager.mainQueueContext.delete(note)

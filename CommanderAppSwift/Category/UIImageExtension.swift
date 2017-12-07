@@ -10,12 +10,12 @@ import UIKit
 
 extension UIImage {
     
-    var png : Data? {
+    var data : Data? {
         return UIImagePNGRepresentation(self)
     }
     
-    class func resizeImage(image: UIImage, scaledTo newSize: CGSize) -> UIImage {
-        
+    class func resizeImage(image: UIImage?, scaledTo newSize: CGSize) -> UIImage? {
+        guard let image = image else { return nil }
         if image.size.width < newSize.width && image.size.height < newSize.height {
             return image
         }
@@ -28,12 +28,12 @@ extension UIImage {
         return newImage!
     }
     
-    class func scaleImage(image: UIImage, toFrame rect:CGRect) -> UIImage {
-        
+    class func scaleImage(image: UIImage?, toFrame rect:CGRect) -> UIImage? {
+        guard let image = image else { return nil }
         let newScaleForFrame : CGFloat
         let newPhotoSizeWidth = rect.size.width * 2
         let newPhotoSizeHeight = newPhotoSizeWidth * image.size.height / image.size.width
-        let resizedImage = UIImage.resizeImage(image: image, scaledTo: CGSize(width: newPhotoSizeWidth, height: newPhotoSizeHeight))
+        guard let resizedImage = UIImage.resizeImage(image: image, scaledTo: CGSize(width: newPhotoSizeWidth, height: newPhotoSizeHeight)) else { return nil }
 
         if image.size.width < image.size.height {
             let currentPhotoWidth = resizedImage.size.width
@@ -47,7 +47,8 @@ extension UIImage {
         return scaledImage
     }
     
-    class func cropImage(image: UIImage, toRect rect: CGRect) -> UIImage {
+    class func cropImage(image: UIImage?, toRect rect: CGRect) -> UIImage? {
+        guard let image = image else { return nil }
         let rad = {(_ deg: CGFloat) -> CGFloat in
             return deg / 180.0 * CGFloat.pi
         }
@@ -85,7 +86,8 @@ extension UIImage {
         return croppedImage
     }
     
-    class func cropImage(image: UIImage, byCropViewFrame rect:CGRect) -> UIImage {
+    class func cropImage(image: UIImage?, byCropViewFrame rect:CGRect) -> UIImage? {
+        guard let image = image else { return nil }
         let rad = {(_ deg: CGFloat) -> CGFloat in
             return deg / 180.0 * CGFloat.pi
         }

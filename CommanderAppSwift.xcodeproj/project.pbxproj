@@ -95,6 +95,7 @@
 		FF60EA551FC0F7C8005C2BBA /* RandomAvatarM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA541FC0F7C8005C2BBA /* RandomAvatarM.swift */; };
 		FF60EA571FC0F9E4005C2BBA /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA561FC0F9E4005C2BBA /* DataExtension.swift */; };
 		FF60EA591FC0F9F1005C2BBA /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA581FC0F9F1005C2BBA /* UIImageExtension.swift */; };
+		FF72557A1FD92F1A00F8D820 /* keyboardButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7255791FD92F1A00F8D820 /* keyboardButtonsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -211,6 +212,7 @@
 		FF60EA541FC0F7C8005C2BBA /* RandomAvatarM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomAvatarM.swift; sourceTree = "<group>"; };
 		FF60EA561FC0F9E4005C2BBA /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		FF60EA581FC0F9F1005C2BBA /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		FF7255791FD92F1A00F8D820 /* keyboardButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keyboardButtonsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -369,7 +371,6 @@
 				FF3340021FB5BE0D00E980AA /* MainCounterVC.swift */,
 				FF60EA311FBD927C005C2BBA /* MainCounterVM.swift */,
 				FF3340031FB5BE0D00E980AA /* MainCounterVC.xib */,
-				FF1BBB461FC79942009271C4 /* Alert Window */,
 			);
 			path = "Main Counter";
 			sourceTree = "<group>";
@@ -405,7 +406,7 @@
 			path = "Heads Or Tails";
 			sourceTree = "<group>";
 		};
-		FF1BBB461FC79942009271C4 /* Alert Window */ = {
+		FF1BBB461FC79942009271C4 /* Alert For Main Counters */ = {
 			isa = PBXGroup;
 			children = (
 				FF1BBB3E1FC78F1A009271C4 /* MainCountersAlertVC.swift */,
@@ -413,7 +414,7 @@
 				FF1BBB441FC792F7009271C4 /* MainCountersAlertM.swift */,
 				FF1BBB3F1FC78F1A009271C4 /* MainCountersAlertVC.xib */,
 			);
-			path = "Alert Window";
+			path = "Alert For Main Counters";
 			sourceTree = "<group>";
 		};
 		FF1BBB471FC7C4A7009271C4 /* Zero Cell */ = {
@@ -442,6 +443,7 @@
 				FF1BBB931FCB37F5009271C4 /* NoteDetailsVC.swift */,
 				FF1BBB8F1FC8D510009271C4 /* NoteDetailsVM.swift */,
 				FF1BBB941FCB37F5009271C4 /* NoteDetailsVC.xib */,
+				FF7255781FD92EED00F8D820 /* Keyboard Buttons */,
 			);
 			path = "Note Details";
 			sourceTree = "<group>";
@@ -550,6 +552,7 @@
 			isa = PBXGroup;
 			children = (
 				FF54401F1FD6A8B90065C87A /* CameraActionSheetView.swift */,
+				FF1BBB461FC79942009271C4 /* Alert For Main Counters */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -603,6 +606,14 @@
 				FF60EA541FC0F7C8005C2BBA /* RandomAvatarM.swift */,
 			);
 			path = RandomAvatar;
+			sourceTree = "<group>";
+		};
+		FF7255781FD92EED00F8D820 /* Keyboard Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				FF7255791FD92F1A00F8D820 /* keyboardButtonsView.swift */,
+			);
+			path = "Keyboard Buttons";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -876,6 +887,7 @@
 				FF1BBB001FC4CBBB009271C4 /* SecondCounterCellVM.swift in Sources */,
 				FF333FD41FB5A5C500E980AA /* CommanderAppSwift.xcdatamodeld in Sources */,
 				FF60EA571FC0F9E4005C2BBA /* DataExtension.swift in Sources */,
+				FF72557A1FD92F1A00F8D820 /* keyboardButtonsView.swift in Sources */,
 				FF1BBB0F1FC4FE83009271C4 /* FourthCounterCell.swift in Sources */,
 				FF60EA3D1FBDA395005C2BBA /* Constants.swift in Sources */,
 				FF5440281FD7A70D0065C87A /* CameraView.swift in Sources */,
