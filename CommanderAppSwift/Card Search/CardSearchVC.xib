@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardSearchVC" customModule="CommanderAppSwift" customModuleProvider="target">
+            <connections>
+                <outlet property="searchBar" destination="HAg-IG-VKd" id="6wH-Fb-GjF"/>
+                <outlet property="tableView" destination="Vxv-21-eGY" id="UXT-JJ-0zg"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="AV4-r3-4xJ">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vxv-21-eGY">
+                    <rect key="frame" x="0.0" y="100" width="375" height="523"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="4bJ-LO-XyC"/>
+                        <outlet property="delegate" destination="-1" id="tEf-1Y-1rb"/>
+                    </connections>
+                </tableView>
+                <searchBar contentMode="redraw" placeholder="CommanderLife Counter Card Search" translatesAutoresizingMaskIntoConstraints="NO" id="HAg-IG-VKd">
+                    <rect key="frame" x="0.0" y="44" width="375" height="56"/>
+                    <color key="backgroundColor" red="0.38823529411764707" green="0.38823529411764707" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="tintColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="barTintColor" red="0.078431372549019607" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="5En-cN-PL1"/>
+                    </connections>
+                </searchBar>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PLV-px-73q" customClass="MainNavToolBar" customModule="CommanderAppSwift" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <items>
+                        <barButtonItem title="Item" id="OxS-Tg-SDw"/>
+                    </items>
+                </toolbar>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="HAg-IG-VKd" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="24" id="5pJ-rA-jIS"/>
+                <constraint firstItem="AV4-r3-4xJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6JI-an-2tU"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Vxv-21-eGY" secondAttribute="bottom" constant="44" id="Gjc-tK-1vd"/>
+                <constraint firstItem="AV4-r3-4xJ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Qj5-Ds-SEm"/>
+                <constraint firstItem="AV4-r3-4xJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="c8j-r6-5XN"/>
+                <constraint firstItem="AV4-r3-4xJ" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="gB7-4B-vZe"/>
+                <constraint firstItem="Vxv-21-eGY" firstAttribute="top" secondItem="HAg-IG-VKd" secondAttribute="bottom" id="jt9-HR-pys"/>
+                <constraint firstItem="Vxv-21-eGY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="n0w-kg-m9Z"/>
+                <constraint firstItem="HAg-IG-VKd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="oa0-5u-eT6"/>
+                <constraint firstItem="Vxv-21-eGY" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="qud-fN-lyg"/>
+                <constraint firstItem="HAg-IG-VKd" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="ywo-YI-Hpj"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="25.5" y="52.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bg" width="1198" height="2027"/>
+    </resources>
+</document>

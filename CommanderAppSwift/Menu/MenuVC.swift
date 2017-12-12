@@ -18,8 +18,10 @@ fileprivate enum MenuEnum : Int {
 
 class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var tableView: UITableView!
+    var tabBarVC : TabBarViewController?
     var viewModel : MenuViewModel!
     let cellID = "MenuCellID"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = MenuViewModel()
@@ -68,10 +70,14 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         let menuItems : MenuEnum = MenuEnum(rawValue: indexPath.row)!
         switch menuItems {
         case .Search:
             self.revealViewController().revealToggle(animated: false)
+            self.tabBarVC?.selectedIndex = 3
             
         case .HeadsOrTails:
             let headsOrTailsVC = HeadsOrTailsVC.init(nibName: "HeadsOrTailsVC", bundle: nil)

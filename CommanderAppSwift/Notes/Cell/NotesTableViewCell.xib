@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -27,14 +27,14 @@
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dDe-Jn-fMw">
                         <rect key="frame" x="20" y="5" width="294" height="75.5"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="cWD-cD-vo6">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="cWD-cD-vo6">
                                 <rect key="frame" x="0.0" y="0.0" width="210.5" height="75.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UEq-zO-6Nx">
-                                        <rect key="frame" x="0.0" y="0.0" width="42" height="41.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="42" height="45.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1A-yB-YsA">
-                                                <rect key="frame" x="0.0" y="0.0" width="42" height="41.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="42" height="45.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -83,7 +83,7 @@
                     <constraint firstItem="dDe-Jn-fMw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="MIC-2y-yi4"/>
                     <constraint firstAttribute="bottom" secondItem="Txf-kN-ZMG" secondAttribute="bottom" constant="2" id="cDD-z9-IRw"/>
                     <constraint firstAttribute="trailing" secondItem="dDe-Jn-fMw" secondAttribute="trailing" constant="20" id="faW-zR-hxM"/>
-                    <constraint firstAttribute="bottom" secondItem="dDe-Jn-fMw" secondAttribute="bottom" constant="5" id="jOC-h3-1QM"/>
+                    <constraint firstAttribute="bottom" secondItem="dDe-Jn-fMw" secondAttribute="bottom" priority="999" constant="5" id="jOC-h3-1QM"/>
                     <constraint firstAttribute="trailing" secondItem="Txf-kN-ZMG" secondAttribute="trailing" constant="10" id="neD-Hw-IFk"/>
                     <constraint firstItem="dDe-Jn-fMw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="sfg-RY-zrg"/>
                 </constraints>

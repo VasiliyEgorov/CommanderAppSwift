@@ -19,30 +19,36 @@ class keyboardButtonsView: UIView {
     private var isSelected : Bool!
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        isSelected = false
-        circleButton.isHidden = true
-        doodleButton.isHidden = true
-        cameraButton.isHidden = true
-        closeStackViewButton.isHidden = true
-        NotificationCenter.default.addObserver(self, selector: #selector(UIKeyboardWillShowNotification(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(UIKeyboardDidShowNotification(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(UIKeyboardWillHideNotification(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        isSelected = false
+        circleButton.isHidden = true
+        doodleButton.isHidden = true
+        cameraButton.isHidden = true
+        closeStackViewButton.isHidden = true
+    }
     override func updateConstraints() {
         super.updateConstraints()
-        self.buttomContraint.constant = self.frame.size.height
+        self.buttomContraint.constant = -self.frame.size.height
     }
     // MARK: - Buttons
     @IBAction func addStackViewButtonAction(_ sender: UIButton) {
+        animationRotationForAddButton()
     }
     @IBAction func closeStackViewButtonAction(_ sender: UIButton) {
+        animationRotationForCloseButton()
     }
     // MARK: - Animations
     private func animationAppearanceForKeyboardButtons(isButtonHidden: Bool) {
         self.layoutIfNeeded()
-        buttomContraint.constant = -currentKeyboard_height
+        buttomContraint.constant = currentKeyboard_height - self.frame.size.height
         
         UIView.animate(withDuration: 0.3,
                        delay: 0.0,
@@ -55,7 +61,7 @@ class keyboardButtonsView: UIView {
             self.cameraButton.isHidden = isButtonHidden
             self.closeStackViewButton.isHidden = isButtonHidden
             if self.isSelected {
-                
+                self.animationForCloseButton()
             }
         }
     }
@@ -78,7 +84,7 @@ class keyboardButtonsView: UIView {
     }
     private func animationDisappearanceForKeyboardButtons() {
         self.layoutIfNeeded()
-        buttomContraint.constant = currentKeyboard_height + self.frame.size.height
+        buttomContraint.constant = -currentKeyboard_height - self.frame.size.height
         UIView.animate(withDuration: 0.1,
                        delay: 0.0,
                        options: [.layoutSubviews],
@@ -87,40 +93,35 @@ class keyboardButtonsView: UIView {
         }, completion: nil)
     }
     private func animationRotationForAddButton() {
-        let degrees : CGFloat = -225.0
-        let percentDeltaHeight : CGFloat = 100 * ((closeStackViewButton.frame.size.height - addStackViewButton.frame.size.height) / closeStackViewButton.frame.size.height)
-        let newScale = CGAffineTransform.init(scaleX: 1 - (percentDeltaHeight / 100), y: 1 - (percentDeltaHeight / 100))
+        let degrees : CGFloat = -225
         let rotation = CGAffineTransform.init(rotationAngle: degrees * CGFloat.pi / 180)
-        let newCenter = CGPoint(x: closeStackViewButton.center.x, y: closeStackViewButton.center.y)
-        let oldCenter = addStackViewButton.center
+        let transl = CGAffineTransform(translationX: closeStackViewButton.superview!.convert(closeStackViewButton.center, to: self).x -
+            addStackViewButton.frame.origin.x - addStackViewButton.frame.size.width, y: 0)
         
         UIView.animate(withDuration: 0.5,
                        animations: {
-                        self.addStackViewButton.center = newCenter
-                        self.addStackViewButton.transform = newScale.concatenating(rotation)
+        
+                        self.addStackViewButton.transform = rotation.concatenating(transl)
         }) { (finished) in
             self.cameraButton.isHidden = false
             self.doodleButton.isHidden = false
             self.circleButton.isHidden = false
             self.closeStackViewButton.isHidden = false
-            self.addStackViewButton.isHidden = false
+            self.addStackViewButton.isHidden = true
             self.addStackViewButton.transform = .identity
-            self.addStackViewButton.center = oldCenter
             self.isSelected = true
         }
     }
     private func animationRotationForCloseButton() {
         let degrees : CGFloat = 225.0
-        let percentDeltaHeight : CGFloat = 100 * ((addStackViewButton.frame.size.height - closeStackViewButton.frame.size.height) / addStackViewButton.frame.size.height)
-        let newScale = CGAffineTransform.init(scaleX: 1 - (percentDeltaHeight / 100), y: 1 - (percentDeltaHeight / 100))
         let rotation = CGAffineTransform.init(rotationAngle: degrees * CGFloat.pi / 180)
-        let newCenter = CGPoint(x: addStackViewButton.center.x, y: addStackViewButton.center.y)
-        let oldCenter = closeStackViewButton.center
+        let transl = CGAffineTransform(translationX: closeStackViewButton.superview!.convert(closeStackViewButton.center, to: self).x -
+            closeStackViewButton.frame.origin.x - closeStackViewButton.frame.size.width, y: 0)
         
         UIView.animate(withDuration: 0.5,
                        animations: {
-                        self.closeStackViewButton.center = newCenter
-                        self.closeStackViewButton.transform = newScale.concatenating(rotation)
+                        
+                        self.closeStackViewButton.transform = rotation.concatenating(transl)
         }) { (finished) in
             self.cameraButton.isHidden = true
             self.doodleButton.isHidden = true
@@ -128,16 +129,17 @@ class keyboardButtonsView: UIView {
             self.closeStackViewButton.isHidden = true
             self.addStackViewButton.isHidden = false
             self.closeStackViewButton.transform = .identity
-            self.closeStackViewButton.center = oldCenter
             self.isSelected = false
         }
     }
     // MARK: - Notifications
-    @objc private func UIKeyboardWillShowNotification(notification: Notification) {
+    @objc private func UIKeyboardDidShowNotification(notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
         if let keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect {
             let totalOffset = keyboardSize.size.height + self.frame.size.height
             currentKeyboard_height = totalOffset
+            
+            
         }
         if !isSelected {
             animationAppearanceForKeyboardButtons(isButtonHidden: true)

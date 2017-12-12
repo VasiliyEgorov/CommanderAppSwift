@@ -72,8 +72,9 @@ class NotesCellViewModel {
         return trimmedStr
     }
     private func getTextAttachmentFrom(note: NotesMN) -> Data? {
+        guard let attributedText = note.attributedText as? NSAttributedString else { return nil }
         var data : Data?
-        let mutAtrString = NSMutableAttributedString.init(attributedString: note.attributedText as! NSAttributedString)
+        let mutAtrString = NSMutableAttributedString.init(attributedString: attributedText)
         mutAtrString.enumerateAttribute(NSAttributedStringKey.attachment,
                                         in: NSMakeRange(0, mutAtrString.length),
                                         options: []) { (textImage, range, stop) in

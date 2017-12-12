@@ -58,13 +58,13 @@
                     </connections>
                 </textView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8dc-so-7Ro" customClass="keyboardButtonsView" customModule="CommanderAppSwift" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="583" width="375" height="40"/>
+                    <rect key="frame" x="0.0" y="593" width="375" height="30"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="a1c-nf-jWU">
-                            <rect key="frame" x="80" y="12" width="215" height="28"/>
+                            <rect key="frame" x="80" y="0.0" width="215" height="30"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1nP-pc-Ytf">
-                                    <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="1nP-pc-Ytf" secondAttribute="height" multiplier="1:1" id="eQn-lQ-ynp"/>
                                     </constraints>
@@ -74,7 +74,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LiI-Ha-Xf9">
-                                    <rect key="frame" x="62.5" y="0.0" width="28" height="28"/>
+                                    <rect key="frame" x="62" y="0.0" width="30" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="LiI-Ha-Xf9" secondAttribute="height" multiplier="1:1" id="Hxw-sf-6p5"/>
                                     </constraints>
@@ -84,7 +84,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08T-Xz-zXf">
-                                    <rect key="frame" x="125" y="0.0" width="27.5" height="28"/>
+                                    <rect key="frame" x="123.5" y="0.0" width="29.5" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="08T-Xz-zXf" secondAttribute="height" multiplier="1:1" id="VN5-Vg-geH"/>
                                     </constraints>
@@ -94,7 +94,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Oy-wb-aov">
-                                    <rect key="frame" x="187" y="0.0" width="28" height="28"/>
+                                    <rect key="frame" x="185" y="0.0" width="30" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="4Oy-wb-aov" secondAttribute="height" multiplier="1:1" id="Ae6-zQ-AQ3"/>
                                     </constraints>
@@ -106,7 +106,7 @@
                             </subviews>
                         </stackView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbw-kW-Gyw">
-                            <rect key="frame" x="332.5" y="0.0" width="32.5" height="32.5"/>
+                            <rect key="frame" x="335" y="0.0" width="30" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="tbw-kW-Gyw" secondAttribute="height" multiplier="1:1" id="S2w-51-chQ"/>
                             </constraints>
@@ -119,10 +119,10 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="a1c-nf-jWU" secondAttribute="bottom" id="G2i-JH-lhg"/>
-                        <constraint firstItem="a1c-nf-jWU" firstAttribute="height" secondItem="8dc-so-7Ro" secondAttribute="height" multiplier="0.7" id="Q3t-p9-JGX"/>
+                        <constraint firstItem="a1c-nf-jWU" firstAttribute="height" secondItem="8dc-so-7Ro" secondAttribute="height" id="Q3t-p9-JGX"/>
                         <constraint firstItem="tbw-kW-Gyw" firstAttribute="top" secondItem="8dc-so-7Ro" secondAttribute="top" id="Wp3-fF-ybp"/>
                         <constraint firstItem="a1c-nf-jWU" firstAttribute="leading" secondItem="8dc-so-7Ro" secondAttribute="leading" constant="80" id="X0U-Po-I99"/>
-                        <constraint firstItem="tbw-kW-Gyw" firstAttribute="height" secondItem="8dc-so-7Ro" secondAttribute="height" multiplier="0.8" id="X3I-4d-vva"/>
+                        <constraint firstItem="tbw-kW-Gyw" firstAttribute="height" secondItem="a1c-nf-jWU" secondAttribute="height" id="asA-wX-Rx4"/>
                         <constraint firstAttribute="trailing" secondItem="a1c-nf-jWU" secondAttribute="trailing" constant="80" id="nJD-gG-lyN"/>
                         <constraint firstAttribute="trailing" secondItem="tbw-kW-Gyw" secondAttribute="trailing" constant="10" id="tXS-q4-mLm"/>
                     </constraints>
@@ -142,7 +142,7 @@
                 <constraint firstItem="Ren-Y1-ONl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="8c7-nt-4Ya"/>
                 <constraint firstItem="ANM-U8-Jdh" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="8fx-JV-UXn"/>
                 <constraint firstItem="8dc-so-7Ro" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Edz-co-6Nr"/>
-                <constraint firstItem="8dc-so-7Ro" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.06" id="Fra-zB-wJE"/>
+                <constraint firstItem="8dc-so-7Ro" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.045" id="Fra-zB-wJE"/>
                 <constraint firstItem="ANM-U8-Jdh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="GtR-PU-3H9"/>
                 <constraint firstItem="ANM-U8-Jdh" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="OMu-b5-wtR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ren-Y1-ONl" secondAttribute="trailing" id="OTU-Jh-zdm"/>

@@ -96,6 +96,14 @@
 		FF60EA571FC0F9E4005C2BBA /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA561FC0F9E4005C2BBA /* DataExtension.swift */; };
 		FF60EA591FC0F9F1005C2BBA /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA581FC0F9F1005C2BBA /* UIImageExtension.swift */; };
 		FF72557A1FD92F1A00F8D820 /* keyboardButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7255791FD92F1A00F8D820 /* keyboardButtonsView.swift */; };
+		FF72557D1FDA822D00F8D820 /* CardSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72557B1FDA822D00F8D820 /* CardSearchVC.swift */; };
+		FF72557E1FDA822D00F8D820 /* CardSearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF72557C1FDA822D00F8D820 /* CardSearchVC.xib */; };
+		FF7255801FDA824000F8D820 /* CardSearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72557F1FDA824000F8D820 /* CardSearchVM.swift */; };
+		FF7255821FDA824900F8D820 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7255811FDA824900F8D820 /* Card.swift */; };
+		FF7255871FDA88FC00F8D820 /* CardSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7255851FDA88FC00F8D820 /* CardSearchCell.swift */; };
+		FF7255881FDA88FC00F8D820 /* CardSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF7255861FDA88FC00F8D820 /* CardSearchCell.xib */; };
+		FF72558A1FDA891500F8D820 /* CardSearchCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7255891FDA891500F8D820 /* CardSearchCellVM.swift */; };
+		FF72558C1FDAADB000F8D820 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72558B1FDAADB000F8D820 /* SearchManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,6 +221,14 @@
 		FF60EA561FC0F9E4005C2BBA /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		FF60EA581FC0F9F1005C2BBA /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		FF7255791FD92F1A00F8D820 /* keyboardButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keyboardButtonsView.swift; sourceTree = "<group>"; };
+		FF72557B1FDA822D00F8D820 /* CardSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSearchVC.swift; sourceTree = "<group>"; };
+		FF72557C1FDA822D00F8D820 /* CardSearchVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardSearchVC.xib; sourceTree = "<group>"; };
+		FF72557F1FDA824000F8D820 /* CardSearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSearchVM.swift; sourceTree = "<group>"; };
+		FF7255811FDA824900F8D820 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		FF7255851FDA88FC00F8D820 /* CardSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSearchCell.swift; sourceTree = "<group>"; };
+		FF7255861FDA88FC00F8D820 /* CardSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardSearchCell.xib; sourceTree = "<group>"; };
+		FF7255891FDA891500F8D820 /* CardSearchCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSearchCellVM.swift; sourceTree = "<group>"; };
+		FF72558B1FDAADB000F8D820 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -493,6 +509,8 @@
 			isa = PBXGroup;
 			children = (
 				FF333FCB1FB5A5C500E980AA /* AppDelegate.swift */,
+				FF60EA3E1FBDE7F6005C2BBA /* Managers */,
+				FF7255831FDA824E00F8D820 /* Card Search */,
 				FF5440231FD7A5CC0065C87A /* Camera */,
 				FF5440241FD7A5D60065C87A /* Alerts */,
 				FF1BBB9B1FCC1A03009271C4 /* Tab Bar View Controller */,
@@ -507,7 +525,6 @@
 				FF1BBB181FC52517009271C4 /* Menu */,
 				FF1BBAEE1FC3A70B009271C4 /* separateViews */,
 				FF60EA411FBE13C8005C2BBA /* Category */,
-				FF60EA3E1FBDE7F6005C2BBA /* Managers */,
 				FF60EA351FBD9CF0005C2BBA /* PlayerNameTextField */,
 				FF60EA461FC0B72F005C2BBA /* PlayersAvatarView */,
 				FF333FD71FB5A5C600E980AA /* LaunchScreen.storyboard */,
@@ -570,6 +587,7 @@
 			isa = PBXGroup;
 			children = (
 				FF60EA3F1FBDE80D005C2BBA /* DataManager.swift */,
+				FF72558B1FDAADB000F8D820 /* SearchManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -614,6 +632,28 @@
 				FF7255791FD92F1A00F8D820 /* keyboardButtonsView.swift */,
 			);
 			path = "Keyboard Buttons";
+			sourceTree = "<group>";
+		};
+		FF7255831FDA824E00F8D820 /* Card Search */ = {
+			isa = PBXGroup;
+			children = (
+				FF72557B1FDA822D00F8D820 /* CardSearchVC.swift */,
+				FF72557F1FDA824000F8D820 /* CardSearchVM.swift */,
+				FF7255811FDA824900F8D820 /* Card.swift */,
+				FF72557C1FDA822D00F8D820 /* CardSearchVC.xib */,
+				FF7255841FDA88D500F8D820 /* Card Search Cell */,
+			);
+			path = "Card Search";
+			sourceTree = "<group>";
+		};
+		FF7255841FDA88D500F8D820 /* Card Search Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FF7255851FDA88FC00F8D820 /* CardSearchCell.swift */,
+				FF7255891FDA891500F8D820 /* CardSearchCellVM.swift */,
+				FF7255861FDA88FC00F8D820 /* CardSearchCell.xib */,
+			);
+			path = "Card Search Cell";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -727,7 +767,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF1BBB091FC4FE3A009271C4 /* ThirdCounterCell.xib in Resources */,
+				FF7255881FDA88FC00F8D820 /* CardSearchCell.xib in Resources */,
 				FF3340131FB8E9D100E980AA /* ManaCounterVC.xib in Resources */,
+				FF72557E1FDA822D00F8D820 /* CardSearchVC.xib in Resources */,
 				FF1BBB221FC63580009271C4 /* MenuCell.xib in Resources */,
 				FF3340051FB5BE0D00E980AA /* MainCounterVC.xib in Resources */,
 				FF333FD91FB5A5C600E980AA /* LaunchScreen.storyboard in Resources */,
@@ -845,6 +887,7 @@
 				FF33400F1FB615A200E980AA /* MainNavController.swift in Sources */,
 				FF1BBAF01FC3A72E009271C4 /* ManaLabel.swift in Sources */,
 				FF1BBB4B1FC7C817009271C4 /* NotesVM.swift in Sources */,
+				FF72558C1FDAADB000F8D820 /* SearchManager.swift in Sources */,
 				FF60EA481FC0B780005C2BBA /* AvatarImageView.swift in Sources */,
 				FF3340121FB8E9D100E980AA /* ManaCounterVC.swift in Sources */,
 				FF1BBB3D1FC66CDD009271C4 /* HeadsOrTailsM.swift in Sources */,
@@ -857,6 +900,8 @@
 				FF1BBB981FCC19A2009271C4 /* MainNavToolBar.swift in Sources */,
 				FF1BBB901FC8D511009271C4 /* NoteDetailsVM.swift in Sources */,
 				FF1BBB341FC66CA5009271C4 /* RollADieM.swift in Sources */,
+				FF72557D1FDA822D00F8D820 /* CardSearchVC.swift in Sources */,
+				FF7255801FDA824000F8D820 /* CardSearchVM.swift in Sources */,
 				FF3340221FB9033C00E980AA /* NotesCell.swift in Sources */,
 				FF33401A1FB8FFB600E980AA /* FirstCounterCell.swift in Sources */,
 				FF33400A1FB5BE9E00E980AA /* MenuVC.swift in Sources */,
@@ -877,12 +922,14 @@
 				FF60EA551FC0F7C8005C2BBA /* RandomAvatarM.swift in Sources */,
 				FF1BBAFD1FC4CB88009271C4 /* SecondCounterCell.swift in Sources */,
 				FF60EA531FC0F7BF005C2BBA /* RandomAvatarVM.swift in Sources */,
+				FF7255871FDA88FC00F8D820 /* CardSearchCell.swift in Sources */,
 				FF1BBB2F1FC66C86009271C4 /* RollADieVC.swift in Sources */,
 				FF1BBB3B1FC66CD3009271C4 /* HeadsOrTailsVM.swift in Sources */,
 				FF60EA391FBD9D2B005C2BBA /* PlayerNameVM.swift in Sources */,
 				FF60EA4E1FC0DF74005C2BBA /* AvatarM.swift in Sources */,
 				FF54402C1FD7A7700065C87A /* CameraData.swift in Sources */,
 				FF1BBBA91FD2D5C8009271C4 /* ZeroCounterCellVM.swift in Sources */,
+				FF72558A1FDA891500F8D820 /* CardSearchCellVM.swift in Sources */,
 				FF1BBB0B1FC4FE60009271C4 /* ThirdCounterCellVM.swift in Sources */,
 				FF1BBB001FC4CBBB009271C4 /* SecondCounterCellVM.swift in Sources */,
 				FF333FD41FB5A5C500E980AA /* CommanderAppSwift.xcdatamodeld in Sources */,
@@ -892,6 +939,7 @@
 				FF60EA3D1FBDA395005C2BBA /* Constants.swift in Sources */,
 				FF5440281FD7A70D0065C87A /* CameraView.swift in Sources */,
 				FF1BBB121FC4FEBB009271C4 /* FourthCounterCellVM.swift in Sources */,
+				FF7255821FDA824900F8D820 /* Card.swift in Sources */,
 				FF60EA431FBE13FC005C2BBA /* NSManagedObjectExtension.swift in Sources */,
 				FF1BBAF31FC3B15E009271C4 /* FirstCounterCellVM.swift in Sources */,
 				FF54401C1FD4FC800065C87A /* CountersButton.swift in Sources */,

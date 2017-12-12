@@ -37,18 +37,16 @@ class NotesViewModel {
         manager.mainQueueContext.delete(resultsController.object(at: indexPath))
         manager.saveContext()
     }
-    func removeEmptyNote(complition:(Int)->()) {
+    func removeEmptyNote() {
         guard let notes = try? manager.mainQueueContext.fetch(fetchRequest) else { return }
-            for (index, note) in notes.enumerated() {
-                if note.attributedText != nil {
-                   let atrText = note.attributedText as! NSAttributedString
+            for note in notes {
+                if let atrText = note.attributedText as? NSAttributedString {
                     if atrText.string.isEmpty && note.placeholderForCell == nil {
                         manager.mainQueueContext.delete(note)
                         manager.saveContext()
-                        complition(index)
                     }
                 }
-            }
+        }
     }
     func numberOfNotes(section: Int) -> Int {
         let number = resultsController.sections![section]

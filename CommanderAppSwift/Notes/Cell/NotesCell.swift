@@ -27,11 +27,18 @@ class NotesCell: UITableViewCell {
         self.backgroundColor = .clear
         self.contentView.backgroundColor = .clear
     }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        noteDetailedLabel.font = UIFont.init(name: Constants().helvetica, size: noteDetailedLabel.frame.size.height * 2/3)
-        noteDateLabel.font = UIFont.init(name: Constants().helvetica, size: noteDateLabel.frame.size.height * 2/3)
-        noteTextLabel.font = UIFont.init(name: Constants().helvetica, size: noteTextLabel.frame.size.height * 2/3)
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        noteDetailedLabel.font = UIFont.init(name: Constants().helvetica, size: noteDetailedLabel.frame.size.height * 0.6)
+        noteDateLabel.font = UIFont.init(name: Constants().helvetica, size: noteDateLabel.frame.size.height * 0.6)
+        noteTextLabel.font = UIFont.init(name: Constants().helvetica, size: noteTextLabel.frame.size.height * 0.5)
+    }
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        let selectedBGView = UIView.init()
+        selectedBGView.backgroundColor = UIColor.init(patternImage: UIImage.init(named: "bgForCellHighlighted.png")!)
+        self.selectedBackgroundView = selectedBGView
     }
     private func resizeAndConvertImageFrom(data: Data?) -> UIImage? {
         let converted = data?.uiImage
@@ -39,4 +46,5 @@ class NotesCell: UITableViewCell {
         let cropped = UIImage.cropImage(image: resized, toRect: CGRect(x: 0, y: 0, width: (self.notePlaceholderImg?.frame.size.width)!, height: (self.notePlaceholderImg?.frame.size.height)!))
         return cropped
     }
+   
 }

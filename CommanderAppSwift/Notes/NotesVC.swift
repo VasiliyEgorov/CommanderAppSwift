@@ -32,10 +32,7 @@ class NotesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIG
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        viewModel.removeEmptyNote { (indexOfRow) -> () in
-            let indexPath = IndexPath(row: indexOfRow, section: 0)
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
-        }
+        viewModel.removeEmptyNote()
     }
     private func setupTableView() {
         self.tableView.isEditing = false
@@ -59,13 +56,13 @@ class NotesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIG
         return cell!
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let detailsVC = NoteDetailsVC.init(nibName: "NoteDetailsVC", bundle: nil)
         detailsVC.viewModel = self.viewModel.detailsViewModel(indexPath: indexPath)
         self.navigationController?.pushViewController(detailsVC, animated: true)
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            tableView.deleteRows(at: [indexPath], with: .fade)
             viewModel.removeNote(indexPath: indexPath)
         }
     }

@@ -21,10 +21,12 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
+        /*
         let viewControllers = [MainNavController.init(rootViewController: MainCounterVC.init(nibName: "MainCounterVC", bundle: nil)),
                                MainNavController.init(rootViewController: ManaCounterVC.init(nibName: "ManaCounterVC", bundle: nil)),
                                MainNavController.init(rootViewController: NotesVC.init(nibName: "NotesVC", bundle: nil))]
         self.setViewControllers(viewControllers, animated: true)
+ */
         self.selectedIndex = 0
     }
 

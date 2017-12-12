@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeueLights.ttc">
+            <string>HelveticaNeue-Thin</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="111" id="KGk-i7-Jjw" customClass="CardSearchCell" customModule="CommanderAppSwift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="374" height="111"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="374" height="110.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgForCell" translatesAutoresizingMaskIntoConstraints="NO" id="jwt-fR-MMa">
+                        <rect key="frame" x="10" y="0.0" width="354" height="110.5"/>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mXU-cY-A6z">
+                        <rect key="frame" x="12" y="2" width="350" height="106.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qyH-Jh-nEF">
+                                <rect key="frame" x="0.0" y="0.0" width="106.5" height="106.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qyH-Jh-nEF" secondAttribute="height" multiplier="1:1" id="eU2-xq-z9q"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsz-di-WWG">
+                                <rect key="frame" x="106.5" y="42.5" width="137" height="21.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
+                                <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z18-S2-xAD">
+                                <rect key="frame" x="243.5" y="0.0" width="106.5" height="106.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Z18-S2-xAD" secondAttribute="height" multiplier="1:1" id="eDb-lX-zLS"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="jwt-fR-MMa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ZID-K7-gau"/>
+                    <constraint firstItem="mXU-cY-A6z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="csI-j1-IQu"/>
+                    <constraint firstAttribute="trailing" secondItem="jwt-fR-MMa" secondAttribute="trailing" constant="10" id="fZU-Kg-6TT"/>
+                    <constraint firstItem="mXU-cY-A6z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="jsl-A1-Y3e"/>
+                    <constraint firstAttribute="trailing" secondItem="mXU-cY-A6z" secondAttribute="trailing" constant="12" id="nQ1-AT-KeI"/>
+                    <constraint firstItem="jwt-fR-MMa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="qJA-pI-mHT"/>
+                    <constraint firstAttribute="bottom" secondItem="jwt-fR-MMa" secondAttribute="bottom" id="zYd-Xm-su9"/>
+                    <constraint firstAttribute="bottom" secondItem="mXU-cY-A6z" secondAttribute="bottom" constant="2" id="zdg-ci-QCL"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cardNameLabel" destination="nsz-di-WWG" id="dt5-xB-END"/>
+                <outlet property="historyImage" destination="qyH-Jh-nEF" id="UwC-We-PAG"/>
+                <outlet property="rightArrowImage" destination="Z18-S2-xAD" id="TsQ-d4-fU4"/>
+            </connections>
+            <point key="canvasLocation" x="52" y="85.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="bgForCell" width="935" height="76"/>
+    </resources>
+</document>
