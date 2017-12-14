@@ -103,11 +103,11 @@
                     <constraint firstItem="5XA-Pn-EgX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="BSy-xo-BLl"/>
                     <constraint firstItem="d9l-Nb-nsb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Hrd-SE-yOQ"/>
                     <constraint firstAttribute="bottom" secondItem="5XA-Pn-EgX" secondAttribute="bottom" constant="2" id="MbX-g0-2ne"/>
-                    <constraint firstAttribute="bottom" secondItem="JFK-IQ-sz2" secondAttribute="bottom" constant="8" id="Wqr-ZP-jmk"/>
+                    <constraint firstAttribute="bottom" secondItem="JFK-IQ-sz2" secondAttribute="bottom" priority="999" constant="8" id="Wqr-ZP-jmk"/>
                     <constraint firstItem="JFK-IQ-sz2" firstAttribute="leading" secondItem="d9l-Nb-nsb" secondAttribute="trailing" constant="2" id="kCV-gw-sva"/>
                     <constraint firstAttribute="trailing" secondItem="5XA-Pn-EgX" secondAttribute="trailing" constant="10" id="okI-Yi-mHo"/>
                     <constraint firstAttribute="trailing" secondItem="JFK-IQ-sz2" secondAttribute="trailing" constant="14" id="qMY-fF-lrH"/>
-                    <constraint firstAttribute="bottom" secondItem="d9l-Nb-nsb" secondAttribute="bottom" constant="2" id="ux7-bm-tt7"/>
+                    <constraint firstAttribute="bottom" secondItem="d9l-Nb-nsb" secondAttribute="bottom" priority="999" constant="2" id="ux7-bm-tt7"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

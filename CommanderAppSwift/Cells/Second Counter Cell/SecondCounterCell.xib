@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -29,7 +29,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgForDetailedSearchCell" translatesAutoresizingMaskIntoConstraints="NO" id="Fm4-40-bxt">
                         <rect key="frame" x="4" y="0.0" width="439" height="152"/>
                     </imageView>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="AkZ-8N-ENm">
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="AkZ-8N-ENm">
                         <rect key="frame" x="41" y="14" width="365" height="121"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MHJ-aO-HaE">
@@ -77,7 +77,7 @@
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="MHJ-aO-HaE" firstAttribute="height" secondItem="AkZ-8N-ENm" secondAttribute="height" multiplier="0.35" id="1OG-hh-PXY"/>
+                            <constraint firstItem="MHJ-aO-HaE" firstAttribute="height" secondItem="AkZ-8N-ENm" secondAttribute="height" multiplier="0.35" priority="999" id="1OG-hh-PXY"/>
                         </constraints>
                     </stackView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwY-SU-bBT">
@@ -94,7 +94,7 @@
                 <constraints>
                     <constraint firstItem="AkZ-8N-ENm" firstAttribute="leading" secondItem="L12-4s-ZFo" secondAttribute="leading" constant="41" id="3Si-Wb-TPM"/>
                     <constraint firstAttribute="trailing" secondItem="Fm4-40-bxt" secondAttribute="trailing" constant="4" id="D7p-Yb-QGA"/>
-                    <constraint firstAttribute="bottom" secondItem="Fm4-40-bxt" secondAttribute="bottom" id="LdC-cm-jNe"/>
+                    <constraint firstAttribute="bottom" secondItem="Fm4-40-bxt" secondAttribute="bottom" priority="999" id="LdC-cm-jNe"/>
                     <constraint firstItem="dwY-SU-bBT" firstAttribute="leading" secondItem="AkZ-8N-ENm" secondAttribute="trailing" constant="5" id="NAH-87-90m"/>
                     <constraint firstAttribute="trailing" secondItem="dwY-SU-bBT" secondAttribute="trailing" constant="8" id="NH6-8D-Wyj"/>
                     <constraint firstAttribute="bottom" secondItem="dwY-SU-bBT" secondAttribute="bottom" id="Q7a-t9-d2A"/>

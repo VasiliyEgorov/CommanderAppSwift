@@ -51,7 +51,7 @@ class HeadsOrTailsVC: UIViewController {
                             self.tailsImageView.alpha = CGFloat(tails)
                         })
                         
-        }) { (true) in
+        }) { (finished) in
             self.labelAppearanceAnimation()
         }
     }
@@ -62,7 +62,7 @@ class HeadsOrTailsVC: UIViewController {
                        animations: {
                         self.animatedLabel.alpha = 1.0
                         self.animatedLabel.text = self.viewModel.labelString
-        }) { (true) in
+        }) { (finished) in
             self.labelMovementAnimation()
         }
     }

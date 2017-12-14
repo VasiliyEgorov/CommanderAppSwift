@@ -26,6 +26,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         menuVC.tabBarVC = tabBarVC
         let reveal = SWRevealViewController.init(rearViewController: menuVC,
                                                  frontViewController: tabBarVC)
+        for object in tabBarVC.viewControllers! {
+            if let navController = object as? MainNavController {
+                if let firstController = navController.topViewController {
+                    firstController.view.setNeedsLayout()
+                    firstController.view.layoutIfNeeded()
+                    firstController.view.updateConstraintsIfNeeded()
+                }
+            }
+        }
+        tabBarVC.selectedIndex = 0
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = reveal
         reveal?.pushFrontViewController(reveal?.frontViewController, animated: false)

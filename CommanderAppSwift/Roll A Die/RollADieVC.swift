@@ -63,7 +63,7 @@ class RollADieVC: UIViewController {
                        animations: {
                         self.animatedLabel.alpha = 1.0
                         self.animatedLabel.text = self.viewModel.labelString
-        }) { (true) in
+        }) { (finished) in
             self.labelMovementAnimation()
         }
     }
