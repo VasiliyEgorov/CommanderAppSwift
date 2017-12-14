@@ -36,7 +36,7 @@ class HeadsOrTailsVC: UIViewController {
         self.view.addGestureRecognizer(tapRecognizer)
     }
     @objc private func tapGestureAction () {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
     
     // MARK: - Animations
@@ -46,8 +46,11 @@ class HeadsOrTailsVC: UIViewController {
                        delay: 0.0,
                        options: [.curveEaseInOut],
                        animations: {
-                        self.headsImageView.alpha = CGFloat(self.viewModel.headsOrTails())
-                        self.tailsImageView.alpha = CGFloat(self.viewModel.headsOrTails())
+                        self.viewModel.setAlpha(complition: { (heads, tails) in
+                            self.headsImageView.alpha = CGFloat(heads)
+                            self.tailsImageView.alpha = CGFloat(tails)
+                        })
+                        
         }) { (true) in
             self.labelAppearanceAnimation()
         }

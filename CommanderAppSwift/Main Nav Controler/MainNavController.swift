@@ -22,9 +22,9 @@ class MainNavController: UINavigationController {
         super.viewWillAppear(animated)
         for vc in self.childViewControllers {
             switch vc {
-            case _ as MainCounterVC: self.isNavigationBarHidden = true //self.navigationBar.isHidden = true
+            case _ as MainCounterVC: self.isNavigationBarHidden = true
             case _ as ManaCounterVC: self.isNavigationBarHidden = true
-            default: self.navigationBar.isHidden = false
+            default: self.isNavigationBarHidden = false
             }
         }
         self.navigationBar.isTranslucent = true

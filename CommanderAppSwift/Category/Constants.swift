@@ -9,7 +9,7 @@
 import UIKit
 
 var currentKeyboard_height : CGFloat = 0
-
+var cardSearchKeyboardHeight : CGFloat = 0
 enum IndexEnum : Int {
     case Player = 0
     case Opponent = 1
@@ -21,7 +21,7 @@ enum Device : CGFloat {
 }
 
 struct Constants {
-   
+    let noConnection = -1009
     let helvetica = "HelveticaNeue-Thin"
     let silver = Data(imageName: "silver.png")
     let white = Data(imageName: "white.png")

@@ -9,11 +9,51 @@
 import UIKit
 import SWRevealViewController
 
+extension Error {
+    var code: Int { return (self as NSError).code }
+    var domain: String { return (self as NSError).domain }
+}
+extension UIViewController {
+    func networkActivityStart() {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    func networkActivityStop() {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+}
+extension UITableViewCell {
+    func networkActivityStart() {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    func networkActivityStop() {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+}
+extension UIActivityIndicatorView {
+    func start() {
+        self.isHidden = false
+        self.startAnimating()
+    }
+    func stop() {
+        self.isHidden = true
+        self.stopAnimating()
+    }
+}
+extension UIButton {
+    func getSuperviewImage() -> UIImage? {
+        if let imageView = self.superview as? UIImageView {
+            return imageView.image
+        } else {
+            return nil
+        }
+    }
+}
 class CardSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     private let cellID = "SearchCell"
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    var viewModel : CardSearchViewModel!
+    private var backButton : UIBarButtonItem!
+    private var viewModel : CardSearchViewModel!
     private var indicator: UIActivityIndicatorView!
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -24,6 +64,7 @@ class CardSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         initializeActivityView()
         setupGestures()
         setupNotifications()
+        setupBackButton()
         searchSubviewsInTextField(view: searchBar)?.backgroundColor = UIColor.color_99withAlpha(alpha: 0.1)
         searchSubviewsInTextField(view: searchBar)?.textColor = UIColor.color_150withAlpha(alpha: 1.0)
         tableView.register(UINib.init(nibName: "CardSearchCell", bundle: nil), forCellReuseIdentifier: cellID)
@@ -72,6 +113,13 @@ class CardSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         indicator.translatesAutoresizingMaskIntoConstraints = false
     }
+    
+    // MARK: - Back Button
+    
+    private func setupBackButton() {
+        self.backButton = UIBarButtonItem.init(image: UIImage.init(named: "backButton.png"), style: .plain, target: self, action: #selector(backButtonAction(_:)))
+        self.navigationItem.leftBarButtonItem = self.backButton
+    }
     // MARK: - Gestures
     
     private func setupGestures() {
@@ -91,7 +139,18 @@ class CardSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
+        viewModel.checkSearchResults(onComplite: {
+            searchBar.resignFirstResponder()
+            self.indicator.stop()
+            let detailsSearchVC = CardDetailsSearchVC.init(nibName: "CardDetailsSearchVC", bundle: nil)
+            detailsSearchVC.viewModel = self.viewModel.setDetailsViewModelWithCardsArray()
+            detailsSearchVC.tabBar = self.tabBarController
+            self.navigationController?.pushViewController(detailsSearchVC, animated: true)
+        }) {
+            searchBar.resignFirstResponder()
+            self.indicator.stop()
+            // init no results view
+        }
     }
     
     func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
@@ -100,13 +159,29 @@ class CardSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
+        viewModel.cancelSearch() {
+                self.tableView.reloadData()
+                searchBar.text = Constants().empty
+                self.networkActivityStop()
+                searchBar.resignFirstResponder()
+        }
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel.updateCards(cardName: searchText) {
+        viewModel.cancelSearch() {
             DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.indicator.start()
+            self.networkActivityStart()
+            }
+        }
+        viewModel.updateCards(cardName: searchText, complition: {
                 self.tableView.reloadData()
+                self.indicator.stop()
+                self.networkActivityStop()
+        }) { (error, statusCode) in
+            if error?.code == Constants().noConnection {
+                // no conn label
             }
         }
     }
@@ -128,15 +203,35 @@ class CardSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let detailsVC = CardDetailsVC.init(nibName: "CardDetailsVC", bundle: nil)
+        detailsVC.viewModel = viewModel.setDetailsViewModelWithSingleCard(index: indexPath.row)
+        self.navigationController?.pushViewController(detailsVC, animated: true)
     }
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        
+        let cell = tableView.cellForRow(at: indexPath) as! CardSearchCell
+        cell.backgroundColor = .darkGray
+        cell.contentView.backgroundColor = UIColor.init(patternImage: UIImage.init(named: "bgForCellHighlighted.png")!)
     }
     func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
-        
+        let cell = tableView.cellForRow(at: indexPath) as! CardSearchCell
+        cell.backgroundColor = .clear
+        cell.contentView.backgroundColor = .clear
     }
     // MARK: - Buttons
     
+    @IBAction func manaCountersButtonAction(_ sender: UIBarButtonItem) {
+        self.tabBarController?.selectedIndex = 1
+    }
+    @IBAction func lifeCountersButtonAction(_ sender: UIBarButtonItem) {
+        self.tabBarController?.selectedIndex = 0
+    }
+    @IBAction func notesButtonAction(_ sender: UIBarButtonItem) {
+        self.tabBarController?.selectedIndex = 2
+    }
+    @objc func backButtonAction(_ sender: UIBarButtonItem) {
+        SWRevealViewController().revealToggle(animated: false)
+        self.tabBarController?.selectedIndex = 0
+    }
     // MARK: - Notifications
     
     private func setupNotifications() {
@@ -144,9 +239,19 @@ class CardSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     @objc private func keyboardWillShow(notification: NSNotification) {
-        
+        guard let userInfo = notification.userInfo else { return }
+        if let keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect {
+            tableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.size.height, 0)
+            tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, keyboardSize.size.height, 0)
+            cardSearchKeyboardHeight = keyboardSize.size.height
+        }
     }
     @objc private func keyboardWillHide(notification: NSNotification) {
-        
+        guard let userInfo = notification.userInfo else { return }
+        if let keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect {
+            let delta = keyboardSize.size.height - cardSearchKeyboardHeight
+            tableView.contentInset = UIEdgeInsetsMake(0, 0, delta, 0)
+            tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, delta, 0)
+        }
     }
 }

@@ -16,7 +16,7 @@ class RollADieVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = RollADieViewModel()
-        
+        addTapGestureRecognizer()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -24,6 +24,7 @@ class RollADieVC: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        animateImageView()
     }
     // MARK: - Gestures
     
@@ -32,27 +33,28 @@ class RollADieVC: UIViewController {
         self.view.addGestureRecognizer(tapGesture)
     }
     @objc private func tapGestureAction() {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
     // MARK: - Animations
     
     private func animateImageView() {
-        UIView.animate(withDuration: TimeInterval(viewModel.eachDuration),
-                       delay: 0,
-                       options: [.curveEaseInOut],
-                       animations: {
-                        if self.viewModel.enumeration < self.viewModel.result {
-                        let image = self.imageViewArray[self.viewModel.enumeration]
-                        self.viewModel.enumeration += 1
-                        image.alpha = 1
-                        }
-        }) { (true) in
-             if self.viewModel.enumeration < self.viewModel.result {
-                self.animateImageView()
-             } else {
-                self.labelAppearanceAnimation()
+        
+        viewModel.countAnimations(array: imageViewArray, continueCount: { (object, duration) in
+            if let image = object as? UIImageView {
+                UIView.animate(withDuration: TimeInterval(duration),
+                               delay: 0,
+                               options: [.curveEaseInOut],
+                               animations: {
+                                    image.alpha = 1
+                }) { (finished) in
+                   self.animateImageView()
+                }
             }
+        }) {
+            self.labelAppearanceAnimation()
         }
+        
+        
     }
     private func labelAppearanceAnimation() {
         UIView.animate(withDuration: 0.5,

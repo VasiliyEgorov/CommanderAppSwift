@@ -8,6 +8,11 @@
 
 import Foundation
 
+fileprivate enum Number : Int {
+    case One = 0
+    case Two = 1
+}
+
 struct HeadsOrTailsViewModel {
     private let model = HeadsOrTailsModel()
     private var number : Int {
@@ -16,11 +21,12 @@ struct HeadsOrTailsViewModel {
     var labelString : String {
         return model.labelString
     }
-    func headsOrTails() -> Float {
-        switch number {
-        case 0: return 1.0
-        case 1: return 0.3
-        default:return 0.3
+   
+    func setAlpha(complition:(_ heads:Float, _ tails:Float) -> Void) {
+        let numberEnum = Number(rawValue: number)!
+        switch numberEnum {
+        case .One: complition(1.0, 0.3)
+        case .Two: complition(0.3, 1.0)
         }
     }
 }

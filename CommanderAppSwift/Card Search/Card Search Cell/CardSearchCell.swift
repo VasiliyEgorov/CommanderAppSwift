@@ -16,11 +16,12 @@ class CardSearchCell: UITableViewCell {
         didSet {
             cardNameLabel.text = viewModel.name
             rightArrowImage.image = UIImage.init(named: "arrowForCardCell.png")
+            historyImage.image = UIImage.init(named: "coredataPlaceholder.png")
         }
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        cardNameLabel.font = UIFont.init(name: Constants().helvetica, size: cardNameLabel.frame.size.height * 0.6)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

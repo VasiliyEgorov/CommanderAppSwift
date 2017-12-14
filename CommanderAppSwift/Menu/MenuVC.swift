@@ -81,14 +81,16 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
         case .HeadsOrTails:
             let headsOrTailsVC = HeadsOrTailsVC.init(nibName: "HeadsOrTailsVC", bundle: nil)
-            self.present(headsOrTailsVC, animated: true, completion: {
-                self.revealViewController().revealToggle(animated: true)
-            })
+            headsOrTailsVC.modalTransitionStyle = .crossDissolve
+            headsOrTailsVC.modalPresentationStyle = .overCurrentContext
+            self.present(headsOrTailsVC, animated: true, completion: nil)
+            self.revealViewController().revealToggle(animated: false)
         case .RollADie:
             let rollADieVC = RollADieVC.init(nibName: "RollADieVC", bundle: nil)
-            self.present(rollADieVC, animated: true, completion: {
-                self.revealViewController().revealToggle(animated: true)
-            })
+            rollADieVC.modalTransitionStyle = .crossDissolve
+            rollADieVC.modalPresentationStyle = .overCurrentContext
+            self.present(rollADieVC, animated: true, completion: nil)
+            self.revealViewController().revealToggle(animated: false)
       //  case .ResetAllCounters:
         default:break
             

@@ -14,11 +14,11 @@ class Card : NSObject {
     let imageUrl : String
     let setName : String
     let text : String
-    let legalities : [String]
+    let legalities : [[String : Any]]?
     let type : String
     let cardPower : String
     let cardToughness : String
-    let cardColorIdentity : [String]
+    let cardColorIdentity : [String]?
     let cmc : Int
     
     init(json: [String : Any]) {
@@ -27,11 +27,11 @@ class Card : NSObject {
         imageUrl = json["imageUrl"] as? String ?? ""
         setName = json["setName"] as? String ?? ""
         text = json["text"] as? String ?? ""
-        legalities = json["legalities"] as? [String] ?? ["No information sorry about that"]
+        legalities = json["legalities"] as? [[String : Any]]
         type = json["type"] as? String ?? ""
         cardPower = json["power"] as? String ?? "None"
         cardToughness = json["toughness"] as? String ?? "None"
-        cardColorIdentity = json["colorIdentity"] as? [String] ?? [Constants().empty]
+        cardColorIdentity = json["colorIdentity"] as? [String]
         cmc = json["cmc"] as? Int ?? 0
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 struct RollADieModel {
-    let result = Int(arc4random_uniform(UInt32(6) + 1))
+    let result = Int(arc4random_uniform(6) + 1)
     let labelString = "Tap anywhere to close"
-    var enumeration = 0
+    
 }

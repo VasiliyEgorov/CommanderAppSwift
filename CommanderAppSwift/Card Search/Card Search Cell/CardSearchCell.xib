@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,25 +29,25 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgForCell" translatesAutoresizingMaskIntoConstraints="NO" id="jwt-fR-MMa">
                         <rect key="frame" x="10" y="0.0" width="354" height="110.5"/>
                     </imageView>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mXU-cY-A6z">
-                        <rect key="frame" x="12" y="2" width="350" height="106.5"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="mXU-cY-A6z">
+                        <rect key="frame" x="16" y="38.5" width="342" height="33.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qyH-Jh-nEF">
-                                <rect key="frame" x="0.0" y="0.0" width="106.5" height="106.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="33" height="33.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="qyH-Jh-nEF" secondAttribute="height" multiplier="1:1" id="eU2-xq-z9q"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsz-di-WWG">
-                                <rect key="frame" x="106.5" y="42.5" width="137" height="21.5"/>
+                                <rect key="frame" x="142.5" y="0.0" width="40.5" height="33.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
                                 <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z18-S2-xAD">
-                                <rect key="frame" x="243.5" y="0.0" width="106.5" height="106.5"/>
+                                <rect key="frame" x="292" y="0.0" width="50" height="33.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Z18-S2-xAD" secondAttribute="height" multiplier="1:1" id="eDb-lX-zLS"/>
+                                    <constraint firstAttribute="width" secondItem="Z18-S2-xAD" secondAttribute="height" multiplier="1.5:1" id="eDb-lX-zLS"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -54,14 +55,14 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
+                    <constraint firstItem="mXU-cY-A6z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="9e2-UF-hlX"/>
+                    <constraint firstItem="mXU-cY-A6z" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.3" id="R9t-Li-S7q"/>
+                    <constraint firstItem="mXU-cY-A6z" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="RWX-s4-WQY"/>
                     <constraint firstItem="jwt-fR-MMa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ZID-K7-gau"/>
-                    <constraint firstItem="mXU-cY-A6z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="csI-j1-IQu"/>
                     <constraint firstAttribute="trailing" secondItem="jwt-fR-MMa" secondAttribute="trailing" constant="10" id="fZU-Kg-6TT"/>
-                    <constraint firstItem="mXU-cY-A6z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="jsl-A1-Y3e"/>
-                    <constraint firstAttribute="trailing" secondItem="mXU-cY-A6z" secondAttribute="trailing" constant="12" id="nQ1-AT-KeI"/>
                     <constraint firstItem="jwt-fR-MMa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="qJA-pI-mHT"/>
+                    <constraint firstAttribute="trailing" secondItem="mXU-cY-A6z" secondAttribute="trailing" constant="16" id="skP-Pu-o1C"/>
                     <constraint firstAttribute="bottom" secondItem="jwt-fR-MMa" secondAttribute="bottom" id="zYd-Xm-su9"/>
-                    <constraint firstAttribute="bottom" secondItem="mXU-cY-A6z" secondAttribute="bottom" constant="2" id="zdg-ci-QCL"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

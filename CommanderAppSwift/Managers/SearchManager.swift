@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Alamofire
+import AlamofireImage
 
 extension Array {
     
@@ -27,58 +29,49 @@ extension Array {
 }
 
 class SearchManager {
-    var task : URLSessionTask!
-    var urlComponents : URLComponents!
-    var request : URLRequest!
-    
-    func getNewCardsFromAPIWith(name: String, onSuccess success: @escaping ([Card]) -> Void, onFailure failure: @escaping (Error?) -> Void) -> Void {
-        let parameters : [AnyHashable : String] = [name : "name", 100 : "pageSize", "legalities" : "legalities"]
-        var items = [URLQueryItem]()
-        for (key, value) in parameters {
-            items.append(URLQueryItem(name: String(describing: key), value: value))
-        }
-        items = items.filter({!$0.name.isEmpty})
+   var task : DataRequest?
+   private var urlComponents : URLComponents!
+   private var session : SessionManager!
+  
+    func getNewCardsFromAPIWith(name: String, onSuccess success: @escaping ([Card]) -> Void, onFailure failure: @escaping (Error?,Int?) -> Void) -> Void {
+        let parameters : [String : Any] = ["name" : name, "pageSize" : 100, "legalities" : "legalities"]
         
-        if !items.isEmpty {
-            urlComponents.queryItems = items
-        }
-        
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        
-        let task = session.dataTask(with: request) { (data, response, error) in
-            if error != nil {
-                failure(error)
-            } else {
-                guard let data = data else { return }
+        task = session.request(urlComponents.url!, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: [:])
+            .validate()
+            .responseJSON { (response) in
+                guard response.result.isSuccess else { failure(response.result.error, response.response?.statusCode); return }
+                guard let json = response.result.value as? [String : Any] else { return }
+                guard let cards = json["cards"] as? [[String : Any]] else { return }
+                var unfilteredCards : [Card] = []
                 
-                do {
-                    guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String : Any] else { return }
-                    guard let cards = json["cards"] as? [[String : Any]] else { return }
-                   print(cards.count)
-                    var unfilteredCards : [Card] = []
-                    
-                    for object in cards {
-                        let card = Card.init(json: object)
-                        unfilteredCards.append(card)
-                    }
-                   // let withoutDuplicates = unfilteredCards.filterDuplicates(includeElement: {$0.cardName == $1.cardName})
-                  //  let predicate = NSPredicate.init(format: "cardName BEGINSWITH[c] %@", name)
-               //     let result = (unfilteredCards as NSArray).filtered(using: predicate)
-                 //   print(result.count)
-               //     success(result as! [Card])
-                    success(unfilteredCards)
-                    
-                } catch let error {
-                    print("error:", error)
+                for object in cards {
+                    let card = Card.init(json: object)
+                    unfilteredCards.append(card)
                 }
-            }
+                let withoutDuplicates = unfilteredCards.filterDuplicates(includeElement: {$0.cardName == $1.cardName})
+                let predicate = NSPredicate.init(format: "cardName BEGINSWITH[c] %@", name)
+                let result = (withoutDuplicates as NSArray).filtered(using: predicate)
+                   print(result.count)
+                success(result as! [Card])
         }
-        task.resume()
+        
+    }
+    
+    func getCardCellsImage(imageUrl: String, onSuccess success:@escaping (UIImage) -> Void, onFailure failure:@escaping (Error?) -> Void) {
+        session.request(imageUrl, method: .get).responseImage { (responseImage) in
+            guard let image = responseImage.result.value
+                else {
+                    failure(responseImage.result.error)
+                    return
+            }
+           success(image)
+        }
     }
     init() {
-        urlComponents = URLComponents.init(string: "https://api.magicthegathering.io/v1/cards")
-        request = URLRequest.init(url: urlComponents.url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 30)
-        request.httpMethod = "GET"
+        urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "api.magicthegathering.io"
+        urlComponents.path = "/v1/cards/"
+        session = Alamofire.SessionManager.default
     }
 }

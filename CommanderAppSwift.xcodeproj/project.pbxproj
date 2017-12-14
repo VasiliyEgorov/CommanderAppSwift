@@ -79,6 +79,7 @@
 		FF5440281FD7A70D0065C87A /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5440271FD7A70D0065C87A /* CameraView.swift */; };
 		FF54402A1FD7A7620065C87A /* AudioSessionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5440291FD7A7620065C87A /* AudioSessionData.swift */; };
 		FF54402C1FD7A7700065C87A /* CameraData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF54402B1FD7A7700065C87A /* CameraData.swift */; };
+		FF56E7751FE1B38E008E5D54 /* DetailsSearchCellLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF56E7741FE1B38E008E5D54 /* DetailsSearchCellLabel.swift */; };
 		FF60EA2E1FBC977F005C2BBA /* TabBarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF60EA2D1FBC977F005C2BBA /* TabBarVC.xib */; };
 		FF60EA321FBD927C005C2BBA /* MainCounterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA311FBD927C005C2BBA /* MainCounterVM.swift */; };
 		FF60EA371FBD9D1D005C2BBA /* PlayerNameV.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA361FBD9D1D005C2BBA /* PlayerNameV.swift */; };
@@ -104,6 +105,17 @@
 		FF7255881FDA88FC00F8D820 /* CardSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF7255861FDA88FC00F8D820 /* CardSearchCell.xib */; };
 		FF72558A1FDA891500F8D820 /* CardSearchCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7255891FDA891500F8D820 /* CardSearchCellVM.swift */; };
 		FF72558C1FDAADB000F8D820 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72558B1FDAADB000F8D820 /* SearchManager.swift */; };
+		FF7255901FE160A500F8D820 /* CardDetailsSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72558E1FE160A500F8D820 /* CardDetailsSearchVC.swift */; };
+		FF7255911FE160A500F8D820 /* CardDetailsSearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF72558F1FE160A500F8D820 /* CardDetailsSearchVC.xib */; };
+		FF7255931FE1612E00F8D820 /* CardDetailsSearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7255921FE1612E00F8D820 /* CardDetailsSearchVM.swift */; };
+		FF7255971FE1621100F8D820 /* CardDetailsSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7255951FE1621100F8D820 /* CardDetailsSearchCell.swift */; };
+		FF7255981FE1621100F8D820 /* CardDetailsSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF7255961FE1621100F8D820 /* CardDetailsSearchCell.xib */; };
+		FF72559A1FE1622A00F8D820 /* CardDetailsSearchCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7255991FE1622A00F8D820 /* CardDetailsSearchCellVM.swift */; };
+		FF72559E1FE190E100F8D820 /* CardDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72559C1FE190E100F8D820 /* CardDetailsVC.swift */; };
+		FF72559F1FE190E100F8D820 /* CardDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF72559D1FE190E100F8D820 /* CardDetailsVC.xib */; };
+		FF7255A11FE190F700F8D820 /* CardDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7255A01FE190F700F8D820 /* CardDetailsVM.swift */; };
+		FFA11F411FE257D900E27891 /* CardZoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA11F3F1FE257D900E27891 /* CardZoomVC.swift */; };
+		FFA11F421FE257D900E27891 /* CardZoomVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFA11F401FE257D900E27891 /* CardZoomVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,6 +216,7 @@
 		FF5440271FD7A70D0065C87A /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		FF5440291FD7A7620065C87A /* AudioSessionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSessionData.swift; sourceTree = "<group>"; };
 		FF54402B1FD7A7700065C87A /* CameraData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraData.swift; sourceTree = "<group>"; };
+		FF56E7741FE1B38E008E5D54 /* DetailsSearchCellLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsSearchCellLabel.swift; sourceTree = "<group>"; };
 		FF60EA2D1FBC977F005C2BBA /* TabBarVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarVC.xib; sourceTree = "<group>"; };
 		FF60EA311FBD927C005C2BBA /* MainCounterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCounterVM.swift; sourceTree = "<group>"; };
 		FF60EA361FBD9D1D005C2BBA /* PlayerNameV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNameV.swift; sourceTree = "<group>"; };
@@ -229,6 +242,17 @@
 		FF7255861FDA88FC00F8D820 /* CardSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardSearchCell.xib; sourceTree = "<group>"; };
 		FF7255891FDA891500F8D820 /* CardSearchCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSearchCellVM.swift; sourceTree = "<group>"; };
 		FF72558B1FDAADB000F8D820 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
+		FF72558E1FE160A500F8D820 /* CardDetailsSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsSearchVC.swift; sourceTree = "<group>"; };
+		FF72558F1FE160A500F8D820 /* CardDetailsSearchVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardDetailsSearchVC.xib; sourceTree = "<group>"; };
+		FF7255921FE1612E00F8D820 /* CardDetailsSearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsSearchVM.swift; sourceTree = "<group>"; };
+		FF7255951FE1621100F8D820 /* CardDetailsSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsSearchCell.swift; sourceTree = "<group>"; };
+		FF7255961FE1621100F8D820 /* CardDetailsSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardDetailsSearchCell.xib; sourceTree = "<group>"; };
+		FF7255991FE1622A00F8D820 /* CardDetailsSearchCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsSearchCellVM.swift; sourceTree = "<group>"; };
+		FF72559C1FE190E100F8D820 /* CardDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsVC.swift; sourceTree = "<group>"; };
+		FF72559D1FE190E100F8D820 /* CardDetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardDetailsVC.xib; sourceTree = "<group>"; };
+		FF7255A01FE190F700F8D820 /* CardDetailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsVM.swift; sourceTree = "<group>"; };
+		FFA11F3F1FE257D900E27891 /* CardZoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardZoomVC.swift; sourceTree = "<group>"; };
+		FFA11F401FE257D900E27891 /* CardZoomVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardZoomVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,6 +316,7 @@
 				FF5440171FD4F60E0065C87A /* CountersTextField.swift */,
 				FF5440191FD4FA820065C87A /* ChangeCounterButton.swift */,
 				FF54401B1FD4FC800065C87A /* CountersButton.swift */,
+				FF56E7741FE1B38E008E5D54 /* DetailsSearchCellLabel.swift */,
 			);
 			path = separateViews;
 			sourceTree = "<group>";
@@ -640,8 +665,12 @@
 				FF72557B1FDA822D00F8D820 /* CardSearchVC.swift */,
 				FF72557F1FDA824000F8D820 /* CardSearchVM.swift */,
 				FF7255811FDA824900F8D820 /* Card.swift */,
+				FFA11F3F1FE257D900E27891 /* CardZoomVC.swift */,
+				FFA11F401FE257D900E27891 /* CardZoomVC.xib */,
 				FF72557C1FDA822D00F8D820 /* CardSearchVC.xib */,
+				FF72559B1FE190B900F8D820 /* CardDetails */,
 				FF7255841FDA88D500F8D820 /* Card Search Cell */,
+				FF72558D1FE1607000F8D820 /* Card Details Search */,
 			);
 			path = "Card Search";
 			sourceTree = "<group>";
@@ -654,6 +683,37 @@
 				FF7255861FDA88FC00F8D820 /* CardSearchCell.xib */,
 			);
 			path = "Card Search Cell";
+			sourceTree = "<group>";
+		};
+		FF72558D1FE1607000F8D820 /* Card Details Search */ = {
+			isa = PBXGroup;
+			children = (
+				FF72558E1FE160A500F8D820 /* CardDetailsSearchVC.swift */,
+				FF7255921FE1612E00F8D820 /* CardDetailsSearchVM.swift */,
+				FF72558F1FE160A500F8D820 /* CardDetailsSearchVC.xib */,
+				FF7255941FE161D800F8D820 /* Card Details Search Cell */,
+			);
+			path = "Card Details Search";
+			sourceTree = "<group>";
+		};
+		FF7255941FE161D800F8D820 /* Card Details Search Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FF7255951FE1621100F8D820 /* CardDetailsSearchCell.swift */,
+				FF7255991FE1622A00F8D820 /* CardDetailsSearchCellVM.swift */,
+				FF7255961FE1621100F8D820 /* CardDetailsSearchCell.xib */,
+			);
+			path = "Card Details Search Cell";
+			sourceTree = "<group>";
+		};
+		FF72559B1FE190B900F8D820 /* CardDetails */ = {
+			isa = PBXGroup;
+			children = (
+				FF72559C1FE190E100F8D820 /* CardDetailsVC.swift */,
+				FF7255A01FE190F700F8D820 /* CardDetailsVM.swift */,
+				FF72559D1FE190E100F8D820 /* CardDetailsVC.xib */,
+			);
+			path = CardDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -769,10 +829,14 @@
 				FF1BBB091FC4FE3A009271C4 /* ThirdCounterCell.xib in Resources */,
 				FF7255881FDA88FC00F8D820 /* CardSearchCell.xib in Resources */,
 				FF3340131FB8E9D100E980AA /* ManaCounterVC.xib in Resources */,
+				FFA11F421FE257D900E27891 /* CardZoomVC.xib in Resources */,
 				FF72557E1FDA822D00F8D820 /* CardSearchVC.xib in Resources */,
+				FF7255911FE160A500F8D820 /* CardDetailsSearchVC.xib in Resources */,
 				FF1BBB221FC63580009271C4 /* MenuCell.xib in Resources */,
 				FF3340051FB5BE0D00E980AA /* MainCounterVC.xib in Resources */,
+				FF72559F1FE190E100F8D820 /* CardDetailsVC.xib in Resources */,
 				FF333FD91FB5A5C600E980AA /* LaunchScreen.storyboard in Resources */,
+				FF7255981FE1621100F8D820 /* CardDetailsSearchCell.xib in Resources */,
 				FF333FD61FB5A5C500E980AA /* Assets.xcassets in Resources */,
 				FF3340231FB9033C00E980AA /* NotesTableViewCell.xib in Resources */,
 				FF60EA2E1FBC977F005C2BBA /* TabBarVC.xib in Resources */,
@@ -815,6 +879,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CommanderAppSwift/Pods-CommanderAppSwift-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Bond/Bond.framework",
 				"${BUILT_PRODUCTS_DIR}/Differ/Differ.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveKit/ReactiveKit.framework",
@@ -822,6 +888,8 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bond.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differ.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveKit.framework",
@@ -891,26 +959,33 @@
 				FF60EA481FC0B780005C2BBA /* AvatarImageView.swift in Sources */,
 				FF3340121FB8E9D100E980AA /* ManaCounterVC.swift in Sources */,
 				FF1BBB3D1FC66CDD009271C4 /* HeadsOrTailsM.swift in Sources */,
+				FFA11F411FE257D900E27891 /* CardZoomVC.swift in Sources */,
 				FF1BBB431FC792E8009271C4 /* MainCountersAlertVM.swift in Sources */,
 				FF3340041FB5BE0D00E980AA /* MainCounterVC.swift in Sources */,
+				FF7255A11FE190F700F8D820 /* CardDetailsVM.swift in Sources */,
 				FF1BBB381FC66CC2009271C4 /* HeadsOrTailsVC.swift in Sources */,
 				FF1BBAEA1FC273AA009271C4 /* ManaCounterVM.swift in Sources */,
 				FF54401A1FD4FA820065C87A /* ChangeCounterButton.swift in Sources */,
 				FF333FFD1FB5B92500E980AA /* TabBarViewController.swift in Sources */,
+				FF72559E1FE190E100F8D820 /* CardDetailsVC.swift in Sources */,
 				FF1BBB981FCC19A2009271C4 /* MainNavToolBar.swift in Sources */,
 				FF1BBB901FC8D511009271C4 /* NoteDetailsVM.swift in Sources */,
 				FF1BBB341FC66CA5009271C4 /* RollADieM.swift in Sources */,
 				FF72557D1FDA822D00F8D820 /* CardSearchVC.swift in Sources */,
+				FF7255931FE1612E00F8D820 /* CardDetailsSearchVM.swift in Sources */,
 				FF7255801FDA824000F8D820 /* CardSearchVM.swift in Sources */,
 				FF3340221FB9033C00E980AA /* NotesCell.swift in Sources */,
 				FF33401A1FB8FFB600E980AA /* FirstCounterCell.swift in Sources */,
+				FF72559A1FE1622A00F8D820 /* CardDetailsSearchCellVM.swift in Sources */,
 				FF33400A1FB5BE9E00E980AA /* MenuVC.swift in Sources */,
+				FF7255971FE1621100F8D820 /* CardDetailsSearchCell.swift in Sources */,
 				FF333FCC1FB5A5C500E980AA /* AppDelegate.swift in Sources */,
 				FF1BBB951FCB37F5009271C4 /* NoteDetailsVC.swift in Sources */,
 				FF60EA511FC0F7AE005C2BBA /* RandomAvatarLabel.swift in Sources */,
 				FF33401E1FB9031200E980AA /* NotesVC.swift in Sources */,
 				FF60EA401FBDE80D005C2BBA /* DataManager.swift in Sources */,
 				FF1BBB1A1FC52E64009271C4 /* MainCounterContainerVM.swift in Sources */,
+				FF56E7751FE1B38E008E5D54 /* DetailsSearchCellLabel.swift in Sources */,
 				FF1BBB9D1FCC1A2A009271C4 /* TabBarSwitchAnimations.swift in Sources */,
 				FF60EA371FBD9D1D005C2BBA /* PlayerNameV.swift in Sources */,
 				FF1BBAF71FC4A781009271C4 /* MainCountersLabel.swift in Sources */,
@@ -934,6 +1009,7 @@
 				FF1BBB001FC4CBBB009271C4 /* SecondCounterCellVM.swift in Sources */,
 				FF333FD41FB5A5C500E980AA /* CommanderAppSwift.xcdatamodeld in Sources */,
 				FF60EA571FC0F9E4005C2BBA /* DataExtension.swift in Sources */,
+				FF7255901FE160A500F8D820 /* CardDetailsSearchVC.swift in Sources */,
 				FF72557A1FD92F1A00F8D820 /* keyboardButtonsView.swift in Sources */,
 				FF1BBB0F1FC4FE83009271C4 /* FourthCounterCell.swift in Sources */,
 				FF60EA3D1FBDA395005C2BBA /* Constants.swift in Sources */,

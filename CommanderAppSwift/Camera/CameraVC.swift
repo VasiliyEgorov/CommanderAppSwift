@@ -384,7 +384,7 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, CameraDataDeleg
         }
         }
     }
-    // MARK: - AVCapturePhotoCapture Delegate iOS 10
+    // MARK: - AVCapturePhotoCapture Delegate iOS 11
     
     @available(iOS 11.0, *)
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {

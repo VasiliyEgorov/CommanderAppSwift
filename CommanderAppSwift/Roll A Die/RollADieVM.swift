@@ -8,22 +8,22 @@
 
 import Foundation
 
-struct RollADieViewModel {
+class RollADieViewModel {
     private var model = RollADieModel()
-    var result : Int {
-        return model.result
+    private var eachDuration : Float {
+        return 3.0 / Float(model.result)
     }
-    var eachDuration : Float {
-        return 3.0 / Float(result)
-    }
-    var enumeration : Int {
-        get {
-            return model.enumeration
-        } set {
-            model.enumeration = enumeration
-        }
-    }
+    private var enumeration = 0
     var labelString : String {
         return model.labelString
+    }
+    func countAnimations(array: [Any], continueCount:(Any, Float) -> Void, stopCount:() -> Void) {
+        if enumeration < model.result {
+            let object = array[enumeration]
+            enumeration += 1
+            continueCount(object, eachDuration)
+        } else {
+            stopCount()
+        }
     }
 }

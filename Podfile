@@ -8,4 +8,6 @@ target 'CommanderAppSwift' do
  pod 'SWRevealViewController', '~> 2.3'
  pod 'ReactiveKit'
  pod 'Bond'
+ pod 'Alamofire'
+ pod 'AlamofireImage'
 end
