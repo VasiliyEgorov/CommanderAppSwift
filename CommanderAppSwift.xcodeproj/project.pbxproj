@@ -72,6 +72,7 @@
 		FF4FA3731FE345090029C63C /* VariousExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4FA3721FE345090029C63C /* VariousExtensions.swift */; };
 		FF4FA37A1FE3EF230029C63C /* NoResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4FA3781FE3EF230029C63C /* NoResultsVC.swift */; };
 		FF4FA37B1FE3EF230029C63C /* NoResultsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF4FA3791FE3EF230029C63C /* NoResultsVC.xib */; };
+		FF4FA37F1FE434FE0029C63C /* NoConnectionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4FA37E1FE434FE0029C63C /* NoConnectionLabel.swift */; };
 		FF5440181FD4F60E0065C87A /* CountersTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5440171FD4F60E0065C87A /* CountersTextField.swift */; };
 		FF54401A1FD4FA820065C87A /* ChangeCounterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5440191FD4FA820065C87A /* ChangeCounterButton.swift */; };
 		FF54401C1FD4FC800065C87A /* CountersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF54401B1FD4FC800065C87A /* CountersButton.swift */; };
@@ -212,6 +213,7 @@
 		FF4FA3721FE345090029C63C /* VariousExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariousExtensions.swift; sourceTree = "<group>"; };
 		FF4FA3781FE3EF230029C63C /* NoResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResultsVC.swift; sourceTree = "<group>"; };
 		FF4FA3791FE3EF230029C63C /* NoResultsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoResultsVC.xib; sourceTree = "<group>"; };
+		FF4FA37E1FE434FE0029C63C /* NoConnectionLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoConnectionLabel.swift; sourceTree = "<group>"; };
 		FF5440171FD4F60E0065C87A /* CountersTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountersTextField.swift; sourceTree = "<group>"; };
 		FF5440191FD4FA820065C87A /* ChangeCounterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCounterButton.swift; sourceTree = "<group>"; };
 		FF54401B1FD4FC800065C87A /* CountersButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountersButton.swift; sourceTree = "<group>"; };
@@ -691,6 +693,7 @@
 				FF72557B1FDA822D00F8D820 /* CardSearchVC.swift */,
 				FF72557F1FDA824000F8D820 /* CardSearchVM.swift */,
 				FF72557C1FDA822D00F8D820 /* CardSearchVC.xib */,
+				FF4FA37E1FE434FE0029C63C /* NoConnectionLabel.swift */,
 				FF7255811FDA824900F8D820 /* Card.swift */,
 				FF4FA37C1FE3EF2A0029C63C /* Card Zoom */,
 				FF72559B1FE190B900F8D820 /* CardDetails */,
@@ -969,6 +972,7 @@
 				FF1BBB451FC792F7009271C4 /* MainCountersAlertM.swift in Sources */,
 				FF54402A1FD7A7620065C87A /* AudioSessionData.swift in Sources */,
 				FF1BBB061FC4FE15009271C4 /* ThirdCounterCell.swift in Sources */,
+				FF4FA37F1FE434FE0029C63C /* NoConnectionLabel.swift in Sources */,
 				FF60EA4C1FC0DF6A005C2BBA /* AvatarVM.swift in Sources */,
 				FF1BBB321FC66C9B009271C4 /* RollADieVM.swift in Sources */,
 				FF3340071FB5BE6B00E980AA /* MainCounterContainerVC.swift in Sources */,
