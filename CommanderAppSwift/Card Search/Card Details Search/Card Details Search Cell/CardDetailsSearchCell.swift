@@ -21,6 +21,8 @@ class CardDetailsSearchCell: UITableViewCell {
     @IBOutlet weak var cardImage: UIImageView!
     private var indicator : UIActivityIndicatorView!
     private var refreshButton : UIButton?
+    private var noSignImageView : UIImageView?
+   // weak var weakSelf = self
     weak var delegate : CardDetailsSearchCellDelegate?
     
     weak var viewModel : CardDetailsSearchCellViewModel! {
@@ -29,12 +31,15 @@ class CardDetailsSearchCell: UITableViewCell {
             cardTypeLabel.text = viewModel.card.type
             cardRarityLabel.text = viewModel.card.rarity
             cardLegalitiesLabel.text = viewModel.legalities
+            
             viewModel.updateCardImage(onSuccess: { (image) in
+                self.cardImage.image = nil
                 self.refreshButton?.removeFromSuperview()
                 self.indicator.stop()
                 self.networkActivityStop()
                 self.cardImage.image = image
                 self.addZoomButton()
+                
             }) { (error) in
                 if error?.code == Constants().noConnection {
                     self.indicator.stop()
@@ -70,7 +75,11 @@ class CardDetailsSearchCell: UITableViewCell {
         addConstraints(view: indicator)
         indicator.start()
     }
-
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        cardImage.image = nil
+        noSignImageView?.image = nil
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         let selectedBGView = UIView.init()
@@ -80,26 +89,26 @@ class CardDetailsSearchCell: UITableViewCell {
     // MARK: - No Sign Image View
     
     private func addNoSignImageView() {
-        let noSignImageView = UIImageView.init(image: UIImage.init(named: "noImageSign.png"))
-        noSignImageView.layer.shadowColor = UIColor.black.cgColor
-        noSignImageView.layer.shadowRadius = 0.5
-        noSignImageView.layer.shadowOpacity = 1.0
-        noSignImageView.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
-        noSignImageView.layer.masksToBounds = false
-        cardImage.addSubview(noSignImageView)
-        addConstraints(view: noSignImageView)
+        noSignImageView = UIImageView.init(image: UIImage.init(named: "noImageSign.png"))
+        noSignImageView!.layer.shadowColor = UIColor.black.cgColor
+        noSignImageView!.layer.shadowRadius = 0.5
+        noSignImageView!.layer.shadowOpacity = 1.0
+        noSignImageView!.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+        noSignImageView!.layer.masksToBounds = false
+        cardImage.addSubview(noSignImageView!)
+        addConstraints(view: noSignImageView!)
     }
     // MARK: - Buttons
     private func addRefreshButton() {
         refreshButton = UIButton.init(type: .system)
-        refreshButton?.frame = CGRect.zero
-        refreshButton?.setBackgroundImage(UIImage.init(named: "refreshForCard.png"), for: .normal)
-        refreshButton?.addTarget(self, action: #selector(refreshButtonAction(_:)), for: .touchUpInside)
-        refreshButton?.layer.shadowColor = UIColor.black.cgColor
-        refreshButton?.layer.shadowRadius = 1.0
-        refreshButton?.layer.shadowOpacity = 1.0
-        refreshButton?.layer.shadowOffset = CGSize(width: 1.5, height: 1.5)
-        refreshButton?.layer.masksToBounds = false
+        refreshButton!.frame = CGRect.zero
+        refreshButton!.setBackgroundImage(UIImage.init(named: "refreshForCard.png"), for: .normal)
+        refreshButton!.addTarget(self, action: #selector(refreshButtonAction(_:)), for: .touchUpInside)
+        refreshButton!.layer.shadowColor = UIColor.black.cgColor
+        refreshButton!.layer.shadowRadius = 1.0
+        refreshButton!.layer.shadowOpacity = 1.0
+        refreshButton!.layer.shadowOffset = CGSize(width: 1.5, height: 1.5)
+        refreshButton!.layer.masksToBounds = false
         cardImage.addSubview(refreshButton!)
         addConstraints(view: refreshButton!)
     }

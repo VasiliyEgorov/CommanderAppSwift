@@ -189,8 +189,8 @@ class CardDetailsVC: UIViewController {
         let screenHeight = Device(rawValue: UIScreen.main.bounds.size.height)!
         switch screenHeight {
         case .Iphone5:
-            imageViewLeadingConstraint.constant = 75
-            imageViewTrailingConstraint.constant = 75
+            imageViewLeadingConstraint.constant = 85
+            imageViewTrailingConstraint.constant = 85
             imageViewTopContraint.constant = 21
             bottomViewTopConstraint.constant = 35
             bottomViewBottomConstraint.constant = 35
@@ -203,10 +203,10 @@ class CardDetailsVC: UIViewController {
         case .Iphone6_7_plus:
             navigationItem.title = "Card Details"
             topStackViewConstraint.constant = 80
-            imageViewLeadingConstraint.constant = 110
-            imageViewTrailingConstraint.constant = 110
-            imageViewTopContraint.constant = 80
-            bottomViewTopConstraint.constant = 50
+            imageViewLeadingConstraint.constant = 120
+            imageViewTrailingConstraint.constant = 120
+            imageViewTopContraint.constant = 75
+            bottomViewTopConstraint.constant = 35
             bottomViewBottomConstraint.constant = 45
         }
         self.view.updateConstraints()

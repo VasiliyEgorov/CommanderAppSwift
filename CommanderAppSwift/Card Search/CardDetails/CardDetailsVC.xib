@@ -48,7 +48,7 @@
                     <rect key="frame" x="75" y="20" width="225" height="388.5"/>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="2cR-Eg-v1p">
-                    <rect key="frame" x="35" y="28" width="334" height="28.5"/>
+                    <rect key="frame" x="35" y="30" width="334" height="28.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tuR-Vt-luR" customClass="DetailsSearchCellLabel" customModule="CommanderAppSwift" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="167" height="28.5"/>
@@ -154,7 +154,7 @@
             <constraints>
                 <constraint firstItem="z7l-LZ-aeL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="22" id="1WK-EC-ss7"/>
                 <constraint firstItem="joU-3o-ODF" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="2el-ye-XXS"/>
-                <constraint firstItem="2cR-Eg-v1p" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="28" id="4JC-uO-tvY"/>
+                <constraint firstItem="2cR-Eg-v1p" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="4JC-uO-tvY"/>
                 <constraint firstItem="joU-3o-ODF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="75" id="ALY-4A-sCt"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="2cR-Eg-v1p" secondAttribute="trailing" constant="6" id="Apw-Qu-UaB"/>
                 <constraint firstItem="z7l-LZ-aeL" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.35" id="Hfe-fy-yHw"/>

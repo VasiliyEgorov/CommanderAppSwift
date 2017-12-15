@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,10 +13,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ManaCounterVC" customModule="CommanderAppSwift" customModuleProvider="target">
             <connections>
+                <outlet property="buttonsStackView" destination="SKj-RK-e5d" id="0oP-SI-EGn"/>
                 <outlet property="eighthLabel" destination="44h-5O-yK5" id="JFM-gV-Hog"/>
                 <outlet property="fifthLabel" destination="TOI-B9-QOm" id="EeR-yl-Ecb"/>
                 <outlet property="firstLabel" destination="cp7-z1-V0K" id="uK6-cN-NHO"/>
                 <outlet property="fourthLabel" destination="OPk-jD-yq6" id="oCE-C8-Rgb"/>
+                <outlet property="imagesStackView" destination="RC8-e4-5iz" id="wMf-DZ-IrR"/>
+                <outlet property="imagesStackViewTrailingConstraint" destination="f8P-nK-YwF" id="Nqe-Dd-rdp"/>
                 <outlet property="secondLabel" destination="PRu-Ym-296" id="w0J-jc-PmA"/>
                 <outlet property="seventhLabel" destination="iha-DQ-CAk" id="Av7-Lc-f0L"/>
                 <outlet property="sixthLabel" destination="P59-bS-lmU" id="Q7F-8J-dMF"/>
@@ -43,6 +46,9 @@
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sun_35" translatesAutoresizingMaskIntoConstraints="NO" id="nRL-0y-mmK">
                                     <rect key="frame" x="0.0" y="0.0" width="40" height="37"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="nRL-0y-mmK" secondAttribute="height" multiplier="40:37" id="gsr-qX-T2N"/>
+                                    </constraints>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="water_35" translatesAutoresizingMaskIntoConstraints="NO" id="YVr-c2-bfc">
                                     <rect key="frame" x="0.0" y="61" width="40" height="37"/>

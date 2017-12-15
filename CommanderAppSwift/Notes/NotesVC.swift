@@ -42,6 +42,7 @@ class NotesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIG
         UIButton.appearance().setTitleColor(.lightGray, for: .normal)
         let editButton = UIBarButtonItem.init(barButtonSystemItem: .edit, target: self, action: #selector(editButtonAction(_:)))
         self.navigationItem.rightBarButtonItem = editButton
+        self.navigationItem.title = "Notes"
     }
     // MARK: - TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

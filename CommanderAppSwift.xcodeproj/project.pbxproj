@@ -69,6 +69,9 @@
 		FF3340221FB9033C00E980AA /* NotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3340201FB9033C00E980AA /* NotesCell.swift */; };
 		FF3340231FB9033C00E980AA /* NotesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3340211FB9033C00E980AA /* NotesTableViewCell.xib */; };
 		FF3340251FB9046A00E980AA /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3340241FB9046900E980AA /* UIColorExtension.swift */; };
+		FF4FA3731FE345090029C63C /* VariousExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4FA3721FE345090029C63C /* VariousExtensions.swift */; };
+		FF4FA37A1FE3EF230029C63C /* NoResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4FA3781FE3EF230029C63C /* NoResultsVC.swift */; };
+		FF4FA37B1FE3EF230029C63C /* NoResultsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF4FA3791FE3EF230029C63C /* NoResultsVC.xib */; };
 		FF5440181FD4F60E0065C87A /* CountersTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5440171FD4F60E0065C87A /* CountersTextField.swift */; };
 		FF54401A1FD4FA820065C87A /* ChangeCounterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5440191FD4FA820065C87A /* ChangeCounterButton.swift */; };
 		FF54401C1FD4FC800065C87A /* CountersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF54401B1FD4FC800065C87A /* CountersButton.swift */; };
@@ -206,6 +209,9 @@
 		FF3340201FB9033C00E980AA /* NotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCell.swift; sourceTree = "<group>"; };
 		FF3340211FB9033C00E980AA /* NotesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesTableViewCell.xib; sourceTree = "<group>"; };
 		FF3340241FB9046900E980AA /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		FF4FA3721FE345090029C63C /* VariousExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariousExtensions.swift; sourceTree = "<group>"; };
+		FF4FA3781FE3EF230029C63C /* NoResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResultsVC.swift; sourceTree = "<group>"; };
+		FF4FA3791FE3EF230029C63C /* NoResultsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoResultsVC.xib; sourceTree = "<group>"; };
 		FF5440171FD4F60E0065C87A /* CountersTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountersTextField.swift; sourceTree = "<group>"; };
 		FF5440191FD4FA820065C87A /* ChangeCounterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCounterButton.swift; sourceTree = "<group>"; };
 		FF54401B1FD4FC800065C87A /* CountersButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountersButton.swift; sourceTree = "<group>"; };
@@ -578,6 +584,24 @@
 			path = CommanderAppSwiftUITests;
 			sourceTree = "<group>";
 		};
+		FF4FA37C1FE3EF2A0029C63C /* Card Zoom */ = {
+			isa = PBXGroup;
+			children = (
+				FFA11F3F1FE257D900E27891 /* CardZoomVC.swift */,
+				FFA11F401FE257D900E27891 /* CardZoomVC.xib */,
+			);
+			path = "Card Zoom";
+			sourceTree = "<group>";
+		};
+		FF4FA37D1FE3EF390029C63C /* No Results Controller Alert */ = {
+			isa = PBXGroup;
+			children = (
+				FF4FA3781FE3EF230029C63C /* NoResultsVC.swift */,
+				FF4FA3791FE3EF230029C63C /* NoResultsVC.xib */,
+			);
+			path = "No Results Controller Alert";
+			sourceTree = "<group>";
+		};
 		FF5440231FD7A5CC0065C87A /* Camera */ = {
 			isa = PBXGroup;
 			children = (
@@ -594,6 +618,7 @@
 			isa = PBXGroup;
 			children = (
 				FF54401F1FD6A8B90065C87A /* CameraActionSheetView.swift */,
+				FF4FA37D1FE3EF390029C63C /* No Results Controller Alert */,
 				FF1BBB461FC79942009271C4 /* Alert For Main Counters */,
 			);
 			path = Alerts;
@@ -625,6 +650,7 @@
 				FF60EA561FC0F9E4005C2BBA /* DataExtension.swift */,
 				FF60EA581FC0F9F1005C2BBA /* UIImageExtension.swift */,
 				FF60EA3C1FBDA395005C2BBA /* Constants.swift */,
+				FF4FA3721FE345090029C63C /* VariousExtensions.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -664,10 +690,9 @@
 			children = (
 				FF72557B1FDA822D00F8D820 /* CardSearchVC.swift */,
 				FF72557F1FDA824000F8D820 /* CardSearchVM.swift */,
-				FF7255811FDA824900F8D820 /* Card.swift */,
-				FFA11F3F1FE257D900E27891 /* CardZoomVC.swift */,
-				FFA11F401FE257D900E27891 /* CardZoomVC.xib */,
 				FF72557C1FDA822D00F8D820 /* CardSearchVC.xib */,
+				FF7255811FDA824900F8D820 /* Card.swift */,
+				FF4FA37C1FE3EF2A0029C63C /* Card Zoom */,
 				FF72559B1FE190B900F8D820 /* CardDetails */,
 				FF7255841FDA88D500F8D820 /* Card Search Cell */,
 				FF72558D1FE1607000F8D820 /* Card Details Search */,
@@ -845,6 +870,7 @@
 				FF5440261FD7A5F40065C87A /* cameraXIB.xib in Resources */,
 				FF33401F1FB9031200E980AA /* NotesVC.xib in Resources */,
 				FF33400B1FB5BE9E00E980AA /* MenuVC.xib in Resources */,
+				FF4FA37B1FE3EF230029C63C /* NoResultsVC.xib in Resources */,
 				FF3340151FB8FBEC00E980AA /* MainCounterContainerVC.xib in Resources */,
 				FF1BBBA71FD2D3C2009271C4 /* ZeroCounterCell.xib in Resources */,
 				FF33401B1FB8FFB600E980AA /* FirstCounterCell.xib in Resources */,
@@ -977,6 +1003,7 @@
 				FF3340221FB9033C00E980AA /* NotesCell.swift in Sources */,
 				FF33401A1FB8FFB600E980AA /* FirstCounterCell.swift in Sources */,
 				FF72559A1FE1622A00F8D820 /* CardDetailsSearchCellVM.swift in Sources */,
+				FF4FA3731FE345090029C63C /* VariousExtensions.swift in Sources */,
 				FF33400A1FB5BE9E00E980AA /* MenuVC.swift in Sources */,
 				FF7255971FE1621100F8D820 /* CardDetailsSearchCell.swift in Sources */,
 				FF333FCC1FB5A5C500E980AA /* AppDelegate.swift in Sources */,
@@ -1004,6 +1031,7 @@
 				FF60EA4E1FC0DF74005C2BBA /* AvatarM.swift in Sources */,
 				FF54402C1FD7A7700065C87A /* CameraData.swift in Sources */,
 				FF1BBBA91FD2D5C8009271C4 /* ZeroCounterCellVM.swift in Sources */,
+				FF4FA37A1FE3EF230029C63C /* NoResultsVC.swift in Sources */,
 				FF72558A1FDA891500F8D820 /* CardSearchCellVM.swift in Sources */,
 				FF1BBB0B1FC4FE60009271C4 /* ThirdCounterCellVM.swift in Sources */,
 				FF1BBB001FC4CBBB009271C4 /* SecondCounterCellVM.swift in Sources */,

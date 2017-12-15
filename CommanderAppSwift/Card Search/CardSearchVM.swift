@@ -45,12 +45,20 @@ class CardSearchViewModel {
     }
     func checkSearchResults(onComplite complition:@escaping () -> Void, onFailure failure:@escaping () -> Void) {
         DispatchQueue.main.async {
-        if self.cardsArray.isEmpty {
-            failure()
-        } else {
-            complition()
+            if self.cardsArray == nil || self.cardsArray.isEmpty {
+                self.manager.task?.responseJSON(completionHandler: { (response) in
+                    guard response.result.isSuccess else { failure(); return }
+                    if self.cardsArray.isEmpty {
+                        failure()
+                    } else {
+                        complition()
+                    }
+                })
+            } else {
+                complition()
+            }
         }
-        }
+        
     }
     func setDetailsViewModelWithCardsArray() -> CardDetailsSearchViewModel? {
         guard !cardsArray.isEmpty else { return nil }

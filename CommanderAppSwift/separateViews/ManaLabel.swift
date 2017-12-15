@@ -22,10 +22,9 @@ class ManaLabel: UILabel {
         
     }
      func configureSublayer () {
-        if let layer = self.maskLayer {
-            layer.removeFromSuperlayer()
-        }
         
+        self.maskLayer?.removeFromSuperlayer()
+  
         let width : CGFloat = self.layer.superlayer!.frame.size.width / 4
         let height : CGFloat = self.layer.superlayer!.frame.size.height + 1
         let fromY : CGFloat = 0

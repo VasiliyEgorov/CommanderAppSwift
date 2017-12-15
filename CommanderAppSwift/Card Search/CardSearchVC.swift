@@ -9,50 +9,13 @@
 import UIKit
 import SWRevealViewController
 
-extension Error {
-    var code: Int { return (self as NSError).code }
-    var domain: String { return (self as NSError).domain }
-}
-extension UIViewController {
-    func networkActivityStart() {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-    }
-    func networkActivityStop() {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    }
-}
-extension UITableViewCell {
-    func networkActivityStart() {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-    }
-    func networkActivityStop() {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    }
-}
-extension UIActivityIndicatorView {
-    func start() {
-        self.isHidden = false
-        self.startAnimating()
-    }
-    func stop() {
-        self.isHidden = true
-        self.stopAnimating()
-    }
-}
-extension UIButton {
-    func getSuperviewImage() -> UIImage? {
-        if let imageView = self.superview as? UIImageView {
-            return imageView.image
-        } else {
-            return nil
-        }
-    }
-}
+
 class CardSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     private let cellID = "SearchCell"
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     private var backButton : UIBarButtonItem!
+    private var noConnectionLabel : NoConnectionLabel!
     private var viewModel : CardSearchViewModel!
     private var indicator: UIActivityIndicatorView!
     deinit {
@@ -149,7 +112,7 @@ class CardSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         }) {
             searchBar.resignFirstResponder()
             self.indicator.stop()
-            // init no results view
+            self.addNoResultsVC()
         }
     }
     
@@ -169,7 +132,7 @@ class CardSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.cancelSearch() {
-            DispatchQueue.main.async {
+            DispatchQueue.main.async {  
             self.tableView.reloadData()
             self.indicator.start()
             self.networkActivityStart()
@@ -181,7 +144,7 @@ class CardSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                 self.networkActivityStop()
         }) { (error, statusCode) in
             if error?.code == Constants().noConnection {
-                // no conn label
+                self.addNoConnectionLabel()
             }
         }
     }
@@ -216,6 +179,27 @@ class CardSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         let cell = tableView.cellForRow(at: indexPath) as! CardSearchCell
         cell.backgroundColor = .clear
         cell.contentView.backgroundColor = .clear
+    }
+    // MARK: - No Results VC
+    
+    private func addNoResultsVC() {
+        let noResults = NoResultsVC.init(nibName: "NoResultsVC", bundle: nil)
+        noResults.modalTransitionStyle = .crossDissolve
+        noResults.modalPresentationStyle = .overCurrentContext
+        self.present(noResults, animated: true, completion: nil)
+    }
+    // MARK: - No Connection Label
+    
+    private func addNoConnectionLabel() {
+        if noConnectionLabel == nil {
+        noConnectionLabel = NoConnectionLabel.init(frame: CGRect(x: 0, y: 0, width: 0, height: searchBar.frame.size.height))
+        self.view.addSubview(noConnectionLabel)
+        noConnectionLabel.addConstraints()
+        self.view.bringSubview(toFront: searchBar)
+            noConnectionLabel.labelMovementAnimation {
+                self.noConnectionLabel = nil
+            }
+        }
     }
     // MARK: - Buttons
     
