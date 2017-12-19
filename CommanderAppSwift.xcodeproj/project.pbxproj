@@ -94,10 +94,8 @@
 		FF60EA481FC0B780005C2BBA /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA471FC0B780005C2BBA /* AvatarImageView.swift */; };
 		FF60EA4A1FC0DE80005C2BBA /* AvatarLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA491FC0DE80005C2BBA /* AvatarLayerView.swift */; };
 		FF60EA4C1FC0DF6A005C2BBA /* AvatarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA4B1FC0DF6A005C2BBA /* AvatarVM.swift */; };
-		FF60EA4E1FC0DF74005C2BBA /* AvatarM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA4D1FC0DF74005C2BBA /* AvatarM.swift */; };
 		FF60EA511FC0F7AE005C2BBA /* RandomAvatarLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA501FC0F7AE005C2BBA /* RandomAvatarLabel.swift */; };
 		FF60EA531FC0F7BF005C2BBA /* RandomAvatarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA521FC0F7BF005C2BBA /* RandomAvatarVM.swift */; };
-		FF60EA551FC0F7C8005C2BBA /* RandomAvatarM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA541FC0F7C8005C2BBA /* RandomAvatarM.swift */; };
 		FF60EA571FC0F9E4005C2BBA /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA561FC0F9E4005C2BBA /* DataExtension.swift */; };
 		FF60EA591FC0F9F1005C2BBA /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA581FC0F9F1005C2BBA /* UIImageExtension.swift */; };
 		FF72557A1FD92F1A00F8D820 /* keyboardButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7255791FD92F1A00F8D820 /* keyboardButtonsView.swift */; };
@@ -235,10 +233,8 @@
 		FF60EA471FC0B780005C2BBA /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		FF60EA491FC0DE80005C2BBA /* AvatarLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarLayerView.swift; sourceTree = "<group>"; };
 		FF60EA4B1FC0DF6A005C2BBA /* AvatarVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarVM.swift; sourceTree = "<group>"; };
-		FF60EA4D1FC0DF74005C2BBA /* AvatarM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarM.swift; sourceTree = "<group>"; };
 		FF60EA501FC0F7AE005C2BBA /* RandomAvatarLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomAvatarLabel.swift; sourceTree = "<group>"; };
 		FF60EA521FC0F7BF005C2BBA /* RandomAvatarVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomAvatarVM.swift; sourceTree = "<group>"; };
-		FF60EA541FC0F7C8005C2BBA /* RandomAvatarM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomAvatarM.swift; sourceTree = "<group>"; };
 		FF60EA561FC0F9E4005C2BBA /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		FF60EA581FC0F9F1005C2BBA /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		FF7255791FD92F1A00F8D820 /* keyboardButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keyboardButtonsView.swift; sourceTree = "<group>"; };
@@ -663,7 +659,6 @@
 				FF60EA491FC0DE80005C2BBA /* AvatarLayerView.swift */,
 				FF60EA471FC0B780005C2BBA /* AvatarImageView.swift */,
 				FF60EA4B1FC0DF6A005C2BBA /* AvatarVM.swift */,
-				FF60EA4D1FC0DF74005C2BBA /* AvatarM.swift */,
 				FF60EA4F1FC0F788005C2BBA /* RandomAvatar */,
 			);
 			path = PlayersAvatarView;
@@ -674,7 +669,6 @@
 			children = (
 				FF60EA501FC0F7AE005C2BBA /* RandomAvatarLabel.swift */,
 				FF60EA521FC0F7BF005C2BBA /* RandomAvatarVM.swift */,
-				FF60EA541FC0F7C8005C2BBA /* RandomAvatarM.swift */,
 			);
 			path = RandomAvatar;
 			sourceTree = "<group>";
@@ -1025,14 +1019,12 @@
 				FF1BBB401FC78F1A009271C4 /* MainCountersAlertVC.swift in Sources */,
 				FF5440181FD4F60E0065C87A /* CountersTextField.swift in Sources */,
 				FF5440201FD6A8B90065C87A /* CameraActionSheetView.swift in Sources */,
-				FF60EA551FC0F7C8005C2BBA /* RandomAvatarM.swift in Sources */,
 				FF1BBAFD1FC4CB88009271C4 /* SecondCounterCell.swift in Sources */,
 				FF60EA531FC0F7BF005C2BBA /* RandomAvatarVM.swift in Sources */,
 				FF7255871FDA88FC00F8D820 /* CardSearchCell.swift in Sources */,
 				FF1BBB2F1FC66C86009271C4 /* RollADieVC.swift in Sources */,
 				FF1BBB3B1FC66CD3009271C4 /* HeadsOrTailsVM.swift in Sources */,
 				FF60EA391FBD9D2B005C2BBA /* PlayerNameVM.swift in Sources */,
-				FF60EA4E1FC0DF74005C2BBA /* AvatarM.swift in Sources */,
 				FF54402C1FD7A7700065C87A /* CameraData.swift in Sources */,
 				FF1BBBA91FD2D5C8009271C4 /* ZeroCounterCellVM.swift in Sources */,
 				FF4FA37A1FE3EF230029C63C /* NoResultsVC.swift in Sources */,

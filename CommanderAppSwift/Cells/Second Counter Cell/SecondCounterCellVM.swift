@@ -107,6 +107,9 @@ class SecondCellViewModel {
             observableCounter.value = counter
             observableDataImage.value = secondRowImg
         }
+        if let _ = userInfo[NSUpdatedObjectsKey] as? Set<LifeCountersMN> { 
+            observableCounter.value = counter
+        }
     }
    
     var observableCounter : Observable<Int64>!

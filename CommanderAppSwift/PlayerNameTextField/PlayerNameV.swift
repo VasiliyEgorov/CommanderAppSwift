@@ -66,4 +66,5 @@ class PlayerNameV: UITextField, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
         viewModel.text = textField.text!
     }
+    
 }

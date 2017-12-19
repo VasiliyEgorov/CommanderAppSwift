@@ -14,7 +14,6 @@ class MainCounterVC: UIViewController, UIGestureRecognizerDelegate {
     var viewModel: MainCounterVM!
     private var childController : MainCounterContainerVC!
     @IBOutlet weak var containerView: UIView!
-    
     @IBOutlet weak var changeCounterSecondBtn: ChangeCounterButton!
     @IBOutlet weak var changeCounterFirstBtn: ChangeCounterButton!
     override func viewDidLoad() {
@@ -37,6 +36,10 @@ class MainCounterVC: UIViewController, UIGestureRecognizerDelegate {
         
         childController.view.translatesAutoresizingMaskIntoConstraints = false
 
+        viewModel.setButtonImage { (playerButtonSelected, opponentButtonSelected) in
+            self.changeCounterFirstBtn.isSelected = playerButtonSelected
+            self.changeCounterSecondBtn.isSelected = opponentButtonSelected
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,8 +82,11 @@ class MainCounterVC: UIViewController, UIGestureRecognizerDelegate {
         self.childController.tableView.reloadSections(indexSet as IndexSet, with: .automatic)
     }
     // MARK: - Buttons
+    
     @IBAction func resetButtonAction(_ sender: UIBarButtonItem) {
-        
+        viewModel.resetCounters {
+            self.childController.tableView.reloadData()
+        }
     }
     @IBAction func screenLockButtonAction(_ sender: UIBarButtonItem) {
         switch UIApplication.shared.isIdleTimerDisabled {

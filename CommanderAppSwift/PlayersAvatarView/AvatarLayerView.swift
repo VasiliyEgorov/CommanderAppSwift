@@ -14,8 +14,6 @@ class AvatarLayerView: UIView {
         super.init(coder: aDecoder)
         setupXib()
     }
-    
-    
     private func setupXib() -> Void {
         self.backgroundColor = .clear
         self.layer.borderWidth = 3
@@ -23,8 +21,8 @@ class AvatarLayerView: UIView {
         self.layer.masksToBounds = true
         
     }
-
     override func layoutSubviews() {
+        super.layoutSubviews()
         self.layer.cornerRadius = self.frame.size.width / 2
     }
 }

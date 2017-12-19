@@ -106,6 +106,9 @@ class ThirdCellViewModel {
             observableThirdCounter.value = counter
             observableThirdDataImage.value = thirdRowImg
         }
+        if let _ = userInfo[NSUpdatedObjectsKey] as? Set<LifeCountersMN> {
+            observableThirdCounter.value = counter
+        }
     }
     var observableThirdCounter : Observable<Int64>!
     var observableThirdDataImage : Observable<Data?>!

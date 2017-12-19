@@ -7,25 +7,26 @@
 //
 
 import UIKit
+import Bond
+import ReactiveKit
 
 class RandomAvatarLabel: UILabel {
-    var viewModel : RandomAvatarViewModel
+    var viewModel : RandomAvatarViewModel!
     
     required init?(coder aDecoder: NSCoder) {
         viewModel = RandomAvatarViewModel()
         super.init(coder: aDecoder)
-        setupXib()
-    }
-    private func setupXib() -> Void {
         self.textAlignment = .center
+        bindings()
     }
+    
     override func layoutSubviews() {
+        super.layoutSubviews()
         self.font = UIFont.systemFont(ofSize: self.frame.size.height / 2)
-        self.text = viewModel.avatarPlaceholderString
-        if viewModel.isDarkColor {
-            self.textColor = UIColor.init(red: 78.0/255.0, green: 46.0/255.0, blue: 40.0/255.0, alpha: 1)
-        } else {
-            self.textColor = .white
-        }
+    }
+    private func bindings() {
+        _ = viewModel.observablePlaceholderString?.observeNext(with: { (string) in
+                self.text = string
+        })
     }
 }

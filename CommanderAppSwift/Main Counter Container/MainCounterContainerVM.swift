@@ -15,6 +15,7 @@ class MainCounterContainerViewModel {
     private let playerCounter : PlayerMN!
     private let opponentCounter : OpponentMN!
     private let lifeCounterIndex : LifeCountersIndex!
+    private let cellViewModelArray : [AnyObject] = [ZeroCounterViewModel(), FirstCellViewModel(), SecondCellViewModel(), ThirdCellViewModel(), FourthCellViewModel()]
     private var screenType : IndexEnum {
         return IndexEnum(rawValue: Int(lifeCounterIndex.screenIndex))!
     }
@@ -36,8 +37,6 @@ class MainCounterContainerViewModel {
         case .Opponent: return opponentCounter.interface?.isHiddenThirdRow
         }
     }
-    private let cellViewModelArray : [AnyObject] = [ZeroCounterViewModel(), FirstCellViewModel(), SecondCellViewModel(), ThirdCellViewModel(), FourthCellViewModel()]
-    
     func numberOfCounters() -> Int {
         return cellViewModelArray.count
     }
@@ -49,22 +48,25 @@ class MainCounterContainerViewModel {
        
         let rowHeight = (section, isHiddenSecondRow, isHiddenThirdRow)
         switch rowHeight {
-        case (0, true, true): return tableViewHeight * 0.15
-        case (0, false, true): return tableViewHeight * 0.1
+        case (0, true, true): return tableViewHeight * 0.17
+        case (0, false, true): return tableViewHeight * 0.025
+        case (0, true, false): return tableViewHeight * 0.17
         case (1, true, true): return tableViewHeight * 0.3
         case (1, false, true): return tableViewHeight * 0.3
-        case (1, false, false): return tableViewHeight * 0.25
+        case (1, false, false): return tableViewHeight * 0.24
+        case (1, true, false): return tableViewHeight * 0.3
         case (2, true, true): return tableViewHeight * 0.3
         case (2, false, true): return tableViewHeight * 0.3
-        case (2, false, false): return tableViewHeight * 0.25
+        case (2, false, false): return tableViewHeight * 0.24
+        case (2, true, false): return tableViewHeight * 0.3
         case (3, false, true): return tableViewHeight * 0.3
-        case (3, false, false): return tableViewHeight * 0.25
-        case (4, false, false): return tableViewHeight * 0
+        case (3, false, false): return tableViewHeight * 0.24
+        case (4, false, false): return tableViewHeight * 0.24
         default: return 0
         }
     }
     
-   @objc func managedObjectContextObjectsDidChange(notification: NSNotification) {
+   @objc private func managedObjectContextObjectsDidChange(notification: NSNotification) {
        guard let userInfo = notification.userInfo else { return }
         if let _ = userInfo[NSUpdatedObjectsKey] as? Set<InterfaceMN> {
                 observableRows.value = isHiddenSecondRow

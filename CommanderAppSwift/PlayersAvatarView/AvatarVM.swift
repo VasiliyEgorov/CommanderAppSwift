@@ -7,65 +7,97 @@
 //
 
 import Foundation
+import CoreData
+import Bond
+import ReactiveKit
 
-
-struct AvatarViewModel {
-    
+class AvatarViewModel {
     var avatar : Data? {
         return getAvatarForCurrentScreenType(type: screenType)
     }
-    private var model = AvatarModel()
+    private unowned let manager = DataManager.sharedInstance
+    private var player : PlayerMN!
+    private var opponent : OpponentMN!
+    private var lifeCountersIndex : LifeCountersIndex!
+    private let silverImg = Data(imageName: "silver.png")
+    private let whiteImg = Data(imageName: "white.png")
+    private var avatarsArray : [Data?] = [Data(imageName: "blue.png"), Data(imageName: "blueCyan.png"), Data(imageName: "gray.png"), Data(imageName: "greenCyan.png"),
+                                  Data(imageName: "lightBlue.png"), Data(imageName: "silver.png"), Data(imageName: "white.png")]
     private var screenType : IndexEnum {
-        return IndexEnum(rawValue: self.index)!
+        return IndexEnum(rawValue: Int(self.lifeCountersIndex.screenIndex))!
     }
-    private var index : Int {
-       return model.countersIndex
-    }
-    private var playerAvatar : Data? {
-      return checkForNil(item: model.player.avatar)
-    }
-    private var opponentAvatar : Data? {
-       return checkForNil(item: model.opponent.avatar)
-    }
-    private var playerAvatarPlaceholder : Data? {
-        return checkForNil(item: model.player.avatarPlaceholder)
-    }
-    private var opponentAvatarPlaceholder : Data? {
-        if let placeholder = checkForNil(item: model.opponent.avatarPlaceholder) {
-            return placeholder
-        } else {
-            return setRandomAvatarPlaceholder(dataArray: model.avatarsArray) // вернуть рандомную картинку
-        }
-    }
-    private func checkForNil<T>(item: T?) -> T? {
-        if let result = item {
-            return result
-        } else {
-            return nil
-        }
-    }
+    
     private func getAvatarForCurrentScreenType(type: IndexEnum) -> Data? {
         switch type {
         case .Player:
-            if playerAvatar != nil {
-                return playerAvatar
+            if player.avatar != nil {
+                return player.avatar
             } else {
-                return playerAvatarPlaceholder
+                if player.avatarPlaceholder != nil {
+                return player.avatarPlaceholder
+                } else {
+                    if player.name!.isEmpty {
+                        return nil
+                    }
+                    player.avatarPlaceholder = setRandomAvatarPlaceholder(dataArray: avatarsArray)
+                    return player.avatarPlaceholder
+                    
+                }
             }
         case .Opponent:
-            if opponentAvatar != nil {
-                return opponentAvatar
+            if opponent.avatar != nil {
+                return opponent.avatar
             } else {
-                return opponentAvatarPlaceholder
+                if opponent.avatarPlaceholder != nil {
+                return opponent.avatarPlaceholder
+                } else {
+                    if opponent.name!.isEmpty {
+                        return nil
+                    }
+                    opponent.avatarPlaceholder = setRandomAvatarPlaceholder(dataArray: avatarsArray)
+                    return opponent.avatarPlaceholder
+                    
+                }
             }
         }
     }
     private func setRandomAvatarPlaceholder(dataArray: [Data?]) -> Data {
-        let dataImg = dataArray[Int(arc4random_uniform(UInt32(dataArray.count + 1)))]
-        if dataImg == model.silverImg || dataImg == model.whiteImg {
+        let dataImg = dataArray[Int(arc4random_uniform(UInt32(dataArray.count)))]
+        if dataImg == silverImg || dataImg == whiteImg {
            
         }
         return dataImg!
+    }
+    // MARK: - Observing
+    @objc private func managedObjectContextObjectsDidChange(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        if let _ = userInfo[NSUpdatedObjectsKey] as? Set<LifeCountersIndex> {
+            observableSignal.value = lifeCountersIndex.screenIndex
+        }
+        if let _ = userInfo[NSUpdatedObjectsKey] as? Set<PlayerMN> {
+            observableSignal.value = player.name
+        }
+        if let _ = userInfo[NSUpdatedObjectsKey] as? Set<OpponentMN> {
+            observableSignal.value = opponent.name
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    private var observableSignal : Observable<Any?>
+    var observableAvatar : Observable<Data?>?
+    
+    init() {
+        self.player = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN") as! PlayerMN
+        self.opponent = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN") as! OpponentMN
+        self.lifeCountersIndex =  manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex") as! LifeCountersIndex
+        observableSignal = Observable(lifeCountersIndex.screenIndex)
+        observableAvatar = Observable(avatar)
+        _ = observableSignal.observeNext(with: { (value) in
+            self.observableAvatar?.value = self.avatar
+        })
+        NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: manager.mainQueueContext)
     }
 }
 

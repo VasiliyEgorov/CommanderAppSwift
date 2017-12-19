@@ -62,6 +62,9 @@ class FirstCellViewModel {
         if let _ = userInfo[NSUpdatedObjectsKey] as? Set<LifeCountersIndex> {
            observableCounter.value = counter
         }
+        if let _ = userInfo[NSUpdatedObjectsKey] as? Set<LifeCountersMN> {
+            observableCounter.value = counter
+        }
     }
     var observableCounter : Observable<Int64>!
     init() {
