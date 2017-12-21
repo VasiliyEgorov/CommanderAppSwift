@@ -26,7 +26,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vxv-21-eGY">
-                    <rect key="frame" x="0.0" y="76" width="375" height="547"/>
+                    <rect key="frame" x="0.0" y="140" width="375" height="483"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="4bJ-LO-XyC"/>
@@ -34,7 +34,7 @@
                     </connections>
                 </tableView>
                 <searchBar contentMode="redraw" placeholder="CommanderLife Counter Card Search" translatesAutoresizingMaskIntoConstraints="NO" id="HAg-IG-VKd">
-                    <rect key="frame" x="0.0" y="20" width="375" height="56"/>
+                    <rect key="frame" x="0.0" y="84" width="375" height="56"/>
                     <color key="backgroundColor" red="0.38823529411764707" green="0.38823529411764707" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="tintColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="barTintColor" red="0.078431372549019607" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
@@ -69,7 +69,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="HAg-IG-VKd" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="5pJ-rA-jIS"/>
+                <constraint firstItem="HAg-IG-VKd" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="64" id="5pJ-rA-jIS"/>
                 <constraint firstItem="AV4-r3-4xJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6JI-an-2tU"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Vxv-21-eGY" secondAttribute="bottom" constant="44" id="Gjc-tK-1vd"/>
                 <constraint firstItem="AV4-r3-4xJ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Qj5-Ds-SEm"/>

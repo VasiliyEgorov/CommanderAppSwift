@@ -191,7 +191,7 @@ class CardDetailsVC: UIViewController {
         case .Iphone5:
             imageViewLeadingConstraint.constant = 85
             imageViewTrailingConstraint.constant = 85
-            imageViewTopContraint.constant = 21
+            imageViewTopContraint.constant = 70
             bottomViewTopConstraint.constant = 35
             bottomViewBottomConstraint.constant = 35
         case .Iphone6_7:

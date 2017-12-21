@@ -36,6 +36,10 @@ class NoteDetailsVC: UIViewController, UITextViewDelegate, CameraActionSheetDele
             noteTextView.becomeFirstResponder()
         }
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel.saveNotesAttributedText(attributed: noteTextView.attributedText)
+    }
     // MARK: - Setups
     
     private func setupAlertWindow() {
@@ -62,11 +66,6 @@ class NoteDetailsVC: UIViewController, UITextViewDelegate, CameraActionSheetDele
     @objc private func rightSwipeAction() {
         self.navigationController?.popViewController(animated: true)
     }
-    // MARK: - UITextView Delegate
-    func textViewDidEndEditing(_ textView: UITextView) {
-        viewModel.saveNotesAttributedText(attributed: textView.attributedText)
-    }
-    
     // MARK: - CameraPhoto Delegate
     func sendResultPhoto(photo: UIImage) {
         let scaled = UIImage.scaleImage(image: photo, toFrame: noteTextView.frame)
@@ -124,7 +123,7 @@ class NoteDetailsVC: UIViewController, UITextViewDelegate, CameraActionSheetDele
     private func addNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(UIKeyboardWillShowNotification(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(UIKeyboardWillHideNotification(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(UITextFieldTextDidChangeNotification(notification:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(UITextViewTextDidChangeNotification(notification:)), name: NSNotification.Name.UITextViewTextDidChange, object: nil)
     }
     @objc private func UIKeyboardWillShowNotification(notification: Notification) {
         noteTextView.contentInset = UIEdgeInsetsMake(0, 0, currentKeyboard_height, 0)
@@ -140,7 +139,7 @@ class NoteDetailsVC: UIViewController, UITextViewDelegate, CameraActionSheetDele
         }
         checkForEmptyString()
     }
-    @objc private func UITextFieldTextDidChangeNotification(notification: Notification) {
+    @objc private func UITextViewTextDidChangeNotification(notification: Notification) {
         checkForEmptyString()
     }
     private func checkForEmptyString() {

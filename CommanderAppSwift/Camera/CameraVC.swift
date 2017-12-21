@@ -35,7 +35,6 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, CameraDataDeleg
     private var deviceDiscoverySession: AVCaptureDevice.DiscoverySession!
     private var previewLayer : AVCaptureVideoPreviewLayer!
     private var deviceInput : AVCaptureDeviceInput!
-    private var movieFileOutput : AVCaptureMovieFileOutput!
     private var photoSettings : AVCapturePhotoSettings!
     private var setupResult : AVCamSetupResult!
     private var flashType : AVCamFlashlight!
@@ -44,8 +43,12 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, CameraDataDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        let audioData = AudioSessionData.init()
+        audioData.delegate = self
+        let cameraData = CameraData.init()
+        cameraData.delegate = self
+        self.view.alpha = 0.0
+        makeSession()
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,7 +59,7 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, CameraDataDeleg
         super.viewWillAppear(animated)
         switch setupResult {
         case .AVCamSetupResultSuccess?:
-         //   session?.startRunning()
+            session?.startRunning()
             isSessionRunning = session?.isRunning
         case .AVCamSetupResultCameraNotAuthorized?:
             let message = NSLocalizedString("CommanderApp doesn't have permission to use the camera, please change privacy settings",
@@ -132,27 +135,17 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, CameraDataDeleg
         
         session.beginConfiguration()
         
-        var camera : AVCaptureDevice?
         session.sessionPreset = AVCaptureSession.Preset.hd1920x1080
         photoSettings = AVCapturePhotoSettings.init()
+        var camera : AVCaptureDevice? = AVCaptureDevice.default(chooseBackCameraVersion(), for: .video, position: .back)
+        photoSettings.flashMode = .auto
+        flashType = AVCamFlashlight.AVCamFlashlightTypeAuto
         
-        if self.presentingViewController is MainCounterVC {
-            session.sessionPreset = AVCaptureSession.Preset.hd1280x720
-            camera = AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInWideAngleCamera, for: .video, position: .front)!
-            photoSettings.flashMode = .off
-            flashType = AVCamFlashlight.AVCamFlashlightTypeOff
-        }
-        if self.presentingViewController is NoteDetailsVC {
-            session.sessionPreset = AVCaptureSession.Preset.hd1920x1080
-            camera = AVCaptureDevice.default(chooseBackCameraVersion(), for: .video, position: .back)!
-            photoSettings.flashMode = .auto
-            flashType = AVCamFlashlight.AVCamFlashlightTypeAuto
+        if camera == nil {
+            camera = AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInWideAngleCamera, for: .video, position: .back)
         }
         if camera == nil {
-            camera = AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInWideAngleCamera, for: .video, position: .back)!
-        }
-        if camera == nil {
-            camera = AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInWideAngleCamera, for: .video, position: .front)!
+            camera = AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInWideAngleCamera, for: .video, position: .front)
         }
         
         configureFlashlight(device: camera!, setting: photoSettings)
@@ -294,11 +287,7 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, CameraDataDeleg
             } else {
                 session.addInput(self.deviceInput)
             }
-           // check for Nil if crashed
-            let movieFileOutputConnection = self.movieFileOutput.connection(with: .video)
-            if (movieFileOutputConnection?.isVideoStabilizationSupported)! {
-                movieFileOutputConnection?.preferredVideoStabilizationMode = .auto
-            }
+           
             session.commitConfiguration()
         }
     }

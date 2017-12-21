@@ -25,7 +25,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z5F-sV-QKN">
-                    <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                    <rect key="frame" x="0.0" y="84" width="375" height="539"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="hND-wR-2QF"/>
@@ -60,7 +60,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="oll-Tf-1i2" secondAttribute="trailing" id="10J-1Q-Y4H"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="oll-Tf-1i2" secondAttribute="bottom" id="CMF-ZF-V4c"/>
                 <constraint firstItem="3jP-lD-L0N" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="EG6-9z-lgK"/>
-                <constraint firstItem="Z5F-sV-QKN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Knk-7V-diZ"/>
+                <constraint firstItem="Z5F-sV-QKN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="64" id="Knk-7V-diZ"/>
                 <constraint firstItem="3jP-lD-L0N" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="OqY-es-0Nt"/>
                 <constraint firstItem="Z5F-sV-QKN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="S0V-PH-XTO"/>
                 <constraint firstItem="oll-Tf-1i2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ULj-34-mju"/>

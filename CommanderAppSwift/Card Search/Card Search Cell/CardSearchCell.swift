@@ -21,7 +21,7 @@ class CardSearchCell: UITableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        cardNameLabel.font = UIFont.init(name: Constants().helvetica, size: cardNameLabel.frame.size.height * 0.6)
+        cardNameLabel.font = UIFont.init(name: Constants().helvetica, size: cardNameLabel.frame.size.height * 0.5)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

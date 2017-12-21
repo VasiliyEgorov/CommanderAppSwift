@@ -29,8 +29,8 @@ class NotesCell: UITableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        noteDetailedLabel.font = UIFont.init(name: Constants().helvetica, size: noteDetailedLabel.frame.size.height * 0.6)
-        noteDateLabel.font = UIFont.init(name: Constants().helvetica, size: noteDateLabel.frame.size.height * 0.6)
+        noteDetailedLabel.font = UIFont.init(name: Constants().helvetica, size: noteDetailedLabel.frame.size.height * 0.5)
+        noteDateLabel.font = UIFont.init(name: Constants().helvetica, size: noteDateLabel.frame.size.height * 0.5)
         noteTextLabel.font = UIFont.init(name: Constants().helvetica, size: noteTextLabel.frame.size.height * 0.5)
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
