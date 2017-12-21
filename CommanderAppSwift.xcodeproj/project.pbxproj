@@ -115,6 +115,7 @@
 		FF72559E1FE190E100F8D820 /* CardDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72559C1FE190E100F8D820 /* CardDetailsVC.swift */; };
 		FF72559F1FE190E100F8D820 /* CardDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF72559D1FE190E100F8D820 /* CardDetailsVC.xib */; };
 		FF7255A11FE190F700F8D820 /* CardDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7255A01FE190F700F8D820 /* CardDetailsVM.swift */; };
+		FF7CA3F21FEC6A750058F289 /* KeyboardButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7CA3F11FEC6A750058F289 /* KeyboardButtonsView.swift */; };
 		FFA11F411FE257D900E27891 /* CardZoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA11F3F1FE257D900E27891 /* CardZoomVC.swift */; };
 		FFA11F421FE257D900E27891 /* CardZoomVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFA11F401FE257D900E27891 /* CardZoomVC.xib */; };
 /* End PBXBuildFile section */
@@ -253,6 +254,7 @@
 		FF72559C1FE190E100F8D820 /* CardDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsVC.swift; sourceTree = "<group>"; };
 		FF72559D1FE190E100F8D820 /* CardDetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardDetailsVC.xib; sourceTree = "<group>"; };
 		FF7255A01FE190F700F8D820 /* CardDetailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsVM.swift; sourceTree = "<group>"; };
+		FF7CA3F11FEC6A750058F289 /* KeyboardButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardButtonsView.swift; sourceTree = "<group>"; };
 		FFA11F3F1FE257D900E27891 /* CardZoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardZoomVC.swift; sourceTree = "<group>"; };
 		FFA11F401FE257D900E27891 /* CardZoomVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardZoomVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -674,6 +676,7 @@
 		FF7255781FD92EED00F8D820 /* Keyboard Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				FF7CA3F11FEC6A750058F289 /* KeyboardButtonsView.swift */,
 			);
 			path = "Keyboard Buttons";
 			sourceTree = "<group>";
@@ -991,6 +994,7 @@
 				FF72559E1FE190E100F8D820 /* CardDetailsVC.swift in Sources */,
 				FF1BBB981FCC19A2009271C4 /* MainNavToolBar.swift in Sources */,
 				FF1BBB901FC8D511009271C4 /* NoteDetailsVM.swift in Sources */,
+				FF7CA3F21FEC6A750058F289 /* KeyboardButtonsView.swift in Sources */,
 				FF1BBB341FC66CA5009271C4 /* RollADieM.swift in Sources */,
 				FF72557D1FDA822D00F8D820 /* CardSearchVC.swift in Sources */,
 				FF7255931FE1612E00F8D820 /* CardDetailsSearchVM.swift in Sources */,
