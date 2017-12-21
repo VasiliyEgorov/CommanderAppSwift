@@ -8,9 +8,8 @@
 
 import UIKit
 
-class NoteDetailsVC: UIViewController, UITextViewDelegate, CameraActionSheetDelegate, CameraPhotoDelegate {
+class NoteDetailsVC: UIViewController, UITextViewDelegate, CameraActionSheetDelegate, CameraPhotoDelegate, KeyboardButtonsDelegate {
     @IBOutlet weak var noteTextView: UITextView!
-    @IBOutlet weak var keyboardButtonsView: keyboardButtonsView!
     private var cloudButton : UIBarButtonItem!
     private var cameraAlertSheet : CameraActionSheet!
     var viewModel: NotesDetailsViewModel!
@@ -21,6 +20,7 @@ class NoteDetailsVC: UIViewController, UITextViewDelegate, CameraActionSheetDele
         setupTextView()
         setupNavigationButtons()
         setupAlertWindow()
+        setupButtonsView()
         self.noteTextView.attributedText = viewModel.attributedText
     }
     deinit {
@@ -41,7 +41,15 @@ class NoteDetailsVC: UIViewController, UITextViewDelegate, CameraActionSheetDele
         viewModel.saveNotesAttributedText(attributed: noteTextView.attributedText)
     }
     // MARK: - Setups
-    
+    private func setupButtonsView() {
+        self.view.layoutIfNeeded()
+        let buttonsView = KeyboardButtonsView.init(frame: CGRect.zero)
+        self.view.addSubview(buttonsView)
+        self.view.bringSubview(toFront: buttonsView)
+        buttonsView.delegate = self
+        buttonsView.addConstraintsToSelf()
+        buttonsView.addButtons()
+    }
     private func setupAlertWindow() {
         self.cameraAlertSheet = CameraActionSheet.init()
         cameraAlertSheet.delegate = self
@@ -93,13 +101,13 @@ class NoteDetailsVC: UIViewController, UITextViewDelegate, CameraActionSheetDele
     }
     // MARK: - Keyboard Buttons
     
-    @IBAction func keyboardCircleButtonAction(_ sender: UIButton) {
+    func keyboardCircleButtonAction(_ sender: UIButton) {
         noteTextView.attributedText = viewModel.placeCircleInTextView(textView: noteTextView)
     }
-    @IBAction func keyboardCameraButtonAction(_ sender: UIButton) {
+    func keyboardCameraButtonAction(_ sender: UIButton) {
         cameraAlertSheet.showAlert()
     }
-    @IBAction func keyboardDoodleButtonAction(_ sender: UIButton) {
+    func keyboardDoodleButtonAction(_ sender: UIButton) {
         
     }
     // MARK: - Buttons
@@ -121,11 +129,11 @@ class NoteDetailsVC: UIViewController, UITextViewDelegate, CameraActionSheetDele
     }
     // MARK: - Notifications
     private func addNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(UIKeyboardWillShowNotification(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(UIKeyboardDidShowNotification(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(UIKeyboardWillHideNotification(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(UITextViewTextDidChangeNotification(notification:)), name: NSNotification.Name.UITextViewTextDidChange, object: nil)
     }
-    @objc private func UIKeyboardWillShowNotification(notification: Notification) {
+    @objc private func UIKeyboardDidShowNotification(notification: Notification) {
         noteTextView.contentInset = UIEdgeInsetsMake(0, 0, currentKeyboard_height, 0)
         noteTextView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, currentKeyboard_height, 0)
         checkForEmptyString()

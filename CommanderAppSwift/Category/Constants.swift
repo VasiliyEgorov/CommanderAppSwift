@@ -10,6 +10,8 @@ import UIKit
 
 var currentKeyboard_height : CGFloat = 0
 var cardSearchKeyboardHeight : CGFloat = 0
+var OFFSET : CGFloat = 0
+
 enum IndexEnum : Int {
     case Player = 0
     case Opponent = 1
