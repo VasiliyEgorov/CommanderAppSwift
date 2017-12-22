@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="16G1036" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="16G1114" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="InterfaceMN" representedClassName="InterfaceMN" syncable="YES" codeGenerationType="class">
         <attribute name="isHiddenSecondRow" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isHiddenThirdRow" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
@@ -8,7 +8,7 @@
     </entity>
     <entity name="LifeCountersIndex" representedClassName="LifeCountersIndex" syncable="YES" codeGenerationType="class">
         <attribute name="screenIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="lifeCounters" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="LifeCountersMN" inverseName="countersIndex" inverseEntity="LifeCountersMN" syncable="YES"/>
+        <relationship name="lifeCounters" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LifeCountersMN" inverseName="countersIndex" inverseEntity="LifeCountersMN" syncable="YES"/>
     </entity>
     <entity name="LifeCountersMN" representedClassName="LifeCountersMN" syncable="YES" codeGenerationType="class">
         <attribute name="firstCounter" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -28,7 +28,7 @@
         <attribute name="seventhCounter" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="sixthCounter" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="thirdCounter" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="player" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PlayerMN" inverseName="manaCounter" inverseEntity="PlayerMN" syncable="YES"/>
+        <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlayerMN" inverseName="manaCounter" inverseEntity="PlayerMN" syncable="YES"/>
     </entity>
     <entity name="NotesMN" representedClassName="NotesMN" syncable="YES" codeGenerationType="class">
         <attribute name="attributedText" optional="YES" attributeType="Transformable" syncable="YES"/>
@@ -52,7 +52,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="thirdCounterName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="interface" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="InterfaceMN" inverseName="player" inverseEntity="InterfaceMN" syncable="YES"/>
-        <relationship name="lifeCounters" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LifeCountersMN" inverseName="player" inverseEntity="LifeCountersMN" syncable="YES"/>
+        <relationship name="lifeCounters" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="LifeCountersMN" inverseName="player" inverseEntity="LifeCountersMN" syncable="YES"/>
         <relationship name="manaCounter" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ManaCountersMN" inverseName="player" inverseEntity="ManaCountersMN" syncable="YES"/>
     </entity>
     <elements>

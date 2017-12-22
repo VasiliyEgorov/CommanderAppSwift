@@ -13,9 +13,15 @@ import CoreData
 
 class RandomAvatarViewModel {
     private unowned let manager = DataManager.sharedInstance
-    private var player : PlayerMN!
-    private var opponent : OpponentMN!
-    private var lifeCountersIndex : LifeCountersIndex!
+    private var player : PlayerMN {
+        return manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN") as! PlayerMN
+    }
+    private var opponent : OpponentMN {
+        return manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN") as! OpponentMN
+    }
+    private var lifeCountersIndex : LifeCountersIndex {
+        return manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex") as! LifeCountersIndex
+    }
     private var screenType : IndexEnum {
         return IndexEnum(rawValue: Int(lifeCountersIndex.screenIndex))!
     }
@@ -47,7 +53,7 @@ class RandomAvatarViewModel {
     @objc private func managedObjectContextObjectsDidChange(notification: NSNotification) {
         guard let userInfo = notification.userInfo else { return }
         if let _ = userInfo[NSUpdatedObjectsKey] as? Set<LifeCountersIndex> {
-            observableIndex.value = lifeCountersIndex.screenIndex
+            observableSignal.value = lifeCountersIndex.screenIndex
         }
         if let _ = userInfo[NSUpdatedObjectsKey] as? Set<PlayerMN> {
             observablePlaceholderString?.value = selectLetter(name: player.name)
@@ -55,20 +61,21 @@ class RandomAvatarViewModel {
         if let _ = userInfo[NSUpdatedObjectsKey] as? Set<OpponentMN> {
             observablePlaceholderString?.value = selectLetter(name: opponent.name)
         }
+        if let _ = userInfo[NSInsertedObjectsKey] as? Set<NSManagedObject> {
+            observableSignal.value = 0
+        }
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    var observableIndex : Observable<Int64>
+    private var observableSignal : Observable<Any>!
     var observablePlaceholderString : Observable<String?>?
+    
     init() {
-        player = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN") as! PlayerMN
-        opponent = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN") as! OpponentMN
-        lifeCountersIndex = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex") as! LifeCountersIndex
-        observableIndex = Observable(lifeCountersIndex.screenIndex)
+        observableSignal = Observable(lifeCountersIndex.screenIndex)
         observablePlaceholderString = Observable(getAvatarStringForCurrentScreenType(type: screenType))
-        _ = observableIndex.observeNext(with: { (value) in
+        _ = observableSignal.observeNext(with: { (value) in
             self.observablePlaceholderString?.value = self.getAvatarStringForCurrentScreenType(type: self.screenType)
         })
         NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: manager.mainQueueContext)

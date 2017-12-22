@@ -7,13 +7,21 @@
 //
 
 import Foundation
-
+import CoreData
+import Bond
+import ReactiveKit
 
 class MainCounterVM {
     private unowned let manager = DataManager.sharedInstance
-    private let lifeCountersIndex : LifeCountersIndex!
-    private let playerCounter : PlayerMN!
-    private let opponentCounter : OpponentMN!
+    private var lifeCountersIndex : LifeCountersIndex {
+        return manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex") as! LifeCountersIndex
+    }
+    private var playerCounter : PlayerMN {
+        return manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN") as! PlayerMN
+    }
+    private var opponentCounter : OpponentMN {
+        return manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN") as! OpponentMN
+    }
     var index : Int {
         get {
             return Int(lifeCountersIndex.screenIndex)
@@ -25,6 +33,7 @@ class MainCounterVM {
     private var screenType : IndexEnum {
         return IndexEnum(rawValue: index)!
     }
+    
     func setButtonImage(complition:(_ playerSection: Bool, _ opponentSection: Bool) -> Void) {
         switch screenType {
         case .Player: complition(true, false)
@@ -47,9 +56,40 @@ class MainCounterVM {
         manager.saveContext()
         complition()
     }
-    init () {
-        playerCounter = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN") as! PlayerMN
-        opponentCounter = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN") as! OpponentMN
-        lifeCountersIndex = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex") as! LifeCountersIndex
+    func placeAvatar(avatar: Data?) {
+        switch screenType {
+        case .Player: playerCounter.avatarPlaceholder = avatar
+        case .Opponent: opponentCounter.avatarPlaceholder = avatar
+        }
+    }
+    // MARK: - Observing
+    @objc private func managedObjectContextObjectsDidChange(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        if let _ = userInfo[NSUpdatedObjectsKey] as? Set<LifeCountersIndex> {
+            observableIndex.value = index
+            observableSignal.value = 0
+        }
+        if let _ = userInfo[NSInsertedObjectsKey] as? Set<NSManagedObject> {
+            observableSignal.value = 0
+            observableIndex.value = index
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    private var observableSignal : Observable<Any>!
+    var observableIndex = Observable<Any> (0)
+    var observableFirstCounterButton = Observable<Bool> (false)
+    var observableSecondCounterButton = Observable<Bool> (false)
+    init() {
+        observableSignal = Observable(lifeCountersIndex.screenIndex)
+        _ = observableSignal.observeNext(with: { (value) in
+            self.setButtonImage(complition: { (playerSection, opponentSection) in
+                 self.observableFirstCounterButton.value = playerSection
+                 self.observableSecondCounterButton.value = opponentSection
+            })
+        })
+          NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: manager.mainQueueContext)
     }
 }

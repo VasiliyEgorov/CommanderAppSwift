@@ -9,11 +9,14 @@
 import Foundation
 import Bond
 import ReactiveKit
+import CoreData
 
 class ManaCounterVM {
     
     private unowned let manager = DataManager.sharedInstance
-    private let manaCounters : ManaCountersMN!
+    private var manaCounters : ManaCountersMN {
+        return manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "ManaCountersMN") as! ManaCountersMN
+    }
     
     func countManawithButtonAction(tag: Int) {
         switch tag {
@@ -50,34 +53,42 @@ class ManaCounterVM {
         }
     }
     func resetCounters() {
-        manaCounters.firstCounter = 0
-        observableFirstCounter.value = manaCounters.firstCounter
-        manaCounters.secondCounter = 0
-        observableSecondCounter.value = manaCounters.secondCounter
-        manaCounters.thirdCounter = 0
-        observableThirdCounter.value = manaCounters.thirdCounter
-        manaCounters.fourthCounter = 0
-        observableFourthCounter.value = manaCounters.fourthCounter
-        manaCounters.fifthCounter = 0
-        observableFifthCounter.value = manaCounters.fifthCounter
-        manaCounters.sixthCounter = 0
-        observableSixthCounter.value = manaCounters.sixthCounter
-        manaCounters.seventhCounter = 0
-        observableSeventhCounter.value = manaCounters.seventhCounter
-        manaCounters.eighthCounter = 0
-        observableEighthCounter.value = manaCounters.eighthCounter
+        let player = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN") as! PlayerMN
+        manager.mainQueueContext.delete(manaCounters)
+        manager.saveContext()
+        let newCounter = ManaCountersMN(context: manager.mainQueueContext)
+        player.manaCounter = newCounter
         manager.saveContext()
     }
-    let observableFirstCounter : Observable<Int64>!
-    let observableSecondCounter : Observable<Int64>!
-    let observableThirdCounter : Observable<Int64>!
-    let observableFourthCounter : Observable<Int64>!
-    let observableFifthCounter : Observable<Int64>!
-    let observableSixthCounter : Observable<Int64>!
-    let observableSeventhCounter : Observable<Int64>!
-    let observableEighthCounter : Observable<Int64>!
+    
+    // MARK: - Observing
+    @objc private func managedObjectContextObjectsDidChange(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+       
+        if let _ = userInfo[NSInsertedObjectsKey] as? Set<NSManagedObject> {
+            observableFirstCounter.value = 0
+            observableSecondCounter.value = 0
+            observableThirdCounter.value = 0
+            observableFourthCounter.value = 0
+            observableFifthCounter.value = 0
+            observableSixthCounter.value = 0
+            observableSeventhCounter.value = 0
+            observableEighthCounter.value = 0
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    var observableFirstCounter : Observable<Int64>!
+    var observableSecondCounter : Observable<Int64>!
+    var observableThirdCounter : Observable<Int64>!
+    var observableFourthCounter : Observable<Int64>!
+    var observableFifthCounter : Observable<Int64>!
+    var observableSixthCounter : Observable<Int64>!
+    var observableSeventhCounter : Observable<Int64>!
+    var observableEighthCounter : Observable<Int64>!
     init () {
-        manaCounters = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "ManaCountersMN") as! ManaCountersMN
         observableFirstCounter = Observable(manaCounters.firstCounter)
         observableSecondCounter = Observable(manaCounters.secondCounter)
         observableThirdCounter = Observable(manaCounters.thirdCounter)
@@ -86,5 +97,6 @@ class ManaCounterVM {
         observableSixthCounter = Observable(manaCounters.sixthCounter)
         observableSeventhCounter = Observable(manaCounters.seventhCounter)
         observableEighthCounter = Observable(manaCounters.eighthCounter)
+         NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: manager.mainQueueContext)
     }
 }

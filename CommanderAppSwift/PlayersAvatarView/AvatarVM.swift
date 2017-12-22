@@ -16,9 +16,15 @@ class AvatarViewModel {
         return getAvatarForCurrentScreenType(type: screenType)
     }
     private unowned let manager = DataManager.sharedInstance
-    private var player : PlayerMN!
-    private var opponent : OpponentMN!
-    private var lifeCountersIndex : LifeCountersIndex!
+    private var player : PlayerMN {
+        return manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN") as! PlayerMN
+    }
+    private var opponent : OpponentMN {
+        return manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN") as! OpponentMN
+    }
+    private var lifeCountersIndex : LifeCountersIndex {
+        return manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex") as! LifeCountersIndex
+    }
     private let silverImg = Data(imageName: "silver.png")
     private let whiteImg = Data(imageName: "white.png")
     private var avatarsArray : [Data?] = [Data(imageName: "blue.png"), Data(imageName: "blueCyan.png"), Data(imageName: "gray.png"), Data(imageName: "greenCyan.png"),
@@ -63,9 +69,6 @@ class AvatarViewModel {
     }
     private func setRandomAvatarPlaceholder(dataArray: [Data?]) -> Data {
         let dataImg = dataArray[Int(arc4random_uniform(UInt32(dataArray.count)))]
-        if dataImg == silverImg || dataImg == whiteImg {
-           
-        }
         return dataImg!
     }
     // MARK: - Observing
@@ -77,21 +80,18 @@ class AvatarViewModel {
         if let _ = userInfo[NSUpdatedObjectsKey] as? Set<PlayerMN> {
             observableSignal.value = player.name
         }
-        if let _ = userInfo[NSUpdatedObjectsKey] as? Set<OpponentMN> {
-            observableSignal.value = opponent.name
+        if let _ = userInfo[NSInsertedObjectsKey] as? Set<NSManagedObject> {
+            observableSignal.value = 0
         }
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    private var observableSignal : Observable<Any?>
+    private var observableSignal : Observable<Any?>!
     var observableAvatar : Observable<Data?>?
     
     init() {
-        self.player = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN") as! PlayerMN
-        self.opponent = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN") as! OpponentMN
-        self.lifeCountersIndex =  manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex") as! LifeCountersIndex
         observableSignal = Observable(lifeCountersIndex.screenIndex)
         observableAvatar = Observable(avatar)
         _ = observableSignal.observeNext(with: { (value) in

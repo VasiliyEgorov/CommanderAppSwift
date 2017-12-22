@@ -111,12 +111,12 @@ class MainCounterContainerVC: UIViewController, UITableViewDelegate, UITableView
     }
     @objc private func leftSwipeAction() {
         if self.revealViewController().frontViewPosition != FrontViewPosition.right {
-            self.tabBarController?.selectedIndex = 1
+            self.tabBarController?.selectedIndex = 2
         }
     }
     @objc private func rightSwipeAction() {
         if self.revealViewController().frontViewPosition != FrontViewPosition.right {
-            self.tabBarController?.selectedIndex = 2
+            self.tabBarController?.selectedIndex = 1
         }
     }
 }

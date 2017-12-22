@@ -91,9 +91,11 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             rollADieVC.modalPresentationStyle = .overCurrentContext
             self.present(rollADieVC, animated: true, completion: nil)
             self.revealViewController().revealToggle(animated: false)
-      //  case .ResetAllCounters:
-        default:break
-            
+        case .ResetAllCounters: viewModel.resetCountersAlert(present: { (alert) in
+            self.present(alert, animated: true, completion: nil)
+        }, complition: {
+            self.revealViewController().revealToggle(animated: true)
+        })
         }
     }
 }

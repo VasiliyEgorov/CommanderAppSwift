@@ -9,17 +9,40 @@
 import UIKit
 import SWRevealViewController
 
-class MainCounterVC: UIViewController, UIGestureRecognizerDelegate {
+class MainCounterVC: UIViewController, UIGestureRecognizerDelegate, AvatarImageViewDelegate, CameraActionSheetDelegate, CameraPhotoDelegate {
     
     var viewModel: MainCounterVM!
     private var childController : MainCounterContainerVC!
+    @IBOutlet weak var avatarImageView: AvatarImageView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var changeCounterSecondBtn: ChangeCounterButton!
     @IBOutlet weak var changeCounterFirstBtn: ChangeCounterButton!
+    @IBOutlet weak var containerViewBottomConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = MainCounterVM()
+        self.avatarImageView.delegate = self
+        setupChildController()
+/*
+        viewModel.setButtonImage { (playerButtonSelected, opponentButtonSelected) in
+            self.changeCounterFirstBtn.isSelected = playerButtonSelected
+            self.changeCounterSecondBtn.isSelected = opponentButtonSelected
+        }
+        */
+        bindings()
+        updateConstraints()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        avatarImageView.startAnimateViews()
+    }
+    // MARK: - Setup
+    private func setupChildController() {
         self.childController = MainCounterContainerVC.init(nibName: "MainCounterContainerVC", bundle: nil)
         self.addChildViewController(childController)
         self.containerView.addSubview(childController.view)
@@ -35,16 +58,27 @@ class MainCounterVC: UIViewController, UIGestureRecognizerDelegate {
         self.view.addConstraint(bottom)
         
         childController.view.translatesAutoresizingMaskIntoConstraints = false
-
-        viewModel.setButtonImage { (playerButtonSelected, opponentButtonSelected) in
-            self.changeCounterFirstBtn.isSelected = playerButtonSelected
-            self.changeCounterSecondBtn.isSelected = opponentButtonSelected
-        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
+    // MARK: - Bindings
+    private func bindings() {
+        _ = viewModel.observableFirstCounterButton.observeNext(with: { (bool) in
+             self.changeCounterFirstBtn.isSelected = bool
+        })
+        _ = viewModel.observableSecondCounterButton.observeNext(with: { (bool) in
+            self.changeCounterSecondBtn.isSelected = bool
+        })
+        _ = viewModel.observableIndex.observeNext(with: { (index) in
+            self.reloadChildTableView()
+        })
+    }
+    // MARK: - Update Constraints
+    private func updateConstraints() {
+        let screenType = Device(rawValue: UIScreen.main.bounds.size.height)!
+        switch screenType {
+        case .Iphone5: containerViewBottomConstraint.constant = 71
+        default: break
+        }
+        self.view.updateConstraintsIfNeeded()
     }
     // MARK: SWReveal Button
     @IBAction func menuButtonAction(_ sender: UIButton) {
@@ -63,13 +97,40 @@ class MainCounterVC: UIViewController, UIGestureRecognizerDelegate {
     }
     @objc private func leftSwipeAction() {
         if self.revealViewController().frontViewPosition != FrontViewPosition.right {
-            self.tabBarController?.selectedIndex = 1
+            self.tabBarController?.selectedIndex = 2
         }
     }
     @objc private func rightSwipeAction() {
         if self.revealViewController().frontViewPosition != FrontViewPosition.right {
-            self.tabBarController?.selectedIndex = 2
+            self.tabBarController?.selectedIndex = 1
         }
+    }
+    // MARK: - AvatarImageView Delegate
+    func tapGestureAction(_ recognizer: UITapGestureRecognizer) {
+        let sheet = CameraActionSheet.init()
+        sheet.delegate = self
+        sheet.showAlert()
+    }
+    // MARK: - CameraActionSheet Delegate
+    func presentImagePicker(picker: UIImagePickerController) -> Void {
+        self.present(picker, animated: true, completion: nil)
+    }
+    func presetCameraController() -> Void {
+        let cameraController = CameraVC.init(nibName: "cameraXIB", bundle: nil)
+        cameraController.delegate = self
+        self.present(cameraController, animated: true, completion: nil)
+    }
+    func presentActionSheet(actionSheet:UIAlertController) -> Void {
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    func sendImageFromPicker(image: UIImage) -> Void {
+        let scaled = UIImage.scaleImage(image: image, toFrame: avatarImageView.frame)
+        viewModel.placeAvatar(avatar: scaled?.data)
+    }
+    // MARK: - CameraPhoto Delegate
+    func sendResultPhoto(photo: UIImage) {
+        let scaled = UIImage.scaleImage(image: photo, toFrame: avatarImageView.frame)
+        viewModel.placeAvatar(avatar: scaled?.data)
     }
     // MARK: - Gestures Delegate
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -107,20 +168,10 @@ class MainCounterVC: UIViewController, UIGestureRecognizerDelegate {
     }
 
     @IBAction func firstChangeCountersButtonAction(_ sender: UIButton) {
-        if !sender.isSelected {
-        self.changeCounterSecondBtn.isSelected = false
-        self.changeCounterFirstBtn.isSelected = true
         viewModel.index = sender.tag
-        reloadChildTableView()
-        }
     }
     @IBAction func secondChangeCountersButtonAction(_ sender: UIButton) {
-        if !sender.isSelected {
-        self.changeCounterSecondBtn.isSelected = true
-        self.changeCounterFirstBtn.isSelected = false
         viewModel.index = sender.tag
-        reloadChildTableView()
-        }
     }
     @IBAction func manaCountersButtonAction(_ sender: UIButton) {
         self.tabBarController?.selectedIndex = 1

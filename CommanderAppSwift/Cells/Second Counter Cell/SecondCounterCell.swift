@@ -24,7 +24,6 @@ class SecondCounterCell: UITableViewCell {
                     self.caretButton.setBackgroundImage(data.uiImage, for: .normal)
                 }
             })
-           // self.secondCounterLabel.text = String(viewModel.counter)
         }
     }
     

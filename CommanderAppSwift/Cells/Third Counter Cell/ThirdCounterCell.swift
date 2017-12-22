@@ -14,11 +14,11 @@ class ThirdCounterCell: UITableViewCell {
     @IBOutlet weak var thirdCounterName: UITextField!
     var viewModel : ThirdCellViewModel! {
         didSet {
-            _ = viewModel.observableThirdCounter.map({String($0)})
+            _ = viewModel.observableCounter.map({String($0)})
                 .observeNext(with: { (value) in
                     self.thirdCounterLabel.text = value
                 })
-            _ = viewModel.observableThirdDataImage?.observeNext(with: { (thirdData) in
+            _ = viewModel.observableDataImage?.observeNext(with: { (thirdData) in
                 if let data = thirdData {
                     self.thirdCaretButton.setBackgroundImage(data.uiImage, for: .normal)
                 }

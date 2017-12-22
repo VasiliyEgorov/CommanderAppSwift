@@ -15,9 +15,15 @@ class SecondCellViewModel {
     private let caretUp : Data? = Data.init(imageName: "caret-up.png")
     private let caretDown : Data? = Data.init(imageName: "caret-down.png")
     private unowned let manager = DataManager.sharedInstance
-    private let lifeCountersIndex : LifeCountersIndex!
-    private let playerCounter : PlayerMN!
-    private let opponentCounter : OpponentMN!
+    private var lifeCountersIndex : LifeCountersIndex {
+        return manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex") as! LifeCountersIndex
+    }
+    private var playerCounter : PlayerMN! {
+        return manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN") as! PlayerMN
+    }
+    private var opponentCounter : OpponentMN {
+        return manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN") as! OpponentMN
+    }
     var counter : Int64 {
         get {
             return getCurrentCounter(type: screenType)
@@ -104,22 +110,27 @@ class SecondCellViewModel {
     @objc func managedObjectContextObjectsDidChange(notification: NSNotification) {
         guard let userInfo = notification.userInfo else { return }
         if let _ = userInfo[NSUpdatedObjectsKey] as? Set<LifeCountersIndex> {
-            observableCounter.value = counter
-            observableDataImage.value = secondRowImg
+            observableSignal.value = counter
         }
         if let _ = userInfo[NSUpdatedObjectsKey] as? Set<LifeCountersMN> { 
-            observableCounter.value = counter
+            observableSignal.value = counter
+        }
+        if let _ = userInfo[NSInsertedObjectsKey] as? Set<NSManagedObject> {
+            observableSignal.value = counter
         }
     }
    
     var observableCounter : Observable<Int64>!
     var observableDataImage : Observable<Data?>!
+    private var observableSignal : Observable<Any>!
     init() {
-        playerCounter = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN") as! PlayerMN
-        opponentCounter = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN") as! OpponentMN
-        lifeCountersIndex = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex") as! LifeCountersIndex
-         NotificationCenter.default.addObserver(self, selector:#selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: manager.mainQueueContext)
         observableCounter = Observable(counter)
         observableDataImage = Observable(secondRowImg)
+        observableSignal = Observable(lifeCountersIndex.screenIndex)
+         NotificationCenter.default.addObserver(self, selector:#selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: manager.mainQueueContext)
+        _ = observableSignal.observeNext(with: { (value) in
+            self.observableCounter.value = self.counter
+            self.observableDataImage.value = self.secondRowImg
+        })
     }
 }

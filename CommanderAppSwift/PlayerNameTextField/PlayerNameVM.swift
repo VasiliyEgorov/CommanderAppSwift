@@ -12,9 +12,15 @@ import Bond
 import ReactiveKit
 
 class PlayerNameViewModel {
-    private let player : PlayerMN!
-    private let opponent : OpponentMN!
-    private let lifeCountersIndex : LifeCountersIndex!
+    private var player : PlayerMN {
+        return manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN") as! PlayerMN
+    }
+    private var opponent : OpponentMN {
+        return manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN") as! OpponentMN
+    }
+    private var lifeCountersIndex : LifeCountersIndex {
+        return manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex") as! LifeCountersIndex
+    }
     private unowned let manager = DataManager.sharedInstance
   
     var text : String {
@@ -53,12 +59,12 @@ class PlayerNameViewModel {
         if let _ = userInfo[NSUpdatedObjectsKey] as? Set<LifeCountersIndex> {
             observableText.value = text
         }
+        if let _ = userInfo[NSInsertedObjectsKey] as? Set<NSManagedObject> {
+            observableText.value = text
+        }
     }
     var observableText : Observable<String>!
     init() {
-        player = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN") as! PlayerMN
-        opponent = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN") as! OpponentMN
-        lifeCountersIndex = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex") as! LifeCountersIndex
         observableText = Observable(text)
          NotificationCenter.default.addObserver(self, selector:#selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: manager.mainQueueContext)
     }

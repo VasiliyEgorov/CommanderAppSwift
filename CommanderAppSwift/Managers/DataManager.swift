@@ -65,9 +65,7 @@ final class DataManager {
         }
     }
     // MARK: Insert counters objects
-    
     func insertCountersMN() {
-        
         if let _ = self.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex") {
             return
         } else {
@@ -81,14 +79,15 @@ final class DataManager {
                 let opponentInterface = InterfaceMN(context: self.mainQueueContext)
                 player.name = ""
                 opponent.name = ""
+                playerMainCounters.countersIndex = lifeCountersIndex
                 player.lifeCounters = playerMainCounters
-                player.lifeCounters?.countersIndex = lifeCountersIndex
                 player.manaCounter = manaCounter
                 player.interface = playerInterface
+                opponentMainCounters.countersIndex = lifeCountersIndex
                 opponent.lifeCounters = opponentMainCounters
-                opponent.lifeCounters?.countersIndex = lifeCountersIndex
                 opponent.interface = opponentInterface
                 saveContext()
+                mainQueueContext.refreshAllObjects()
         }
     }
     // MARK: - Notifications

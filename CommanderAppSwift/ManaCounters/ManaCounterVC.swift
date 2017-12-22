@@ -9,6 +9,7 @@
 import UIKit
 
 class ManaCounterVC: UIViewController {
+    @IBOutlet weak var countersViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var imagesStackViewTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var buttonsStackView: UIStackView!
     @IBOutlet weak var imagesStackView: UIStackView!
@@ -26,7 +27,7 @@ class ManaCounterVC: UIViewController {
         viewModel = ManaCounterVM()
         addSwipeGesture()
         bindValue()
-        changeConstraints()
+        updateConstraints()
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,14 +99,16 @@ class ManaCounterVC: UIViewController {
         leftSwipeAction()
     }
     // MARK: - Constraints
-    private func changeConstraints() {
+    private func updateConstraints() {
         let screenHeight = Device(rawValue: UIScreen.main.bounds.size.height)!
         switch screenHeight {
         case .Iphone5:
             imagesStackView.spacing = 16
             buttonsStackView.spacing = 16
             imagesStackViewTrailingConstraint.constant = 18
+            countersViewBottomConstraint.constant = 71
         default: break
         }
+        self.view.updateConstraintsIfNeeded()
     }
 }

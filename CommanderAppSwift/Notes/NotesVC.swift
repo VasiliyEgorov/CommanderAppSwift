@@ -21,6 +21,7 @@ class NotesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIG
         super.viewDidLoad()
         viewModel = NotesViewModel()
         setupTableView()
+        addSwipeRecognizer()
     }
 
     override func didReceiveMemoryWarning() {

@@ -15,14 +15,20 @@ class ThirdCellViewModel {
     private let caretUp : Data? = Data.init(imageName: "caret-up.png")
     private let caretDown : Data? = Data.init(imageName: "caret-down.png")
     private unowned let manager = DataManager.sharedInstance
-    private let lifeCountersIndex : LifeCountersIndex!
-    private let playerCounter : PlayerMN!
-    private let opponentCounter : OpponentMN!
+    private var lifeCountersIndex : LifeCountersIndex {
+        return manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex") as! LifeCountersIndex
+    }
+    private var playerCounter : PlayerMN {
+        return manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN") as! PlayerMN
+    }
+    private var opponentCounter : OpponentMN {
+        return manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN") as! OpponentMN
+    }
     var counter : Int64 {
         get {
             return getCurrentCounter(type: screenType)
         } set {
-            observableThirdCounter.value = newValue
+            observableCounter.value = newValue
             setCurrentCounter(type: screenType, newValue: newValue)
             manager.saveContext()
         }
@@ -40,7 +46,7 @@ class ThirdCellViewModel {
         get {
         return getCurrentRowImg(type: screenType, isHidden: isHiddenThirdRow)
         } set {
-            observableThirdDataImage.value = newValue
+            observableDataImage.value = newValue
         }
     }
     private var screenType : IndexEnum {
@@ -103,21 +109,26 @@ class ThirdCellViewModel {
     @objc func managedObjectContextObjectsDidChange(notification: NSNotification) {
         guard let userInfo = notification.userInfo else { return }
         if let _ = userInfo[NSUpdatedObjectsKey] as? Set<LifeCountersIndex> {
-            observableThirdCounter.value = counter
-            observableThirdDataImage.value = thirdRowImg
+            observableSignal.value = counter
         }
         if let _ = userInfo[NSUpdatedObjectsKey] as? Set<LifeCountersMN> {
-            observableThirdCounter.value = counter
+            observableSignal.value = counter
+        }
+        if let _ = userInfo[NSInsertedObjectsKey] as? Set<NSManagedObject> {
+            observableSignal.value = counter
         }
     }
-    var observableThirdCounter : Observable<Int64>!
-    var observableThirdDataImage : Observable<Data?>!
+    var observableCounter : Observable<Int64>!
+    var observableDataImage : Observable<Data?>!
+    private var observableSignal : Observable<Any>!
     init() {
-        playerCounter = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN") as! PlayerMN
-        opponentCounter = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN") as! OpponentMN
-        lifeCountersIndex = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex") as! LifeCountersIndex
-        observableThirdCounter = Observable(counter)
-        observableThirdDataImage = Observable(thirdRowImg)
-        NotificationCenter.default.addObserver(self, selector:#selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: manager.mainQueueContext)
+        observableCounter = Observable(counter)
+        observableDataImage = Observable(thirdRowImg)
+        observableSignal = Observable(lifeCountersIndex.screenIndex)
+        _ = observableSignal.observeNext(with: { (value) in
+            self.observableCounter.value = self.counter
+            self.observableDataImage.value = self.thirdRowImg
+        })
+         NotificationCenter.default.addObserver(self, selector:#selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: manager.mainQueueContext)
     }
 }

@@ -81,7 +81,6 @@
 		FF5440221FD7A5C30065C87A /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5440211FD7A5C30065C87A /* CameraVC.swift */; };
 		FF5440261FD7A5F40065C87A /* cameraXIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5440251FD7A5F40065C87A /* cameraXIB.xib */; };
 		FF5440281FD7A70D0065C87A /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5440271FD7A70D0065C87A /* CameraView.swift */; };
-		FF54402A1FD7A7620065C87A /* AudioSessionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5440291FD7A7620065C87A /* AudioSessionData.swift */; };
 		FF54402C1FD7A7700065C87A /* CameraData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF54402B1FD7A7700065C87A /* CameraData.swift */; };
 		FF56E7751FE1B38E008E5D54 /* DetailsSearchCellLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF56E7741FE1B38E008E5D54 /* DetailsSearchCellLabel.swift */; };
 		FF60EA2E1FBC977F005C2BBA /* TabBarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF60EA2D1FBC977F005C2BBA /* TabBarVC.xib */; };
@@ -118,6 +117,7 @@
 		FF7CA3F21FEC6A750058F289 /* KeyboardButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7CA3F11FEC6A750058F289 /* KeyboardButtonsView.swift */; };
 		FFA11F411FE257D900E27891 /* CardZoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA11F3F1FE257D900E27891 /* CardZoomVC.swift */; };
 		FFA11F421FE257D900E27891 /* CardZoomVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFA11F401FE257D900E27891 /* CardZoomVC.xib */; };
+		FFE591171FED986C0027D029 /* ResetCountersAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE591161FED986C0027D029 /* ResetCountersAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -220,7 +220,6 @@
 		FF5440211FD7A5C30065C87A /* CameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
 		FF5440251FD7A5F40065C87A /* cameraXIB.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = cameraXIB.xib; sourceTree = "<group>"; };
 		FF5440271FD7A70D0065C87A /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
-		FF5440291FD7A7620065C87A /* AudioSessionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSessionData.swift; sourceTree = "<group>"; };
 		FF54402B1FD7A7700065C87A /* CameraData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraData.swift; sourceTree = "<group>"; };
 		FF56E7741FE1B38E008E5D54 /* DetailsSearchCellLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsSearchCellLabel.swift; sourceTree = "<group>"; };
 		FF60EA2D1FBC977F005C2BBA /* TabBarVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarVC.xib; sourceTree = "<group>"; };
@@ -257,6 +256,7 @@
 		FF7CA3F11FEC6A750058F289 /* KeyboardButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardButtonsView.swift; sourceTree = "<group>"; };
 		FFA11F3F1FE257D900E27891 /* CardZoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardZoomVC.swift; sourceTree = "<group>"; };
 		FFA11F401FE257D900E27891 /* CardZoomVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardZoomVC.xib; sourceTree = "<group>"; };
+		FFE591161FED986C0027D029 /* ResetCountersAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetCountersAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -606,7 +606,6 @@
 				FF5440211FD7A5C30065C87A /* CameraVC.swift */,
 				FF54402B1FD7A7700065C87A /* CameraData.swift */,
 				FF5440271FD7A70D0065C87A /* CameraView.swift */,
-				FF5440291FD7A7620065C87A /* AudioSessionData.swift */,
 				FF5440251FD7A5F40065C87A /* cameraXIB.xib */,
 			);
 			path = Camera;
@@ -616,6 +615,7 @@
 			isa = PBXGroup;
 			children = (
 				FF54401F1FD6A8B90065C87A /* CameraActionSheetView.swift */,
+				FFE591161FED986C0027D029 /* ResetCountersAlert.swift */,
 				FF4FA37D1FE3EF390029C63C /* No Results Controller Alert */,
 				FF1BBB461FC79942009271C4 /* Alert For Main Counters */,
 			);
@@ -964,7 +964,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF1BBB451FC792F7009271C4 /* MainCountersAlertM.swift in Sources */,
-				FF54402A1FD7A7620065C87A /* AudioSessionData.swift in Sources */,
 				FF1BBB061FC4FE15009271C4 /* ThirdCounterCell.swift in Sources */,
 				FF4FA37F1FE434FE0029C63C /* NoConnectionLabel.swift in Sources */,
 				FF60EA4C1FC0DF6A005C2BBA /* AvatarVM.swift in Sources */,
@@ -973,6 +972,7 @@
 				FF1BBB211FC63580009271C4 /* MenuCell.swift in Sources */,
 				FF1BBB491FC7C4CE009271C4 /* ZeroCounterCell.swift in Sources */,
 				FF3340251FB9046A00E980AA /* UIColorExtension.swift in Sources */,
+				FFE591171FED986C0027D029 /* ResetCountersAlert.swift in Sources */,
 				FF60EA321FBD927C005C2BBA /* MainCounterVM.swift in Sources */,
 				FF5440221FD7A5C30065C87A /* CameraVC.swift in Sources */,
 				FF1BBB8E1FC89192009271C4 /* NotesCellVM.swift in Sources */,

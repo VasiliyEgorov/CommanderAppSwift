@@ -9,10 +9,10 @@
 import UIKit
 import AVFoundation
 
-fileprivate enum AVCamSetupResult {
-    case AVCamSetupResultSuccess
-    case AVCamSetupResultCameraNotAuthorized
-    case AVCamSetupResultSessionConfigurationFailed
+fileprivate enum AVCamSetupResult : Int {
+    case AVCamSetupResultSuccess = 0
+    case AVCamSetupResultCameraNotAuthorized = 1
+    case AVCamSetupResultSessionConfigurationFailed = 2
 }
 fileprivate enum AVCamFlashlight : Int {
     case AVCamFlashlightTypeOff = 0
@@ -24,7 +24,7 @@ protocol CameraPhotoDelegate : class {
     func sendResultPhoto(photo: UIImage)
 }
 
-class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, CameraDataDelegate, AudioSessionDelegate {
+class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, CameraDataDelegate {
     @IBOutlet weak var cameraView: CameraView!
     @IBOutlet weak var reverseCameraButton: UIButton!
     @IBOutlet weak var flashlightButton: UIButton!
@@ -41,10 +41,10 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, CameraDataDeleg
     private var isSessionRunning : Bool!
     private var imageOrientation : UIImageOrientation!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let audioData = AudioSessionData.init()
-        audioData.delegate = self
+        self.imageOrientation = .up
         let cameraData = CameraData.init()
         cameraData.delegate = self
         self.view.alpha = 0.0
@@ -57,11 +57,11 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, CameraDataDeleg
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        switch setupResult {
-        case .AVCamSetupResultSuccess?:
+        switch setupResult! {
+        case .AVCamSetupResultSuccess:
             session?.startRunning()
             isSessionRunning = session?.isRunning
-        case .AVCamSetupResultCameraNotAuthorized?:
+        case .AVCamSetupResultCameraNotAuthorized:
             let message = NSLocalizedString("CommanderApp doesn't have permission to use the camera, please change privacy settings",
                                             comment: "Alert message when the user has denied access to the camera")
             let alertController = UIAlertController.init(title: "CommanderApp", message: message, preferredStyle: .alert)
@@ -72,15 +72,14 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, CameraDataDeleg
             })
             alertController.addAction(settingsAction)
             self.present(alertController, animated: true, completion: nil)
-        case .AVCamSetupResultSessionConfigurationFailed?:
+        case .AVCamSetupResultSessionConfigurationFailed:
             let message = NSLocalizedString("Unable to capture media", comment: "Alert message when something goes wrong during caputre session configuration")
             let alertController = UIAlertController.init(title: "CommanderApp", message: message, preferredStyle: .alert)
             let cancelAction = UIAlertAction.init(title: NSLocalizedString("Ok", comment: "Alert Ok button"), style: .cancel, handler: nil)
             alertController.addAction(cancelAction)
             self.present(alertController, animated: true, completion: nil)
-        case .none:
-            break
         }
+        
         
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -312,11 +311,7 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, CameraDataDeleg
      func trackCurrentDeviceOrientation(orientation: UIImageOrientation) {
         self.imageOrientation = orientation
     }
-    // MARK: - AudioSession Delegate
-    
-    func volumeButtonPressed() {
-        self.takePhotoButtonAction(self.takePhotoButton)
-    }
+   
     // MARK: - Correct Photo Orientation
     
    private func correctToPreferredOrinetation(image: UIImage, position:AVCaptureDevice.Position) -> UIImage {
@@ -342,7 +337,7 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, CameraDataDeleg
     }
     
     private func managePhotoFromOutput(data: Data) {
-        let image = UIImage.init(data: data)
+        let image = data.uiImage
         let originalOrientationImage = UIImage.init(cgImage: (image?.cgImage)!, scale: (image?.scale)!, orientation: self.imageOrientation)
         var fixedOrientationImage : UIImage
         let screenHeight = Device(rawValue: UIScreen.main.bounds.size.height)!
@@ -361,7 +356,7 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, CameraDataDeleg
     
     @available(iOS 10, *)
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
-
+        
         if self.isSessionRunning {
             self.session.stopRunning()
             self.isSessionRunning = self.session.isRunning

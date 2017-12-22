@@ -12,9 +12,15 @@ import Bond
 
 class MainCounterContainerViewModel {
     private unowned let manager = DataManager.sharedInstance
-    private let playerCounter : PlayerMN!
-    private let opponentCounter : OpponentMN!
-    private let lifeCounterIndex : LifeCountersIndex!
+    private var playerCounter : PlayerMN {
+        return manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN") as! PlayerMN
+    }
+    private var opponentCounter : OpponentMN {
+        return manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN") as! OpponentMN
+    }
+    private var lifeCounterIndex : LifeCountersIndex {
+        return manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex") as! LifeCountersIndex
+    }
     private let cellViewModelArray : [AnyObject] = [ZeroCounterViewModel(), FirstCellViewModel(), SecondCellViewModel(), ThirdCellViewModel(), FourthCellViewModel()]
     private var screenType : IndexEnum {
         return IndexEnum(rawValue: Int(lifeCounterIndex.screenIndex))!
@@ -53,15 +59,15 @@ class MainCounterContainerViewModel {
         case (0, true, false): return tableViewHeight * 0.17
         case (1, true, true): return tableViewHeight * 0.3
         case (1, false, true): return tableViewHeight * 0.3
-        case (1, false, false): return tableViewHeight * 0.24
+        case (1, false, false): return tableViewHeight * 0.235
         case (1, true, false): return tableViewHeight * 0.3
         case (2, true, true): return tableViewHeight * 0.3
         case (2, false, true): return tableViewHeight * 0.3
-        case (2, false, false): return tableViewHeight * 0.24
+        case (2, false, false): return tableViewHeight * 0.235
         case (2, true, false): return tableViewHeight * 0.3
         case (3, false, true): return tableViewHeight * 0.3
-        case (3, false, false): return tableViewHeight * 0.24
-        case (4, false, false): return tableViewHeight * 0.24
+        case (3, false, false): return tableViewHeight * 0.235
+        case (4, false, false): return tableViewHeight * 0.235
         default: return 0
         }
     }
@@ -74,9 +80,6 @@ class MainCounterContainerViewModel {
     }
     var observableRows = Observable<Bool>(false)
       init() {
-        playerCounter = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "PlayerMN") as! PlayerMN
-        opponentCounter = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "OpponentMN") as! OpponentMN
-        lifeCounterIndex = manager.mainQueueContext.obtainSingleMNWithEntityName(entityName: "LifeCountersIndex") as! LifeCountersIndex
         NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: manager.mainQueueContext)
       
     }

@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,13 +29,13 @@
                         <rect key="frame" x="4" y="0.0" width="439" height="152"/>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="AkZ-8N-ENm">
-                        <rect key="frame" x="41" y="14" width="365" height="121"/>
+                        <rect key="frame" x="41" y="3" width="365" height="142.5"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MHJ-aO-HaE">
-                                <rect key="frame" x="0.0" y="0.0" width="365" height="42.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="365" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Poison Counter" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9sy-aT-NnA" customClass="CountersTextField" customModule="CommanderAppSwift" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="365" height="42.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="365" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="27"/>
@@ -45,10 +44,10 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lQ5-S5-h1g">
-                                <rect key="frame" x="0.0" y="47.5" width="365" height="73.5"/>
+                                <rect key="frame" x="0.0" y="55" width="365" height="87.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpe-qo-0GD" customClass="CountersButton" customModule="CommanderAppSwift" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="73.5" height="73.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="87.5" height="87.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="cpe-qo-0GD" secondAttribute="height" multiplier="1:1" id="roV-CK-xBN"/>
                                         </constraints>
@@ -58,13 +57,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Chq-4b-3Rn" customClass="MainCountersLabel" customModule="CommanderAppSwift" customModuleProvider="target">
-                                        <rect key="frame" x="73.5" y="0.0" width="218" height="73.5"/>
+                                        <rect key="frame" x="87.5" y="0.0" width="190" height="87.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsx-jq-115" customClass="CountersButton" customModule="CommanderAppSwift" customModuleProvider="target">
-                                        <rect key="frame" x="291.5" y="0.0" width="73.5" height="73.5"/>
+                                        <rect key="frame" x="277.5" y="0.0" width="87.5" height="87.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="bsx-jq-115" secondAttribute="height" multiplier="1:1" id="1PU-pZ-utW"/>
                                         </constraints>
@@ -93,13 +92,13 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="AkZ-8N-ENm" firstAttribute="leading" secondItem="L12-4s-ZFo" secondAttribute="leading" constant="41" id="3Si-Wb-TPM"/>
+                    <constraint firstAttribute="bottom" secondItem="AkZ-8N-ENm" secondAttribute="bottom" priority="999" constant="6" id="7oq-lD-ael"/>
                     <constraint firstAttribute="trailing" secondItem="Fm4-40-bxt" secondAttribute="trailing" constant="4" id="D7p-Yb-QGA"/>
+                    <constraint firstItem="AkZ-8N-ENm" firstAttribute="top" secondItem="L12-4s-ZFo" secondAttribute="top" constant="3" id="LPc-JB-tht"/>
                     <constraint firstAttribute="bottom" secondItem="Fm4-40-bxt" secondAttribute="bottom" priority="999" id="LdC-cm-jNe"/>
                     <constraint firstItem="dwY-SU-bBT" firstAttribute="leading" secondItem="AkZ-8N-ENm" secondAttribute="trailing" constant="5" id="NAH-87-90m"/>
                     <constraint firstAttribute="trailing" secondItem="dwY-SU-bBT" secondAttribute="trailing" constant="8" id="NH6-8D-Wyj"/>
                     <constraint firstAttribute="bottom" secondItem="dwY-SU-bBT" secondAttribute="bottom" id="Q7a-t9-d2A"/>
-                    <constraint firstItem="AkZ-8N-ENm" firstAttribute="top" secondItem="L12-4s-ZFo" secondAttribute="topMargin" constant="3" id="R3W-ar-9gq"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="AkZ-8N-ENm" secondAttribute="bottom" priority="999" constant="6" id="REq-zd-TtI"/>
                     <constraint firstAttribute="trailing" secondItem="AkZ-8N-ENm" secondAttribute="trailing" constant="41" id="hXh-Fe-Luo"/>
                     <constraint firstItem="Fm4-40-bxt" firstAttribute="top" secondItem="L12-4s-ZFo" secondAttribute="top" id="vK2-Tb-NEH"/>
                     <constraint firstItem="Fm4-40-bxt" firstAttribute="leading" secondItem="L12-4s-ZFo" secondAttribute="leading" constant="4" id="xQ0-ai-UjG"/>
