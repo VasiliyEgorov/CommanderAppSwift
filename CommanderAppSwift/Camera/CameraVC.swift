@@ -134,7 +134,7 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, CameraDataDeleg
         
         session.beginConfiguration()
         
-        session.sessionPreset = AVCaptureSession.Preset.hd1920x1080
+        session.sessionPreset = AVCaptureSession.Preset.photo
         photoSettings = AVCapturePhotoSettings.init()
         var camera : AVCaptureDevice? = AVCaptureDevice.default(chooseBackCameraVersion(), for: .video, position: .back)
         photoSettings.flashMode = .auto

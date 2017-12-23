@@ -23,12 +23,6 @@ class MainCounterVC: UIViewController, UIGestureRecognizerDelegate, AvatarImageV
         viewModel = MainCounterVM()
         self.avatarImageView.delegate = self
         setupChildController()
-/*
-        viewModel.setButtonImage { (playerButtonSelected, opponentButtonSelected) in
-            self.changeCounterFirstBtn.isSelected = playerButtonSelected
-            self.changeCounterSecondBtn.isSelected = opponentButtonSelected
-        }
-        */
         bindings()
         updateConstraints()
     }
@@ -105,6 +99,13 @@ class MainCounterVC: UIViewController, UIGestureRecognizerDelegate, AvatarImageV
             self.tabBarController?.selectedIndex = 1
         }
     }
+    // MARK: - Process avatar image
+    private func processAvatarImage(photo: UIImage) {
+        let scaledToScreenWidth = UIImage.scaleImage(image: photo, toFrame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 0))
+        let cropped = UIImage.cropImage(image: scaledToScreenWidth, toRect: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width))
+        let scaledToAvatarImageViewSize = UIImage.scaleImage(image: cropped, toFrame: avatarImageView.frame)
+        viewModel.placeAvatar(avatar: scaledToAvatarImageViewSize?.data)
+    }
     // MARK: - AvatarImageView Delegate
     func tapGestureAction(_ recognizer: UITapGestureRecognizer) {
         let sheet = CameraActionSheet.init()
@@ -124,13 +125,11 @@ class MainCounterVC: UIViewController, UIGestureRecognizerDelegate, AvatarImageV
         self.present(actionSheet, animated: true, completion: nil)
     }
     func sendImageFromPicker(image: UIImage) -> Void {
-        let scaled = UIImage.scaleImage(image: image, toFrame: avatarImageView.frame)
-        viewModel.placeAvatar(avatar: scaled?.data)
+        processAvatarImage(photo: image)
     }
     // MARK: - CameraPhoto Delegate
     func sendResultPhoto(photo: UIImage) {
-        let scaled = UIImage.scaleImage(image: photo, toFrame: avatarImageView.frame)
-        viewModel.placeAvatar(avatar: scaled?.data)
+        processAvatarImage(photo: photo)
     }
     // MARK: - Gestures Delegate
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
