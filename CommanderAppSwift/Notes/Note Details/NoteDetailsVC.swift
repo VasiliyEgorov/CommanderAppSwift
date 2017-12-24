@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NoteDetailsVC: UIViewController, UITextViewDelegate, CameraActionSheetDelegate, CameraPhotoDelegate, KeyboardButtonsDelegate {
+class NoteDetailsVC: UIViewController, UITextViewDelegate, CameraActionSheetDelegate, CameraPhotoDelegate, KeyboardButtonsDelegate, NotesPaintDelegate {
     @IBOutlet weak var noteTextView: UITextView!
     private var cloudButton : UIBarButtonItem!
     private var cameraAlertSheet : CameraActionSheet!
@@ -99,6 +99,12 @@ class NoteDetailsVC: UIViewController, UITextViewDelegate, CameraActionSheetDele
             noteTextView.attributedText = viewModel.placePhoto(photo: scaled!, in: noteTextView)
         }
     }
+    // MARK: - NotesPaint Delegate
+    func receivePaintImage(image: UIImage?) {
+        if let image = image {
+           noteTextView.attributedText = viewModel.placePhoto(photo: image, in: noteTextView)
+        }
+    }
     // MARK: - Keyboard Buttons
     
     func keyboardCircleButtonAction(_ sender: UIButton) {
@@ -108,7 +114,9 @@ class NoteDetailsVC: UIViewController, UITextViewDelegate, CameraActionSheetDele
         cameraAlertSheet.showAlert()
     }
     func keyboardDoodleButtonAction(_ sender: UIButton) {
-        
+        let notesPaintVC = NotesPaintVC.init(nibName: "NotesPaintVC", bundle: nil)
+        notesPaintVC.delegate = self
+        self.navigationController?.pushViewController(notesPaintVC, animated: true)
     }
     // MARK: - Buttons
     
@@ -134,8 +142,10 @@ class NoteDetailsVC: UIViewController, UITextViewDelegate, CameraActionSheetDele
         NotificationCenter.default.addObserver(self, selector: #selector(UITextViewTextDidChangeNotification(notification:)), name: NSNotification.Name.UITextViewTextDidChange, object: nil)
     }
     @objc private func UIKeyboardDidShowNotification(notification: Notification) {
+        print(currentKeyboard_height)
         noteTextView.contentInset = UIEdgeInsetsMake(0, 0, currentKeyboard_height, 0)
         noteTextView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, currentKeyboard_height, 0)
+        noteTextView.scrollRectToVisible(CGRect(x: 0, y: 0, width: noteTextView.contentSize.width, height: noteTextView.contentSize.height), animated: true)
         checkForEmptyString()
     }
     @objc private func UIKeyboardWillHideNotification(notification: Notification) {

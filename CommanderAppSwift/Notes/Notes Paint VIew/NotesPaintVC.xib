@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NotesPaintVC" customModule="CommanderAppSwift" customModuleProvider="target">
+            <connections>
+                <outlet property="colorPalette" destination="Pw2-uP-Ais" id="zjg-qm-bZa"/>
+                <outlet property="doodleView" destination="Z9E-Dz-k2v" id="pcE-6a-uEk"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="kN4-ZY-HHJ">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z9E-Dz-k2v" customClass="DoodleView" customModule="CommanderAppSwift" customModuleProvider="target">
+                    <rect key="frame" x="16" y="84" width="343" height="457.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Z9E-Dz-k2v" secondAttribute="height" multiplier="3:4" id="AFl-IX-u8P"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="resetButton" destination="mTe-wb-xeP" id="RmY-dX-IBk"/>
+                        <outlet property="undoButton" destination="nU2-yf-I6M" id="wxR-hr-SIx"/>
+                    </connections>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ba6-hy-j4L">
+                    <rect key="frame" x="0.0" y="542.5" width="375" height="124.5"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nU2-yf-I6M">
+                            <rect key="frame" x="0.0" y="0.0" width="187.5" height="124.5"/>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="undoButtonAction:" destination="Z9E-Dz-k2v" eventType="touchUpInside" id="ex7-MD-lYu"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mTe-wb-xeP">
+                            <rect key="frame" x="187.5" y="0.0" width="187.5" height="124.5"/>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="resetButtonAction:" destination="Z9E-Dz-k2v" eventType="touchUpInside" id="K7s-BB-AuQ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pw2-uP-Ais" customClass="ColorPalette" customModule="CommanderAppSwift" customModuleProvider="target">
+                    <rect key="frame" x="364" y="84" width="11" height="457.5"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="kN4-ZY-HHJ" secondAttribute="bottom" id="2ba-sb-qYq"/>
+                <constraint firstItem="Pw2-uP-Ais" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.03" id="3u4-ZA-0hm"/>
+                <constraint firstItem="Z9E-Dz-k2v" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="64" id="8IG-Ia-iHI"/>
+                <constraint firstItem="Pw2-uP-Ais" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="EfI-zC-GKo"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ba6-hy-j4L" secondAttribute="bottom" id="G8b-JN-yPz"/>
+                <constraint firstItem="Pw2-uP-Ais" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="64" id="Iji-te-pAB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kN4-ZY-HHJ" secondAttribute="trailing" id="KEv-N6-nmQ"/>
+                <constraint firstItem="ba6-hy-j4L" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Q5o-Ru-k5s"/>
+                <constraint firstItem="ba6-hy-j4L" firstAttribute="top" secondItem="Pw2-uP-Ais" secondAttribute="bottom" constant="1" id="aas-cY-XIe"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Z9E-Dz-k2v" secondAttribute="trailing" constant="16" id="aqg-Sx-90I"/>
+                <constraint firstItem="ba6-hy-j4L" firstAttribute="top" secondItem="Z9E-Dz-k2v" secondAttribute="bottom" constant="1" id="bf9-af-xkZ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ba6-hy-j4L" secondAttribute="trailing" id="fkk-1g-fdx"/>
+                <constraint firstItem="Z9E-Dz-k2v" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="hOo-0l-a2g"/>
+                <constraint firstItem="kN4-ZY-HHJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="liF-Lh-Swk"/>
+                <constraint firstItem="kN4-ZY-HHJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="oYI-9j-FSV"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="25.5" y="51.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bg" width="1198" height="2027"/>
+    </resources>
+</document>

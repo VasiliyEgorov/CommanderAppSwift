@@ -19,6 +19,7 @@ class NotesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIG
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(UINib.init(nibName: "NotesTableViewCell", bundle: nil), forCellReuseIdentifier: cellID)
         viewModel = NotesViewModel()
         setupTableView()
         addSwipeRecognizer()
@@ -50,12 +51,9 @@ class NotesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIG
         return viewModel.numberOfNotes(section: section)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? NotesCell
-        if cell == nil {
-            cell = UINib(nibName: "NotesTableViewCell", bundle: nil).instantiate(withOwner: nil, options: nil).first as? NotesCell
-        }
-        cell!.viewModel = self.viewModel.cellViewModel(indexPath: indexPath)
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as! NotesCell
+        cell.viewModel = self.viewModel.cellViewModel(indexPath: indexPath)
+        return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

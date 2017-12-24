@@ -118,6 +118,10 @@
 		FFA11F411FE257D900E27891 /* CardZoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA11F3F1FE257D900E27891 /* CardZoomVC.swift */; };
 		FFA11F421FE257D900E27891 /* CardZoomVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFA11F401FE257D900E27891 /* CardZoomVC.xib */; };
 		FFE591171FED986C0027D029 /* ResetCountersAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE591161FED986C0027D029 /* ResetCountersAlert.swift */; };
+		FFE5911D1FEDEA110027D029 /* NotesPaintVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE5911B1FEDEA110027D029 /* NotesPaintVC.swift */; };
+		FFE5911E1FEDEA110027D029 /* NotesPaintVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFE5911C1FEDEA110027D029 /* NotesPaintVC.xib */; };
+		FFE591201FEED7F10027D029 /* DoodleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE5911F1FEED7F10027D029 /* DoodleView.swift */; };
+		FFE591221FEED8040027D029 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE591211FEED8040027D029 /* ColorPalette.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -257,6 +261,10 @@
 		FFA11F3F1FE257D900E27891 /* CardZoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardZoomVC.swift; sourceTree = "<group>"; };
 		FFA11F401FE257D900E27891 /* CardZoomVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardZoomVC.xib; sourceTree = "<group>"; };
 		FFE591161FED986C0027D029 /* ResetCountersAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetCountersAlert.swift; sourceTree = "<group>"; };
+		FFE5911B1FEDEA110027D029 /* NotesPaintVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesPaintVC.swift; sourceTree = "<group>"; };
+		FFE5911C1FEDEA110027D029 /* NotesPaintVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesPaintVC.xib; sourceTree = "<group>"; };
+		FFE5911F1FEED7F10027D029 /* DoodleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleView.swift; sourceTree = "<group>"; };
+		FFE591211FEED8040027D029 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -385,6 +393,7 @@
 				FF33401D1FB9031200E980AA /* NotesVC.xib */,
 				FF1BBB911FCB37BC009271C4 /* Cell */,
 				FF1BBB921FCB37CE009271C4 /* Note Details */,
+				FFE591181FEDE9940027D029 /* Notes Paint VIew */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -738,6 +747,17 @@
 			path = CardDetails;
 			sourceTree = "<group>";
 		};
+		FFE591181FEDE9940027D029 /* Notes Paint VIew */ = {
+			isa = PBXGroup;
+			children = (
+				FFE5911B1FEDEA110027D029 /* NotesPaintVC.swift */,
+				FFE5911C1FEDEA110027D029 /* NotesPaintVC.xib */,
+				FFE5911F1FEED7F10027D029 /* DoodleView.swift */,
+				FFE591211FEED8040027D029 /* ColorPalette.swift */,
+			);
+			path = "Notes Paint VIew";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -859,6 +879,7 @@
 				FF72559F1FE190E100F8D820 /* CardDetailsVC.xib in Resources */,
 				FF333FD91FB5A5C600E980AA /* LaunchScreen.storyboard in Resources */,
 				FF7255981FE1621100F8D820 /* CardDetailsSearchCell.xib in Resources */,
+				FFE5911E1FEDEA110027D029 /* NotesPaintVC.xib in Resources */,
 				FF333FD61FB5A5C500E980AA /* Assets.xcassets in Resources */,
 				FF3340231FB9033C00E980AA /* NotesTableViewCell.xib in Resources */,
 				FF60EA2E1FBC977F005C2BBA /* TabBarVC.xib in Resources */,
@@ -964,6 +985,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF1BBB451FC792F7009271C4 /* MainCountersAlertM.swift in Sources */,
+				FFE5911D1FEDEA110027D029 /* NotesPaintVC.swift in Sources */,
 				FF1BBB061FC4FE15009271C4 /* ThirdCounterCell.swift in Sources */,
 				FF4FA37F1FE434FE0029C63C /* NoConnectionLabel.swift in Sources */,
 				FF60EA4C1FC0DF6A005C2BBA /* AvatarVM.swift in Sources */,
@@ -997,6 +1019,7 @@
 				FF7CA3F21FEC6A750058F289 /* KeyboardButtonsView.swift in Sources */,
 				FF1BBB341FC66CA5009271C4 /* RollADieM.swift in Sources */,
 				FF72557D1FDA822D00F8D820 /* CardSearchVC.swift in Sources */,
+				FFE591221FEED8040027D029 /* ColorPalette.swift in Sources */,
 				FF7255931FE1612E00F8D820 /* CardDetailsSearchVM.swift in Sources */,
 				FF7255801FDA824000F8D820 /* CardSearchVM.swift in Sources */,
 				FF3340221FB9033C00E980AA /* NotesCell.swift in Sources */,
@@ -1043,6 +1066,7 @@
 				FF60EA431FBE13FC005C2BBA /* NSManagedObjectExtension.swift in Sources */,
 				FF1BBAF31FC3B15E009271C4 /* FirstCounterCellVM.swift in Sources */,
 				FF54401C1FD4FC800065C87A /* CountersButton.swift in Sources */,
+				FFE591201FEED7F10027D029 /* DoodleView.swift in Sources */,
 				FF1BBB241FC63596009271C4 /* MenuVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

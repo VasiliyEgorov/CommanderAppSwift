@@ -17,6 +17,7 @@ extension Dictionary where Key == String {
 }
 class NotesDetailsViewModel {
     private unowned let manager = DataManager.sharedInstance
+    private let maxTextStringLength = 40
     private let note : NotesMN!
     var attributedText : NSAttributedString {
         get {
@@ -29,6 +30,9 @@ class NotesDetailsViewModel {
     func saveNotesAttributedText(attributed: NSAttributedString) {
         DispatchQueue.global(qos: .default).async {
             self.note.attributedText = attributed
+            self.note.noteText = self.splitTextForTextString(attributed: attributed)
+            self.note.noteDetailedText = self.splitTextForDetailedString(attributed: attributed)
+            self.note.placeholderForCell = self.getTextAttachmentFrom(attributed: attributed)
             guard let _ = try? self.manager.privateQueueContext.save() else { return }
         }
     }
@@ -69,6 +73,73 @@ class NotesDetailsViewModel {
                                                                                                NSAttributedStringKey.font : UIFont.init(name: Constants().helvetica, size: 19)!])
             return newAtrString
         }
+    }
+    // MARK: - Prepare Note for cell
+    
+    private func splitTextForTextString(attributed: NSAttributedString) -> String {
+    
+        let str = findAndDeleteTextAttachment(atrStr: attributed)
+        
+        if str.isEmpty {
+            return Constants().noText
+        } else {
+            return str
+        }
+    }
+    private func splitTextForDetailedString(attributed: NSAttributedString) -> String {
+        
+        let str = findAndDeleteTextAttachment(atrStr: attributed)
+        if str.count < maxTextStringLength {
+            return Constants().noAdditionalText
+        } else {
+            let indexOfDetailedStr = str.index(str.startIndex, offsetBy: maxTextStringLength)
+            let temp = String(str[indexOfDetailedStr...])
+            guard let indexOfSpace = temp.index(of: Character(Constants().space)) else { return Constants().noAdditionalText}
+            if temp.endIndex > indexOfSpace {
+                let indexOfDetailedStrAfterSpace = temp.index(indexOfSpace, offsetBy: 1)
+                let result = String(temp[indexOfDetailedStrAfterSpace...])
+                return result
+            } else {
+                return Constants().noAdditionalText
+            }
+        }
+    }
+    private func findAndDeleteTextAttachment(atrStr:NSAttributedString) -> String {
+        let mutAtrString = NSMutableAttributedString.init(attributedString: atrStr)
+        mutAtrString.enumerateAttribute(NSAttributedStringKey.attachment,
+                                        in: NSMakeRange(0, mutAtrString.length),
+                                        options: []) { (textImage, range, stop) in
+                                            if let _ = textImage as? NSTextAttachment {
+                                                mutAtrString.replaceCharacters(in: range, with: Constants().empty)
+                                            }
+        }
+        return replaceDepricatedCharsInString(str: mutAtrString.string)
+    }
+    private func replaceDepricatedCharsInString(str: String) -> String {
+        let strWithoutDoubleSpaces = str.replacingOccurrences(of: Constants().doubleSpace, with: Constants().space)
+        let strWithoutNewline = strWithoutDoubleSpaces.replacingOccurrences(of: "\n", with: Constants().empty)
+        let trimmedStr = strWithoutNewline.trimmingCharacters(in: CharacterSet.whitespaces)
+        return trimmedStr
+    }
+    private func getTextAttachmentFrom(attributed: NSAttributedString) -> Data? {
+       
+        var data : Data?
+        let mutAtrString = NSMutableAttributedString.init(attributedString: attributed)
+        mutAtrString.enumerateAttribute(NSAttributedStringKey.attachment,
+                                        in: NSMakeRange(0, mutAtrString.length),
+                                        options: []) { (textImage, range, stop) in
+                                            if let attachment = textImage as? NSTextAttachment {
+                                                if let image = attachment.image {
+                                                    let resized = UIImage.scaleImage(image: image, toFrame: CGRect(x: 0, y: 0, width: 50, height: 50))
+                                                    let cropped = UIImage.cropImage(image: resized, toRect: CGRect(x: 0, y: 0, width: 50, height: 50))
+                                                    if let cropped = cropped {
+                                                    data = cropped.data
+                                                    stop.pointee = true
+                                                    }
+                                                }
+                                            }
+        }
+        return data
     }
     required init(note: NotesMN) {
         self.note = note
