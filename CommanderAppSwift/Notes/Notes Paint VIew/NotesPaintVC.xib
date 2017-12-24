@@ -59,6 +59,9 @@
                 </stackView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pw2-uP-Ais" customClass="ColorPalette" customModule="CommanderAppSwift" customModuleProvider="target">
                     <rect key="frame" x="364" y="84" width="11" height="457.5"/>
+                    <connections>
+                        <outlet property="tralingConstraint" destination="EfI-zC-GKo" id="LUW-Xb-ubN"/>
+                    </connections>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

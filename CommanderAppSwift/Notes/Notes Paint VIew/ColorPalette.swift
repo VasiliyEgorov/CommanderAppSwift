@@ -15,6 +15,7 @@ protocol ColorPaletteDelegate : class {
     func showColorPalette()
 }
 class ColorPalette: UIImageView, ColorPaletteDelegate {
+    @IBOutlet weak var tralingConstraint : NSLayoutConstraint!
     private let defaultToolWidth : CGFloat = 3.0
     private var colorPicker : UIColor!
     private var viewForIndicator : UIView!
@@ -181,10 +182,20 @@ class ColorPalette: UIImageView, ColorPaletteDelegate {
         return currentWidthForLineTool
     }
     func hideColorPalette() {
-        
+        self.superview?.layoutIfNeeded()
+        tralingConstraint.constant = self.frame.size.width
+        UIView.animate(withDuration: 0.3,
+                       animations: {
+                        self.superview?.layoutIfNeeded()
+        })
     }
     func showColorPalette() {
-        
+        self.superview?.layoutIfNeeded()
+        tralingConstraint.constant = 0
+        UIView.animate(withDuration: 0.3,
+                       animations: {
+                        self.superview?.layoutIfNeeded()
+        })
     }
     // MARK: - Animations
     private func showView(viewForIndicator: UIView, with newFrameViewForIndicator: CGRect, and indicatorView: UIView, with newFrameForIndicatorView: CGRect) {
