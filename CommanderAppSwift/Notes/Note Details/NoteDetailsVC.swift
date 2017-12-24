@@ -99,6 +99,7 @@ class NoteDetailsVC: UIViewController, UITextViewDelegate, CameraActionSheetDele
             noteTextView.attributedText = viewModel.placePhoto(photo: scaled!, in: noteTextView)
         }
     }
+    
     // MARK: - NotesPaint Delegate
     func receivePaintImage(image: UIImage?) {
         if let image = image {

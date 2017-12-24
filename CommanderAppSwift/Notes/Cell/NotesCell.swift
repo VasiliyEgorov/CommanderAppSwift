@@ -19,7 +19,7 @@ class NotesCell: UITableViewCell {
             self.noteTextLabel.text = viewModel.textString
             self.noteDetailedLabel.text = viewModel.detailedTextString
             self.noteDateLabel.text = viewModel.dateString
-            self.notePlaceholderImg?.image = resizeAndConvertImageFrom(data: viewModel.placeholderData)
+            self.notePlaceholderImg?.image = viewModel.placeholderData?.uiImage
         }
     }
     required init?(coder aDecoder: NSCoder) {
@@ -40,11 +40,4 @@ class NotesCell: UITableViewCell {
         selectedBGView.backgroundColor = UIColor.init(patternImage: UIImage.init(named: "bgForCellHighlighted.png")!)
         self.selectedBackgroundView = selectedBGView
     }
-    private func resizeAndConvertImageFrom(data: Data?) -> UIImage? {
-        let converted = data?.uiImage
-        let resized = UIImage.scaleImage(image: converted, toFrame: CGRect(x: 0, y: 0, width: (self.notePlaceholderImg?.frame.size.width)!, height: (self.notePlaceholderImg?.frame.size.height)!))
-        let cropped = UIImage.cropImage(image: resized, toRect: CGRect(x: 0, y: 0, width: (self.notePlaceholderImg?.frame.size.width)!, height: (self.notePlaceholderImg?.frame.size.height)!))
-        return cropped
-    }
-   
 }
