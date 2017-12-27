@@ -66,7 +66,7 @@
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="diamond_35" translatesAutoresizingMaskIntoConstraints="NO" id="GI9-4I-3A3">
                                     <rect key="frame" x="0.0" y="310.5" width="41.5" height="38.5"/>
                                 </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="diamond_35" translatesAutoresizingMaskIntoConstraints="NO" id="b3u-zm-ZoK">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="storm" translatesAutoresizingMaskIntoConstraints="NO" id="b3u-zm-ZoK">
                                     <rect key="frame" x="0.0" y="373" width="41.5" height="38"/>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mountains" translatesAutoresizingMaskIntoConstraints="NO" id="jRx-G7-3gH">
@@ -416,6 +416,7 @@
         <image name="notes" width="14" height="25"/>
         <image name="refreshButton" width="28" height="25"/>
         <image name="skull_35" width="40" height="40"/>
+        <image name="storm" width="126" height="124"/>
         <image name="sun_35" width="40" height="40"/>
         <image name="tree_35" width="40" height="40"/>
         <image name="water_35" width="40" height="40"/>

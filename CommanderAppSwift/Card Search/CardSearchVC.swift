@@ -31,6 +31,7 @@ class CardSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         searchSubviewsInTextField(view: searchBar)?.backgroundColor = UIColor.color_99withAlpha(alpha: 0.1)
         searchSubviewsInTextField(view: searchBar)?.textColor = UIColor.color_150withAlpha(alpha: 1.0)
         tableView.register(UINib.init(nibName: "CardSearchCell", bundle: nil), forCellReuseIdentifier: cellID)
+        self.navigationItem.title = "Card search"
     }
 
     override func didReceiveMemoryWarning() {
