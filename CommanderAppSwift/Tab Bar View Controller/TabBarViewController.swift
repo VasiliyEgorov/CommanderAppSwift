@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SWRevealViewController
 
 extension UITabBar {
     override open func sizeThatFits(_ size: CGSize) -> CGSize {
@@ -27,6 +28,30 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func configureCountersScenario() {
+        let storyboard = UIStoryboard(name: "CountersStoryboard", bundle: nil)
+        
+        let viewControllers = [storyboard.instantiateViewController(withIdentifier: "PlayerCountersVC"),
+                               storyboard.instantiateViewController(withIdentifier: "ManaCountersVC"),
+                               storyboard.instantiateViewController(withIdentifier: "NotesVC"),
+                               storyboard.instantiateViewController(withIdentifier: "CardSearchVC")]
+    
+        self.setViewControllers(viewControllers, animated: true)
+        
+        guard let tabBarViewControllers = self.viewControllers else { return }
+        for object in tabBarViewControllers {
+            if let navController = object as? MainNavController {
+                if let firstController = navController.topViewController {
+                    firstController.view.setNeedsLayout()
+                    firstController.view.layoutIfNeeded()
+                    firstController.view.updateConstraintsIfNeeded()
+                }
+            }
+        }
+        self.selectedIndex = 0
+        
     }
     
     func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {

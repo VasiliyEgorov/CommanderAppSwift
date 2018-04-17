@@ -9,21 +9,25 @@
 import UIKit
 import SWRevealViewController
 
-class MainCounterVC: UIViewController, UIGestureRecognizerDelegate, AvatarImageViewDelegate, CameraActionSheetDelegate, CameraPhotoDelegate {
+class MainCounterVC: UIViewController {
     
-    var viewModel: MainCounterVM!
+    
     private var childController : MainCounterContainerVC!
     @IBOutlet weak var avatarImageView: AvatarImageView!
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var changeCounterSecondBtn: ChangeCounterButton!
-    @IBOutlet weak var changeCounterFirstBtn: ChangeCounterButton!
+    @IBOutlet var changeCounterButtons: [ChangeCounterButton]!
     @IBOutlet weak var containerViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var playerNameTxtField: PlayerNameV!
+    
+    private let switchHandler = SwitchCounterHandler()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = MainCounterVM()
+        
         self.avatarImageView.delegate = self
-        setupChildController()
-        bindings()
+        self.childController = self.childViewControllers.first! as! MainCounterContainerVC
+        
+        
+        
         updateConstraints()
     }
 
@@ -35,36 +39,13 @@ class MainCounterVC: UIViewController, UIGestureRecognizerDelegate, AvatarImageV
         super.viewDidAppear(animated)
         avatarImageView.startAnimateViews()
     }
-    // MARK: - Setup
-    private func setupChildController() {
-        self.childController = MainCounterContainerVC.init(nibName: "MainCounterContainerVC", bundle: nil)
-        self.addChildViewController(childController)
-        self.containerView.addSubview(childController.view)
-        childController.didMove(toParentViewController: self)
-        
-        let leading = NSLayoutConstraint.init(item: childController.view, attribute: .leading, relatedBy: .equal, toItem: self.containerView, attribute: .leading, multiplier: 1, constant: 0)
-        let trailing = NSLayoutConstraint.init(item: childController.view, attribute: .trailing, relatedBy: .equal, toItem: self.containerView, attribute: .trailing, multiplier: 1, constant: 0)
-        let top = NSLayoutConstraint.init(item: childController.view, attribute: .top, relatedBy: .equal, toItem: self.containerView, attribute: .top, multiplier: 1, constant: 0)
-        let bottom = NSLayoutConstraint.init(item: childController.view, attribute: .bottom, relatedBy: .equal, toItem: self.containerView, attribute: .bottom, multiplier: 1, constant: 0)
-        self.view.addConstraint(leading)
-        self.view.addConstraint(trailing)
-        self.view.addConstraint(top)
-        self.view.addConstraint(bottom)
-        
-        childController.view.translatesAutoresizingMaskIntoConstraints = false
+   
+    //MARK: - Update UI
+    
+    func updateUI() {
+        self.switchHandler.getButtonsIndex(buttons: changeCounterButtons)
     }
-    // MARK: - Bindings
-    private func bindings() {
-        _ = viewModel.observableFirstCounterButton.observeNext(with: { (bool) in
-             self.changeCounterFirstBtn.isSelected = bool
-        })
-        _ = viewModel.observableSecondCounterButton.observeNext(with: { (bool) in
-            self.changeCounterSecondBtn.isSelected = bool
-        })
-        _ = viewModel.observableIndex.observeNext(with: { (index) in
-            self.reloadChildTableView()
-        })
-    }
+    
     // MARK: - Update Constraints
     private func updateConstraints() {
         let screenType = Device(rawValue: UIScreen.main.bounds.size.height)!
@@ -104,37 +85,12 @@ class MainCounterVC: UIViewController, UIGestureRecognizerDelegate, AvatarImageV
         let scaledToScreenWidth = UIImage.scaleImage(image: photo, toFrame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 0))
         let cropped = UIImage.cropImage(image: scaledToScreenWidth, toRect: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width))
         let scaledToAvatarImageViewSize = UIImage.scaleImage(image: cropped, toFrame: avatarImageView.frame)
-        viewModel.placeAvatar(avatar: scaledToAvatarImageViewSize?.data)
+       // viewModel.placeAvatar(avatar: scaledToAvatarImageViewSize?.data)
     }
-    // MARK: - AvatarImageView Delegate
-    func tapGestureAction(_ recognizer: UITapGestureRecognizer) {
-        let sheet = CameraActionSheet.init()
-        sheet.delegate = self
-        sheet.showAlert()
-    }
-    // MARK: - CameraActionSheet Delegate
-    func presentImagePicker(picker: UIImagePickerController) -> Void {
-        self.present(picker, animated: true, completion: nil)
-    }
-    func presetCameraController() -> Void {
-        let cameraController = CameraVC.init(nibName: "cameraXIB", bundle: nil)
-        cameraController.delegate = self
-        self.present(cameraController, animated: true, completion: nil)
-    }
-    func presentActionSheet(actionSheet:UIAlertController) -> Void {
-        self.present(actionSheet, animated: true, completion: nil)
-    }
-    func sendImageFromPicker(image: UIImage) -> Void {
-        processAvatarImage(photo: image)
-    }
-    // MARK: - CameraPhoto Delegate
-    func sendResultPhoto(photo: UIImage) {
-        processAvatarImage(photo: photo)
-    }
-    // MARK: - Gestures Delegate
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
+   
+    
+    
+    
     // MARK: - Reload Child TableView
     private func reloadChildTableView() {
         let range = NSRange(location: 0, length: self.childController.tableView.numberOfSections)
@@ -144,9 +100,9 @@ class MainCounterVC: UIViewController, UIGestureRecognizerDelegate, AvatarImageV
     // MARK: - Buttons
     
     @IBAction func resetButtonAction(_ sender: UIBarButtonItem) {
-        viewModel.resetCounters {
-            self.childController.tableView.reloadData()
-        }
+     //   viewModel.resetCounters {
+     //       self.childController.tableView.reloadData()
+    //    }
     }
     @IBAction func screenLockButtonAction(_ sender: UIBarButtonItem) {
         switch UIApplication.shared.isIdleTimerDisabled {
@@ -166,14 +122,50 @@ class MainCounterVC: UIViewController, UIGestureRecognizerDelegate, AvatarImageV
         self.tabBarController?.selectedIndex = 2
     }
 
-    @IBAction func firstChangeCountersButtonAction(_ sender: UIButton) {
-        viewModel.index = sender.tag
+    @IBAction func ChangeCounterButtonsAction(_ sender: UIButton) {
+        switchHandler.setButtonsIndex(button: sender)
     }
-    @IBAction func secondChangeCountersButtonAction(_ sender: UIButton) {
-        viewModel.index = sender.tag
-    }
+   
     @IBAction func manaCountersButtonAction(_ sender: UIButton) {
         self.tabBarController?.selectedIndex = 1
     }
     
+}
+
+extension MainCounterVC: UIGestureRecognizerDelegate {
+    // MARK: - Gestures Delegate
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+}
+extension MainCounterVC: AvatarImageViewDelegate {
+    // MARK: - AvatarImageView Delegate
+    func tapGestureAction(_ recognizer: UITapGestureRecognizer) {
+        let sheet = CameraActionSheet.init()
+        sheet.delegate = self
+        sheet.showAlert()
+    }
+}
+extension MainCounterVC: CameraActionSheetDelegate {
+    // MARK: - CameraActionSheet Delegate
+    func presentImagePicker(picker: UIImagePickerController) -> Void {
+        self.present(picker, animated: true, completion: nil)
+    }
+    func presetCameraController() -> Void {
+        let cameraController = CameraVC.init(nibName: "cameraXIB", bundle: nil)
+        cameraController.delegate = self
+        self.present(cameraController, animated: true, completion: nil)
+    }
+    func presentActionSheet(actionSheet:UIAlertController) -> Void {
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    func sendImageFromPicker(image: UIImage) -> Void {
+        processAvatarImage(photo: image)
+    }
+}
+extension MainCounterVC: CameraPhotoDelegate {
+    // MARK: - CameraPhoto Delegate
+    func sendResultPhoto(photo: UIImage) {
+        processAvatarImage(photo: photo)
+    }
 }

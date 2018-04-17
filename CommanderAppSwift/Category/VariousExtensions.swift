@@ -8,6 +8,13 @@
 
 import UIKit
 
+extension Dictionary where Key == String {
+    func toAttributedStringKeys() -> [NSAttributedStringKey: Value] {
+        return Dictionary<NSAttributedStringKey, Value>(uniqueKeysWithValues: map {
+            key, value in (NSAttributedStringKey(key), value)
+        })
+    }
+}
 extension Error {
     var code: Int { return (self as NSError).code }
     var domain: String { return (self as NSError).domain }

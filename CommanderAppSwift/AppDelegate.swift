@@ -15,30 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         DataManager.sharedInstance.insertCountersMN()
-        let viewControllers = [MainNavController.init(rootViewController: MainCounterVC.init(nibName: "MainCounterVC", bundle: nil)),
-                               MainNavController.init(rootViewController: ManaCounterVC.init(nibName: "ManaCounterVC", bundle: nil)),
-                               MainNavController.init(rootViewController: NotesVC.init(nibName: "NotesVC", bundle: nil)),
-                               MainNavController.init(rootViewController: CardSearchVC.init(nibName: "CardSearchVC", bundle: nil))]
-        let tabBarVC = TabBarViewController.init(nibName: "TabBarVC", bundle: nil)
-        tabBarVC.setViewControllers(viewControllers, animated: true)
-        let menuVC = MenuVC.init(nibName: "MenuVC", bundle: nil)
-        menuVC.tabBarVC = tabBarVC
-        let reveal = SWRevealViewController.init(rearViewController: menuVC,
-                                                 frontViewController: tabBarVC)
-        for object in tabBarVC.viewControllers! {
-            if let navController = object as? MainNavController {
-                if let firstController = navController.topViewController {
-                    firstController.view.setNeedsLayout()
-                    firstController.view.layoutIfNeeded()
-                    firstController.view.updateConstraintsIfNeeded()
-                }
-            }
-        }
-        tabBarVC.selectedIndex = 0
+       
+        let storyboard = UIStoryboard(name: "CountersStoryboard", bundle: nil)
+        let reveal = storyboard.instantiateViewController(withIdentifier: "RevealVC") as! SWRevealViewController
+        let tabBar = storyboard.instantiateViewController(withIdentifier: "TabBar") as! TabBarViewController
+        tabBar.configureCountersScenario()
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = reveal
-        reveal?.pushFrontViewController(reveal?.frontViewController, animated: false)
+        reveal.pushFrontViewController(reveal.frontViewController, animated: false)
         self.window?.makeKeyAndVisible()
         
         return true

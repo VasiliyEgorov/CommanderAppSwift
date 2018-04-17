@@ -13,7 +13,7 @@ protocol AvatarImageViewDelegate : class {
 }
 
 class AvatarImageView: UIImageView {
-    var viewModel : AvatarViewModel!
+    @IBOutlet weak var avatarLabel : RandomAvatarLabel!
     weak var delegate : AvatarImageViewDelegate?
     private let kSettingsStartAnimation = "animation"
     private var isAnimationShowed : Bool!
@@ -22,10 +22,9 @@ class AvatarImageView: UIImageView {
     private var armImageView : UIImageView?
     private var clickPointView : UIView?
     required init?(coder aDecoder: NSCoder) {
-        viewModel = AvatarViewModel()
+        
         super.init(coder: aDecoder)
         setupXib()
-        bindings()
     }
     private func setupXib() -> Void {
         self.backgroundColor = .clear
@@ -42,12 +41,7 @@ class AvatarImageView: UIImageView {
     @objc private func tapGestureAction(_ recognizer: UITapGestureRecognizer) {
         self.delegate?.tapGestureAction(recognizer)
     }
-    private func bindings() {
-        _ = viewModel.observableAvatar?.observeNext(with: { (avatar) in
-            self.image = avatar?.uiImage
-        })
-       
-    }
+  
     override func layoutSubviews() {
         super.layoutSubviews()
         self.layer.cornerRadius = self.frame.size.width / 2

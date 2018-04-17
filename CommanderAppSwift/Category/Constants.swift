@@ -12,10 +12,7 @@ var currentKeyboard_height : CGFloat = 0
 var cardSearchKeyboardHeight : CGFloat = 0
 var OFFSET : CGFloat = 0
 
-enum IndexEnum : Int {
-    case Player = 0
-    case Opponent = 1
-}
+
 enum Device : CGFloat {
     case Iphone6_7_plus = 736
     case Iphone6_7 = 667

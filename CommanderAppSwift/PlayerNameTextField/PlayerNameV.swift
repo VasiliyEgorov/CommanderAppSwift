@@ -11,15 +11,16 @@ import UIKit
 class PlayerNameV: UITextField, UITextFieldDelegate {
     
     private let borderWidth : CGFloat!
-    let bottomBorderLayer : CALayer!
-    var viewModel : PlayerNameViewModel!
+    private let bottomBorderLayer : CALayer!
+    private let nameHandler = PlayerNameHandler()
+
     required init?(coder aDecoder: NSCoder) {
-        viewModel = PlayerNameViewModel()
+       
         bottomBorderLayer = CALayer()
         borderWidth = 1
         super.init(coder: aDecoder)
         configXib()
-        bindValue()
+        
     }
     
     private func configXib() -> Void {
@@ -39,32 +40,24 @@ class PlayerNameV: UITextField, UITextFieldDelegate {
         self.bottomBorderLayer.backgroundColor = UIColor.color_150withAlpha(alpha: 1).cgColor
         self.layer.addSublayer(self.bottomBorderLayer)
     }
-    private func bindValue() {
-        _ = viewModel.observableText.observeNext(with: { (text) in
-            if !text.isEmpty {
-                self.text = text
-                
-            } else {
-                self.text = nil
-                let atrString = NSMutableAttributedString.init(string: "Enter Name", attributes:
-                    [NSAttributedStringKey.foregroundColor : UIColor.color_150withAlpha(alpha: 0.8),
-                     NSAttributedStringKey.font: UIFont.init(name: Constants().helvetica, size: self.frame.size.height * 2.5/3)!])
-                self.attributedPlaceholder = atrString
-            }
-        })
-    }
+   
     override func layoutSubviews() {
         super.layoutSubviews()
         self.bottomBorderLayer.frame = CGRect(x: 0, y: self.layer.frame.size.height, width: self.layer.frame.size.width, height: self.borderWidth)
         self.font = UIFont.init(name: Constants().helvetica, size: self.frame.size.height * 2.5/3)
     }
+    
+    func updateName() {
+        self.text = self.nameHandler.name
+    }
+    
     // MARK TextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
-        viewModel.text = textField.text!
+       self.nameHandler.name = self.text
     }
     
 }

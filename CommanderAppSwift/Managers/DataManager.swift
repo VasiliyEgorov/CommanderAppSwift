@@ -21,8 +21,8 @@ extension Notification.Name {
 }
 
 final class DataManager {
-    var privateQueueContext : NSManagedObjectContext!
-    var mainQueueContext : NSManagedObjectContext!
+    var privateQueueContext : NSManagedObjectContext
+    var mainQueueContext : NSManagedObjectContext
     
     static let sharedInstance : DataManager = {
         let instance = DataManager(privateContext: NSManagedObjectContext.init(concurrencyType: .privateQueueConcurrencyType), mainContext: NSManagedObjectContext.init(concurrencyType: .mainQueueConcurrencyType))
@@ -30,8 +30,8 @@ final class DataManager {
     }()
     private init(privateContext: NSManagedObjectContext, mainContext: NSManagedObjectContext) {
         self.mainQueueContext = mainContext
-        self.mainQueueContext = persistentContainer.viewContext
         self.privateQueueContext = privateContext
+        self.mainQueueContext = persistentContainer.viewContext
         self.privateQueueContext = persistentContainer.viewContext
         NotificationCenter.default.addObserver(self, selector: #selector(contextDidSaveMainQueueContext(notification:)), name: .contextDidSaveMainQueueContext, object: mainQueueContext)
         NotificationCenter.default.addObserver(self, selector: #selector(contextDidSavePrivateQueueContext(notification:)), name: .contextDidSavePrivateQueueContext, object: privateQueueContext)

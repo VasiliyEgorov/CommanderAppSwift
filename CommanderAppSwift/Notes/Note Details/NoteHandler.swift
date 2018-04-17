@@ -1,47 +1,38 @@
 //
-//  NoteDetailsViewModel.swift
+//  NoteHandler.swift
 //  CommanderAppSwift
 //
-//  Created by Vasiliy Egorov on 25.11.17.
-//  Copyright © 2017 VasiliyEgorov. All rights reserved.
+//  Created by Vasiliy Egorov on 16.04.2018.
+//  Copyright © 2018 VasiliyEgorov. All rights reserved.
 //
 
 import UIKit
 
-extension Dictionary where Key == String {
-    func toAttributedStringKeys() -> [NSAttributedStringKey: Value] {
-        return Dictionary<NSAttributedStringKey, Value>(uniqueKeysWithValues: map {
-            key, value in (NSAttributedStringKey(key), value)
-        })
-    }
-}
-class NotesDetailsViewModel {
-    private unowned let manager = DataManager.sharedInstance
-    private let maxTextStringLength = 40
-    private let note : NotesMN!
-    var attributedText : NSAttributedString {
-        get {
-        return setAttributedStringFor(note: note)
-        } set {
-            note.attributedText = newValue
-        }
-    }
+class NoteHandler {
     
+    private let maxTextStringLength = 40
+/*
     func saveNotesAttributedText(attributed: NSAttributedString) {
-       
+        
         self.note.attributedText = attributed
         self.note.noteText = self.splitTextForTextString(attributed: attributed)
         self.note.noteDetailedText = self.splitTextForDetailedString(attributed: attributed)
         guard let _ = try? self.manager.mainQueueContext.save() else { return }
         
         DispatchQueue.global(qos: .default).async {
-        self.note.placeholderForCell = self.getTextAttachmentFrom(attributed: attributed)
+            self.note.placeholderForCell = self.getTextAttachmentFrom(attributed: attributed)
             guard let _ = try? self.manager.privateQueueContext.save() else { return }
         }
     }
-    func deleteNote() {
-        manager.mainQueueContext.delete(note)
-        manager.saveContext()
+ */
+    func dateForCell(note: NotesMN) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let str = dateFormatter.string(from: note.timestamp!)
+        let date = dateFormatter.date(from: str)
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let result = dateFormatter.string(from: date!)
+        return result
     }
     func placePhoto(photo: UIImage, in textView: UITextView) -> NSAttributedString {
         let newContext = NSMutableAttributedString.init()
@@ -68,7 +59,7 @@ class NotesDetailsViewModel {
         newContext.addAttributes(textView.typingAttributes.toAttributedStringKeys(), range: NSMakeRange(0, newContext.length))
         return newContext
     }
-    private func setAttributedStringFor(note: NotesMN) -> NSAttributedString {
+    func setAttributedStringFor(note: NotesMN) -> NSAttributedString {
         if note.attributedText != nil {
             return note.attributedText as! NSAttributedString
         } else {
@@ -80,7 +71,7 @@ class NotesDetailsViewModel {
     // MARK: - Prepare Note for cell
     
     private func splitTextForTextString(attributed: NSAttributedString) -> String {
-    
+        
         let str = findAndDeleteTextAttachment(atrStr: attributed)
         
         if str.isEmpty {
@@ -125,7 +116,7 @@ class NotesDetailsViewModel {
         return trimmedStr
     }
     private func getTextAttachmentFrom(attributed: NSAttributedString) -> Data? {
-       
+        
         var data : Data?
         let mutAtrString = NSMutableAttributedString.init(attributedString: attributed)
         mutAtrString.enumerateAttribute(NSAttributedStringKey.attachment,
@@ -136,15 +127,12 @@ class NotesDetailsViewModel {
                                                     let resized = UIImage.scaleImage(image: image, toFrame: CGRect(x: 0, y: 0, width: 50, height: 50))
                                                     let cropped = UIImage.cropImage(image: resized, toRect: CGRect(x: 0, y: 0, width: 50, height: 50))
                                                     if let cropped = cropped {
-                                                    data = cropped.data
-                                                    stop.pointee = true
+                                                        data = cropped.data
+                                                        stop.pointee = true
                                                     }
                                                 }
                                             }
         }
         return data
-    }
-    required init(note: NotesMN) {
-        self.note = note
     }
 }

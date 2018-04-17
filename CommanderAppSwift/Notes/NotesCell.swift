@@ -10,18 +10,11 @@ import UIKit
 
 class NotesCell: UITableViewCell {
 
-    @IBOutlet weak var notePlaceholderImg: UIImageView?
+    @IBOutlet weak var notePlaceholderImg: UIImageView!
     @IBOutlet weak var noteDetailedLabel: UILabel!
     @IBOutlet weak var noteDateLabel: UILabel!
     @IBOutlet weak var noteTextLabel: UILabel!
-    var viewModel: NotesCellViewModel! {
-        didSet {
-            self.noteTextLabel.text = viewModel.textString
-            self.noteDetailedLabel.text = viewModel.detailedTextString
-            self.noteDateLabel.text = viewModel.dateString
-            self.notePlaceholderImg?.image = viewModel.placeholderData?.uiImage
-        }
-    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.backgroundColor = .clear
@@ -39,5 +32,22 @@ class NotesCell: UITableViewCell {
         let selectedBGView = UIView.init()
         selectedBGView.backgroundColor = UIColor.init(patternImage: UIImage.init(named: "bgForCellHighlighted.png")!)
         self.selectedBackgroundView = selectedBGView
+    }
+    
+    func configureCellWith(note: NotesMN) {
+        self.noteTextLabel.text = note.noteText
+        self.noteDetailedLabel.text = note.noteDetailedText
+        self.noteDateLabel.text = dateForCell(note: note)
+        self.notePlaceholderImg?.image = note.placeholderForCell?.uiImage
+    }
+    
+    private func dateForCell(note: NotesMN) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let str = dateFormatter.string(from: note.timestamp!)
+        let date = dateFormatter.date(from: str)
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let result = dateFormatter.string(from: date!)
+        return result
     }
 }

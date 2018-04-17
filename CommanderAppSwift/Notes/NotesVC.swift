@@ -9,18 +9,18 @@
 import UIKit
 import CoreData
 
-class NotesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, NSFetchedResultsControllerDelegate {
+class NotesVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    let cellID = "NoteCell"
-    var viewModel: NotesViewModel! {
-        didSet {
-            viewModel.initializeFetchController(aDelegate: self)
-        }
+    private let cellID = "NoteCell"
+    private let segueID = "NoteDetails"
+    var managedObjectContext: NSManagedObjectContext {
+        return DataManager.sharedInstance.mainQueueContext
     }
+    var _fetchedResultsController: NSFetchedResultsController<NotesMN>? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib.init(nibName: "NotesTableViewCell", bundle: nil), forCellReuseIdentifier: cellID)
-        viewModel = NotesViewModel()
+        
         setupTableView()
         addSwipeRecognizer()
     }
@@ -34,7 +34,7 @@ class NotesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIG
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        viewModel.removeEmptyNote()
+        removeEmptyNote()
     }
     private func setupTableView() {
         self.tableView.isEditing = false
@@ -46,42 +46,8 @@ class NotesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIG
         self.navigationItem.rightBarButtonItem = editButton
         self.navigationItem.title = "Notes"
     }
-    // MARK: - TableView
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfNotes(section: section)
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as! NotesCell
-        cell.viewModel = self.viewModel.cellViewModel(indexPath: indexPath)
-        return cell
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let detailsVC = NoteDetailsVC.init(nibName: "NoteDetailsVC", bundle: nil)
-        detailsVC.viewModel = self.viewModel.detailsViewModel(indexPath: indexPath)
-        self.navigationController?.pushViewController(detailsVC, animated: true)
-    }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            viewModel.removeNote(indexPath: indexPath)
-        }
-    }
-    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! NotesCell
-        cell.backgroundColor = .darkGray
-        cell.contentView.backgroundColor = UIColor.init(patternImage: UIImage.init(named: "bgForCellHighlighted.png")!)
-    }
-    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! NotesCell
-        cell.backgroundColor = .clear
-        cell.contentView.backgroundColor = .clear
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    }
+   
+   
     // MARK: - Gestures
     private func addSwipeRecognizer() {
         let swipe = UISwipeGestureRecognizer.init(target: self, action: #selector(rightSwipeAction))
@@ -92,38 +58,36 @@ class NotesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIG
     @objc private func rightSwipeAction() {
         self.tabBarController?.selectedIndex = 0
     }
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
-    // MARK: - FRC
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
+
+    // MARK: - Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == segueID, let vc = segue.destination as? NoteDetailsVC {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let note = self.fetchedResultsController.object(at: indexPath)
+                vc._noteObject = note
+            } 
+        }
     }
     
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any,
-                    at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            tableView.insertRows(at: [newIndexPath!], with: .fade)
-        case .delete:
-            tableView.deleteRows(at: [indexPath!], with: .fade)
-        case .update:
-            tableView.reloadRows(at: [indexPath!], with: .none)
-        case .move:
-            tableView.moveRow(at: indexPath!, to: newIndexPath!)
+    // MARK: - Delete Empty Note
+    
+    func removeEmptyNote() {
+        let request : NSFetchRequest<NotesMN> = NotesMN.fetchRequest()
+        guard let notes = try? managedObjectContext.fetch(request) else { return }
+        for note in notes {
+            if let atrText = note.attributedText as? NSAttributedString {
+                if atrText.string.isEmpty && note.placeholderForCell == nil {
+                    managedObjectContext.delete(note)
+                    DataManager.sharedInstance.saveContext()
+                }
+            }
         }
     }
  
     // MARK: - Buttons
     @IBAction func addNoteButtonAction(_ sender: UIBarButtonItem) {
-        viewModel.insertNewNote { (NotesDetailsViewModel) -> () in
-                let detailsVC = NoteDetailsVC.init(nibName: "NoteDetailsVC", bundle: nil)
-                detailsVC.viewModel = NotesDetailsViewModel
-                self.navigationController?.pushViewController(detailsVC, animated: true)
-        }
+       performSegue(withIdentifier: segueID, sender: nil)
     }
     @IBAction func heartButtonAction(_ sender: UIBarButtonItem) {
         self.tabBarController?.selectedIndex = 0
@@ -142,5 +106,130 @@ class NotesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIG
             let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editButtonAction(_:)))
             self.navigationItem.setRightBarButton(editButton, animated: true)
         }
+    }
+}
+
+extension NotesVC: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let number = fetchedResultsController.sections![section]
+        return number.numberOfObjects
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as! NotesCell
+        let note = fetchedResultsController.object(at: indexPath)
+        cell.configureCellWith(note: note)
+        return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: segueID, sender: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let context = fetchedResultsController.managedObjectContext
+            context.delete(fetchedResultsController.object(at: indexPath))
+            
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
+}
+
+extension NotesVC: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! NotesCell
+        cell.backgroundColor = .darkGray
+        cell.contentView.backgroundColor = UIColor.init(patternImage: UIImage.init(named: "bgForCellHighlighted.png")!)
+    }
+    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! NotesCell
+        cell.backgroundColor = .clear
+        cell.contentView.backgroundColor = .clear
+    }
+}
+
+extension NotesVC : NSFetchedResultsControllerDelegate {
+    var fetchedResultsController: NSFetchedResultsController<NotesMN> {
+        if _fetchedResultsController != nil {
+            return _fetchedResultsController!
+        }
+        
+        let fetchRequest: NSFetchRequest<NotesMN> = NotesMN.fetchRequest()
+
+        fetchRequest.fetchBatchSize = 20
+        
+        let sortDescriptor = NSSortDescriptor(key: "timestamp", ascending: false)
+        
+        fetchRequest.sortDescriptors = [sortDescriptor]
+       
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        aFetchedResultsController.delegate = self
+        _fetchedResultsController = aFetchedResultsController
+        
+        do {
+            try _fetchedResultsController!.performFetch()
+        } catch {
+            
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+        
+        return _fetchedResultsController!
+    }
+    
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        switch type {
+        case .insert:
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
+        case .delete:
+            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
+        default:
+            return
+        }
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+        case .update:
+            let cell = tableView.cellForRow(at: indexPath!)! as! NotesCell
+            cell.configureCellWith(note: anObject as! NotesMN)
+        case .move:
+            let cell = tableView.cellForRow(at: indexPath!)! as! NotesCell
+            cell.configureCellWith(note: anObject as! NotesMN)
+            tableView.moveRow(at: indexPath!, to: newIndexPath!)
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+}
+
+extension NotesVC : UIGestureRecognizerDelegate {
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }
