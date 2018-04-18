@@ -8,7 +8,19 @@
 
 import Foundation
 
-class Card : NSObject {
+struct Card : Decodable {
+    
+    let rarity : String
+    let imageUrl : String
+    let setName : String
+    let text : String
+  //  let legalities : [[String : Any]]
+    let type : String
+    let cardPower : String
+    let cardToughness : String
+    let cardColorIdentity : [String]
+    let cmc : Int
+    /*
    @objc dynamic let cardName : String
     let rarity : String
     let imageUrl : String
@@ -34,4 +46,5 @@ class Card : NSObject {
         cardColorIdentity = json["colorIdentity"] as? [String]
         cmc = json["cmc"] as? Int ?? 0
     }
+ */
 }

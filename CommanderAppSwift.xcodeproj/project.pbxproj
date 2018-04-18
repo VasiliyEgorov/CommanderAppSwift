@@ -11,16 +11,8 @@
 		FF1BBAF01FC3A72E009271C4 /* ManaLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBAEF1FC3A72E009271C4 /* ManaLabel.swift */; };
 		FF1BBAF71FC4A781009271C4 /* MainCountersLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBAF61FC4A781009271C4 /* MainCountersLabel.swift */; };
 		FF1BBB211FC63580009271C4 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB1F1FC63580009271C4 /* MenuCell.swift */; };
-		FF1BBB221FC63580009271C4 /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1BBB201FC63580009271C4 /* MenuCell.xib */; };
-		FF1BBB241FC63596009271C4 /* MenuVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB231FC63596009271C4 /* MenuVM.swift */; };
 		FF1BBB2F1FC66C86009271C4 /* RollADieVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB2D1FC66C86009271C4 /* RollADieVC.swift */; };
-		FF1BBB301FC66C86009271C4 /* RollADieVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1BBB2E1FC66C86009271C4 /* RollADieVC.xib */; };
-		FF1BBB321FC66C9B009271C4 /* RollADieVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB311FC66C9B009271C4 /* RollADieVM.swift */; };
-		FF1BBB341FC66CA5009271C4 /* RollADieM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB331FC66CA5009271C4 /* RollADieM.swift */; };
 		FF1BBB381FC66CC2009271C4 /* HeadsOrTailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB361FC66CC2009271C4 /* HeadsOrTailsVC.swift */; };
-		FF1BBB391FC66CC2009271C4 /* HeadsOrTailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1BBB371FC66CC2009271C4 /* HeadsOrTailsVC.xib */; };
-		FF1BBB3B1FC66CD3009271C4 /* HeadsOrTailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB3A1FC66CD3009271C4 /* HeadsOrTailsVM.swift */; };
-		FF1BBB3D1FC66CDD009271C4 /* HeadsOrTailsM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB3C1FC66CDD009271C4 /* HeadsOrTailsM.swift */; };
 		FF1BBB401FC78F1A009271C4 /* MainCountersAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB3E1FC78F1A009271C4 /* MainCountersAlertVC.swift */; };
 		FF1BBB411FC78F1A009271C4 /* MainCountersAlertVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1BBB3F1FC78F1A009271C4 /* MainCountersAlertVC.xib */; };
 		FF1BBB431FC792E8009271C4 /* MainCountersAlertVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BBB421FC792E8009271C4 /* MainCountersAlertVM.swift */; };
@@ -36,10 +28,8 @@
 		FF333FEF1FB5A5C700E980AA /* CommanderAppSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF333FEE1FB5A5C700E980AA /* CommanderAppSwiftUITests.swift */; };
 		FF333FFD1FB5B92500E980AA /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF333FFC1FB5B92500E980AA /* TabBarViewController.swift */; };
 		FF3340041FB5BE0D00E980AA /* MainCounterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3340021FB5BE0D00E980AA /* MainCounterVC.swift */; };
-		FF3340051FB5BE0D00E980AA /* MainCounterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3340031FB5BE0D00E980AA /* MainCounterVC.xib */; };
 		FF3340071FB5BE6B00E980AA /* MainCounterContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3340061FB5BE6B00E980AA /* MainCounterContainerVC.swift */; };
 		FF33400A1FB5BE9E00E980AA /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3340081FB5BE9E00E980AA /* MenuVC.swift */; };
-		FF33400B1FB5BE9E00E980AA /* MenuVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3340091FB5BE9E00E980AA /* MenuVC.xib */; };
 		FF33400F1FB615A200E980AA /* MainNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33400E1FB615A200E980AA /* MainNavController.swift */; };
 		FF3340121FB8E9D100E980AA /* ManaCounterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3340101FB8E9D100E980AA /* ManaCounterVC.swift */; };
 		FF33401E1FB9031200E980AA /* NotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33401C1FB9031200E980AA /* NotesVC.swift */; };
@@ -58,7 +48,6 @@
 		FF5440281FD7A70D0065C87A /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5440271FD7A70D0065C87A /* CameraView.swift */; };
 		FF54402C1FD7A7700065C87A /* CameraData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF54402B1FD7A7700065C87A /* CameraData.swift */; };
 		FF56E7751FE1B38E008E5D54 /* DetailsSearchCellLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF56E7741FE1B38E008E5D54 /* DetailsSearchCellLabel.swift */; };
-		FF60EA2E1FBC977F005C2BBA /* TabBarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF60EA2D1FBC977F005C2BBA /* TabBarVC.xib */; };
 		FF60EA371FBD9D1D005C2BBA /* PlayerNameV.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA361FBD9D1D005C2BBA /* PlayerNameV.swift */; };
 		FF60EA3D1FBDA395005C2BBA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA3C1FBDA395005C2BBA /* Constants.swift */; };
 		FF60EA401FBDE80D005C2BBA /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF60EA3F1FBDE80D005C2BBA /* DataManager.swift */; };
@@ -89,7 +78,6 @@
 		FFA11F411FE257D900E27891 /* CardZoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA11F3F1FE257D900E27891 /* CardZoomVC.swift */; };
 		FFA11F421FE257D900E27891 /* CardZoomVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFA11F401FE257D900E27891 /* CardZoomVC.xib */; };
 		FFB7D451207D916B006AE10F /* CountersStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFB7D450207D916B006AE10F /* CountersStoryboard.storyboard */; };
-		FFB7D454207DC14F006AE10F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFB7D452207DC14E006AE10F /* Main.storyboard */; };
 		FFB7D456207F29F8006AE10F /* MainHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7D455207F29F8006AE10F /* MainHandler.swift */; };
 		FFB7D458207F31C3006AE10F /* CountersHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7D457207F31C3006AE10F /* CountersHandler.swift */; };
 		FFB7D45A207F3364006AE10F /* ManaCountersHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7D459207F3364006AE10F /* ManaCountersHandler.swift */; };
@@ -99,7 +87,12 @@
 		FFB7D46220842CBA006AE10F /* RandomAvatarHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7D46120842CBA006AE10F /* RandomAvatarHandler.swift */; };
 		FFB7D46420842DF4006AE10F /* PlayerNameHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7D46320842DF4006AE10F /* PlayerNameHandler.swift */; };
 		FFB7D4A920853696006AE10F /* NoteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7D4A820853696006AE10F /* NoteHandler.swift */; };
-		FFE591171FED986C0027D029 /* ResetCountersAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE591161FED986C0027D029 /* ResetCountersAlert.swift */; };
+		FFB7D4AB2086341C006AE10F /* MenuHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7D4AA2086341C006AE10F /* MenuHandler.swift */; };
+		FFB7D4AD20879F7E006AE10F /* FlipsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7D4AC20879F7E006AE10F /* FlipsHandler.swift */; };
+		FFB7D4AF2087FAE0006AE10F /* TaskPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7D4AE2087FAE0006AE10F /* TaskPool.swift */; };
+		FFB7D4B12087FAF3006AE10F /* FactoryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7D4B02087FAF3006AE10F /* FactoryRequest.swift */; };
+		FFB7D4B32087FB0C006AE10F /* CardSearchNetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7D4B22087FB0C006AE10F /* CardSearchNetworkHandler.swift */; };
+		FFB7D4B52087FB95006AE10F /* DataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7D4B42087FB95006AE10F /* DataTask.swift */; };
 		FFE5911D1FEDEA110027D029 /* NotesPaintVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE5911B1FEDEA110027D029 /* NotesPaintVC.swift */; };
 		FFE5911E1FEDEA110027D029 /* NotesPaintVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFE5911C1FEDEA110027D029 /* NotesPaintVC.xib */; };
 		FFE591201FEED7F10027D029 /* DoodleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE5911F1FEED7F10027D029 /* DoodleView.swift */; };
@@ -130,16 +123,8 @@
 		FF1BBAEF1FC3A72E009271C4 /* ManaLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManaLabel.swift; sourceTree = "<group>"; };
 		FF1BBAF61FC4A781009271C4 /* MainCountersLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCountersLabel.swift; sourceTree = "<group>"; };
 		FF1BBB1F1FC63580009271C4 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
-		FF1BBB201FC63580009271C4 /* MenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
-		FF1BBB231FC63596009271C4 /* MenuVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVM.swift; sourceTree = "<group>"; };
 		FF1BBB2D1FC66C86009271C4 /* RollADieVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollADieVC.swift; sourceTree = "<group>"; };
-		FF1BBB2E1FC66C86009271C4 /* RollADieVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RollADieVC.xib; sourceTree = "<group>"; };
-		FF1BBB311FC66C9B009271C4 /* RollADieVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollADieVM.swift; sourceTree = "<group>"; };
-		FF1BBB331FC66CA5009271C4 /* RollADieM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollADieM.swift; sourceTree = "<group>"; };
 		FF1BBB361FC66CC2009271C4 /* HeadsOrTailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadsOrTailsVC.swift; sourceTree = "<group>"; };
-		FF1BBB371FC66CC2009271C4 /* HeadsOrTailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeadsOrTailsVC.xib; sourceTree = "<group>"; };
-		FF1BBB3A1FC66CD3009271C4 /* HeadsOrTailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadsOrTailsVM.swift; sourceTree = "<group>"; };
-		FF1BBB3C1FC66CDD009271C4 /* HeadsOrTailsM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadsOrTailsM.swift; sourceTree = "<group>"; };
 		FF1BBB3E1FC78F1A009271C4 /* MainCountersAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCountersAlertVC.swift; sourceTree = "<group>"; };
 		FF1BBB3F1FC78F1A009271C4 /* MainCountersAlertVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCountersAlertVC.xib; sourceTree = "<group>"; };
 		FF1BBB421FC792E8009271C4 /* MainCountersAlertVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCountersAlertVM.swift; sourceTree = "<group>"; };
@@ -161,10 +146,8 @@
 		FF333FF01FB5A5C700E980AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF333FFC1FB5B92500E980AA /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		FF3340021FB5BE0D00E980AA /* MainCounterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCounterVC.swift; sourceTree = "<group>"; };
-		FF3340031FB5BE0D00E980AA /* MainCounterVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCounterVC.xib; sourceTree = "<group>"; };
 		FF3340061FB5BE6B00E980AA /* MainCounterContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCounterContainerVC.swift; sourceTree = "<group>"; };
 		FF3340081FB5BE9E00E980AA /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
-		FF3340091FB5BE9E00E980AA /* MenuVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuVC.xib; sourceTree = "<group>"; };
 		FF33400E1FB615A200E980AA /* MainNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavController.swift; sourceTree = "<group>"; };
 		FF3340101FB8E9D100E980AA /* ManaCounterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManaCounterVC.swift; sourceTree = "<group>"; };
 		FF33401C1FB9031200E980AA /* NotesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesVC.swift; sourceTree = "<group>"; };
@@ -183,7 +166,6 @@
 		FF5440271FD7A70D0065C87A /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		FF54402B1FD7A7700065C87A /* CameraData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraData.swift; sourceTree = "<group>"; };
 		FF56E7741FE1B38E008E5D54 /* DetailsSearchCellLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsSearchCellLabel.swift; sourceTree = "<group>"; };
-		FF60EA2D1FBC977F005C2BBA /* TabBarVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarVC.xib; sourceTree = "<group>"; };
 		FF60EA361FBD9D1D005C2BBA /* PlayerNameV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNameV.swift; sourceTree = "<group>"; };
 		FF60EA3C1FBDA395005C2BBA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FF60EA3F1FBDE80D005C2BBA /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -214,7 +196,6 @@
 		FFA11F3F1FE257D900E27891 /* CardZoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardZoomVC.swift; sourceTree = "<group>"; };
 		FFA11F401FE257D900E27891 /* CardZoomVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardZoomVC.xib; sourceTree = "<group>"; };
 		FFB7D450207D916B006AE10F /* CountersStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CountersStoryboard.storyboard; sourceTree = "<group>"; };
-		FFB7D453207DC14E006AE10F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FFB7D455207F29F8006AE10F /* MainHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHandler.swift; sourceTree = "<group>"; };
 		FFB7D457207F31C3006AE10F /* CountersHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountersHandler.swift; sourceTree = "<group>"; };
 		FFB7D459207F3364006AE10F /* ManaCountersHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManaCountersHandler.swift; sourceTree = "<group>"; };
@@ -224,7 +205,12 @@
 		FFB7D46120842CBA006AE10F /* RandomAvatarHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomAvatarHandler.swift; sourceTree = "<group>"; };
 		FFB7D46320842DF4006AE10F /* PlayerNameHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNameHandler.swift; sourceTree = "<group>"; };
 		FFB7D4A820853696006AE10F /* NoteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteHandler.swift; sourceTree = "<group>"; };
-		FFE591161FED986C0027D029 /* ResetCountersAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetCountersAlert.swift; sourceTree = "<group>"; };
+		FFB7D4AA2086341C006AE10F /* MenuHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHandler.swift; sourceTree = "<group>"; };
+		FFB7D4AC20879F7E006AE10F /* FlipsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipsHandler.swift; sourceTree = "<group>"; };
+		FFB7D4AE2087FAE0006AE10F /* TaskPool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPool.swift; sourceTree = "<group>"; };
+		FFB7D4B02087FAF3006AE10F /* FactoryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryRequest.swift; sourceTree = "<group>"; };
+		FFB7D4B22087FB0C006AE10F /* CardSearchNetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSearchNetworkHandler.swift; sourceTree = "<group>"; };
+		FFB7D4B42087FB95006AE10F /* DataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTask.swift; sourceTree = "<group>"; };
 		FFE5911B1FEDEA110027D029 /* NotesPaintVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesPaintVC.swift; sourceTree = "<group>"; };
 		FFE5911C1FEDEA110027D029 /* NotesPaintVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesPaintVC.xib; sourceTree = "<group>"; };
 		FFE5911F1FEED7F10027D029 /* DoodleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleView.swift; sourceTree = "<group>"; };
@@ -311,9 +297,8 @@
 			isa = PBXGroup;
 			children = (
 				FF3340081FB5BE9E00E980AA /* MenuVC.swift */,
-				FF1BBB231FC63596009271C4 /* MenuVM.swift */,
-				FF3340091FB5BE9E00E980AA /* MenuVC.xib */,
-				FF1BBB271FC635A7009271C4 /* Menu Cell */,
+				FFB7D4AA2086341C006AE10F /* MenuHandler.swift */,
+				FF1BBB1F1FC63580009271C4 /* MenuCell.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -334,40 +319,18 @@
 				FF3340021FB5BE0D00E980AA /* MainCounterVC.swift */,
 				FFB7D455207F29F8006AE10F /* MainHandler.swift */,
 				FFB7D45B207F399E006AE10F /* SwitchCounterHandler.swift */,
-				FF3340031FB5BE0D00E980AA /* MainCounterVC.xib */,
 			);
 			path = "Main Counter";
 			sourceTree = "<group>";
 		};
-		FF1BBB271FC635A7009271C4 /* Menu Cell */ = {
-			isa = PBXGroup;
-			children = (
-				FF1BBB1F1FC63580009271C4 /* MenuCell.swift */,
-				FF1BBB201FC63580009271C4 /* MenuCell.xib */,
-			);
-			path = "Menu Cell";
-			sourceTree = "<group>";
-		};
-		FF1BBB2C1FC66C61009271C4 /* Roll A Die */ = {
-			isa = PBXGroup;
-			children = (
-				FF1BBB2D1FC66C86009271C4 /* RollADieVC.swift */,
-				FF1BBB311FC66C9B009271C4 /* RollADieVM.swift */,
-				FF1BBB331FC66CA5009271C4 /* RollADieM.swift */,
-				FF1BBB2E1FC66C86009271C4 /* RollADieVC.xib */,
-			);
-			path = "Roll A Die";
-			sourceTree = "<group>";
-		};
-		FF1BBB351FC66CAB009271C4 /* Heads Or Tails */ = {
+		FF1BBB351FC66CAB009271C4 /* Flips */ = {
 			isa = PBXGroup;
 			children = (
 				FF1BBB361FC66CC2009271C4 /* HeadsOrTailsVC.swift */,
-				FF1BBB3A1FC66CD3009271C4 /* HeadsOrTailsVM.swift */,
-				FF1BBB3C1FC66CDD009271C4 /* HeadsOrTailsM.swift */,
-				FF1BBB371FC66CC2009271C4 /* HeadsOrTailsVC.xib */,
+				FF1BBB2D1FC66C86009271C4 /* RollADieVC.swift */,
+				FFB7D4AC20879F7E006AE10F /* FlipsHandler.swift */,
 			);
-			path = "Heads Or Tails";
+			path = Flips;
 			sourceTree = "<group>";
 		};
 		FF1BBB461FC79942009271C4 /* Alert For Main Counters */ = {
@@ -405,7 +368,6 @@
 			children = (
 				FF333FFC1FB5B92500E980AA /* TabBarViewController.swift */,
 				FF1BBB9C1FCC1A2A009271C4 /* TabBarSwitchAnimations.swift */,
-				FF60EA2D1FBC977F005C2BBA /* TabBarVC.xib */,
 			);
 			path = "Tab Bar View Controller";
 			sourceTree = "<group>";
@@ -436,14 +398,17 @@
 			isa = PBXGroup;
 			children = (
 				FF333FCB1FB5A5C500E980AA /* AppDelegate.swift */,
+				FFB7D4AE2087FAE0006AE10F /* TaskPool.swift */,
+				FFB7D4B42087FB95006AE10F /* DataTask.swift */,
+				FFB7D4B02087FAF3006AE10F /* FactoryRequest.swift */,
+				FFB7D4B22087FB0C006AE10F /* CardSearchNetworkHandler.swift */,
 				FF60EA3E1FBDE7F6005C2BBA /* Managers */,
 				FF7255831FDA824E00F8D820 /* Card Search */,
 				FF5440231FD7A5CC0065C87A /* Camera */,
 				FF5440241FD7A5D60065C87A /* Alerts */,
 				FF1BBB9B1FCC1A03009271C4 /* Tab Bar View Controller */,
 				FF1BBB9A1FCC19E8009271C4 /* Main Nav Controler */,
-				FF1BBB351FC66CAB009271C4 /* Heads Or Tails */,
-				FF1BBB2C1FC66C61009271C4 /* Roll A Die */,
+				FF1BBB351FC66CAB009271C4 /* Flips */,
 				FF1BBB1E1FC52E9C009271C4 /* Main Counter */,
 				FF1BBB1D1FC52E76009271C4 /* Main Counter Container */,
 				FF1BBAED1FC3A6BF009271C4 /* ManaCounters */,
@@ -455,7 +420,6 @@
 				FF60EA461FC0B72F005C2BBA /* PlayersAvatarView */,
 				FF333FD71FB5A5C600E980AA /* LaunchScreen.storyboard */,
 				FFB7D450207D916B006AE10F /* CountersStoryboard.storyboard */,
-				FFB7D452207DC14E006AE10F /* Main.storyboard */,
 				FF333FDA1FB5A5C600E980AA /* Info.plist */,
 				FF333FD51FB5A5C500E980AA /* Assets.xcassets */,
 				FF333FD21FB5A5C500E980AA /* CommanderAppSwift.xcdatamodeld */,
@@ -514,7 +478,6 @@
 			isa = PBXGroup;
 			children = (
 				FF54401F1FD6A8B90065C87A /* CameraActionSheetView.swift */,
-				FFE591161FED986C0027D029 /* ResetCountersAlert.swift */,
 				FF4FA37D1FE3EF390029C63C /* No Results Controller Alert */,
 				FF1BBB461FC79942009271C4 /* Alert For Main Counters */,
 			);
@@ -762,22 +725,15 @@
 				FFA11F421FE257D900E27891 /* CardZoomVC.xib in Resources */,
 				FF72557E1FDA822D00F8D820 /* CardSearchVC.xib in Resources */,
 				FF7255911FE160A500F8D820 /* CardDetailsSearchVC.xib in Resources */,
-				FF1BBB221FC63580009271C4 /* MenuCell.xib in Resources */,
-				FF3340051FB5BE0D00E980AA /* MainCounterVC.xib in Resources */,
 				FF72559F1FE190E100F8D820 /* CardDetailsVC.xib in Resources */,
 				FF333FD91FB5A5C600E980AA /* LaunchScreen.storyboard in Resources */,
 				FF7255981FE1621100F8D820 /* CardDetailsSearchCell.xib in Resources */,
 				FFE5911E1FEDEA110027D029 /* NotesPaintVC.xib in Resources */,
 				FF333FD61FB5A5C500E980AA /* Assets.xcassets in Resources */,
-				FF60EA2E1FBC977F005C2BBA /* TabBarVC.xib in Resources */,
-				FF1BBB301FC66C86009271C4 /* RollADieVC.xib in Resources */,
 				FF5440261FD7A5F40065C87A /* cameraXIB.xib in Resources */,
 				FFB7D451207D916B006AE10F /* CountersStoryboard.storyboard in Resources */,
-				FF33400B1FB5BE9E00E980AA /* MenuVC.xib in Resources */,
-				FFB7D454207DC14F006AE10F /* Main.storyboard in Resources */,
 				FF4FA37B1FE3EF230029C63C /* NoResultsVC.xib in Resources */,
 				FF1BBB411FC78F1A009271C4 /* MainCountersAlertVC.xib in Resources */,
-				FF1BBB391FC66CC2009271C4 /* HeadsOrTailsVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -863,11 +819,9 @@
 				FF1BBB451FC792F7009271C4 /* MainCountersAlertM.swift in Sources */,
 				FFE5911D1FEDEA110027D029 /* NotesPaintVC.swift in Sources */,
 				FF4FA37F1FE434FE0029C63C /* NoConnectionLabel.swift in Sources */,
-				FF1BBB321FC66C9B009271C4 /* RollADieVM.swift in Sources */,
 				FF3340071FB5BE6B00E980AA /* MainCounterContainerVC.swift in Sources */,
 				FF1BBB211FC63580009271C4 /* MenuCell.swift in Sources */,
 				FF3340251FB9046A00E980AA /* UIColorExtension.swift in Sources */,
-				FFE591171FED986C0027D029 /* ResetCountersAlert.swift in Sources */,
 				FF5440221FD7A5C30065C87A /* CameraVC.swift in Sources */,
 				FF33400F1FB615A200E980AA /* MainNavController.swift in Sources */,
 				FF1BBAF01FC3A72E009271C4 /* ManaLabel.swift in Sources */,
@@ -875,7 +829,6 @@
 				FF72558C1FDAADB000F8D820 /* SearchManager.swift in Sources */,
 				FF60EA481FC0B780005C2BBA /* AvatarImageView.swift in Sources */,
 				FF3340121FB8E9D100E980AA /* ManaCounterVC.swift in Sources */,
-				FF1BBB3D1FC66CDD009271C4 /* HeadsOrTailsM.swift in Sources */,
 				FFA11F411FE257D900E27891 /* CardZoomVC.swift in Sources */,
 				FF1BBB431FC792E8009271C4 /* MainCountersAlertVM.swift in Sources */,
 				FF3340041FB5BE0D00E980AA /* MainCounterVC.swift in Sources */,
@@ -886,10 +839,10 @@
 				FF72559E1FE190E100F8D820 /* CardDetailsVC.swift in Sources */,
 				FF1BBB981FCC19A2009271C4 /* MainNavToolBar.swift in Sources */,
 				FF7CA3F21FEC6A750058F289 /* KeyboardButtonsView.swift in Sources */,
-				FF1BBB341FC66CA5009271C4 /* RollADieM.swift in Sources */,
 				FF72557D1FDA822D00F8D820 /* CardSearchVC.swift in Sources */,
 				FFE591221FEED8040027D029 /* ColorPalette.swift in Sources */,
 				FFB7D45C207F399F006AE10F /* SwitchCounterHandler.swift in Sources */,
+				FFB7D4B52087FB95006AE10F /* DataTask.swift in Sources */,
 				FF7255931FE1612E00F8D820 /* CardDetailsSearchVM.swift in Sources */,
 				FF7255801FDA824000F8D820 /* CardSearchVM.swift in Sources */,
 				FF3340221FB9033C00E980AA /* NotesCell.swift in Sources */,
@@ -909,21 +862,24 @@
 				FF60EA371FBD9D1D005C2BBA /* PlayerNameV.swift in Sources */,
 				FF1BBAF71FC4A781009271C4 /* MainCountersLabel.swift in Sources */,
 				FF60EA591FC0F9F1005C2BBA /* UIImageExtension.swift in Sources */,
+				FFB7D4B32087FB0C006AE10F /* CardSearchNetworkHandler.swift in Sources */,
 				FF60EA4A1FC0DE80005C2BBA /* AvatarLayerView.swift in Sources */,
 				FF1BBB401FC78F1A009271C4 /* MainCountersAlertVC.swift in Sources */,
+				FFB7D4AD20879F7E006AE10F /* FlipsHandler.swift in Sources */,
 				FFB7D46220842CBA006AE10F /* RandomAvatarHandler.swift in Sources */,
 				FF5440181FD4F60E0065C87A /* CountersTextField.swift in Sources */,
 				FF5440201FD6A8B90065C87A /* CameraActionSheetView.swift in Sources */,
 				FF7255871FDA88FC00F8D820 /* CardSearchCell.swift in Sources */,
 				FF1BBB2F1FC66C86009271C4 /* RollADieVC.swift in Sources */,
-				FF1BBB3B1FC66CD3009271C4 /* HeadsOrTailsVM.swift in Sources */,
 				FFB7D45E207F5E5E006AE10F /* RowHeightHandler.swift in Sources */,
 				FF54402C1FD7A7700065C87A /* CameraData.swift in Sources */,
 				FF4FA37A1FE3EF230029C63C /* NoResultsVC.swift in Sources */,
+				FFB7D4B12087FAF3006AE10F /* FactoryRequest.swift in Sources */,
 				FFB7D4A920853696006AE10F /* NoteHandler.swift in Sources */,
 				FF72558A1FDA891500F8D820 /* CardSearchCellVM.swift in Sources */,
 				FF333FD41FB5A5C500E980AA /* CommanderAppSwift.xcdatamodeld in Sources */,
 				FF60EA571FC0F9E4005C2BBA /* DataExtension.swift in Sources */,
+				FFB7D4AB2086341C006AE10F /* MenuHandler.swift in Sources */,
 				FF7255901FE160A500F8D820 /* CardDetailsSearchVC.swift in Sources */,
 				FFB7D45A207F3364006AE10F /* ManaCountersHandler.swift in Sources */,
 				FF60EA3D1FBDA395005C2BBA /* Constants.swift in Sources */,
@@ -933,7 +889,7 @@
 				FF60EA431FBE13FC005C2BBA /* NSManagedObjectExtension.swift in Sources */,
 				FF54401C1FD4FC800065C87A /* CountersButton.swift in Sources */,
 				FFE591201FEED7F10027D029 /* DoodleView.swift in Sources */,
-				FF1BBB241FC63596009271C4 /* MenuVM.swift in Sources */,
+				FFB7D4AF2087FAE0006AE10F /* TaskPool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -975,14 +931,6 @@
 				FF333FD81FB5A5C600E980AA /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		FFB7D452207DC14E006AE10F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FFB7D453207DC14E006AE10F /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

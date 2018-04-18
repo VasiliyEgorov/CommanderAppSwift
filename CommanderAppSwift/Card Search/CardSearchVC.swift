@@ -10,7 +10,7 @@ import UIKit
 import SWRevealViewController
 
 
-class CardSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class CardSearchVC: UIViewController {
     private let cellID = "SearchCell"
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -30,7 +30,7 @@ class CardSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         setupBackButton()
         searchSubviewsInTextField(view: searchBar)?.backgroundColor = UIColor.color_99withAlpha(alpha: 0.1)
         searchSubviewsInTextField(view: searchBar)?.textColor = UIColor.color_150withAlpha(alpha: 1.0)
-        tableView.register(UINib.init(nibName: "CardSearchCell", bundle: nil), forCellReuseIdentifier: cellID)
+     //   tableView.register(UINib.init(nibName: "CardSearchCell", bundle: nil), forCellReuseIdentifier: cellID)
         self.navigationItem.title = "Card search"
     }
 
@@ -95,92 +95,8 @@ class CardSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         self.tabBarController?.selectedIndex = 0
         self.revealViewController().revealToggle(animated: false)
     }
-    //MARK: - SearchBar Delegate
+
     
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        searchBar.showsCancelButton = true
-        return true
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        viewModel.checkSearchResults(onComplite: {
-            searchBar.resignFirstResponder()
-            self.indicator.stop()
-            let detailsSearchVC = CardDetailsSearchVC.init(nibName: "CardDetailsSearchVC", bundle: nil)
-            detailsSearchVC.viewModel = self.viewModel.setDetailsViewModelWithCardsArray()
-            detailsSearchVC.tabBar = self.tabBarController
-            self.navigationController?.pushViewController(detailsSearchVC, animated: true)
-        }) {
-            searchBar.resignFirstResponder()
-            self.indicator.stop()
-            self.addNoResultsVC()
-        }
-    }
-    
-    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
-        searchBar.showsCancelButton = false
-        return true
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        viewModel.cancelSearch() {
-                self.tableView.reloadData()
-                searchBar.text = Constants().empty
-                self.networkActivityStop()
-                searchBar.resignFirstResponder()
-        }
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel.cancelSearch() {
-            DispatchQueue.main.async {  
-            self.tableView.reloadData()
-            self.indicator.start()
-            self.networkActivityStart()
-            }
-        }
-        viewModel.updateCards(cardName: searchText, complition: {
-                self.tableView.reloadData()
-                self.indicator.stop()
-                self.networkActivityStop()
-        }) { (error, statusCode) in
-            if error?.code == Constants().noConnection {
-                self.addNoConnectionLabel()
-            }
-        }
-    }
-    // MARK: - TableView
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfCards()
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as! CardSearchCell
-        cell.viewModel = viewModel.setCellsViewModel(index: indexPath.row)
-        return cell
-    }
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let detailsVC = CardDetailsVC.init(nibName: "CardDetailsVC", bundle: nil)
-        detailsVC.viewModel = viewModel.setDetailsViewModelWithSingleCard(index: indexPath.row)
-        self.navigationController?.pushViewController(detailsVC, animated: true)
-    }
-    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! CardSearchCell
-        cell.backgroundColor = .darkGray
-        cell.contentView.backgroundColor = UIColor.init(patternImage: UIImage.init(named: "bgForCellHighlighted.png")!)
-    }
-    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! CardSearchCell
-        cell.backgroundColor = .clear
-        cell.contentView.backgroundColor = .clear
-    }
     // MARK: - No Results VC
     
     private func addNoResultsVC() {
@@ -238,5 +154,100 @@ class CardSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             tableView.contentInset = UIEdgeInsetsMake(0, 0, delta, 0)
             tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, delta, 0)
         }
+    }
+}
+
+extension CardSearchVC: UISearchBarDelegate {
+    //MARK: - SearchBar Delegate
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.showsCancelButton = true
+        return true
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.checkSearchResults(onComplite: {
+            searchBar.resignFirstResponder()
+            self.indicator.stop()
+            let detailsSearchVC = CardDetailsSearchVC.init(nibName: "CardDetailsSearchVC", bundle: nil)
+            detailsSearchVC.viewModel = self.viewModel.setDetailsViewModelWithCardsArray()
+            detailsSearchVC.tabBar = self.tabBarController
+            self.navigationController?.pushViewController(detailsSearchVC, animated: true)
+        }) {
+            searchBar.resignFirstResponder()
+            self.indicator.stop()
+            self.addNoResultsVC()
+        }
+    }
+    
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.showsCancelButton = false
+        return true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.cancelSearch() {
+            self.tableView.reloadData()
+            searchBar.text = Constants().empty
+            self.networkActivityStop()
+            searchBar.resignFirstResponder()
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.cancelSearch() {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.indicator.start()
+                self.networkActivityStart()
+            }
+        }
+        viewModel.updateCards(cardName: searchText, complition: {
+            self.tableView.reloadData()
+            self.indicator.stop()
+            self.networkActivityStop()
+        }) { (error, statusCode) in
+            if error?.code == Constants().noConnection {
+                self.addNoConnectionLabel()
+            }
+        }
+    }
+}
+
+extension CardSearchVC: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let detailsVC = CardDetailsVC.init(nibName: "CardDetailsVC", bundle: nil)
+        detailsVC.viewModel = viewModel.setDetailsViewModelWithSingleCard(index: indexPath.row)
+        self.navigationController?.pushViewController(detailsVC, animated: true)
+    }
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! CardSearchCell
+        cell.backgroundColor = .darkGray
+        cell.contentView.backgroundColor = UIColor.init(patternImage: UIImage.init(named: "bgForCellHighlighted.png")!)
+    }
+    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! CardSearchCell
+        cell.backgroundColor = .clear
+        cell.contentView.backgroundColor = .clear
+    }
+}
+extension CardSearchVC: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numberOfCards()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as! CardSearchCell
+        cell.viewModel = viewModel.setCellsViewModel(index: indexPath.row)
+        return cell
     }
 }

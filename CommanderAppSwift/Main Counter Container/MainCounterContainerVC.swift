@@ -17,7 +17,6 @@ class MainCounterContainerVC: UITableViewController {
     @IBOutlet var counterButtons: [UIButton]!
     @IBOutlet var addRowButtons: [UIButton]!
     @IBOutlet var counterLabels: [MainCountersLabel]!
-    private var parentController : MainCounterVC!
     private let countersHandler = CountersHandler()
     private let rowHandler = RowHeightHandler()
     
@@ -31,7 +30,7 @@ class MainCounterContainerVC: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.parentController = self.parentController as MainCounterVC
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -59,8 +58,15 @@ class MainCounterContainerVC: UITableViewController {
     // MARK: - UpdateUI
     
     func updateUI() {
+        self.tableView.beginUpdates()
         self.countersHandler.updateLabels(labels: counterLabels)
         self.countersHandler.getCountersName(txtFields: counterTxtFields)
+        self.countersHandler.updateButtonImages(buttons: addRowButtons)
+        self.tableView.endUpdates()
+    }
+    
+    func resetCounters() {
+        self.countersHandler.resetCounters()
     }
     // MARK: - Gestures
     private func addSwipeGestures() {
@@ -83,17 +89,26 @@ class MainCounterContainerVC: UITableViewController {
     }
     // MARK: - Actions
     
+    @IBAction func thirdRowButtonAction(_ sender: UIButton) {
+        self.tableView.beginUpdates()
+        self.countersHandler.setNewValueForRow(button: sender)
+        self.countersHandler.updateButtonImages(buttons: addRowButtons)
+        self.tableView.endUpdates()
+    }
+    
+    @IBAction func secondRowButtonAction(_ sender: UIButton) {
+        self.tableView.beginUpdates()
+        self.countersHandler.setNewValueForRow(button: sender)
+        self.countersHandler.updateButtonImages(buttons: addRowButtons)
+        self.tableView.endUpdates()
+    }
     @IBAction func counterButtonsAction(_ sender: UIButton) {
         self.countersHandler.count(tag: sender.tag)
         self.tableView.beginUpdates()
         self.countersHandler.updateLabels(labels: counterLabels)
         self.tableView.endUpdates()
     }
-    @IBAction func rowButtonsAction(_ sender: UIButton) {
-        self.tableView.beginUpdates()
-        self.countersHandler.updateButtonImages(button: sender)
-        self.tableView.endUpdates()
-    }
+    
     @IBAction func countersTextFieldAction(_ sender: CountersTextField) {
         self.countersHandler.setCountersName(txtField: sender)
     }

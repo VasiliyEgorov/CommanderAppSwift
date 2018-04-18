@@ -21,7 +21,7 @@ fileprivate enum AVCamFlashlight : Int {
 }
 
 protocol CameraPhotoDelegate : class {
-    func sendResultPhoto(photo: UIImage)
+    func sendResultPhoto(photo: UIImage?)
 }
 
 class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, CameraDataDelegate {
@@ -134,7 +134,7 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, CameraDataDeleg
         
         session.beginConfiguration()
         
-        session.sessionPreset = AVCaptureSession.Preset.photo
+        session.sessionPreset = AVCaptureSession.Preset.hd1920x1080
         photoSettings = AVCapturePhotoSettings.init()
         var camera : AVCaptureDevice? = AVCaptureDevice.default(chooseBackCameraVersion(), for: .video, position: .back)
         photoSettings.flashMode = .auto
@@ -314,8 +314,10 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, CameraDataDeleg
    
     // MARK: - Correct Photo Orientation
     
-   private func correctToPreferredOrinetation(image: UIImage, position:AVCaptureDevice.Position) -> UIImage {
-        
+   private func correctToPreferredOrinetation(image: UIImage?, position:AVCaptureDevice.Position) -> UIImage? {
+    
+        guard let image = image else { return nil }
+    
         var rotatedImage : UIImage
         
         if position == AVCaptureDevice.Position.back {
@@ -339,15 +341,16 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate, CameraDataDeleg
     private func managePhotoFromOutput(data: Data) {
         let image = data.uiImage
         let originalOrientationImage = UIImage.init(cgImage: (image?.cgImage)!, scale: (image?.scale)!, orientation: self.imageOrientation)
-        var fixedOrientationImage : UIImage
-        let screenHeight = Device(rawValue: UIScreen.main.bounds.size.height)!
+        var fixedOrientationImage : UIImage?
+        let screenHeight = Device(rawValue: UIScreen.main.bounds.size.height)
         
         switch screenHeight {
-        case .Iphone5:
+        case .Iphone5?:
             fixedOrientationImage = correctToPreferredOrinetation(image: originalOrientationImage, position: self.deviceInput.device.position)
         default:
             let upScaled = UIImage.lanczosScaleFilter(image: originalOrientationImage, scaleTo: 1.5)
             fixedOrientationImage = correctToPreferredOrinetation(image: upScaled, position: self.deviceInput.device.position)
+          //  fixedOrientationImage = correctToPreferredOrinetation(image: originalOrientationImage, position: self.deviceInput.device.position)
         }
         self.delegate?.sendResultPhoto(photo: fixedOrientationImage)
         self.dismiss(animated: true, completion: nil)

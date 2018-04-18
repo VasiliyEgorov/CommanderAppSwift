@@ -30,17 +30,29 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func configureCountersScenario() {
+    func configureCountersScenario() -> SWRevealViewController? {
         let storyboard = UIStoryboard(name: "CountersStoryboard", bundle: nil)
+        let menu = storyboard.instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
+        menu.tabBarVC = self
+        let mainCountersNav = storyboard.instantiateViewController(withIdentifier: "PlayerCountersVC") as! MainNavController
+        if let mainCounterVC = mainCountersNav.topViewController as? MainCounterVC {
+        menu.delegate = mainCounterVC
+        }
+        let reveal = SWRevealViewController.init(rearViewController: menu,
+                                                 frontViewController: self)
         
-        let viewControllers = [storyboard.instantiateViewController(withIdentifier: "PlayerCountersVC"),
-                               storyboard.instantiateViewController(withIdentifier: "ManaCountersVC"),
-                               storyboard.instantiateViewController(withIdentifier: "NotesVC"),
-                               storyboard.instantiateViewController(withIdentifier: "CardSearchVC")]
+        let manaNav = storyboard.instantiateViewController(withIdentifier: "ManaCountersVC") as! MainNavController
+        let notesNav = storyboard.instantiateViewController(withIdentifier: "NotesVC") as! MainNavController
+        let searchNav = storyboard.instantiateViewController(withIdentifier: "CardSearchVC") as! MainNavController
+        
+        let viewControllers = [mainCountersNav,
+                               manaNav,
+                               notesNav,
+                               searchNav]
     
         self.setViewControllers(viewControllers, animated: true)
-        
-        guard let tabBarViewControllers = self.viewControllers else { return }
+        /*
+        guard let tabBarViewControllers = self.viewControllers else { return nil }
         for object in tabBarViewControllers {
             if let navController = object as? MainNavController {
                 if let firstController = navController.topViewController {
@@ -50,8 +62,9 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
                 }
             }
         }
+ */
         self.selectedIndex = 0
-        
+        return reveal
     }
     
     func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {

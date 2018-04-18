@@ -10,6 +10,7 @@ import UIKit
 
 class RandomAvatarLabel: UILabel {
     
+    private let labelHandler = RandomAvatarHandler()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -21,4 +22,7 @@ class RandomAvatarLabel: UILabel {
         self.font = UIFont.systemFont(ofSize: self.frame.size.height / 2)
     }
    
+    func updateLabel() {
+        self.text = self.labelHandler.avatarString
+    }
 }

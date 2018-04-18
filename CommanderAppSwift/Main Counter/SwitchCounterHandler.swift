@@ -16,17 +16,30 @@ fileprivate enum ChangeCountersButtonImg: Int {
 class SwitchCounterHandler: MainHandler {
     
     func getButtonsIndex(buttons: [UIButton]) {
-        for button in buttons {
-            let type = (screenType, ChangeCountersButtonImg(rawValue: button.tag))
+            let type = (screenType, index)
                 switch type {
-                    case (.Player?, .PlayerSection?): button.isSelected = true
-                    case (.Opponent?, . OpponentSection?): button.isSelected = true
+                    case (.Player?, 0):
+                        buttons[0].isSelected = true
+                        buttons[1].isSelected = false
+                    case (.Opponent?, 1):
+                        buttons[1].isSelected = true
+                        buttons[0].isSelected = false
                     default: break
                     }
-            }
+        
     }
     
-    func setButtonsIndex(button: UIButton) {
-        index = button.tag
+    func setButtonsIndex(sender: UIButton, buttons: [UIButton]) {
+        index = sender.tag
+        let type = (screenType, index)
+        switch type {
+        case (.Player?, 0):
+            buttons[0].isSelected = true
+            buttons[1].isSelected = false
+        case (.Opponent?, 1):
+            buttons[1].isSelected = true
+            buttons[0].isSelected = false
+        default: break
+        }
     }
 }

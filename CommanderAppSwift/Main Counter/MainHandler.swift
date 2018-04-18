@@ -37,6 +37,7 @@ class MainHandler {
         } set {
             if let value = newValue {
             setIsHiddenRowValue(screenType: screenType, secondRow: true, newValue: value)
+                self.manager.saveContext()
             }
         }
     }
@@ -46,6 +47,7 @@ class MainHandler {
         } set {
             if let value = newValue {
                 setIsHiddenRowValue(screenType: screenType, secondRow: false, newValue: value)
+                self.manager.saveContext()
             }
         }
     }
@@ -83,7 +85,7 @@ class MainHandler {
                 return playerCounter?.interface?.isHiddenThirdRow
         case (.Opponent?, false):
                 return opponentCounter?.interface?.isHiddenThirdRow
-        case (.none, _): return nil
+        default: return nil
         }
     }
     private func setIsHiddenRowValue(screenType: IndexEnum?, secondRow: Bool, newValue: Bool) {
@@ -98,7 +100,7 @@ class MainHandler {
             playerCounter?.interface?.isHiddenThirdRow = newValue
         case (.Opponent?, false):
             opponentCounter?.interface?.isHiddenThirdRow = newValue
-        case (.none, _): return
+        default: return
         }
     }
 }

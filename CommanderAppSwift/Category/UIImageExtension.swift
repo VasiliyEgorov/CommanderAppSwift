@@ -155,17 +155,17 @@ extension UIImage {
         
         return rotated!
     }
-    class func lanczosScaleFilter(image: UIImage, scaleTo scale:CGFloat) -> UIImage {
-        
-        let context = CIContext.init(options: [:])
+    class func lanczosScaleFilter(image: UIImage?, scaleTo scale: CGFloat) -> UIImage? {
+        guard let image = image else { return nil }
+        let context = CIContext.init(options: [kCIContextUseSoftwareRenderer: false])
         let inputImage = UIImage.init(cgImage: image.cgImage!)
         let lanczos = CIFilter.init(name: "CILanczosScaleTransform")
         
         lanczos?.setValue(inputImage, forKey: kCIInputImageKey)
         lanczos?.setValue(scale, forKey: kCIInputScaleKey)
-        let result = lanczos?.outputImage
+        guard let output = lanczos?.outputImage else { return nil }
         
-        let cgImage = context.createCGImage(result!, from: (result?.extent)!)
+        let cgImage = context.createCGImage(output, from: output.extent)
         
         let filteredImage = UIImage.init(cgImage: cgImage!)
         

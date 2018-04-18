@@ -59,9 +59,9 @@ class ManaCounterVC: UIViewController {
     }
     // MARK: - Constraints
     private func updateConstraints() {
-        let screenHeight = Device(rawValue: UIScreen.main.bounds.size.height)!
+        let screenHeight = Device(rawValue: UIScreen.main.bounds.size.height)
         switch screenHeight {
-        case .Iphone5:
+        case .Iphone5?:
             imagesStackView.spacing = 16
             buttonsStackView.spacing = 16
             imagesStackViewTrailingConstraint.constant = 18

@@ -8,9 +8,9 @@
 
 import UIKit
 
-fileprivate enum ButtonsImage: Int {
-    case SecondRowImage = 0
-    case ThirdRowImage = 1
+fileprivate enum RowButtonsEnum: Int {
+    case SecondRowButton
+    case ThirdRowButton
 }
 
 fileprivate enum GeneralTax: Int {
@@ -40,8 +40,7 @@ class CountersHandler: MainHandler {
             case .Opponent? where tag == 5: opponentCounter?.lifeCounters?.secondCounter = countDown(input: opponentCounter?.lifeCounters?.secondCounter)
             case .Opponent? where tag == 6: opponentCounter?.lifeCounters?.thirdCounter = countDown(input: opponentCounter?.lifeCounters?.thirdCounter)
             case .Opponent? where tag == 7: opponentCounter?.lifeCounters?.fourthCounter = countDown(input: opponentCounter?.lifeCounters?.fourthCounter)
-            case .none: return
-            case .some(_): return
+        default: return
             
         }
     }
@@ -49,27 +48,72 @@ class CountersHandler: MainHandler {
         for (index, label) in labels.enumerated() {
             switch screenType {
                 case .Player? where index == 0: convertCounterIntoString(label: label, counter: playerCounter?.lifeCounters?.firstCounter)
-                case .Player? where index == 0: convertCounterIntoString(label: label, counter: playerCounter?.lifeCounters?.secondCounter)
-                case .Player? where index == 0: convertCounterIntoString(label: label, counter: playerCounter?.lifeCounters?.thirdCounter)
-                case .Player? where index == 0: convertCounterIntoString(label: label, counter: playerCounter?.lifeCounters?.fourthCounter)
+                case .Player? where index == 1: convertCounterIntoString(label: label, counter: playerCounter?.lifeCounters?.secondCounter)
+                case .Player? where index == 2: convertCounterIntoString(label: label, counter: playerCounter?.lifeCounters?.thirdCounter)
+                case .Player? where index == 3: convertCounterIntoString(label: label, counter: playerCounter?.lifeCounters?.fourthCounter)
                 case .Opponent? where index == 0: convertCounterIntoString(label: label, counter: opponentCounter?.lifeCounters?.firstCounter)
-                case .Opponent? where index == 0: convertCounterIntoString(label: label, counter: opponentCounter?.lifeCounters?.secondCounter)
-                case .Opponent? where index == 0: convertCounterIntoString(label: label, counter: opponentCounter?.lifeCounters?.thirdCounter)
-                case .Opponent? where index == 0: convertCounterIntoString(label: label, counter: opponentCounter?.lifeCounters?.fourthCounter)
+                case .Opponent? where index == 1: convertCounterIntoString(label: label, counter: opponentCounter?.lifeCounters?.secondCounter)
+                case .Opponent? where index == 2: convertCounterIntoString(label: label, counter: opponentCounter?.lifeCounters?.thirdCounter)
+                case .Opponent? where index == 3: convertCounterIntoString(label: label, counter: opponentCounter?.lifeCounters?.fourthCounter)
             default: break
         }
         }
     }
     
-    func updateButtonImages(button: UIButton) {
-        let images = ButtonsImage(rawValue: button.tag)
+    func setNewValueForRow(button: UIButton) {
+
+        let buttonEnum = RowButtonsEnum(rawValue: button.tag)
+        let type = (screenType, buttonEnum, isHiddenSecondRow, isHiddenThirdRow)
+        switch type {
+            case (.Player?, .SecondRowButton?, true, true):
+                isHiddenSecondRow = false
+            case (.Player?, .SecondRowButton?, false, true):
+                isHiddenSecondRow = true
+            case (.Player?, .SecondRowButton?, false, false):
+                isHiddenSecondRow = true
+                isHiddenThirdRow = true
+            case (.Player?, .ThirdRowButton?, false, true):
+                isHiddenThirdRow = false
+            case (.Player?, .ThirdRowButton?, false, false):
+                isHiddenThirdRow = true
+            case (.Opponent?, .SecondRowButton?, true, true):
+                isHiddenSecondRow = false
+            case (.Opponent?, .SecondRowButton?, false, true):
+                isHiddenSecondRow = true
+            case (.Opponent?, .SecondRowButton?, false, false):
+                isHiddenSecondRow = true
+                isHiddenThirdRow = true
+            case (.Opponent?, .ThirdRowButton?, false, true):
+                isHiddenThirdRow = false
+            case (.Opponent?, .ThirdRowButton?, false, false):
+                isHiddenThirdRow = true
+        default: return
+            }
+    }
+    
+    func updateButtonImages(buttons: [UIButton]) {
         
-        switch images {
-            case .SecondRowImage?: button.setBackgroundImage(setCurrentRowImg(type: screenType, isHidden: isHiddenSecondRow), for: .normal)
-            case .ThirdRowImage?: button.setBackgroundImage(setCurrentRowImg(type: screenType, isHidden: isHiddenThirdRow), for: .normal)
-            case .none: return
+        for button in buttons {
+            let buttonEnum = RowButtonsEnum(rawValue: button.tag)
+            let type = (buttonEnum, isHiddenSecondRow, isHiddenThirdRow)
+            switch type {
+            case (.SecondRowButton?, true, true):
+                button.setBackgroundImage(self.caretDown, for: .normal)
+            case (.SecondRowButton?, false, true):
+                button.setBackgroundImage(self.caretUp, for: .normal)
+            case (.SecondRowButton?, false, false):
+                button.setBackgroundImage(self.caretUp, for: .normal)
+            case (.ThirdRowButton?, true, true):
+                button.setBackgroundImage(self.caretDown, for: .normal)
+            case (.ThirdRowButton?, false, true):
+                button.setBackgroundImage(self.caretDown, for: .normal)
+            case (.ThirdRowButton?, false, false):
+                button.setBackgroundImage(self.caretUp, for: .normal)
+            default: return
+            }
         }
     }
+ 
     func resetCounters() {
         switch screenType {
         case .Player?:
@@ -117,17 +161,18 @@ class CountersHandler: MainHandler {
         guard let counter = counter else { return }
         label.text = String(counter)
     }
-    private func setCurrentRowImg(type: IndexEnum?, isHidden: Bool?) -> UIImage? {
-        let newType = (type, isHidden)
+    /*
+    private func setCurrentRowImg(type: IndexEnum?, isHiddenSecondRow: Bool?, isHiddenThirdRow: Bool?) -> UIImage? {
+        let newType = (type, isHiddenSecondRow, isHiddenThirdRow)
         switch newType {
-        case (.Player?, isHidden): return caretDown
-        case (.Player?, isHidden == false): return caretUp
-        case (.Opponent?, isHidden): return caretDown
-        case (.Opponent?, isHidden == false): return caretUp
+        case (.Player?, isHiddenSecondRow, isHiddenThirdRow): return caretDown
+        case (.Player?, isHiddenSecondRow == false, isHiddenThirdRow): return caretUp
+        case (.Opponent?, isHiddenSecondRow): return caretDown
+        case (.Opponent?, isHiddenSecondRow == false): return caretUp
         default:return nil
         }
     }
-
+*/
     private func countUp(input: Int64?) -> Int64 {
         guard var counter = input else { return 0 }
         counter += 1

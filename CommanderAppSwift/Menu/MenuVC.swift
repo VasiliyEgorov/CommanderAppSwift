@@ -10,21 +10,30 @@ import UIKit
 import SWRevealViewController
 
 fileprivate enum MenuEnum : Int {
-    case Search = 0
-    case RollADie = 1
-    case HeadsOrTails = 2
-    case ResetAllCounters = 3
+    case Search
+    case RollADie
+    case HeadsOrTails
+    case ResetAllCounters
 }
 
-class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+protocol ResetCountersDelegate: class {
+    func resetCountersFromMenu()
+}
+
+class MenuVC: UIViewController {
+    
     @IBOutlet var tableView: UITableView!
     var tabBarVC : TabBarViewController?
-    var viewModel : MenuViewModel!
-    let cellID = "MenuCellID"
+    private let cellID = "MenuCellID"
+    private let headsSegueID = "HeadsOrTails"
+    private let rollSegueID = "RollADie"
+    private let cellsText = ["Card search", "Roll a die", "Heads or tails", "Reset all counters"]
+    private let menuHandler = MenuHandler()
+    weak var delegate: ResetCountersDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = MenuViewModel()
+        
         setupTableView()
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
     }
@@ -41,21 +50,20 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.navigationController?.isToolbarHidden = true
         self.navigationItem.title = "Menu"
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       var cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? MenuCell
-        if cell == nil {
-            cell = UINib(nibName: "MenuCell", bundle: nil).instantiate(withOwner: nil, options: nil).first as? MenuCell
+  
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == headsSegueID {
+            
+            self.revealViewController().revealToggle(animated: false)
+        } else if segue.identifier == rollSegueID {
+           
+            self.revealViewController().revealToggle(animated: false)
         }
-        cell?.menuCellLabel.text = viewModel.cellsText[indexPath.row]
-        return cell!
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return viewModel.cellsText.count
-    }
-    func numberOfSections(in tableView: UITableView) -> Int {
-       return 1
-    }
-    // MARK: - TableViewDelegate
+    
+}
+
+extension MenuVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         
         let cell = tableView.cellForRow(at: indexPath) as! MenuCell
@@ -73,29 +81,34 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let menuItems : MenuEnum = MenuEnum(rawValue: indexPath.row)!
+        let menuItems = MenuEnum(rawValue: indexPath.row)
         switch menuItems {
-        case .Search:
+        case .Search?:
             self.revealViewController().revealToggle(animated: false)
             self.tabBarVC?.selectedIndex = 3
             
-        case .HeadsOrTails:
-            let headsOrTailsVC = HeadsOrTailsVC.init(nibName: "HeadsOrTailsVC", bundle: nil)
-            headsOrTailsVC.modalTransitionStyle = .crossDissolve
-            headsOrTailsVC.modalPresentationStyle = .overCurrentContext
-            self.present(headsOrTailsVC, animated: true, completion: nil)
-            self.revealViewController().revealToggle(animated: false)
-        case .RollADie:
-            let rollADieVC = RollADieVC.init(nibName: "RollADieVC", bundle: nil)
-            rollADieVC.modalTransitionStyle = .crossDissolve
-            rollADieVC.modalPresentationStyle = .overCurrentContext
-            self.present(rollADieVC, animated: true, completion: nil)
-            self.revealViewController().revealToggle(animated: false)
-        case .ResetAllCounters: viewModel.resetCountersAlert(present: { (alert) in
+        case .HeadsOrTails?:
+            performSegue(withIdentifier: headsSegueID, sender: nil)
+        case .RollADie?:
+            performSegue(withIdentifier: rollSegueID, sender: nil)
+        case .ResetAllCounters?: self.menuHandler.resetCountersAlert(present: { (alert) in
             self.present(alert, animated: true, completion: nil)
         }, complition: {
+            self.delegate?.resetCountersFromMenu()
             self.revealViewController().revealToggle(animated: true)
         })
+        default: return
         }
     }
+}
+extension MenuVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as! MenuCell
+        cell.menuCellLabel.text = self.cellsText[indexPath.row]
+        return cell
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.cellsText.count
+    }
+    
 }

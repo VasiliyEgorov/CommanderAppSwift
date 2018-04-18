@@ -11,20 +11,25 @@ import UIKit
 class NoteHandler {
     
     private let maxTextStringLength = 40
-/*
-    func saveNotesAttributedText(attributed: NSAttributedString) {
+    private let manager = DataManager.sharedInstance
+    
+    func saveAttributedText(attributed: NSAttributedString, to note: NotesMN) {
+            note.attributedText = attributed
+            note.noteText = self.splitTextForTextString(attributed: attributed)
+            note.noteDetailedText = self.splitTextForDetailedString(attributed: attributed)
         
-        self.note.attributedText = attributed
-        self.note.noteText = self.splitTextForTextString(attributed: attributed)
-        self.note.noteDetailedText = self.splitTextForDetailedString(attributed: attributed)
-        guard let _ = try? self.manager.mainQueueContext.save() else { return }
-        
-        DispatchQueue.global(qos: .default).async {
-            self.note.placeholderForCell = self.getTextAttachmentFrom(attributed: attributed)
-            guard let _ = try? self.manager.privateQueueContext.save() else { return }
+
+        DispatchQueue.global(qos: .userInitiated).async {
+            note.placeholderForCell = self.getTextAttachmentFrom(attributed: attributed)
+            self.manager.saveContext()
         }
     }
- */
+    
+    func delete(note: NotesMN) {
+        manager.mainQueueContext.delete(note)
+        manager.saveContext()
+    }
+ 
     func dateForCell(note: NotesMN) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"

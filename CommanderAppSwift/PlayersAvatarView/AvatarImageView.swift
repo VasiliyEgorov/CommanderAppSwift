@@ -21,8 +21,9 @@ class AvatarImageView: UIImageView {
     private var newArmFrame : CGRect?
     private var armImageView : UIImageView?
     private var clickPointView : UIView?
+    private let imageHandler = AvatarImageViewHandler()
+    
     required init?(coder aDecoder: NSCoder) {
-        
         super.init(coder: aDecoder)
         setupXib()
     }
@@ -47,6 +48,22 @@ class AvatarImageView: UIImageView {
         self.layer.cornerRadius = self.frame.size.width / 2
         correctAnimationFrames()
     }
+    // MARK: - Update UI
+    
+    func updateAvatarAndLabel() {
+        self.image = self.imageHandler.avatar
+        self.avatarLabel.updateLabel()
+    }
+    
+    func setAvatar(photo: UIImage?) {
+        let scaledToScreenWidth = UIImage.scaleImage(image: photo, toFrame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 0))
+        let cropped = UIImage.cropImage(image: scaledToScreenWidth, toRect: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width))
+        let scaledToAvatarImageViewSize = UIImage.scaleImage(image: cropped, toFrame: self.frame)
+        self.imageHandler.avatar = scaledToAvatarImageViewSize
+    }
+    
+    // MARK: - Animations
+    
     private func saveSettings() {
         let defaults = UserDefaults.standard
         defaults.set(self.isAnimationShowed, forKey: kSettingsStartAnimation)

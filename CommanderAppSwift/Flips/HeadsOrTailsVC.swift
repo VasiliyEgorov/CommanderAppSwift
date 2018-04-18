@@ -13,11 +13,17 @@ class HeadsOrTailsVC: UIViewController {
     @IBOutlet weak var animatedLabel: UILabel!
     @IBOutlet weak var tailsImageView: UIImageView!
     @IBOutlet weak var headsImageView: UIImageView!
-    var viewModel : HeadsOrTailsViewModel!
+    private let flipHandler = FlipsHandler()
+    private var result : Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = HeadsOrTailsViewModel()
+        self.flipHandler.delegate = self
         addTapGestureRecognizer()
+        
+        self.headsImageView.alpha = 0.3
+        self.tailsImageView.alpha = 0.3
+        self.animatedLabel.text = ""
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,10 +52,13 @@ class HeadsOrTailsVC: UIViewController {
                        delay: 0.0,
                        options: [.curveEaseInOut],
                        animations: {
-                        self.viewModel.setAlpha(complition: { (heads, tails) in
-                            self.headsImageView.alpha = CGFloat(heads)
-                            self.tailsImageView.alpha = CGFloat(tails)
-                        })
+                        self.flipHandler.flipACoin()
+                        
+                        if self.result == 1 {
+                            self.tailsImageView.alpha = 1
+                        } else {
+                            self.headsImageView.alpha = 1
+                        }
                         
         }) { (finished) in
             self.labelAppearanceAnimation()
@@ -60,8 +69,8 @@ class HeadsOrTailsVC: UIViewController {
                        delay: 0.0,
                        options: [.curveEaseIn],
                        animations: {
-                        self.animatedLabel.alpha = 1.0
-                        self.animatedLabel.text = self.viewModel.labelString
+                       // self.animatedLabel.alpha = 1.0
+                        self.animatedLabel.text = "Tap anywhere to close"
         }) { (finished) in
             self.labelMovementAnimation()
         }
@@ -74,5 +83,11 @@ class HeadsOrTailsVC: UIViewController {
                        animations: {
                         self.animatedLabel.frame.origin.y -= 10.0
         }, completion: nil)
+    }
+}
+
+extension HeadsOrTailsVC: RandomNumberDelegate {
+    func getRandomNumber(result: Int) {
+        self.result = result
     }
 }

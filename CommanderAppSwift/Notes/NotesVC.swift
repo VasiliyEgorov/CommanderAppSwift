@@ -13,6 +13,7 @@ class NotesVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     private let cellID = "NoteCell"
     private let segueID = "NoteDetails"
+    @IBOutlet weak var editButton: UIBarButtonItem!
     var managedObjectContext: NSManagedObjectContext {
         return DataManager.sharedInstance.mainQueueContext
     }
@@ -86,16 +87,14 @@ class NotesVC: UIViewController {
     }
  
     // MARK: - Buttons
-    @IBAction func addNoteButtonAction(_ sender: UIBarButtonItem) {
-       performSegue(withIdentifier: segueID, sender: nil)
-    }
+   
     @IBAction func heartButtonAction(_ sender: UIBarButtonItem) {
         self.tabBarController?.selectedIndex = 0
     }
     @IBAction func manaButtonAction(_ sender: UIBarButtonItem) {
          self.tabBarController?.selectedIndex = 1
     }
-    @objc func editButtonAction(_ sender: UIBarButtonItem) {
+    @IBAction func editButtonAction(_ sender: UIBarButtonItem) {
         let isEditing = tableView.isEditing
         tableView.setEditing(!isEditing, animated: true)
         if tableView.isEditing {

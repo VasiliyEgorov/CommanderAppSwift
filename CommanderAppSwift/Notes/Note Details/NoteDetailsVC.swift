@@ -12,7 +12,7 @@ class NoteDetailsVC: UIViewController, UITextViewDelegate {
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var cloudButton: UIBarButtonItem!
     @IBOutlet weak var noteTextView: UITextView!
-    
+    private let manager = DataManager.sharedInstance
     private lazy var cameraAlertSheet : CameraActionSheet = { [weak self] in
         let sheet = CameraActionSheet()
         sheet.delegate = self
@@ -24,7 +24,7 @@ class NoteDetailsVC: UIViewController, UITextViewDelegate {
         if _noteObject != nil {
             return _noteObject!
         }
-        let newNote = NotesMN()
+        let newNote = NotesMN(context: manager.mainQueueContext)
         newNote.timestamp = Date()
         newNote.attributedText = NSAttributedString.init()
         _noteObject = newNote
@@ -54,7 +54,7 @@ class NoteDetailsVC: UIViewController, UITextViewDelegate {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-     //   viewModel.saveNotesAttributedText(attributed: noteTextView.attributedText)
+        self.noteHandler.saveAttributedText(attributed: self.noteTextView.attributedText, to: self.noteObject)
     }
     // MARK: - Setups
     private func setupButtonsView() {
@@ -93,7 +93,7 @@ class NoteDetailsVC: UIViewController, UITextViewDelegate {
     // MARK: - Buttons
     
     @IBAction func deleteButtonAction(_ sender: UIBarButtonItem) {
-     //   viewModel.deleteNote()
+        self.noteHandler.delete(note: noteObject)
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func cameraButtonAction(_ sender: UIBarButtonItem) {
@@ -161,7 +161,7 @@ extension NoteDetailsVC: CameraActionSheetDelegate {
 
 extension NoteDetailsVC: CameraPhotoDelegate {
     
-    func sendResultPhoto(photo: UIImage) {
+    func sendResultPhoto(photo: UIImage?) {
         placeImage(image: photo)
     }
 }

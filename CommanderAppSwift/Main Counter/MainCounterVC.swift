@@ -10,14 +10,12 @@ import UIKit
 import SWRevealViewController
 
 class MainCounterVC: UIViewController {
-    
-    
-    private var childController : MainCounterContainerVC!
+
     @IBOutlet weak var avatarImageView: AvatarImageView!
     @IBOutlet var changeCounterButtons: [ChangeCounterButton]!
     @IBOutlet weak var containerViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var playerNameTxtField: PlayerNameV!
-    
+    private var childController : MainCounterContainerVC!
     private let switchHandler = SwitchCounterHandler()
     
     override func viewDidLoad() {
@@ -25,9 +23,7 @@ class MainCounterVC: UIViewController {
         
         self.avatarImageView.delegate = self
         self.childController = self.childViewControllers.first! as! MainCounterContainerVC
-        
-        
-        
+        updateUI()
         updateConstraints()
     }
 
@@ -44,13 +40,15 @@ class MainCounterVC: UIViewController {
     
     func updateUI() {
         self.switchHandler.getButtonsIndex(buttons: changeCounterButtons)
+        playerNameTxtField.updateName()
+        avatarImageView.updateAvatarAndLabel()
     }
     
     // MARK: - Update Constraints
     private func updateConstraints() {
-        let screenType = Device(rawValue: UIScreen.main.bounds.size.height)!
+        let screenType = Device(rawValue: UIScreen.main.bounds.size.height)
         switch screenType {
-        case .Iphone5: containerViewBottomConstraint.constant = 71
+        case .Iphone5?: containerViewBottomConstraint.constant = 71
         default: break
         }
         self.view.updateConstraintsIfNeeded()
@@ -80,29 +78,11 @@ class MainCounterVC: UIViewController {
             self.tabBarController?.selectedIndex = 1
         }
     }
-    // MARK: - Process avatar image
-    private func processAvatarImage(photo: UIImage) {
-        let scaledToScreenWidth = UIImage.scaleImage(image: photo, toFrame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 0))
-        let cropped = UIImage.cropImage(image: scaledToScreenWidth, toRect: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width))
-        let scaledToAvatarImageViewSize = UIImage.scaleImage(image: cropped, toFrame: avatarImageView.frame)
-       // viewModel.placeAvatar(avatar: scaledToAvatarImageViewSize?.data)
-    }
-   
     
-    
-    
-    // MARK: - Reload Child TableView
-    private func reloadChildTableView() {
-        let range = NSRange(location: 0, length: self.childController.tableView.numberOfSections)
-        let indexSet = NSIndexSet(indexesIn: range)
-        self.childController.tableView.reloadSections(indexSet as IndexSet, with: .automatic)
-    }
     // MARK: - Buttons
     
     @IBAction func resetButtonAction(_ sender: UIBarButtonItem) {
-     //   viewModel.resetCounters {
-     //       self.childController.tableView.reloadData()
-    //    }
+        self.childController.resetCounters()
     }
     @IBAction func screenLockButtonAction(_ sender: UIBarButtonItem) {
         switch UIApplication.shared.isIdleTimerDisabled {
@@ -123,7 +103,9 @@ class MainCounterVC: UIViewController {
     }
 
     @IBAction func ChangeCounterButtonsAction(_ sender: UIButton) {
-        switchHandler.setButtonsIndex(button: sender)
+        switchHandler.setButtonsIndex(sender: sender, buttons: changeCounterButtons)
+        self.updateUI()
+        self.childController.updateUI()
     }
    
     @IBAction func manaCountersButtonAction(_ sender: UIButton) {
@@ -133,13 +115,13 @@ class MainCounterVC: UIViewController {
 }
 
 extension MainCounterVC: UIGestureRecognizerDelegate {
-    // MARK: - Gestures Delegate
+    
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
 }
 extension MainCounterVC: AvatarImageViewDelegate {
-    // MARK: - AvatarImageView Delegate
+    
     func tapGestureAction(_ recognizer: UITapGestureRecognizer) {
         let sheet = CameraActionSheet.init()
         sheet.delegate = self
@@ -147,7 +129,7 @@ extension MainCounterVC: AvatarImageViewDelegate {
     }
 }
 extension MainCounterVC: CameraActionSheetDelegate {
-    // MARK: - CameraActionSheet Delegate
+    
     func presentImagePicker(picker: UIImagePickerController) -> Void {
         self.present(picker, animated: true, completion: nil)
     }
@@ -160,12 +142,20 @@ extension MainCounterVC: CameraActionSheetDelegate {
         self.present(actionSheet, animated: true, completion: nil)
     }
     func sendImageFromPicker(image: UIImage) -> Void {
-        processAvatarImage(photo: image)
+        self.avatarImageView.setAvatar(photo: image)
     }
 }
 extension MainCounterVC: CameraPhotoDelegate {
-    // MARK: - CameraPhoto Delegate
-    func sendResultPhoto(photo: UIImage) {
-        processAvatarImage(photo: photo)
+    
+    func sendResultPhoto(photo: UIImage?) {
+        self.avatarImageView.setAvatar(photo: photo)
     }
+}
+extension MainCounterVC: ResetCountersDelegate {
+    func resetCountersFromMenu() {
+        self.updateUI()
+        self.childController.updateUI()
+    }
+    
+    
 }

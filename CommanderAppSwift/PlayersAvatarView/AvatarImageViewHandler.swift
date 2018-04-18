@@ -11,10 +11,14 @@ import UIKit
 class AvatarImageViewHandler: MainHandler {
     
     var avatar : UIImage? {
+        get {
         if let data = getAvatarForCurrentScreenType(type: screenType) {
-            return UIImage.init(data: data)
+            return data.uiImage
         } else {
             return nil
+        }
+        } set {
+            setAvatarForCurrentScreenType(type: screenType, newValue: newValue)
         }
     }
     
@@ -46,6 +50,15 @@ class AvatarImageViewHandler: MainHandler {
         default: return nil
         }
     }
+    
+    private func setAvatarForCurrentScreenType(type: IndexEnum?, newValue: UIImage?) {
+        switch type {
+            case .Player?: playerCounter?.avatar = newValue?.data
+            case .Opponent?: opponentCounter?.avatar = newValue?.data
+            default: return
+        }
+    }
+    
     private func setRandomAvatarPlaceholder(dataArray: [Data?]) -> Data {
         let dataImg = dataArray[Int(arc4random_uniform(UInt32(dataArray.count)))]
         return dataImg!

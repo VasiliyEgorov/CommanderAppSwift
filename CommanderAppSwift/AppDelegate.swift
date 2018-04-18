@@ -17,15 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         DataManager.sharedInstance.insertCountersMN()
-       
+        
         let storyboard = UIStoryboard(name: "CountersStoryboard", bundle: nil)
-        let reveal = storyboard.instantiateViewController(withIdentifier: "RevealVC") as! SWRevealViewController
+        
         let tabBar = storyboard.instantiateViewController(withIdentifier: "TabBar") as! TabBarViewController
-        tabBar.configureCountersScenario()
+        
+        let revealScenario = tabBar.configureCountersScenario()
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = reveal
-        reveal.pushFrontViewController(reveal.frontViewController, animated: false)
+        self.window?.rootViewController = revealScenario
+        revealScenario?.pushFrontViewController(revealScenario?.frontViewController, animated: false)
         self.window?.makeKeyAndVisible()
+        
+        
         
         return true
     }
